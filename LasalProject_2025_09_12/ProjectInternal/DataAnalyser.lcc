@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<DataAnalyser
+	VerSet        = "0.01"
+	Samplerate    = "1000"
+	DA_Type       = "0"
+	MaxMemTime    = "0"
+	MaxMem        = "20"
+	TimeRangeStr  = "10000 ms"
+	TimeOffsetStr = "0 ms"
+	StepSize      = "1"
+	StepSizeStr   = "1 ms"
+	TimeRange     = "10000"
+	TimeOffset    = "0"
+	ScreenView    = "TREND">
+	<DA_TriggerStart Active="false" Type="Start" Condition="Greater or Equal">
+	</DA_TriggerStart>
+	<DA_TriggerStop Active="false" Type="Stop" Condition="Greater or Equal">
+	</DA_TriggerStop>
+	<DA_Channels>
+	</DA_Channels>
+	<DA_AuxLines>
+	</DA_AuxLines>
+</DataAnalyser>

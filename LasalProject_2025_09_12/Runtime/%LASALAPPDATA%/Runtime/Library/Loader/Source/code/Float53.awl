@@ -1,0 +1,978 @@
+#ifndef _LSL_TARGETARCH_ARM
+
+#include "..\include\Float53.h"
+#include "..\include\FloatDefs.h"
+
+//    Absolutbetrag berechnen
+//    =======================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Absolutbetrag des Wertes
+
+FUNCTION AWL GLOBAL      DIAS_R_ABS
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         AND.EAX   16#7FFFFFFF
+END_FUNCTION
+//    Wandlung von UDINT auf REAL
+//    ===========================
+//    
+//    -> EAX: Wert vom Typ UDINT
+//    
+//    <- EAX: Wert vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_UTOR
+VAR_INPUT
+	EAX			: UDINT;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+
+         OR.EAX    EAX
+         JZ        F06_ENDE            // Wert = 0
+
+         CLR       BL                  // Vorzeichen in BL
+
+         L.CX      16#009F             // Exponent in CL
+F06_SHFT DEC       CX
+         SHL.EAX   001
+         JNB       F06_SHFT
+
+         SHR.EAX   008
+
+         SHL.ECX   024                 // Exponent nach EAX
+         OR.EAX    ECX
+
+         SHR.BL    001                 // Vorzeichen nach EAX
+         RCR.EAX   001
+
+F06_ENDE POP       ECX
+         POP       EBX
+END_FUNCTION
+//    Wandlung von DINT auf REAL
+//    ==========================
+//    
+//    -> EAX: Wert vom Typ DINT
+//    
+//    <- EAX: Wert vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_DTOR
+VAR_INPUT
+	EAX			: DINT;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+
+         OR.EAX    EAX
+         JZ        E06_ENDE            // Wert = 0
+
+         SETS      BL                  // Vorzeichen in BL
+
+         JNS       E06_POS             // Wert ist positiv
+         NEG       EAX
+
+E06_POS  L.CX      16#009F             // Exponent in CL
+E06_SHFT DEC       CX
+         SHL.EAX   001
+         JNB       E06_SHFT
+
+         SHR.EAX   008
+
+         SHL.ECX   024                 // Exponent nach EAX
+         OR.EAX    ECX
+
+         SHR.BL    001                 // Vorzeichen nach EAX
+         RCR.EAX   001
+
+E06_ENDE POP       ECX
+         POP       EBX
+END_FUNCTION
+//    Wandlung von REAL auf DOUBLE
+//    ============================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Wert vom Typ DOUBLE
+
+FUNCTION AWL GLOBAL      DIAS_R_RTOD
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: DINT;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+
+         SHL.EAX   001
+         SETC      BL                  // Vorzeichen merken
+
+         S.EAX     ECX
+
+         SHR.ECX   024                 // Exponent nach CL
+
+         SHL.EAX   008
+
+         SUB.CL    16#7F
+         JS        F07_ZERO
+
+         CMP.CL    031
+         JGE       F07_OVER
+         STC
+         RCR.EAX   001
+
+F07_SHFT SHR.EAX   001
+         INC       CL
+         CMP.CL    031
+         JNE       F07_SHFT
+
+         AND.BL    001
+         JZ        F07_ENDE
+         NEG       EAX
+         JMP       F07_ENDE
+
+F07_ZERO CLR       EAX
+         JMP       F07_ENDE
+
+F07_OVER L.EAX     16#7FFFFFFF
+         AND.BL    001
+         JZ        F07_ENDE
+         NOT       EAX
+
+F07_ENDE POP       ECX
+         POP       EBX
+END_FUNCTION
+//    Zwei REAL-Zahlen subtrahieren
+//    =============================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_SUB
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+
+         XOR.EBX   16#80000000         // Vorzeichen umdrehen
+         CALL      DIAS_R_ADD
+
+		 POP       EBX
+END_FUNCTION
+//    Zwei REAL-Zahlen addieren
+//    =========================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_ADD
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      EDX
+
+		 ROL.EAX   001                 // Einsprungpunkt fuer DIAS_R_SUB
+         ROL.EBX   001
+// Format: EEEEEEEE MMMMMMMM MMMMMMMM MMMMMMMS
+
+         CMP.EAX   EBX                 // EBX muss kleineren Wert haben
+         JNB       F08_I
+         XCH.EAX   EBX
+
+F08_I    L.EDX     EBX                 // Exponenten nach CH und CL
+         SHR.EDX   024
+         L.ECX     EAX
+         SHR.ECX   024
+         L.CH      DL
+
+         L.DL      AL                  // Bit 24 von EDX = Vorzeichen
+         ADD.DL    BL                  // der Operation
+         SHL.DX    008
+         L.DL      AL                  // Bit 16 von EDX = Vorzeichen
+         SHL.EDX   016                 // vom Ergebnis
+
+         SHL.EAX   008                 // Mantissen ans obere Ende
+         SHL.EBX   008
+// Format: MMMMMMMM MMMMMMMM MMMMMMMS 00000000
+
+         CMP.AL    CL                  // implizite Bits berechnen
+         RCR.EAX   001
+         CLR       AL
+
+         CMP.AL    CH
+         RCR.EBX   001
+         CLR       BL
+// Format: MMMMMMMM MMMMMMMM MMMMMMMM 00000000
+
+         L.DL      CL                  // Exponent sichern
+         CLR       DH
+
+         SUB.CL    CH                  // Differenz der Exponenten in CX
+         JE        F08_NAP
+         CMP.CL    024
+         JA        F08_RND
+         CLR       CH
+
+F08_ANP  SHR.EBX   001                 // Exponent anpassen
+         LOOP      F08_ANP
+
+F08_NAP  TEST.EDX  16#01000000
+         JNZ       F08_SUB             // Sprung bei ungl Vorzeichen
+         ADD.EAX   EBX
+         JNC       F08_RND
+         RCR.EAX   001
+         INC       DX                  // Exponent erhoehen
+         JMP       F08_RND
+
+F08_SUB  SUB.EAX   EBX
+         JS        F08_RND             // bei fuehrender Eins zum Runden
+         JZ        F08_ZERO            // Ergebnis ist 0
+
+F08_NRM  CMP.DX    CX                  // Ergebnis normalisieren (CX=0)
+         JE        F08_RND             // Ergebnis ist denormalisiert
+         DEC       DX
+         SHL.EAX   001
+         OR.EAX    EAX                 // Test auf fuehrende Eins
+         JNS       F08_NRM
+
+F08_RND  ADD.EAX   16#00000080
+         JNB       F08_NOV
+         RCR.EAX   001                 // Ueberlauf
+         INC       DX
+
+F08_NOV  CLR       AL
+         CMP.EAX   0000000000
+         JE        F08_ZERO
+
+         CMP.DX    00255
+         JL        F08_NUE
+         L.DX      00255               // unendlich
+         CLR       EAX
+         JMP       F08_DEN
+
+F08_NUE  OR.DX     DX
+         JZ        F08_DEN
+         SHL.EAX   001                 // fuehrende 1 entfernen
+
+F08_DEN  SHR.EAX   008
+
+         L.CL      DL
+         SHL.ECX   024
+         OR.EAX    ECX                 // Exponent einfuegen
+
+         SHR.EDX   017                 // Vorzeichen vom Ergebnis
+         RCR.EAX   001
+
+F08_ZERO POP       EDX
+         POP       ECX
+         POP       EBX
+END_FUNCTION
+//    Zwei REAL-Zahlen multiplizieren
+//    ===============================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_MUL
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      EDX
+         PUSH      EDI
+         PUSH      ESI
+
+         L.ESI     EAX                 // Ergebnisvorzeichen bestimmen
+         XOR.ESI   EBX                 // Vorzeichen in ESI, Bit 31
+
+         L.ECX     EAX                 // Exponent 1 nach CX
+         SHR.ECX   23
+
+         L.EDX     EBX                 // Exponent 2 nach DX
+         SHR.EDX   23
+
+         AND.EAX   16#007FFFFF         // Vorzeichen und Exp loeschen
+         AND.EBX   16#007FFFFF
+
+         AND.CX    16#00FF             // Exponent 1 maskieren
+         JZ        F10_DN1             // 0 = Zahl ist denormalisiert
+         OR.EAX    16#00800000         // implizite Eins erzeugen
+         SUB.CX    16#0001             // Bias kompensieren
+
+F10_DN1  AND.DX    16#00FF             // Exponent 2 maskieren
+         JZ        F10_DN2             // 0 = Zahl ist denormalisiert
+         OR.EBX    16#00800000         // implizite Eins erzeugen
+         SUB.DX    16#0001             // Bias kompensieren
+
+F10_DN2  ADD.CX    DX                  // Summe der Exponenten bilden
+         SUB.CX    124                 // Bias -3 subtrahieren
+         CMP.CX    0
+         JL        F10_ZERO            // totaler Unterlauf
+
+         MUL       EBX
+
+         L.BX      AX                  // niederwertige Bits in BX
+         SHR.EAX   16                  // Ergebnis in EAX aufbauen
+         SHL.EDX   16
+         OR.EAX    EDX
+
+         JS        F10_RND             // bei fuehrender Eins Runden
+
+         JZ        F10_RES             // Ergebnis ist Null
+
+         TEST.EAX  16#FFFF0000
+         JNZ       F10_NOR
+
+         OR.CX     CX                  // bei negativem Exponent
+         JS        F10_UNT             // Unterlauf behandeln
+
+F10_NOR  OR.CX     CX                  // Exponent ist Null ?
+         JE        F10_RND             // falls Null, dann zum Runden
+         SHL.BX    1                   // in BX sind die LO Bits
+         RCL.EAX   1                   // Mantisse nach links schieben
+         DEC       CX                  // Exponent korrigieren
+         OR.EAX    EAX
+         JNS       F10_NOR             // warte bis fuehrende Eins kommt
+
+F10_RND  ADD.EAX   16#00000080         // Runden
+         JNB       F10_NOV
+         RCR.EAX   1                   // Ueberlauf einschieben
+         INC       CX                  // Exponent korrigieren
+F10_NOV  CMP.CX    255
+         JL        F10_NUE
+	  	 L.CX      255                 // Ueberlauf: Exponent = 255
+         CLR       EAX                 //            Mantisse = 0
+         JMP       F10_DEN
+
+F10_ZERO CLR       EAX                 // Ergebnis ist Null
+         JMP       F10_RES
+
+F10_NUE  OR.CX     CX                  // Exponent negativ oder 0
+         JZ        F10_DEN             // falls 0 dann denormalisieren
+         SHL.EAX   1                   // fuehrende 1 nicht abspeichern
+
+F10_DEN  SHR.EAX   8
+         SHL.ECX   24
+         O.EAX     ECX                 // Exponent einsetzen
+         SHL.ESI   1                   // Vorzeichen aus ESI ins Carry
+         RCR.EAX   1                   // und ins Ergebnis einschieben
+
+F10_RES  POP       ESI
+         POP       EDI
+         POP       EDX
+         POP       ECX
+         POP       EBX
+         RET
+
+F10_UNT  CMP.CX    -24                 // bei totalem Unterlauf
+         JLE       F10_ZERO            // ist Ergebnis 0
+         NEG       CX
+F10_SHR  SHR.EAX   1                   // Mantisse denormalisieren
+         LOOP      F10_SHR             // Exponent in CX ist Null
+         JMP       F10_DEN             // Ergebnis absetzen
+END_FUNCTION
+//    Zwei REAL-Zahlen dividieren
+//    ===========================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_DIV
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      EDX
+         PUSH      EDI
+         PUSH      ESI
+
+         L.ESI     EAX                 // Ergebnisvorzeichen bestimmen
+         XOR.ESI   EBX                 // Vorzeichen in ESI, Bit 31
+
+         L.ECX     EAX                 // Exponent 1 nach CX
+         SHR.ECX   23
+
+         L.EDX     EBX                 // Exponent 2 nach DX
+         SHR.EDX   23
+
+         AND.EAX   16#007FFFFF         // Vorzeichen und Exp loeschen
+         AND.EBX   16#007FFFFF
+
+         AND.CX    16#00FF             // Exponent 1 maskieren
+         JZ        F11_DN1             // 0 = Zahl ist denormalisiert
+         OR.EAX    16#00800000         // implizite Eins erzeugen
+         SUB.CX    16#0001             // Bias kompensieren
+
+F11_DN1  AND.DX    16#00FF
+         JZ        F11_DN2             // 0 = Zahl ist denormalisiert
+         OR.EBX    16#00800000         // implizite Eins erzeugen
+         SUB.DX    16#0001             // Bias kompensieren
+
+F11_DN2  SUB.CX    DX                  // Differenz der Exponenten
+         ADD.CX    127                 // Bias addieren
+         CMP.CX    -24                 // totaler Unterlauf ?
+         JL        F11_ZERO
+
+         SHL.EBX   7
+// Format: 0MMMMMMM MMMMMMMM MMMMMMMM M0000000
+         OR.EBX    EBX
+         JE        F11_ERR             // Division durch 0
+
+         SHL.EAX   7
+// Format: 0MMMMMMM MMMMMMMM MMMMMMMM M0000000
+         OR.EAX    EAX
+         JE        F11_ZERO            // Ergebnis ist 0
+
+         L.EDI     16#FFFFFFFF         // Ergebnis mit 1en vorbesetzen
+         ADD.CX    25                 // Exponent ist sicher groesser 0
+
+F11_NOR  TEST.EBX  16#40000000
+         JNE       F11_LOP             // Divisor ist normalisiert
+         INC       CX                  // Exponent erhoehen
+         SHL.EBX   1
+         JMP       F11_NOR
+
+F11_LOP  L.EDX     EAX                 // OP1 zwischenspeichern
+         SUB.EAX   EBX
+         JNB       F11_ONE             // kein Carry: Divisor passt
+         L.EAX     EDX                 // zurueckkopieren
+
+F11_ONE  RCL.EDI   001                 // Ergebnis aufbauen
+         SHL.EAX   001                 // Dividend verschieben
+         DEC       CX                  // Exponent erniedrigen
+         JE        F11_DEN             // falls 0 dann denormalisieren
+         TEST.EDI  16#01000000         // fuehrende 1 in Ergebnis-Manti
+         JNE       F11_LOP             // nein weiter rechnen (invers)
+
+F11_DEN  L.EAX     EDI                 // Ergebnis in Register holen
+         SHL.EAX   8
+         L         16#FF               // untere Bits loeschen (invers)
+         RCR.EDI   25                  // letztes Bit holen und in Form
+         RCR.EAX   1                   // ffff....ffff f000 0000
+
+         NOT       EAX                 // Komplement bilden
+         OR.EAX    EAX
+         JE        F11_RES             // Ergebnis ist 0
+
+         ADD.EAX   16#00000080         // Runden
+         JNB       F11_NOV
+         RCR.EAX   1                   // Ueberlauf einschieben
+         INC       CX                  // Exponent korrigieren
+F11_NOV  CMP.CX    255
+         JL        F11_NUE
+F11_ERR  L.CX      255                 // Ueberlauf: Exponent = 255
+         CLR       EAX                 //            Mantisse = 0
+         JMP       F11_DENO
+
+F11_ZERO CLR       EAX                 // Ergebnis ist Null
+         JMP       F11_RES
+
+F11_NUE  OR.CX     CX                  // Exponent negativ oder 0
+         JZ        F11_DENO            // falls 0 dann denormalisieren
+         SHL.EAX   1                   // fuehrende 1 nicht abspeichern
+
+F11_DENO SHR.EAX   8
+         SHL.ECX   24
+         O.EAX     ECX                 // Exponent einsetzen
+         SHL.ESI   1                   // Vorzeichen aus ESI ins Carry
+         RCR.EAX   1                   // und ins Ergebnis einschieben
+
+F11_RES  POP       ESI
+         POP       EDI
+         POP       EDX
+         POP       ECX
+         POP       EBX
+
+END_FUNCTION
+//    Logische OR-Verknuepfung von zwei REAL-Zahlen
+//    =============================================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_OR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         OR.EAX    EAX
+         JNZ       F_12_EIN
+         OR.EBX    EBX
+         JNZ       F_12_EIN
+
+         CLR       EAX
+         JMP       F12_ENDE
+
+F_12_EIN L.EAX     16#3F800000
+F12_ENDE
+END_FUNCTION
+//    Logische XOR-Verknuepfung von zwei REAL-Zahlen
+//    ==============================================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_XOR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      CX
+
+         OR.EAX    EAX
+         SETNZ     CL
+         OR.EBX    EBX
+         SETNZ     CH
+
+         CLR       EAX
+
+         XOR.CL    CH
+         JZ        F13_ENDE
+         L.EAX     16#3F800000
+
+F13_ENDE POP       CX
+END_FUNCTION
+//    Logische AND-Verknuepfung von zwei REAL-Zahlen
+//    ==============================================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_AND
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         OR.EAX    EAX
+         JZ        F14_AUS
+         OR.EBX    EBX
+         JZ        F14_AUS
+
+         L.EAX     16#3F800000
+         JMP       F14_ENDE
+
+F14_AUS  CLR       EAX
+F14_ENDE
+END_FUNCTION
+//    EAX := 1/EAX
+//    ============
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL                                      
+
+FUNCTION AWL GLOBAL      DIAS_R_1DX
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         L.EBX     EAX
+         L.EAX     16#3F800000
+         CALL      DIAS_R_DIV
+         POP       EBX
+END_FUNCTION
+//    REAL-Zahl negieren
+//    ==================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergbnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_NEG
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         XOR.EAX   16#80000000
+END_FUNCTION
+//    Logische NOT-Verknuepfung einer REAL-Zahl
+//    =========================================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_NOT
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         OR.EAX    EAX
+         JNZ       F17_NULL
+         L.EAX     16#3F800000
+         JMP       F17_ENDE
+F17_NULL CLR       EAX
+F17_ENDE
+END_FUNCTION
+//    Zwei REAL-Zahlen vergleichen
+//    ============================
+//    
+// Diese Funktion wird ab Lasal-Compiler Version 4 nicht mehr verwendet. 
+// Stattdessen werden die Funktionen DIAS_R_CMP_E/L/G aufgerufen.
+//
+//    -> EAX: Wert vom Typ REAL
+//    -> EBX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_CMP
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+
+         TEST.EAX  16#7FFFFFFF         // -0 auf +0 umwandeln
+         JNZ       F18_EAX_NZ
+         CLR       EAX
+F18_EAX_NZ
+
+         TEST.EBX  16#7FFFFFFF         // -0 auf +0 umwandeln
+         JNZ       F18_EBX_NZ
+         CLR       EBX
+F18_EBX_NZ
+
+         TEST.EAX  16#80000000
+         JZ        F18_NORM
+         TEST.EBX  16#80000000
+         JZ        F18_NORM
+
+         CMP.EBX   EAX                 // beide Operanden sind negativ
+         JMP       F18_ENDE
+
+F18_NORM CMP.EAX   EBX
+F18_ENDE
+END_FUNCTION
+
+
+//    Zwei REAL-Zahlen vergleichen 
+//    ============================
+//    
+// Prüfung auf Wert 1 gleich Wert 2
+//
+//    -> EAX: Wert 1 vom Typ REAL
+//    -> EBX: Wert 2 vom Typ REAL
+//    
+
+FUNCTION AWL GLOBAL DIAS_R_CMP_E
+VAR_INPUT
+	EAX			    : REAL;
+	EBX			    : REAL;
+END_VAR
+
+    PUSH      EAX                // Register am Stack sichern, da diese u.U. verändert werden
+    PUSH      EBX
+    PUSH      ECX
+         
+// Prüfung des Wertes 1
+
+    L.ECX     EAX
+         
+    AND.EAX   MASK_EXPONENT
+    CMP.EAX   MASK_EXPONENT      // prüfen, ob NaN oder Infinity
+    L.EAX     ECX
+    JNE       CMP_E_EAX_TEST_ZERO
+         
+    TEST.EAX  MASK_SIGNIFICAND   // prüfen, ob Infinity (Mantisse = 0) 
+    JZ        CMP_E_TEST_EBX
+         
+    CMP.EAX   0                  // Beim Wert in EAX handelt es sich um ein NaN. Ein Vergleich 
+                                 // mit einem NaN ergibt immer ungleich.
+    JMP       CMP_E_ENDE
+         
+CMP_E_EAX_TEST_ZERO
+
+    TEST.EAX  16#7FFFFFFF         // -0 auf +0 umwandeln
+    JNZ       CMP_E_TEST_EBX
+    X.EAX     EAX
+
+// Prüfung des Wertes 2
+
+CMP_E_TEST_EBX
+
+    L.ECX     EBX
+         
+    AND.EBX   MASK_EXPONENT
+    CMP.EBX   MASK_EXPONENT      // prüfen, ob NaN oder Infinity
+    L.EBX     ECX
+    JNE       CMP_E_EBX_TEST_ZERO
+         
+    TEST.EBX  MASK_SIGNIFICAND   // prüfen, ob Infinity (Mantisse = 0)
+    JZ        CMP_E_CHECK_SIGN
+         
+    CMP.EBX   0                  // Beim Wert in EBX handelt es sich um ein NaN. Ein Vergleich 
+                                 // mit einem NaN ergibt immer ungleich.
+    JMP       CMP_E_ENDE
+         
+CMP_E_EBX_TEST_ZERO
+
+    TEST.EBX  16#7FFFFFFF         // -0 auf +0 umwandeln
+    JNZ       CMP_E_CHECK_SIGN
+    X.EBX     EBX
+
+// Überprüfung der Vorzeichen
+
+CMP_E_CHECK_SIGN
+
+    TEST.EAX  16#80000000
+    JZ        CMP_E_NORM          // Wert 1 positiv, Wert 2 positiv oder negativ
+    TEST.EBX  16#80000000
+    JZ        CMP_E_NORM          // Wert 1 negativ, Wert 2 positiv
+
+    CMP.EBX   EAX                 // beide Operanden sind negativ
+    JMP       CMP_E_ENDE
+
+CMP_E_NORM 
+
+    CMP.EAX   EBX
+
+CMP_E_ENDE
+    
+    POP       ECX
+    POP       EBX
+    POP       EAX
+    
+END_FUNCTION
+
+//    Zwei REAL-Zahlen vergleichen 
+//    ============================
+//    
+// Prüfung auf Wert 1 kleiner Wert 2
+//
+//    -> EAX: Wert 1 vom Typ REAL
+//    -> EBX: Wert 2 vom Typ REAL
+//    
+
+FUNCTION AWL GLOBAL DIAS_R_CMP_L
+VAR_INPUT
+	EAX			    : REAL;
+	EBX			    : REAL;
+END_VAR
+
+    PUSH      EAX                // Register am Stack sichern, da diese u.U. verändert werden
+    PUSH      EBX
+    PUSH      ECX
+         
+// Prüfung des Wertes 1
+
+    L.ECX     EAX
+         
+    AND.EAX   MASK_EXPONENT
+    CMP.EAX   MASK_EXPONENT      // prüfen, ob NaN oder Infinity
+    L.EAX     ECX
+    JNE       CMP_L_EAX_TEST_ZERO
+         
+    TEST.EAX  MASK_SIGNIFICAND   // prüfen, ob Infinity (Mantisse = 0) 
+    JZ        CMP_L_TEST_EBX
+         
+    JMP       CMP_L_UNORDERED    // Beim Wert in EAX handelt es sich um ein NaN. Ein Vergleich 
+                                 // mit einem NaN ergibt immer ungleich.
+                                 
+CMP_L_EAX_TEST_ZERO
+
+    TEST.EAX  16#7FFFFFFF         // -0 auf +0 umwandeln
+    JNZ       CMP_L_TEST_EBX
+    X.EAX     EAX
+
+// Prüfung des Wertes 2
+
+CMP_L_TEST_EBX
+
+    L.ECX     EBX
+         
+    AND.EBX   MASK_EXPONENT
+    CMP.EBX   MASK_EXPONENT      // prüfen, ob NaN oder Infinity
+    L.EBX     ECX
+    JNE       CMP_L_EBX_TEST_ZERO
+         
+    TEST.EBX  MASK_SIGNIFICAND   // prüfen, ob Infinity (Mantisse = 0)
+    JZ        CMP_L_CHECK_SIGN
+         
+    JMP       CMP_L_UNORDERED    // Beim Wert in EBX handelt es sich um ein NaN. Ein Vergleich 
+                                 // mit einem NaN ergibt immer ungleich.
+         
+CMP_L_EBX_TEST_ZERO
+
+    TEST.EBX  16#7FFFFFFF         // -0 auf +0 umwandeln
+    JNZ       CMP_L_CHECK_SIGN
+    X.EBX     EBX
+
+// Überprüfung der Vorzeichen
+
+CMP_L_CHECK_SIGN
+
+    TEST.EAX  16#80000000
+    JZ        CMP_L_NORM          // Wert 1 positiv, Wert 2 positiv oder negativ
+    TEST.EBX  16#80000000
+    JZ        CMP_L_NORM          // Wert 1 negativ, Wert 2 positiv
+
+    CMP.EBX   EAX                 // beide Operanden sind negativ
+    JMP       CMP_L_ENDE
+
+// Behandlung bei NaNs
+
+CMP_L_UNORDERED                   
+                                  // In diesem Fall muss der Vergleich auf kleiner immmer
+    L.EAX     1                   // FALSE ergeben.
+    L.EBX     0
+    
+CMP_L_NORM 
+
+    CMP.EAX   EBX
+
+CMP_L_ENDE
+    
+    POP       ECX
+    POP       EBX
+    POP       EAX
+
+END_FUNCTION
+
+//    Zwei REAL-Zahlen vergleichen 
+//    ============================
+//    
+// Prüfung auf Wert 1 größer Wert 2
+//
+//    -> EAX: Wert 1 vom Typ REAL
+//    -> EBX: Wert 2 vom Typ REAL
+//    
+
+FUNCTION AWL GLOBAL DIAS_R_CMP_G
+VAR_INPUT
+	EAX			    : REAL;
+	EBX			    : REAL;
+END_VAR
+
+    PUSH      EAX                // Register am Stack sichern, da diese u.U. verändert werden
+    PUSH      EBX
+    PUSH      ECX
+         
+// Prüfung des Wertes 1
+
+    L.ECX     EAX
+         
+    AND.EAX   MASK_EXPONENT
+    CMP.EAX   MASK_EXPONENT      // prüfen, ob NaN oder Infinity
+    L.EAX     ECX
+    JNE       CMP_G_EAX_TEST_ZERO
+         
+    TEST.EAX  MASK_SIGNIFICAND   // prüfen, ob Infinity (Mantisse = 0) 
+    JZ        CMP_G_TEST_EBX
+         
+    JMP       CMP_G_UNORDERED    // Beim Wert in EAX handelt es sich um ein NaN. Ein Vergleich 
+                                 // mit einem NaN ergibt immer ungleich.
+                                 
+CMP_G_EAX_TEST_ZERO
+
+    TEST.EAX  16#7FFFFFFF         // -0 auf +0 umwandeln
+    JNZ       CMP_G_TEST_EBX
+    X.EAX     EAX
+
+// Prüfung des Wertes 2
+
+CMP_G_TEST_EBX
+
+    L.ECX     EBX
+         
+    AND.EBX   MASK_EXPONENT
+    CMP.EBX   MASK_EXPONENT      // prüfen, ob NaN oder Infinity
+    L.EBX     ECX
+    JNE       CMP_G_EBX_TEST_ZERO
+         
+    TEST.EBX  MASK_SIGNIFICAND   // prüfen, ob Infinity (Mantisse = 0)
+    JZ        CMP_G_CHECK_SIGN
+         
+    JMP       CMP_G_UNORDERED    // Beim Wert in EBX handelt es sich um ein NaN. Ein Vergleich 
+                                 // mit einem NaN ergibt immer ungleich.
+         
+CMP_G_EBX_TEST_ZERO
+
+    TEST.EBX  16#7FFFFFFF         // -0 auf +0 umwandeln
+    JNZ       CMP_G_CHECK_SIGN
+    X.EBX     EBX
+
+// Überprüfung der Vorzeichen
+
+CMP_G_CHECK_SIGN
+
+    TEST.EAX  16#80000000
+    JZ        CMP_G_NORM          // Wert 1 positiv, Wert 2 positiv oder negativ
+    TEST.EBX  16#80000000
+    JZ        CMP_G_NORM          // Wert 1 negativ, Wert 2 positiv
+
+    CMP.EBX   EAX                 // beide Operanden sind negativ
+    JMP       CMP_G_ENDE
+
+// Behandlung bei NaNs
+
+CMP_G_UNORDERED
+                                  // In diesem Fall muss der Vergleich auf größer immmer
+    L.EAX     -1                  // FALSE ergeben.
+    L.EBX     0
+    
+CMP_G_NORM 
+
+    CMP.EAX   EBX
+
+CMP_G_ENDE
+    
+    POP       ECX
+    POP       EBX
+    POP       EAX
+
+END_FUNCTION
+
+#endif // _LSL_TARGETARCH_ARM

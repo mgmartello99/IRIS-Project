@@ -1,0 +1,753 @@
+ 
+
+//    Utility function
+//    
+//    Read a client channel on assembly level
+//    
+//    -> ESI This
+//    -> EBX Chn offset
+//    <- EAX data : chndata loaded
+
+FUNCTION ASM_RD_CHNL
+
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r8, r9}
+    ADD       r9, r9, r1
+    MOV       r8, r9
+     
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pRd
+    LDR       r7, [r7, #ChMeth.pRd]
+    BLX       r7
+     
+    STR       r0, [r8, #CltCh.dData]
+    LDMIA     sp!, {r7, r8, r9}
+#else
+         PSH       ESI
+
+         ADD.ESI   EBX                 // add channel offset to this ptr
+         PSH       ESI
+
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)   // get ptr to method table of svr
+         CALL      (EDI+ChMeth.pRd)
+
+         POP       ESI
+         S.EAX     (ESI+CltCh.dData)   // store data local
+         POP       ESI
+#endif
+END_FUNCTION
+
+//    Utility function
+//    
+//    Write data to client channel on assembly level. Data is
+//    written to the client channels data field and transfered
+//    to the connected server channel.
+//    
+//    -> ESI This
+//    -> EBX Chn offset
+//    -> EAX = DATA
+
+FUNCTION ASM_WR_CHNL
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r9}
+    ADD       r9, r9, r1
+    STR       r0, [r9, #CltCh.dData]
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pWr
+    LDR       r7, [r7, #ChMeth.pWr]
+    BLX       r7
+    LDMIA     sp!, {r7, r9}
+#else
+         PSH       ESI
+
+         ADD.ESI   EBX                 // add channel offset to this ptr
+         S.EAX     (ESI+CltCh.dData)   // store data local
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)   // get ptr to method table of svr
+         CALL      (EDI+ChMeth.pWr)
+
+         POP       ESI
+#endif
+END_FUNCTION
+
+
+//    Utility function
+//    
+//    Write Data through channel on assembly level. Data is only
+//    transfered to the connected server channel. It is NOT 
+//    stored to the client channels data field.
+//    
+//    -> ESI This
+//    -> EBX Chn offset
+//    -> EAX = DATA
+
+FUNCTION ASM_WR_VIACHNL
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r9}
+    ADD       r9, r9, r1
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pWr
+    LDR       r7, [r7, #ChMeth.pWr]
+    BLX       r7
+    LDMIA     sp!, {r7, r9}
+#else
+
+         PSH       ESI
+
+         ADD.ESI   EBX                 // add channel offset to this ptr
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)   // get ptr to method table of svr
+         CALL      (EDI+ChMeth.pWr)
+
+         POP       ESI
+#endif
+END_FUNCTION
+//    Utility function
+//    
+//    This function calls the read method of the given server
+//    channel.
+//    
+//    -> ESI pointer to the sever channel
+//    <- EAX data
+
+FUNCTION M_RD
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7}
+    LDR       r7, [r9, #0]
+    //ADD       r7, r7, #ChMeth.pRd
+    LDR       r7, [r7, #ChMeth.pRd]
+    BLX       r7
+    LDMIA     sp!, {r7}
+#else
+         L.EDI     (ESI)               // ptr to method table
+         CALL      (EDI+ChMeth.pRd)
+#endif
+END_FUNCTION
+//    Utility function
+//    
+//    This function calles the write method of the given server.
+//    
+//    -> ESI : pointer to the server
+//    -> EAX : data
+
+FUNCTION M_WR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7}
+    LDR       r7, [r9, #0]
+    //ADD       r7, r7, #ChMeth.pWr
+    LDR       r7, [r7, #ChMeth.pWr]
+    BLX       r7
+    LDMIA     sp!, {r7}
+#else
+         L.EDI     (ESI)               // ptr to method table
+         CALL      (EDI+ChMeth.pWr)
+#endif
+END_FUNCTION
+
+
+//    Utility function
+//    
+//     This function calls the read method of a server channel
+//     after it checked the given pt-pointer.
+//    
+//     -> pt   : pointer to the server channel
+//     <- dData: return value of the servers read method
+
+FUNCTION RD
+VAR_INPUT
+	pt              : ^void;
+END_VAR
+VAR_OUTPUT
+	dData           : DINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r9}
+    MOV       r9, pt
+    CMP       r9, #0
+    MOVEQ     dData, #0
+    BEQ       RdEnd                // nothing to do   
+   
+    LDR       r7, [r9, #0]
+    CMP       r7, #0
+    MOVEQ     dData, #0
+    BEQ       RdEnd
+   
+    //ADD       r7, r7, #ChMeth.pRd
+    LDR       r7, [r7, #ChMeth.pRd]
+    BLX       r7
+    MOV       dData, r0
+
+RdEnd
+    LDMIA     sp!, {r7, r9}
+#else
+         L.ESI     pt
+         O.ESI     ESI                 // check if pointer is NIL
+         JNZ       X1
+         -
+         CLR       EAX                 // return 0 for NIL pointers
+         JMP       WW
+
+X1       L.EDI     (ESI)               // ptr to methods
+         O.EDI     EDI                 // check if meth-ptr is NIL
+         JNZ       X2
+         -
+         CLR       EAX
+         JMP       WW
+
+X2       CALL      (EDI+ChMeth.pRd)
+
+WW       S.EAX     dData
+#endif
+END_FUNCTION
+
+
+//    Utility function
+//    
+//    This function calls the read method of a server channel
+//    that is connected to the specified client.
+//    
+//    -> pt    : pointer to the object
+//    -> chOffs: offset to a client channel in this object
+//    <- dData : return value of the read method of the
+//               connected server.
+
+FUNCTION RD_CHNL
+VAR_INPUT
+	pt              : ^void;
+	chOffs          : UINT;
+END_VAR
+VAR_OUTPUT
+	dData           : DINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r8, r9}
+    ADD       r9, pt, chOffs
+    MOV       r8, r9
+    
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pRd
+    LDR       r7, [r7, #ChMeth.pRd]
+    BLX       r7
+    STR       r0, [r8, #CltCh.dData]
+    MOV       dData, r0
+    LDMIA     sp!, {r7, r8, r9}
+#else
+         LZXW.EBX  chOffs              // add channel offset to this ptr
+         L.ESI     pt
+         ADD.ESI   EBX
+         PSH       ESI
+
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)
+         CALL      (EDI+ChMeth.pRd)
+         POP       ESI
+         S.EAX     (ESI+CltCh.dData)   // store data local
+         S.EAX     dData               // set return value
+#endif
+END_FUNCTION
+
+
+//    Utility function
+//    
+//    This function calls the read method of the connected
+//    server. It doesn't store the data to the local data
+//    image of the given client channel.
+//    
+//    -> ESI pointer to the object
+//    -> EBX offset to the client channel
+//    <- EAX data
+
+FUNCTION RD_VIACHNL
+VAR_INPUT
+	pt              : ^void;
+	chOffs          : UINT;
+END_VAR
+VAR_OUTPUT
+	dData           : DINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r9}
+    ADD       r9, pt, chOffs
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pRd
+    LDR       r7, [r7, #ChMeth.pRd]
+    BLX       r7
+    MOV       dData, r0
+    LDMIA     sp!, {r7, r9}
+#else
+         LZXW.EBX  chOffs              // add channel offset to this ptr
+         L.ESI     pt
+         ADD.ESI   EBX
+
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)
+         CALL      (EDI+ChMeth.pRd)
+
+         S.EAX     dData               // set return value
+#endif
+END_FUNCTION
+
+
+//    Utility function
+//    
+//    Existing data in our own datafield is transfered to
+//    client.
+//    
+//    -> ESI pointer to the object
+//    -> EBX offset to the client channel
+//    <- EAX return value of the write method
+//    
+//    
+//    --> SEE  WR_VIACHNL
+//             WR_CHNL
+
+FUNCTION UPD_WR_CHNL
+VAR_INPUT
+	pt              : ^void;
+	chOffs          : UINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r9}
+    ADD       r9, pt, chOffs
+    LDR       r0, [r9, #CltCh.dData]
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pWr
+    LDR       r7, [r7, #ChMeth.pWr]
+    BLX       r7
+    LDMIA     sp!, {r7, r9}
+#else
+         LZXW.EBX  chOffs              // add channel offset to this ptr
+         L.ESI     pt
+         ADD.ESI   EBX
+
+         L.EAX     (ESI+CltCh.dData)   // read local data
+
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)
+         CALL      (EDI+ChMeth.pWr)    // store data there
+#endif
+END_FUNCTION
+
+
+//    Utility function
+//    
+//    This function writes data to a server channel.
+//    
+//    -> pt   : pointer to a server channel
+//    -> dData: data
+//    <- EAX  : result of the write method
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION GLOBAL WR
+VAR_INPUT
+	pt              : ^void;
+	dData           : DINT;
+END_VAR
+VAR_OUTPUT
+	ret0            : UDINT;
+END_VAR
+
+    STMDB     sp!, {r7, r9}
+    MOV       r9, pt
+    MOV       r0, dData
+    LDR       r7, [r9, #0]
+    //ADD       r7, r7, #ChMeth.pWr
+    LDR       r7, [r7, #ChMeth.pWr]
+    BLX       r7
+    MOV       ret0, r0
+    LDMIA     sp!, {r7, r9}
+END_FUNCTION
+#else
+FUNCTION GLOBAL WR
+VAR_INPUT
+	pt              : ^void;
+	dData           : DINT;
+END_VAR
+VAR_OUTPUT
+	EAX             : UDINT;
+END_VAR
+
+         L.ESI     pt
+         L.EAX     dData
+         L.EDI     (ESI)               // ptr to methods
+         CALL      (EDI+ChMeth.pWr)
+
+END_FUNCTION
+#endif
+
+//    Utility function
+//    
+//    Reads data from channel (chOffs) with the RtWork method
+//    ----------------------------
+//    
+//    Data is also written into our own datafield
+
+FUNCTION RT_RD_CHNL
+VAR_INPUT
+	pt              : ^void;
+	chOffs          : UINT;
+END_VAR
+VAR_OUTPUT
+	dData           : DINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r8, r9}
+    ADD       r9, pt, chOffs
+    MOV       r8, r9
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #CmdMeth.RtWork
+    LDR       r7, [r7, #CmdMeth.RtWork]
+    BLX       r7
+    STR       r0, [r8, #CltCh.dData]
+    MOV       dData, r0
+    LDMIA     sp!, {r7, r8, r9}
+#else
+         LZXW.EBX  chOffs              // add channel offset to this ptr
+         L.ESI     pt
+         ADD.ESI   EBX
+         PSH       ESI
+
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)
+         CALL      (EDI+CmdMeth.RtWork)
+         POP       ESI
+
+         S.EAX     (ESI+CltCh.dData)   // store data local
+         S.EAX     dData               // set return value
+#endif
+END_FUNCTION
+
+
+//    Utility function
+//    
+//    Writes data to channel (chOffs)
+//    ----------------------------
+//    
+//    Data is NOT written into our own datafield
+//    
+//    -> pt    : pointer to the object
+//    -> chOffs: offset of the client channel
+//    -> dData : data
+//    <- EAX   : return value of the write method
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION GLOBAL WR_VIACHNL
+VAR_INPUT
+	pt      : ^void;
+	chOffs  : UINT;
+	dData   : DINT;
+END_VAR
+VAR_OUTPUT
+	ret0    : UDINT;
+END_VAR
+    STMDB     sp!, {r7, r9}
+    ADD       r9, pt, chOffs
+    MOV       r0, dData
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pWr
+    LDR       r7, [r7, #ChMeth.pWr]
+    BLX       r7
+    MOV       ret0, r0
+    LDMIA     sp!, {r7, r9}
+END_FUNCTION
+#else
+FUNCTION GLOBAL WR_VIACHNL
+VAR_INPUT
+	pt              : ^void;
+	chOffs          : UINT;
+	dData           : DINT;
+END_VAR
+VAR_OUTPUT
+	EAX             : UDINT;
+END_VAR
+
+         LZXW.EBX  chOffs              // add channel offset to this ptr
+         L.ESI     pt
+         ADD.ESI   EBX
+
+         L.EAX     dData
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)   // get method table
+         CALL      (EDI+ChMeth.pWr)
+
+END_FUNCTION
+#endif
+//    Utility function
+//    
+//    Writes Data to chnl (chOffs)
+//    ----------------------------
+//    
+//    Data is written into our own datafield
+//    & transfered to Client
+//    
+//    -> pt    : pointer to an object
+//    -> chOffs: offset of an client channel
+//    -> dData : data to write
+//    <- EAX   : return code of the write method
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION GLOBAL WR_CHNL
+VAR_INPUT
+	pt     : ^void;
+	chOffs : UINT;
+	dData  : DINT;
+END_VAR
+VAR_OUTPUT
+	ret0   : UDINT;
+END_VAR
+
+    STMDB     sp!, {r7, r9}
+    ADD       r9, pt, chOffs
+    MOV       r0, dData
+    STR       r0, [r9, #CltCh.dData]
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #ChMeth.pWr
+    LDR       r7, [r7, #ChMeth.pWr]
+    BLX       r7
+    MOV       ret0, r0
+    LDMIA     sp!, {r7, r9}
+END_FUNCTION
+#else
+FUNCTION GLOBAL WR_CHNL
+VAR_INPUT
+	pt              : ^void;
+	chOffs          : UINT;
+	dData           : DINT;
+END_VAR
+VAR_OUTPUT
+	EAX             : UDINT;
+END_VAR
+
+         LZXW.EBX  chOffs              // add channel offset to this ptr
+         L.ESI     pt
+         ADD.ESI   EBX
+
+         L.EAX     dData
+         S.EAX     (ESI+CltCh.dData)   // store data local
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)   // get ptr to method table
+         CALL      (EDI+ChMeth.pWr)
+
+END_FUNCTION
+#endif
+
+//    Utility function
+//    
+//    Writes Data to chnl (chOffs) and RtWork method is called
+//    ----------------------------
+//    
+//    data is written into our own data field
+//    & transfered to Client
+//    
+//    -> pt     : pointer to an object
+//    -> chOffs : offset to a client channel
+//    -> dData  : data to write
+
+FUNCTION RT_WR_CHNL
+VAR_INPUT
+	pt              : ^void;
+	chOffs          : UINT;
+	dData           : DINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r7, r9}
+    ADD       r9, pt, chOffs
+    MOV       r0, dData
+    STR       r0, [r9, #CltCh.dData]
+    LDR       r9, [r9, #CltCh.pCh]
+    LDR       r7, [r9, #SvrCh.pMeth]
+    //ADD       r7, r7, #CmdMeth.RtWork
+    LDR       r7, [r7, #CmdMeth.RtWork]
+    BLX       r7
+    LDMIA     sp!, {r7, r9}
+#else
+         LZXW.EBX  chOffs              // add channel offset to this ptr
+         L.ESI     pt
+         ADD.ESI   EBX
+
+         L.EAX     dData
+         S.EAX     (ESI+CltCh.dData)   // store data local
+         L.ESI     (ESI+CltCh.pCh)     // get ptr to connected server
+         L.EDI     (ESI+SvrCh.pMeth)   // get ptr to method table
+         CALL      (EDI+CmdMeth.RtWork)
+#endif
+END_FUNCTION
+
+VAR_EXTERNAL
+	sbCallInit		: TCallInit;	// call InitFromTable for VBI-objects
+END_VAR
+// The function checks if a channel is really connected.
+// -> EBX:	in IL #Channel.pData, in ST simply #Channel
+//				(which is the same)
+// <- ECX:	(0)	not connected, (1) connected
+
+#ifdef _LSL_TARGETARCH_ARM
+#define __IsCliCon(_p) ((_p + CltCh.pCmd - CltCh.dData)$^udint^ <> sbCallInit.pCltMeth$udint)
+FUNCTION STR GLOBAL IsClientConnected
+VAR_INPUT
+	input : ^void;	// pointer to the channels data element
+END_VAR
+VAR_OUTPUT
+	output : DINT;		// 0/1 .. connected
+END_VAR
+
+//    output := __IsCliCon(input);
+
+    output      := 0;
+    input$udint := (input+CltCh.pCmd - CltCh.dData)$udint;
+    input$udint := input$^udint^;
+    if(input <> sbCallInit.pCltMeth) then 
+      output := 1;
+    end_if;
+    
+END_FUNCTION    
+#else
+FUNCTION GLOBAL IsClientConnected
+VAR_INPUT
+	EBX			: ^void;	// pointer to the channels data element
+END_VAR
+VAR_OUTPUT
+	ECX			: DINT;		// 0/1 .. connected
+END_VAR
+
+
+//			ADD.EBX   	CltCh.pCmd-CltCh.dData
+//			CMP.EBX   	(EBX-CltCh.pCmd)
+      L.EBX     (EBX + CltCh.pCmd-CltCh.dData)
+      CMP.EBX   sbCallInit.pCltMeth
+
+			JE		  	NOT_CONNECTED
+
+			L.ECX		1
+			JMP			CHECKED
+
+NOT_CONNECTED
+			L.ECX		0
+CHECKED
+
+END_FUNCTION
+#endif
+
+VAR_PRIVATE
+  ldr_muxifc : ^LSL_MT_TYPE;
+  ldr_muxhdl0 : ^void;
+  ldr_muxhdl1 : ^void;
+END_VAR
+
+FUNCTION STR GLOBAL __cdecl MuxSectionCreate
+  VAR_INPUT
+    label : ^char;
+  END_VAR
+  VAR_OUTPUT
+    retcode : ^void;
+  END_VAR
+
+  retcode := NIL;
+  if(ldr_muxifc <> NIL) then
+    retcode := ldr_muxifc^.MT_CreateSemaphore$P_MT_CreateSemaphore(MTSEMATYPE_MUTEX, 1, 0, label);
+  end_if;
+  
+END_FUNCTION
+
+FUNCTION STR GLOBAL __cdecl MuxSectionStart
+  VAR_INPUT
+    muxhdl : ^void;
+  END_VAR
+
+  if(muxhdl <> NIL) then
+    ldr_muxifc^.MT_Wait$P_MT_Wait(muxhdl);
+  end_if;
+  
+END_FUNCTION
+
+FUNCTION STR GLOBAL __cdecl MuxSectionStop
+  VAR_INPUT
+    muxhdl : ^void;
+  END_VAR
+
+  if(muxhdl <> NIL) then
+    ldr_muxifc^.MT_Signal$P_MT_Signal(muxhdl);
+  end_if;
+  
+END_FUNCTION
+
+FUNCTION STR GLOBAL CriticalLoaderSectionInit
+
+  ldr_muxifc := NIL;
+  ldr_muxhdl0 := NIL;
+  ldr_muxhdl1 := NIL;
+  OS_CILGet("LSL_MULTITASK", #ldr_muxifc$void);
+  if(ldr_muxifc <> NIL) then
+    ldr_muxhdl0 := MuxSectionCreate("__0LdrLockMux");
+    ldr_muxhdl1 := MuxSectionCreate("__1LdrLockMux");
+  end_if;
+  
+END_FUNCTION
+
+FUNCTION STR GLOBAL __cdecl CriticalLoaderSectionStart
+
+  MuxSectionStart(ldr_muxhdl0);
+  
+END_FUNCTION
+
+FUNCTION STR GLOBAL __cdecl CriticalLoaderSectionStop
+
+  MuxSectionStop(ldr_muxhdl0);
+  
+END_FUNCTION
+
+
+#ifdef _LSL_USECLISTI
+FUNCTION AWL GLOBAL Lock_Off
+VAR_INPUT
+	CpuFlgs			: DINT;
+END_VAR
+
+			L.CX		CpuFlgs+0
+			PSH			CX
+			POPF
+
+END_FUNCTION //GLOBAL Methods::Lock_off
+
+FUNCTION AWL GLOBAL Lock_On
+VAR_OUTPUT
+	CpuFlgs		: DINT;
+END_VAR
+
+			CLR			ECX
+			PSHF
+			POP			CX
+			CLI
+			S.ECX		CpuFlgs
+
+END_FUNCTION //GLOBAL Methods::Lock_On
+#else
+#pragma warning (disable : 73)
+FUNCTION STR GLOBAL Lock_Off
+VAR_INPUT
+	CpuFlgs			: DINT;
+END_VAR
+
+  MuxSectionStop(ldr_muxhdl1);
+  
+END_FUNCTION
+
+FUNCTION STR GLOBAL Lock_On
+VAR_OUTPUT
+	CpuFlgs		: DINT;
+END_VAR
+
+  CpuFlgs := 0;
+  MuxSectionStart(ldr_muxhdl1);
+  
+END_FUNCTION
+#pragma warning (default : 73)
+#endif
+

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HWClassInfo>
+  <HWDevice ModuleID="1026" SubModuleID="0x0" ModType="M_SDIAS" Desc="SDIAS Analog In Module; 8x Analog In (0-20mA or 4-20mA)" OrderNr="20-009-084">
+    <Types>
+      <Device Name="AI084" ClassName="AI084" DisplayGroup="Analog" Default="true" PowerLoss="2500">
+        <Power Voltage="5000" Supply="0" Drain="55"/>
+        <Power Voltage="24000" Supply="0" Drain="35"/>
+      </Device>
+    </Types>
+    <VisualData>
+      <VisualView TypeId="0" Size="10,120">
+        <VisualModule ImgPath=".\S-Dias\S-DIAS Grundmodul.xaml" Position="0,0" Width="12.5" Height="101.8">
+          <!-- Texte -->
+          <VisualTexts>
+            <VisualText Text="AI 084" FontFamily="ARIAL" Italic="true" FontSize="12" ClrForeground="4294967295" FontWeight="1" LineHeight="10" Width="7.94" Height="5.82" Left="4.76" Top="10.05" />
+            <VisualText Text="S" FontFamily="ARIAL" ClrForeground="4294967295" Width="1.59" Height="2.65" Left="0.26" Top="9" />
+            <VisualText Text="U" FontFamily="ARIAL" ClrForeground="4294967295" Width="1.59" Height="2.65" Left="0.26" Top="11.64" />
+            <VisualText Text="X1" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="15.61" />
+            <VisualText Text="1+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.81" Left="0.26" Top="17.99" />
+            <VisualText Text="1-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="21.17" />
+            <VisualText Text="2+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="24.34" />
+            <VisualText Text="2-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="27.52" />
+            <VisualText Text="X2" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="30.96" />
+            <VisualText Text="3+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="33.34" />
+            <VisualText Text="3-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="36.51" />
+            <VisualText Text="4+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="39.69" />
+            <VisualText Text="4-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="42.86" />
+            <VisualText Text="X3" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="46.3" />
+            <VisualText Text="5+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="48.68" />
+            <VisualText Text="5-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="51.86" />
+            <VisualText Text="6+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="55.03" />
+            <VisualText Text="6-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="58.21" />
+            <VisualText Text="X4" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="61.65" />
+            <VisualText Text="7+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="64.03" />
+            <VisualText Text="7-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="67.2" />
+            <VisualText Text="8+" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="70.38" />
+            <VisualText Text="8-" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="73.55" />
+          </VisualTexts>
+          <!-- Leds -->
+          <VisualLeds>
+            <VisualLed Description="Module state" ImgPath=".\S-Dias\S-DIAS Led.xaml" ClrForeground="1342242560" Width="1.32" Height="1.32" Left="2.12" Top="10.32">
+              <Behaviour ClrForeground="4278255360">
+                <Activator TypeId="4">
+                  <Activator TypeId="1" Value="1" />
+                  <Activator TypeId="3" DataString="AI084.ClassState" Value="0" />
+                </Activator>
+              </Behaviour>
+              <Behaviour ClrForeground="4278255360" Interval="200">
+                <Activator TypeId="4">
+                  <Activator TypeId="1" Value="1" />
+                  <Activator TypeId="3" Negate="true" DataString="AI084.ClassState" Value="0" />
+                </Activator>
+              </Behaviour>
+            </VisualLed>
+            <VisualLed DataString="AI084.LedControl" Description="User" ImgPath=".\S-Dias\S-DIAS Led.xaml" ClrForeground="1342216703" Width="1.32" Height="1.32" Left="2.12" Top="12.96">
+              <Behaviour ClrForeground="4278229503">
+                <Activator TypeId="3" DataString="AI084.LedControl" Value="1" />
+              </Behaviour>
+              <Behaviour ClrForeground="4278229503" Interval="500">
+                <Activator TypeId="3" DataString="AI084.LedControl" Value="2" />
+              </Behaviour>
+              <Behaviour ClrForeground="4278229503" Interval="250">
+                <Activator TypeId="3" DataString="AI084.LedControl" Value="3" />
+              </Behaviour>
+            </VisualLed>
+            <!-- X1-->
+            <!-- X2-->
+            <!-- X3-->
+            <!-- X4-->
+            <!-- X5-->
+          </VisualLeds>
+          <!-- Stecker -->
+          <VisualConnectors>
+            <VisualConnector Description="X1" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="16.93">
+              <ConnectorPin DataString="AI084.AI1" Description="Analog Input 1+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI1" Description="Analog Input 1-" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI2" Description="Analog Input 2+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI2" Description="Analog Input 2-" TypeId="1" />
+            </VisualConnector>
+            <VisualConnector Description="X2" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="32.28">
+              <ConnectorPin DataString="AI084.AI3" Description="Analog Input 3+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI3" Description="Analog Input 3-" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI4" Description="Analog Input 4+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI4" Description="Analog Input 4-" TypeId="1" />
+            </VisualConnector>
+            <VisualConnector Description="X3" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="47.62">
+              <ConnectorPin DataString="AI084.AI5" Description="Analog Input 5+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI5" Description="Analog Input 5-" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI6" Description="Analog Input 6+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI6" Description="Analog Input 6-" TypeId="1" />
+            </VisualConnector>
+            <VisualConnector Description="X4" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="62.97">
+              <ConnectorPin DataString="AI084.AI7" Description="Analog Input 7+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI7" Description="Analog Input 7-" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI8" Description="Analog Input 8+" TypeId="1" />
+              <ConnectorPin DataString="AI084.AI8" Description="Analog Input 8-" TypeId="1" />
+            </VisualConnector>
+          </VisualConnectors>
+        </VisualModule>
+      </VisualView>
+    </VisualData>
+  </HWDevice>
+  <Class Name="AI084">
+    <Uplink Name="SdiasIn" BusType="SDIAS" PlaceName="Place" />
+	<Downlink Name="ClassState" Port="0" BusType="Hardwarealarme" Desc="Hardwarealarme" />
+    <!-- General -->
+    <Property Name="Required" Channel="Required" Editor="Combo:1=Module is required;0=Module is not required" Desc="0=module is not required 1=module is required (CPU will crash if module is missing)" />
+    <IOState Name="Class State" Channel="ClassState" Desc="This server shows the status of the hardware class. If the state is not equal than _ClassOK, an error has occurred " Type="" />
+    <IOState Name="Device ID" Channel="DeviceID" IsInfo="true" Type="" Desc="This server shows the device ID  of the hardware module" />
+    <IOState Name="FPGA Version" Channel="FPGAVersion" Format="V{5-8}.{1-4}" IsInfo="true" Desc="Shows the actual FPGA version of the module in the format x.y (e.g. 16#10 means v1.0)" />
+    <IOState Name="Hardware Version" Channel="HwVersion" IsInfo="true" Format="V{9-16}.{5-8}{1-4}" Type="" Desc="Shows the hardware version of the module" /> 
+    <IOState Name="Serial Number" Channel="SerialNo" IsInfo="true" Type="" Desc="Shows the Serial Number of the hardware module" />
+    <IOState Name="Retry Counter" Channel="RetryCounter" Desc="Is incremented in case of incorrect data transfer." />
+    <Output Name="LED Control" Channel="LEDControl" Type="Digital" Desc="Sets a LED on hardware, to detect module. (0=LED off; 1=LED on; 2=blinking slowly; 3=blinking fast)" />
+    <IOState Name="Firmware Version" Channel="FirmwareVersion" Format="V{13-16}{9-12}.{5-8}{1-4}" IsInfo="true" Type="" Desc="This server shows the firmware version of the hardware module" />
+    <IOState Name="Firmware Status" Channel="FWErrorBits" Type="" Desc="Firmware Status:Bit0..DC not Ok; Bit1..No Sync; Bit2..Flash data CRC error; Bit3..RAM data CRC error; Bit4..No valid EEPROM Version" />
+    <IOComment Name="---------------------- Analog Inputs -----------------------" IsInfo="true" Desc=""/>
+    <!-- Analog Input 1 -->
+    <Input Name="Analog Input 1" Channel="AI1" IsConfig="true" Desc="Analog Input 1. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI1 Config" Channel="AI1Config" Desc="Analog Input 1" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI1 minimal value" Channel="AI1_Min" Desc="The lowest analog input value can be selected by this client (corresponds to 0mA)" Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI1 maximal value" Channel="AI1_Max" Desc="The maximal value of the analog input can be selected by this client (corresponds to +20mA)" Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI1 cut off frequency" Channel="AI1_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <!-- Analog Input 2 -->
+    <Input Name="Analog Input 2" Channel="AI2" IsConfig="true" Desc="Analog Input 2. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI2 Config" Channel="AI2Config" Desc="Analog Input 2" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI2 minimal value" Channel="AI2_Min" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI2 maximal value" Channel="AI2_Max" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI2 cut off frequency" Channel="AI2_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <!-- Analog Input 3 -->
+    <Input Name="Analog Input 3" Channel="AI3" IsConfig="true" Desc="Analog Input 3. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI3 Config" Channel="AI3Config" Desc="Analog Input 3" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI3 minimal value" Channel="AI3_Min" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI3 maximal value" Channel="AI3_Max" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI3 cut off frequency" Channel="AI3_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <!-- Analog Input 4 -->
+    <Input Name="Analog Input 4" Channel="AI4" IsConfig="true" Desc="Analog Input 4. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI4 Config" Channel="AI4Config" Desc="Analog Input 4" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI4 minimal value" Channel="AI4_Min" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI4 maximal value" Channel="AI4_Max" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI4 cut off frequency" Channel="AI4_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <!-- Analog Input 5 -->
+    <Input Name="Analog Input 5" Channel="AI5" IsConfig="true" Desc="Analog Input 5. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI5 Config" Channel="AI5Config" Desc="Analog Input 5" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI5 minimal value" Channel="AI5_Min" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI5 maximal value" Channel="AI5_Max" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI5 cut off frequency" Channel="AI5_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <!-- Analog Input 6 -->
+    <Input Name="Analog Input 6" Channel="AI6" IsConfig="true" Desc="Analog Input 6. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI6 Config" Channel="AI6Config" Desc="Analog Input 6" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI6 minimal value" Channel="AI6_Min" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI6 maximal value" Channel="AI6_Max" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI6 cut off frequency" Channel="AI6_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <!-- Analog Input 7 -->
+    <Input Name="Analog Input 7" Channel="AI7" IsConfig="true" Desc="Analog Input 7. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI7 Config" Channel="AI7Config" Desc="Analog Input 7" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI7 minimal value" Channel="AI7_Min" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI7 maximal value" Channel="AI7_Max" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI7 cut off frequency" Channel="AI7_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <!-- Analog Input 8 -->
+    <Input Name="Analog Input 8" Channel="AI8" IsConfig="true" Desc="Analog Input 8. Invalid value is 16#80000010." Type="Analog" Editor="EditNumber:Signed;Dec">
+      <Property Name="AI8 Config" Channel="AI8Config" Desc="Analog Input 8" Editor="Combo:0=analog in (Range: 0mA...20mA);1=analog in (Range: 4mA...20mA)" />
+      <Property Name="AI8 minimal value" Channel="AI8_Min" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI8 maximal value" Channel="AI8_Max" Desc="The scale of analog input can be selected by this client (corresponds 0 to 20 mA if Config = 0, 4 to 20mA if Config = 1) as initvalue." Editor="EditNumber:Signed;Dec" />
+      <Property Name="AI8 cut off frequency" Channel="AI8_Freq" Editor="Combo:0=1000 Hz; 1=500 Hz; 2=250 Hz; 3=100 Hz; 4=50 Hz; 5=25 Hz; 6=10 Hz" Desc="Cut off frequency for analog in low pass filter" />
+    </Input>
+    <IOState Name="Range detection" Channel="CableBreak" IsConfig="true" Type="Analog" Desc="low range detection (cablebreak):&#13;&#10;Bit0...low range on AI1&#13;&#10;Bit1...low range on AI2&#13;&#10;Bit2...low range on AI3&#13;&#10;Bit3...low range on AI4&#13;&#10;Bit4...low range on AI5&#13;&#10;Bit5...low range on AI6&#13;&#10;Bit6...low range on AI7&#13;&#10;Bit7...low range on AI8&#13;&#10;&#13;&#10;0 - 20mA Mode:&#13;&#10;cable break is detected if value &#60; -0,25mA.&#13;&#10;&#13;&#10;4 - 20mA Mode:&#13;&#10;Firmware &#62;= 1.10:&#13;&#10;The client LowRangeLimit is used as limit. &#13;&#10;Firmware &#60; 1.10:&#13;&#10;The value 4mA is used as limit.&#13;&#10;&#13;&#10;High range detection:&#13;&#10;Bit8...high range on AI1&#13;&#10;Bit9...high range on AI2&#13;&#10;Bit10...high range on AI3&#13;&#10;Bit11...high range on AI4&#13;&#10;Bit12...high range on AI5&#13;&#10;Bit13...high range on AI6&#13;&#10;Bit14...high range on AI7&#13;&#10;Bit15...high range on AI8&#13;&#10;&#13;&#10;Firmware &#62;= 1.10:&#13;&#10;The high range is detected if the value &#62; 20,25mA. &#13;&#10;Firmware &#60; 1.10:&#13;&#10;No high range detection.">
+      <Property Name="Limit for low range detection (cablebreak)" Channel="LowRangeLimit" Type="Analog" Editor="Range:0..4000" DefValue="3000" Desc="Limit for low range detection (cablebreak) [µA] if configuration for 4mA..20mA is used.&#13;&#10;(range: 0 - 4 mA = 0 - 4000)&#13;&#10;Firmware version &#62;= 1.10 is needed.&#13;&#10;&#13;&#10;For firmware versions &#60; 1.10 a fixed value of 4mA is used." />
+    </IOState>
+
+    <Script Name="AI084">
+<Code>
+def compPost_AI084(element, parameters):
+  
+  if parameters['varanBridge']:
+    parameters['AddToSDiasTime'] = True
+    element['result']['optional'] =  {'PDO': {'Wr':[], 'Rd':[], 'WrDyn':[], 'RdDyn':[]}}    
+    SDIASPDORdAdd(0x14,element)
+
+</Code>
+    </Script>      
+  </Class>
+</HWClassInfo>

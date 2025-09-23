@@ -1,0 +1,309 @@
+
+//    Method
+//    
+//    This method is the default method for all sever channels.
+//    If no other method is sepcified in the class constructor
+//    for this server channel, the data will only be read
+//    without any additional operations.
+//    
+//    -> ESI : pointer to the channel
+//    <- EAX : data
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION AWL GLOBAL      M_RD_DIRECT
+VAR_OUTPUT
+  retcode : DINT;
+END_VAR
+
+         LDR       retcode, [r9, #SvrCh.dData]
+
+END_FUNCTION
+#else
+FUNCTION AWL GLOBAL      M_RD_DIRECT
+VAR_OUTPUT
+	EAX		: DINT;
+END_VAR
+
+         L.EAX     (ESI+SvrCh.dData)
+
+END_FUNCTION
+#endif
+
+//    Method
+//    
+//    This method just stores data to the specified server
+//    channel.
+//    
+//    -> ESI : pointer to server channel
+//    -> EAX : data
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION AWL GLOBAL      M_WR_DIRECT
+VAR_INPUT
+	in0 : DINT;
+END_VAR
+VAR_OUTPUT
+  retcode : DINT;
+END_VAR
+
+         STR       in0, [r9, #SvrCh.dData]
+         MOV       retcode, in0
+
+END_FUNCTION
+#else 
+FUNCTION AWL GLOBAL      M_WR_DIRECT
+VAR_INPUT
+	EAX		: DINT;
+END_VAR
+VAR_OUTPUT
+	EAX		: DINT;
+END_VAR
+
+         S.EAX     (ESI+SvrCh.dData)
+
+END_FUNCTION
+#endif
+
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION AWL GLOBAL M_WR_BDINT
+VAR_INPUT
+	in0 : DINT;
+END_VAR
+VAR_OUTPUT
+	retcode : DINT;
+END_VAR
+
+    STMDB   sp!, {r7, r8}
+    MVN     r7, #16#80000000
+    ANDS    r8, in0, r7
+    MOVEQ   r8, #16#80000000    // r8 beinhaltet bitmaske
+    
+    ANDS    r7, in0, #16#80000000
+    BEQ     SetBitToZero
+
+    LDR     r7, [r9, #SvrCh.dData]
+    ORR     r7, r7, r8    
+    STR     r7, [r9, #SvrCh.dData]
+    B       SetBitEnd
+
+SetBitToZero
+    LDR     r7, [r9, #SvrCh.dData]
+    BIC     r7, r7, r8
+    STR     r7, [r9, #SvrCh.dData]
+SetBitEnd
+    MOV     retcode, r7
+    LDMIA   sp!, {r7, r8}
+
+END_FUNCTION
+#else 
+FUNCTION AWL GLOBAL M_WR_BDINT
+VAR_INPUT
+	EAX		: DINT;
+END_VAR
+VAR_OUTPUT
+	EAX		: DINT;
+END_VAR
+
+		TST.EAX		16#80000000
+		JZ			SET_0
+	
+		AND.EAX		16#7FFFFFFF
+		JNZ			BIT_1_OK
+		OR.EAX		16#80000000
+BIT_1_OK
+		OR.D		(ESI+SvrCh.dData), EAX
+		JMP			SET_R
+
+SET_0	
+		OR.EAX		EAX
+		JNZ			BIT_0_OK
+		OR.EAX		16#80000000
+BIT_0_OK
+		NOT			EAX
+		AND.D		(ESI+SvrCh.dData), EAX
+SET_R
+END_FUNCTION
+#endif
+
+//    Method
+//    
+//    Method to read a not connected client channel
+//    
+//    We do a little trik:
+//    
+//    structure of clntch is:
+//       pSvrSvrCh       : ^_SVRCH; -+
+//       Data            : DINT;     !
+//       pSvrThis        : ^_CMDCH;<-+
+//                          !
+//                          !
+//               Methptrs   !-> m_rd_cnst
+//                              m_wr_cnst
+//    
+//    
+//              m_rd_cnst:  data:= pSvrThis^offset - 4
+
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION AWL GLOBAL      M_RD_CONST
+VAR_OUTPUT
+	retcode : DINT;
+END_VAR
+
+         LDR       retcode, [r9, #-4]
+
+END_FUNCTION
+#else
+FUNCTION AWL GLOBAL      M_RD_CONST
+VAR_OUTPUT
+	EAX		: DINT;
+END_VAR
+
+         L.EAX     (ESI-004)
+
+END_FUNCTION
+#endif
+
+//    Method
+//    
+//    Method to write to a not connected client channel. This
+//    method is used for all dummy servers that are connected
+//    to "not connected" client channels as a default method.
+//    
+//    We do a little trick:
+//    
+//    structure of clntch is:
+//       pSvrSvrCh       : ^_SVRCH; -+
+//       Data            : DINT;     !
+//       pSvrThis        : ^_CMDCH;<-+
+//                          !
+//                          !
+//               Methptrs   !-> m_rd_cnst
+//                              m_wr_cnst
+//    
+//    
+//              m_wr_cnst:  pSvrThis^offset - 4 :=data
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION AWL GLOBAL      M_WR_CONST
+VAR_INPUT
+	in0 : DINT;
+END_VAR
+VAR_OUTPUT
+	retcode : DINT;
+END_VAR
+
+         STR       in0, [r9, #-4]
+         MOV       retcode, in0
+
+END_FUNCTION
+#else
+FUNCTION AWL GLOBAL      M_WR_CONST
+VAR_INPUT
+	EAX		: DINT;
+END_VAR
+VAR_OUTPUT
+	EAX		: DINT;
+END_VAR
+
+         S.EAX     (ESI-004)
+
+END_FUNCTION
+#endif
+
+//    Method
+//    
+//    This method is used as the default write method for all  
+//    server channels. The sever is therefor write protected if
+//    no other write method is specified in the constructor of 
+//    the class for this server channel.
+
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION STR GLOBAL M_NO_FUNCT
+VAR_INPUT
+#pragma warning(disable:73)
+	in0 (EAX) : UDINT;
+#pragma warning(default:73)
+END_VAR
+VAR_OUTPUT
+	retcode (EAX) : UDINT;
+END_VAR
+
+  retcode := ACCESS_DENIED;			// is constant invalid (for LSE to see write protection) 
+
+END_FUNCTION
+#else
+FUNCTION AWL GLOBAL M_NO_FUNCT
+VAR_INPUT
+	in0 (EAX)		: UDINT;
+END_VAR
+VAR_OUTPUT
+	retcode (EAX)		:UDINT;
+END_VAR
+
+	L.EAX  		ACCESS_DENIED			// is constant invalid (for LSE to see write protection) 
+	
+END_FUNCTION
+#endif
+
+//    
+//    ----------------------------------------------------------
+//    Write To Instr Chnl
+//    ----------------------------------------------------------
+
+FUNCTION STR GLOBAL M_NO_CMD
+VAR_INPUT
+#pragma warning(disable:73)
+	pPara			: ^VOID;
+	pResu			: ^RESULTS;
+#pragma warning(default:73)
+END_VAR
+VAR_OUTPUT
+	result			: IPRSTATES;
+END_VAR
+  
+  M_NO_FUNCT(3);
+  
+	result := ERROR;
+
+END_FUNCTION
+
+
+
+//    
+//    ----------------------------------------------------------
+//    get state
+//    ----------------------------------------------------------
+//    pPara points to :<this> <INSTR><... paras>
+
+FUNCTION STR GLOBAL M_NO_GETSTAT
+VAR_INPUT
+#pragma warning(disable:73)
+	pPara			: ^VOID;
+	pResu			: ^RESULTS;
+#pragma warning(default:73)
+END_VAR
+VAR_OUTPUT
+	result			: IPRSTATES;
+END_VAR
+
+	result := READY;
+
+END_FUNCTION
+
+
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION STR  GLOBAL M_NO_F
+VAR_OUTPUT
+	retcode : UDINT;
+END_VAR
+
+  retcode := READY;
+
+END_FUNCTION
+#else
+FUNCTION AWL  GLOBAL M_NO_F
+VAR_OUTPUT
+	EAX		: UDINT;
+END_VAR
+
+	L.EAX 	READY
+
+END_FUNCTION
+#endif

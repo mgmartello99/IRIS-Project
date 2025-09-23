@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<OpenViews>
+	<View Key="IRIS_MANAGER" Type="0"/>
+	<View Key="Motore_M4" Type="2" LineNr="116"/>
+	<View Key="Motore_M2" Type="2" LineNr="437"/>
+	<View Key="ManagerMotori" Type="2" LineNr="17"/>
+	<View Key="Motore_M5" Type="2" LineNr="701"/>
+	<View Key="Timer" Type="0"/>
+	<View Key="HoldingRegister_3" Type="2" LineNr="137"/>
+	<View Key="HoldingRegister_3" Type="2" LineNr="137"/>
+	<Setting Variable="OutputDebugger" Value="4"/>
+</OpenViews>
