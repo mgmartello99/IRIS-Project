@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2025-07-29 14:34:16 by spes-->
+<display version="2.0.0">
+  <name>Display</name>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <widget type="navtabs" version="2.0.0">
+    <name>Navigation Tabs</name>
+    <tabs>
+      <tab>
+        <name>M1</name>
+        <file>MotorSetup.bob</file>
+        <macros>
+          <mot>1</mot>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>M2</name>
+        <file>MotorSetup.bob</file>
+        <macros>
+          <mot>2</mot>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>M3</name>
+        <file>MotorSetup.bob</file>
+        <macros>
+          <mot>3</mot>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>M4</name>
+        <file>MotorSetup.bob</file>
+        <macros>
+          <mot>4</mot>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>M5</name>
+        <file>MotorSetup.bob</file>
+        <macros>
+          <mot>5</mot>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>M6</name>
+        <file>MotorSetup.bob</file>
+        <macros>
+          <mot>6</mot>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>M7</name>
+        <file>MotorSetup.bob</file>
+        <macros>
+          <mot>7</mot>
+        </macros>
+        <group_name></group_name>
+      </tab>
+    </tabs>
+    <width>669</width>
+    <height>810</height>
+    <direction>0</direction>
+    <tab_width>70</tab_width>
+    <tab_height>50</tab_height>
+    <selected_color>
+      <color name="OK" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Lock movement</name>
+    <x>669</x>
+    <y>56</y>
+    <width>210</width>
+    <height>284</height>
+    <foreground_color>
+      <color name="OK" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <line_color>
+      <color name="OK" red="0" green="255" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </background_color>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_10</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Extract 1</description>
+        </action>
+      </actions>
+      <pv_name>mc:m:solenoid:lock:1:extract_W</pv_name>
+      <x>15</x>
+      <y>96</y>
+      <width>70</width>
+      <height>45</height>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pv0=1">
+            <value>true</value>
+          </exp>
+          <pv_name>mc:a:maincontrol:AutoManSelector_W</pv_name>
+        </rule>
+      </rules>
+      <enabled>false</enabled>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_11</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>2</value>
+          <description>Insert 1</description>
+        </action>
+      </actions>
+      <pv_name>mc:m:solenoid:lock:1:extract_W</pv_name>
+      <x>15</x>
+      <y>176</y>
+      <width>70</width>
+      <height>45</height>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pv0=1">
+            <value>true</value>
+          </exp>
+          <pv_name>mc:a:maincontrol:AutoManSelector_W</pv_name>
+        </rule>
+      </rules>
+      <enabled>false</enabled>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_12</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <description>Extract 2</description>
+        </action>
+      </actions>
+      <pv_name>mc:m:solenoid:lock:2:extract_W</pv_name>
+      <x>97</x>
+      <y>96</y>
+      <width>70</width>
+      <height>45</height>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pv0=1">
+            <value>true</value>
+          </exp>
+          <pv_name>mc:a:maincontrol:AutoManSelector_W</pv_name>
+        </rule>
+      </rules>
+      <enabled>false</enabled>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_13</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(pv_name)</pv_name>
+          <value>2</value>
+          <description>Insert 2</description>
+        </action>
+      </actions>
+      <pv_name>mc:m:solenoid:lock:2:extract_W</pv_name>
+      <x>97</x>
+      <y>176</y>
+      <width>70</width>
+      <height>45</height>
+      <rules>
+        <rule name="Enable" prop_id="enabled" out_exp="false">
+          <exp bool_exp="pv0=1">
+            <value>true</value>
+          </exp>
+          <pv_name>mc:a:maincontrol:AutoManSelector_W</pv_name>
+        </rule>
+      </rules>
+      <enabled>false</enabled>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_1</name>
+      <pv_name>mc:m:solenoid:lock:1:extracted_R</pv_name>
+      <x>32</x>
+      <y>36</y>
+      <width>36</width>
+      <height>36</height>
+      <off_color>
+        <color red="0" green="100" blue="0">
+        </color>
+      </off_color>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="255" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <actions>
+      </actions>
+    </widget>
+    <widget type="led" version="2.0.0">
+      <name>LED_2</name>
+      <pv_name>mc:m:solenoid:lock:2:extracted_R</pv_name>
+      <x>112</x>
+      <y>36</y>
+      <width>36</width>
+      <height>36</height>
+      <off_color>
+        <color red="0" green="100" blue="0">
+        </color>
+      </off_color>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="255" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <actions>
+      </actions>
+    </widget>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Motor box monitoring</name>
+    <x>671</x>
+    <y>366</y>
+    <width>207</width>
+    <height>116</height>
+    <foreground_color>
+      <color red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <line_color>
+      <color red="0" green="255" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="80" green="80" blue="80">
+      </color>
+    </background_color>
+    <actions>
+    </actions>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_14</name>
+      <x>15</x>
+      <y>45</y>
+      <width>54</width>
+      <height>24</height>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <actions>
+      </actions>
+      <border_width>1</border_width>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_35</name>
+      <text>Motors box Temp.</text>
+      <x>25</x>
+      <y>12</y>
+      <width>126</width>
+      <height>19</height>
+      <foreground_color>
+        <color red="255" green="255" blue="255">
+        </color>
+      </foreground_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_37</name>
+      <text>degree celsius</text>
+      <x>73</x>
+      <y>46</y>
+      <width>101</width>
+      <height>19</height>
+      <foreground_color>
+        <color red="255" green="255" blue="255">
+        </color>
+      </foreground_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <wrap_words>false</wrap_words>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions execute_as_one="true">
+      <action type="write_pv">
+        <pv_name>$(pv_name)</pv_name>
+        <value>1</value>
+        <description>Write PV</description>
+      </action>
+      <action type="write_pv">
+        <pv_name>mc:a:maincontrol:EnEasyGUI_W</pv_name>
+        <value>0</value>
+        <description>Write PV</description>
+      </action>
+    </actions>
+    <pv_name>mc:a:maincontrol:AutoManSelector_W</pv_name>
+    <text>ENABLE</text>
+    <x>671</x>
+    <y>508</y>
+    <width>207</width>
+    <height>80</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="140" blue="0">
+      </color>
+    </background_color>
+    <show_confirm_dialog>true</show_confirm_dialog>
+    <password>isolpharmiris</password>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action_home_4</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pv_name)</pv_name>
+        <value>1</value>
+        <description>Write PV</description>
+      </action>
+    </actions>
+    <pv_name>mc:m:motor:All:EmergencyStopManManager_W</pv_name>
+    <text>EMERGENCY STOP!!!</text>
+    <x>671</x>
+    <y>610</y>
+    <width>207</width>
+    <height>80</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="STOP" red="255" green="0" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action_home_5</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pv_name)</pv_name>
+        <value>3</value>
+        <description>Write PV</description>
+      </action>
+    </actions>
+    <pv_name>mc:m:motor:All:EmergencyStopManManager_W</pv_name>
+    <text>RESET</text>
+    <x>671</x>
+    <y>720</y>
+    <width>207</width>
+    <height>80</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="MINOR" red="255" green="128" blue="0">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+</display>

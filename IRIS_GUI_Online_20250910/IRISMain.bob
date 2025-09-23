@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Display</name>
+  <widget type="navtabs" version="2.0.0">
+    <name>Navigation Tabs</name>
+    <tabs>
+      <tab>
+        <name>Motion control 
+ - Automatic</name>
+        <file>AutomaticMovementMain.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Motion control 
+ - Manual</name>
+        <file>ManualMovement.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>CCTV Camera</name>
+        <file>CCTVCamera.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+    </tabs>
+    <width>2590</width>
+    <height>1180</height>
+    <tab_width>200</tab_width>
+    <tab_height>60</tab_height>
+    <selected_color>
+      <color name="OK" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="picture" version="2.0.0">
+    <name>Picture</name>
+    <file>cropped-cropped-isolpharm-vecchio.png</file>
+    <x>10</x>
+    <y>796</y>
+    <width>75</width>
+    <height>300</height>
+    <rotation>-90.0</rotation>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <text>IRIS Control</text>
+    <x>100</x>
+    <y>656</y>
+    <height>450</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD_ITALIC" size="72.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="35" green="98" blue="143">
+      </color>
+    </foreground_color>
+    <rotation_step>1</rotation_step>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_10</name>
+    <pv_name>sys://time</pv_name>
+    <x>10</x>
+    <y>1116</y>
+    <width>170</width>
+    <height>50</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+    <background_color>
+      <color name="Background" red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button</name>
+    <pv_name>mc:a:maincontrol:CommandRack12V_W</pv_name>
+    <y>251</y>
+    <width>198</width>
+    <height>60</height>
+    <off_label>INBOX LED Off</off_label>
+    <on_label>INBOX LED On</on_label>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <labels_from_pv>true</labels_from_pv>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_5</name>
+    <actions>
+      <action type="command">
+        <description>Execute Command</description>
+        <command>executable/Compass.sh</command>
+      </action>
+    </actions>
+    <text>Detector DAQ</text>
+    <y>187</y>
+    <width>198</width>
+    <height>60</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="open_file">
+        <description>Open File</description>
+        <file>/home/isolpharm/CSS/IRIS_GUI_latest/HELP.odt</file>
+      </action>
+    </actions>
+    <text>HELP</text>
+    <y>315</y>
+    <width>198</width>
+    <height>60</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+</display>

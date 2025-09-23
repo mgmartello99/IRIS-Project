@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Display</name>
+  <width>1000</width>
+  <height>800</height>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <grid_color>
+    <color name="MINOR" red="255" green="128" blue="0">
+    </color>
+  </grid_color>
+  <widget type="picture" version="2.0.0">
+    <name>Picture</name>
+    <file>CCTV1-4.png</file>
+    <x>50</x>
+    <y>230</y>
+    <width>350</width>
+    <height>370</height>
+  </widget>
+  <widget type="picture" version="2.0.0">
+    <name>Picture_1</name>
+    <file>CCTV5.png</file>
+    <x>530</x>
+    <y>230</y>
+    <width>300</width>
+    <height>370</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_5</name>
+    <actions>
+      <action type="command">
+        <description>Execute Command</description>
+        <command>executable/cameraPos.sh</command>
+      </action>
+    </actions>
+    <text>2. IP CAMERA MONITORING - AUTO LAYOUT</text>
+    <x>500</x>
+    <y>100</y>
+    <width>370</width>
+    <height>100</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="command">
+        <description>Execute Command</description>
+        <command>executable/cameraCon.sh</command>
+      </action>
+    </actions>
+    <text>1. IP address forwarding</text>
+    <x>100</x>
+    <y>100</y>
+    <width>250</width>
+    <height>100</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+</display>
