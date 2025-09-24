@@ -1,0 +1,6 @@
+epicsEnvSet("IOC","iociris")
+epicsEnvSet("TOP","/home/spes/EPICS/iris")
+epicsEnvSet("EPICS_BASE","/home/spes/EPICS/base-7.0.8.1")
+epicsEnvSet("ASYN","/home/spes/EPICS/base-7.0.8.1/support/asyn")
+epicsEnvSet("MODBUS","/home/spes/EPICS/base-7.0.8.1/support/modbus")
+epicsEnvSet("AUTOSAVE","/home/spes/EPICS/base-7.0.8.1/support/autosave")
