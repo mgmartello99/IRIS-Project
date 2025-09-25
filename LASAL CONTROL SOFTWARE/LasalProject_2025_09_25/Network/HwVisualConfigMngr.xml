@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<HwVisualConfigManager>
+	<HwVisualConfig Key="__HW_MAIN_PLC__" DeviceType="CP112" Top="20" Left="20"/>
+	<HwVisualConfig Key="AI0841" Top="128" Left="20"/>
+	<HwVisualConfig Key="CP112_IOs1" Top="128" Left="20"/>
+	<HwVisualConfig Key="DI1601" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1511" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1512" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1513" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1514" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1515" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1516" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1517" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1518" Top="128" Left="20"/>
+	<HwVisualConfig Key="ST1519" Top="128" Left="20"/>
+	<HwVisualConfig Key="TO1271" Top="128" Left="20"/>
+	<HwVisualConfig Key="VaranManager_11" Top="128" Left="20"/>
+</HwVisualConfigManager>

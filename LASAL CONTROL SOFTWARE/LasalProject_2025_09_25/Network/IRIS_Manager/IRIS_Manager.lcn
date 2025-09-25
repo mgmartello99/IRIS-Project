@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="IRIS_MANAGER" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "Attuatore1"
+			GUID       = "{B0D3DC25-92EC-4D4A-A5C7-2FCCF58A6FD6}"
+			Class      = "Attuatore"
+			Position   = "(600,2490)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="s_Solenoid_Command"/>
+				<Server Name="s_Solenoid_Status"/>
+				<Server Name="s_State"/>
+				<Client Name="R_aus_1" Value="0"/>
+				<Client Name="R_aus_2" Value="0"/>
+				<Client Name="R_p" Value="0"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Attuatore2"
+			GUID       = "{10D09D53-C982-4A73-9756-86E2AB93D9B3}"
+			Class      = "Attuatore"
+			Position   = "(600,2820)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="s_Solenoid_Command"/>
+				<Server Name="s_Solenoid_Status"/>
+				<Server Name="s_State"/>
+				<Client Name="R_aus_1" Value="0"/>
+				<Client Name="R_aus_2" Value="0"/>
+				<Client Name="R_p" Value="0"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "MainSequence1"
+			GUID       = "{264ADD17-2592-48EC-B38C-6B261CED75BD}"
+			Class      = "MainSequence"
+			Position   = "(4650,780)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="MainSequenceStep"/>
+				<Server Name="s_All_Motor_Homed"/>
+				<Server Name="s_All_Tablets_Charged"/>
+				<Server Name="s_EasyGUI"/>
+				<Client Name="Charge_complete"/>
+				<Client Name="Comando_manager_globale"/>
+				<Client Name="Comando_manager_motori"/>
+				<Client Name="Discharge_complete"/>
+				<Client Name="Irradiation_complete"/>
+				<Client Name="Motor_Homed"/>
+				<Client Name="Motor_Phased"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Manager_globale1"
+			GUID       = "{8313AE77-AC4B-4187-9C49-E9EED6091B31}"
+			Class      = "Manager_globale"
+			Position   = "(5940,780)"
+			Visualized = "false"
+			RealTime   = "100 ms"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ComandoGeneraleIRIS"/>
+				<Server Name="ComandoIrradiation"/>
+				<Server Name="ComandoMeasurement"/>
+				<Server Name="ComandoRecoupledM3"/>
+				<Server Name="Enable"/>
+				<Client Name="c_ResetTimer"/>
+				<Client Name="Comando_main_sequence"/>
+				<Client Name="Reset_IN"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "ManagerMotori1"
+			GUID       = "{DE9B09BA-1838-45AA-B1F3-898880E0E261}"
+			Class      = "ManagerMotori"
+			Position   = "(3390,780)"
+			Visualized = "true"
+			Remotely   = "true"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="All_motor_homed"/>
+				<Server Name="All_motor_phased"/>
+				<Server Name="ClassSvr"/>
+				<Server Name="From_MPS"/>
+				<Server Name="M3_"/>
+				<Server Name="ManagerMotoriStep"/>
+				<Server Name="s_1_3_pelletMode"/>
+				<Server Name="Stop_Button"/>
+				<Client Name="c_1_3_pelletMode_M2"/>
+				<Client Name="c_1_3_pelletMode_M4"/>
+				<Client Name="c_1_3_pelletMode_M5"/>
+				<Client Name="c_1_3_pelletMode_TimerIrr"/>
+				<Client Name="c_1_3_pelletMode_TimerMov"/>
+				<Client Name="c_MPS_Req"/>
+				<Client Name="c_PelletAvailable"/>
+				<Client Name="Charge_complete"/>
+				<Client Name="Discharge_complete"/>
+				<Client Name="Homing_complete"/>
+				<Client Name="Irradiation_complete"/>
+				<Client Name="LED_Arancione"/>
+				<Client Name="LED_Rosso"/>
+				<Client Name="LED_Verde"/>
+				<Client Name="M1_command"/>
+				<Client Name="M1_status"/>
+				<Client Name="M2_command"/>
+				<Client Name="M2_status"/>
+				<Client Name="M2_targetAvaiable"/>
+				<Client Name="M3_command"/>
+				<Client Name="M3_status"/>
+				<Client Name="M4_command"/>
+				<Client Name="M4_status"/>
+				<Client Name="M5_command"/>
+				<Client Name="M5_InPos"/>
+				<Client Name="M5_status"/>
+				<Client Name="M6_command"/>
+				<Client Name="M6_status"/>
+				<Client Name="Phasing_complete"/>
+				<Client Name="Stop_client"/>
+				<Client Name="ToManagerGlobale"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Motore_M11"
+			GUID       = "{EE25CAB4-73E4-4C5B-A69F-F63C0CD93400}"
+			Class      = "Motore_M1"
+			Position   = "(1980,60)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ErrorState"/>
+				<Server Name="M1_Correction_Step"/>
+				<Server Name="MotoreM1Step"/>
+				<Server Name="s_M1_coupled"/>
+				<Server Name="s_M1_Homed"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_M1" Value="PASSIVE_LMCAXIS"/>
+				<Client Name="M1_LS_1"/>
+				<Client Name="M1_LS_2"/>
+				<Client Name="SetPosition_Controller"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Motore_M21"
+			GUID       = "{82C1CE2E-8389-4F4D-9B4D-9BFDE33DDA91}"
+			Class      = "Motore_M2"
+			Position   = "(1980,600)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ErrorState"/>
+				<Server Name="MotoreM2Step"/>
+				<Server Name="s_1_3_pelletMode"/>
+				<Server Name="s_M2_Homed"/>
+				<Server Name="s_pelletInIrisCharge"/>
+				<Server Name="s_tablet_InCharging"/>
+				<Client Name="Comando_M2"/>
+				<Client Name="M2_LS"/>
+				<Client Name="SetPosition_Controller"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Motore_M31"
+			GUID       = "{A69066F8-CD0E-4A2A-B356-B2D04A400250}"
+			Class      = "Motore_M3"
+			Position   = "(1980,1170)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ErrorState"/>
+				<Server Name="M3_Correction_Step"/>
+				<Server Name="MotoreM3Step"/>
+				<Server Name="s_M3_Coupled"/>
+				<Server Name="s_M3_Homed"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_M3"/>
+				<Client Name="M3_LS_1"/>
+				<Client Name="M3_LS_2"/>
+				<Client Name="SetPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Motore_M41"
+			GUID       = "{2A218C35-2822-4AD3-B4EB-8A44797E81EC}"
+			Class      = "Motore_M4"
+			Position   = "(1980,1740)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ErrorState"/>
+				<Server Name="M4_Correction_Step"/>
+				<Server Name="MotoreM4Step"/>
+				<Server Name="s_1_3_pelletMode"/>
+				<Server Name="s_calibrationMode"/>
+				<Server Name="s_DischargeStatus"/>
+				<Server Name="s_M4_Homed"/>
+				<Server Name="s_measurement_ON"/>
+				<Server Name="s_pelletInTrolley"/>
+				<Server Name="s_pelletMeasured"/>
+				<Server Name="s_target_misurati"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="c_TimerDis"/>
+				<Client Name="c_TimerMov"/>
+				<Client Name="Comando_M4"/>
+				<Client Name="Comando_to_M8Class"/>
+				<Client Name="M4_LS"/>
+				<Client Name="SetPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Motore_M51"
+			GUID       = "{6BC00281-3707-4281-99FF-F0D9432F9503}"
+			Class      = "Motore_M5"
+			Position   = "(1740,2640)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ErrorState"/>
+				<Server Name="M5_ChargingCorrection_step_1"/>
+				<Server Name="M5_ChargingCorrection_step_2"/>
+				<Server Name="M5_ChargingCorrection_step_3"/>
+				<Server Name="M5_DischargeCorrection_step"/>
+				<Server Name="M5_IrradiationCorrection_step_1"/>
+				<Server Name="M5_IrradiationCorrection_step_2"/>
+				<Server Name="M5_IrradiationCorrection_step_3"/>
+				<Server Name="MotoreM5Step"/>
+				<Server Name="s_1_3_pelletMode"/>
+				<Server Name="s_All_Tablets_in_DS"/>
+				<Server Name="s_Irradiation_ON"/>
+				<Server Name="s_IrradiationStatus"/>
+				<Server Name="s_M5_Homed"/>
+				<Server Name="s_PelletChargedByUser"/>
+				<Server Name="s_PelletInIrisDischarge"/>
+				<Server Name="s_PelletInIrisirradiation"/>
+				<Server Name="s_PelletRemaining"/>
+				<Server Name="s_tablet_InDischarging"/>
+				<Server Name="s_tablet_irradiation_position"/>
+				<Server Name="s_Tablet_irraggiati"/>
+				<Server Name="s_TabletTimer"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="c_TimerIrr"/>
+				<Client Name="c_TimerMov"/>
+				<Client Name="Comando_Attuatore_1"/>
+				<Client Name="Comando_Attuatore_2"/>
+				<Client Name="Comando_M5"/>
+				<Client Name="M5_LS"/>
+				<Client Name="SetPosition_Controller"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Motore_M61"
+			GUID       = "{A28E3159-4004-4FBF-A764-B330B7FAE30C}"
+			Class      = "Motore_M6"
+			Position   = "(1980,4350)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ErrorState"/>
+				<Server Name="MotoreM6Step"/>
+				<Server Name="s_M6_Coupled"/>
+				<Server Name="s_M6_Homed"/>
+				<Client Name="Comando_M6"/>
+				<Client Name="M6_LS_1"/>
+				<Client Name="M6_LS_2"/>
+				<Client Name="SetPosition_Controller"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Motore_M71"
+			GUID       = "{33628133-07EA-41A4-A149-EFED5BB25872}"
+			Class      = "Motore_M7"
+			Position   = "(960,1800)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="ErrorState"/>
+				<Server Name="MotoreM7Step"/>
+				<Server Name="s_M7_Coupled"/>
+				<Server Name="s_M7_Homed"/>
+				<Client Name="Comando_M7"/>
+				<Client Name="M7_LS_1"/>
+				<Client Name="M7_LS_2"/>
+				<Client Name="SetPositionController"/>
+				<Client Name="Stato_to_M4"/>
+			</Channels>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="ManagerMotori1.M1_status" Destination="Motore_M11.ClassSvr" Vertices="(3390,870),(2716,150),"/>
+		<Connection Source="ManagerMotori1.M4_status" Destination="Motore_M41.ClassSvr" Vertices="(3390,1290),(2716,1830),"/>
+		<Connection Source="ManagerMotori1.M1_command" Destination="Motore_M11.ClassSvr" Vertices="(3390,930),(2716,150),"/>
+		<Connection Source="ManagerMotori1.M4_command" Destination="Motore_M41.ClassSvr" Vertices="(3390,1350),(2716,1830),"/>
+		<Connection Source="ManagerMotori1.M2_command" Destination="Motore_M21.ClassSvr" Vertices="(3390,1050),(2716,690),"/>
+		<Connection Source="ManagerMotori1.M2_status" Destination="Motore_M21.ClassSvr" Vertices="(3390,990),(2716,690),"/>
+		<Connection Source="ManagerMotori1.M5_status" Destination="Motore_M51.ClassSvr" Vertices="(3390,1410),(2718,2730),"/>
+		<Connection Source="ManagerMotori1.M3_command" Destination="Motore_M31.ClassSvr" Vertices="(3390,1230),(2716,1260),"/>
+		<Connection Source="ManagerMotori1.M3_status" Destination="Motore_M31.ClassSvr" Vertices="(3390,1170),(2716,1260),"/>
+		<Connection Source="MainSequence1.Comando_manager_motori" Destination="ManagerMotori1.ClassSvr" Vertices="(4650,870),(4276,870),"/>
+		<Connection Source="Manager_globale1.Comando_main_sequence" Destination="MainSequence1.ClassSvr" Vertices="(5940,870),(5472,870),"/>
+		<Connection Source="ManagerMotori1.Homing_complete" Destination="MainSequence1.ClassSvr" Vertices="(3390,1770),(3210,1770),(3210,570),(5550,570),(5550,810),(5472,870),"/>
+		<Connection Source="MainSequence1.Comando_manager_globale" Destination="Manager_globale1.ClassSvr" Vertices="(4650,930),(4620,930),(4620,690),(6780,690),(6780,870),(6714,870),"/>
+		<Connection Source="ManagerMotori1.Phasing_complete" Destination="MainSequence1.ClassSvr" Vertices="(3390,1830),(3180,1830),(3180,540),(5580,540),(5580,840),(5472,870),"/>
+		<Connection Source="Motore_M11.Comando_M1" Destination="__IO_Element1" IOObject="IO_Element"/>
+		<Connection Source="Motore_M21.Comando_M2" Destination="__IO_Element41" IOObject="IO_Element4"/>
+		<Connection Source="Motore_M31.Comando_M3" Destination="__IO_Element51" IOObject="IO_Element5"/>
+		<Connection Source="ManagerMotori1.M5_command" Destination="Motore_M51.ClassSvr" Vertices="(3390,1470),(2718,2730),"/>
+		<Connection Source="Motore_M41.Comando_M4" Destination="__IO_Element61" IOObject="IO_Element6"/>
+		<Connection Source="Motore_M51.Comando_M5" Destination="__IO_Element71" IOObject="IO_Element7"/>
+		<Connection Source="Motore_M51.Comando_Attuatore_1" Destination="Attuatore1.ClassSvr" Vertices="(1740,2850),(1380,2850),(1380,2580),(1292,2580),"/>
+		<Connection Source="Motore_M51.Comando_Attuatore_2" Destination="Attuatore2.ClassSvr" Vertices="(1740,2910),(1292,2910),"/>
+		<Connection Source="ManagerMotori1.M6_status" Destination="Motore_M61.ClassSvr" Vertices="(3390,1590),(2716,4440),"/>
+		<Connection Source="ManagerMotori1.M6_command" Destination="Motore_M61.ClassSvr" Vertices="(3390,1650),(2716,4440),"/>
+		<Connection Source="ManagerMotori1.Irradiation_complete" Destination="MainSequence1.ClassSvr" Vertices="(3390,1950),(3240,1950),(3240,600),(5520,600),(5520,780),(5472,870),"/>
+		<Connection Source="Motore_M61.Comando_M6" Destination="__IO_Element81" IOObject="IO_Element8"/>
+		<Connection Source="ManagerMotori1.Charge_complete" Destination="MainSequence1.ClassSvr" Vertices="(3390,1890),(3270,1890),(3270,630),(5490,630),(5490,750),(5472,870),"/>
+		<Connection Source="ManagerMotori1.dISCHARGE_COMPLETE" Destination="MainSequence1.ClassSvr" Vertices="(3390,2010),(3090,2010),(3090,720),(5460,720),(5472,870),"/>
+		<Connection Source="Motore_M41.Comando_to_M8Class" Destination="Motore_M71.ClassSvr" Vertices="(1980,1890),(1606,1890),"/>
+		<Connection Source="Motore_M11.M1_LS_1" Destination="__IO_Element91" Vertices="(1980,270),(1860,270)," IOObject="IO_Element9"/>
+		<Connection Source="Motore_M71.Stato_to_M4" Destination="Motore_M41.ClassSvr" Vertices="(960,1950),(690,1950),(690,1710),(2670,1710),(2760,1710),(2716,1830),"/>
+		<Connection Source="Motore_M71.Comando_M7" Destination="__IO_Element101" IOObject="IO_Element10"/>
+		<Connection Source="Motore_M11.M1_LS_2" Destination="__IO_Element131" Vertices="(1980,330),(1860,330)," IOObject="IO_Element13"/>
+		<Connection Source="__IO_Element721.Pin_ClientA" Destination="Motore_M31.M3_Correction_Step" Vertices="(2760,1440),(2716,1440)," IOObject="IO_Element72"/>
+		<Connection Source="Motore_M21.M2_LS" Destination="__IO_Element341" Vertices="(1980,810),(1830,810)," IOObject="IO_Element34"/>
+		<Connection Source="Attuatore1.R_p" Destination="__IO_Element401" Vertices="(600,2580),(570,2580)," IOObject="IO_Element40"/>
+		<Connection Source="Motore_M31.M3_LS_1" Destination="__IO_Element361" Vertices="(1980,1380),(1830,1380)," IOObject="IO_Element36"/>
+		<Connection Source="Motore_M31.M3_LS_2" Destination="__IO_Element371" Vertices="(1980,1440),(1830,1440)," IOObject="IO_Element37"/>
+		<Connection Source="Motore_M41.M4_LS" Destination="__IO_Element381" Vertices="(1980,1950),(1980,1950)," IOObject="IO_Element38"/>
+		<Connection Source="Attuatore1.R_aus_1" Destination="__IO_Element351" Vertices="(600,2640),(570,2640)," IOObject="IO_Element35"/>
+		<Connection Source="Attuatore1.R_aus_2" Destination="__IO_Element391" Vertices="(600,2700),(570,2700)," IOObject="IO_Element39"/>
+		<Connection Source="Attuatore2.R_p" Destination="__IO_Element411" Vertices="(600,2910),(570,2910)," IOObject="IO_Element41"/>
+		<Connection Source="Attuatore2.R_aus_1" Destination="__IO_Element421" Vertices="(600,2970),(570,2970)," IOObject="IO_Element42"/>
+		<Connection Source="Attuatore2.R_aus_2" Destination="__IO_Element431" Vertices="(600,3030),(570,3030)," IOObject="IO_Element43"/>
+		<Connection Source="Motore_M51.M5_LS" Destination="__IO_Element491" Vertices="(1740,2970),(1680,2970)," IOObject="IO_Element49"/>
+		<Connection Source="Motore_M61.M6_LS_1" Destination="__IO_Element501" Vertices="(1980,4500),(1860,4500)," IOObject="IO_Element50"/>
+		<Connection Source="Motore_M61.M6_LS_2" Destination="__IO_Element511" Vertices="(1980,4560),(1860,4560)," IOObject="IO_Element51"/>
+		<Connection Source="Motore_M11.c_MaxCurrent" Destination="__IO_Element581" Vertices="(1980,450),(1860,450)," IOObject="IO_Element58"/>
+		<Connection Source="Motore_M31.c_MaxCurrent" Destination="__IO_Element521" Vertices="(1980,1560),(1830,1560)," IOObject="IO_Element52"/>
+		<Connection Source="Motore_M51.c_MaxCurrent" Destination="__IO_Element591" Vertices="(1740,3030),(1680,3030)," IOObject="IO_Element59"/>
+		<Connection Source="Motore_M51.SetPosition_Controller" Destination="__IO_Element601" IOObject="IO_Element60"/>
+		<Connection Source="Motore_M11.SetPosition_Controller" Destination="__IO_Element611" IOObject="IO_Element61"/>
+		<Connection Source="Motore_M31.SetPositionController" Destination="__IO_Element621" IOObject="IO_Element62"/>
+		<Connection Source="Motore_M71.M7_LS_1" Destination="__IO_Element681" Vertices="(960,2010),(930,2010)," IOObject="IO_Element68"/>
+		<Connection Source="Motore_M71.M7_LS_2" Destination="__IO_Element691" Vertices="(960,2070),(930,2070)," IOObject="IO_Element69"/>
+		<Connection Source="Motore_M41.SetPositionController" Destination="__IO_Element991" IOObject="IO_Element99"/>
+		<Connection Source="Motore_M41.c_MaxCurrent" Destination="__IO_Element711" Vertices="(1980,2010),(1980,2010)," IOObject="IO_Element71"/>
+		<Connection Source="__IO_Element141.Pin_ClientA" Destination="Motore_M11.M1_Correction_Step" Vertices="(2760,330),(2716,330)," IOObject="IO_Element14"/>
+		<Connection Source="__IO_Element181.Pin_ClientA" Destination="Motore_M41.M4_Correction_Step" Vertices="(2700,2130),(2716,2130)," IOObject="IO_Element18"/>
+		<Connection Source="__IO_Element731.Pin_ClientA" Destination="Motore_M51.M5_ChargingCorrection_step_1" Vertices="(2760,3030),(2718,3030)," IOObject="IO_Element73"/>
+		<Connection Source="__IO_Element741.Pin_ClientA" Destination="Motore_M51.M5_ChargingCorrection_step_2" Vertices="(2760,3090),(2718,3090)," IOObject="IO_Element74"/>
+		<Connection Source="__IO_Element751.Pin_ClientA" Destination="Motore_M51.M5_ChargingCorrection_step_3" Vertices="(2760,3150),(2718,3150)," IOObject="IO_Element75"/>
+		<Connection Source="__IO_Element761.Pin_ClientA" Destination="Motore_M51.M5_IrradiationCorrection_step_1" Vertices="(2760,3270),(2718,3270)," IOObject="IO_Element76"/>
+		<Connection Source="__IO_Element771.Pin_ClientA" Destination="Motore_M51.M5_IrradiationCorrection_step_2" Vertices="(2760,3330),(2718,3330)," IOObject="IO_Element77"/>
+		<Connection Source="__IO_Element791.Pin_ClientA" Destination="Motore_M51.M5_IrradiationCorrection_step_3" Vertices="(2760,3390),(2718,3390)," IOObject="IO_Element79"/>
+		<Connection Source="__IO_Element801.Pin_ClientA" Destination="Motore_M51.M5_DischargeCorrection_step" Vertices="(2760,3510),(2718,3510)," IOObject="IO_Element80"/>
+		<Connection Source="Manager_globale1.Reset_IN" Destination="__IO_Element191" Vertices="(5940,930),(5850,930)," IOObject="IO_Element19"/>
+		<Connection Source="Motore_M71.SetPositionController" Destination="__IO_Element701" IOObject="IO_Element70"/>
+		<Connection Source="Motore_M21.SetPosition_Controller" Destination="__IO_Element971" IOObject="IO_Element97"/>
+		<Connection Source="__IO_Element981.Pin_ClientA" Destination="ManagerMotori1.From_MPS" Vertices="(4290,1110),(4276,1110)," IOObject="IO_Element98"/>
+		<Connection Source="Motore_M61.SetPosition_Controller" Destination="__IO_Element1001" IOObject="IO_Element100"/>
+		<Connection Source="__IO_Element1011.Pin_ClientA" Destination="Manager_globale1.enable" Vertices="(6750,1170),(6714,1170)," IOObject="IO_Element101"/>
+		<Connection Source="ManagerMotori1.Stop_client" Destination="MainSequence1.ClassSvr" Vertices="(3390,2130),(3030,2130),(3030,2910),(5520,2910),(5520,870),(5472,870),"/>
+		<Connection Source="ManagerMotori1.LED_Rosso" Destination="__IO_Element1101" Vertices="(3390,2250),(3360,2250)," IOObject="IO_Element110"/>
+		<Connection Source="ManagerMotori1.LED_Arancione" Destination="__IO_Element1111" Vertices="(3390,2310),(3360,2310)," IOObject="IO_Element111"/>
+		<Connection Source="ManagerMotori1.LED_Verde" Destination="__IO_Element1121" Vertices="(3390,2370),(3360,2370)," IOObject="IO_Element112"/>
+		<Connection Source="ManagerMotori1.c_MPS_Req" Destination="__IO_Element1141" IOObject="IO_Element114"/>
+		<Connection Source="ManagerMotori1.tOmANAGERgLOBALE" Destination="Manager_globale1.ClassSvr" Vertices="(3390,2490),(6510,2460),(7170,960),(6714,870),"/>
+		<Connection Source="__IO_Element951.Pin_ClientA" Destination="Motore_M51.s_tablet_irradiation_position" Vertices="(2820,3870),(2718,3870)," IOObject="IO_Element95"/>
+		<Connection Source="Motore_M41.c_TimerDis" Destination="__IO_Element961" IOObject="IO_Element96"/>
+		<Connection Source="__IO_Element1151.Pin_ClientA" Destination="Motore_M51.s_TabletTimer" Vertices="(2820,3990),(2718,3990)," IOObject="IO_Element115"/>
+		<Connection Source="__IO_Element1161.Pin_ClientA" Destination="Manager_globale1.ComandoIrradiation" Vertices="(6750,990),(6714,990)," IOObject="IO_Element116"/>
+		<Connection Source="Motore_M51.c_TimerMov" Destination="__IO_Element1171" IOObject="IO_Element117"/>
+		<Connection Source="Motore_M41.c_TimerMov" Destination="__IO_Element1181" IOObject="IO_Element118"/>
+		<Connection Source="__IO_Element1191.Pin_ClientA" Destination="MainSequence1.s_EasyGUI" Vertices="(5550,1110),(5472,1110)," IOObject="IO_Element119"/>
+		<Connection Source="Manager_globale1.c_ResetTimer" Destination="__IO_Element1211" IOObject="IO_Element121"/>
+		<Connection Source="Motore_M51.c_TimerIrr" Destination="__IO_Element1221" IOObject="IO_Element122"/>
+		<Connection Source="ManagerMotori1.c_1_3_pelletMode_M2" Destination="Motore_M21.s_1_3_pelletMode" Vertices="(3390,2550),(2940,2550),(2940,990),(2716,990),"/>
+		<Connection Source="ManagerMotori1.c_1_3_pelletMode_M5" Destination="Motore_M51.s_1_3_pelletMode" Vertices="(3390,2670),(3300,2670),(3300,4050),(2718,4050),"/>
+		<Connection Source="ManagerMotori1.c_1_3_pelletMode_M4" Destination="Motore_M41.s_1_3_pelletMode" Vertices="(3390,2610),(2910,2610),(2910,2310),(2716,2310),"/>
+		<Connection Source="ManagerMotori1.c_1_3_pelletMode_TimerMov" Destination="__IO_Element1291" IOObject="IO_Element129"/>
+		<Connection Source="ManagerMotori1.c_1_3_pelletMode_TimerIrr" Destination="__IO_Element1301" IOObject="IO_Element130"/>
+		<Connection Source="ManagerMotori1.c_pelletAvailable" Destination="Motore_M51.ClassSvr" Vertices="(3390,2850),(2718,2730),"/>
+	</Connections>
+	<!-- List of temp data objects in this network -->
+	<IOObjects>
+		<IOObject KeyName="__IO_Element1011" Name="IO_Element101" Position="(6750,1140)" Client="AutoManSelector1.toAutomatic"/>
+		<IOObject KeyName="__IO_Element1101" Name="IO_Element110" Position="(3060,2220)" Client="ManagerMotori1.LED_Rosso"/>
+		<IOObject KeyName="__IO_Element1111" Name="IO_Element111" Position="(3060,2280)" Client="ManagerMotori1.LED_Arancione"/>
+		<IOObject KeyName="__IO_Element1121" Name="IO_Element112" Position="(3060,2340)" Client="ManagerMotori1.LED_Verde"/>
+		<IOObject KeyName="__IO_Element1151" Name="IO_Element115" Position="(2820,3960)" Client="IrradiationTimers.NrIrrTablets"/>
+		<IOObject KeyName="__IO_Element1161" Name="IO_Element116" Position="(6750,960)" Client="IrradiationTimers.SetStartStopIrr"/>
+		<IOObject KeyName="__IO_Element1191" Name="IO_Element119" Position="(5550,1080)" Client="AutoManSelector1.c_EasyGUIEn_MainS"/>
+		<IOObject KeyName="__IO_Element131" Name="IO_Element13" Position="(1560,300)" Client="Motore_M11.M1_LS_2"/>
+		<IOObject KeyName="__IO_Element141" Name="IO_Element14" Position="(2760,300)" Client="Automatic_Step_Settings1.c_M1_Correction_Step"/>
+		<IOObject KeyName="__IO_Element181" Name="IO_Element18" Position="(2700,2100)" Client="Automatic_Step_Settings1.c_M4_Correction_Step"/>
+		<IOObject KeyName="__IO_Element191" Name="IO_Element19" Position="(5550,900)" Client="Manager_globale1.Reset_IN"/>
+		<IOObject KeyName="__IO_Element341" Name="IO_Element34" Position="(1530,780)" Client="Motore_M21.M2_LS"/>
+		<IOObject KeyName="__IO_Element351" Name="IO_Element35" Position="(270,2610)" Client="Attuatore1.R_aus_1"/>
+		<IOObject KeyName="__IO_Element361" Name="IO_Element36" Position="(1530,1350)" Client="Motore_M31.M3_LS_1"/>
+		<IOObject KeyName="__IO_Element371" Name="IO_Element37" Position="(1530,1410)" Client="Motore_M31.M3_LS_2"/>
+		<IOObject KeyName="__IO_Element381" Name="IO_Element38" Position="(1680,1920)" Client="Motore_M41.M4_LS"/>
+		<IOObject KeyName="__IO_Element391" Name="IO_Element39" Position="(270,2670)" Client="Attuatore1.R_aus_2"/>
+		<IOObject KeyName="__IO_Element401" Name="IO_Element40" Position="(270,2550)" Client="Attuatore1.R_p"/>
+		<IOObject KeyName="__IO_Element411" Name="IO_Element41" Position="(270,2880)" Client="Attuatore2.R_p"/>
+		<IOObject KeyName="__IO_Element421" Name="IO_Element42" Position="(270,2940)" Client="Attuatore2.R_aus_1"/>
+		<IOObject KeyName="__IO_Element431" Name="IO_Element43" Position="(270,3000)" Client="Attuatore2.R_aus_2"/>
+		<IOObject KeyName="__IO_Element491" Name="IO_Element49" Position="(1380,2940)" Client="Motore_M51.M5_LS"/>
+		<IOObject KeyName="__IO_Element501" Name="IO_Element50" Position="(1560,4470)" Client="Motore_M61.M6_LS_1"/>
+		<IOObject KeyName="__IO_Element511" Name="IO_Element51" Position="(1560,4530)" Client="Motore_M61.M6_LS_2"/>
+		<IOObject KeyName="__IO_Element521" Name="IO_Element52" Position="(1530,1530)" Client="Motore_M31.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element581" Name="IO_Element58" Position="(1560,420)" Client="Motore_M11.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element591" Name="IO_Element59" Position="(1380,3000)" Client="Motore_M51.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element681" Name="IO_Element68" Position="(630,1980)" Client="Motore_M71.M7_LS_1"/>
+		<IOObject KeyName="__IO_Element691" Name="IO_Element69" Position="(630,2040)" Client="Motore_M71.M7_LS_2"/>
+		<IOObject KeyName="__IO_Element711" Name="IO_Element71" Position="(1680,1980)" Client="Motore_M41.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element721" Name="IO_Element72" Position="(2760,1410)" Client="Automatic_Step_Settings1.c_M3_Correction_Step"/>
+		<IOObject KeyName="__IO_Element731" Name="IO_Element73" Position="(2760,3000)" Client="Automatic_Step_Settings1.c_M5_ChargingCorrection_Step_1"/>
+		<IOObject KeyName="__IO_Element741" Name="IO_Element74" Position="(2760,3060)" Client="Automatic_Step_Settings1.c_M5_ChargingCorrection_Step_2"/>
+		<IOObject KeyName="__IO_Element751" Name="IO_Element75" Position="(2760,3120)" Client="Automatic_Step_Settings1.c_M5_ChargingCorrection_Step_3"/>
+		<IOObject KeyName="__IO_Element761" Name="IO_Element76" Position="(2760,3240)" Client="Automatic_Step_Settings1.c_M5_IrradiationCorrection_Step_1"/>
+		<IOObject KeyName="__IO_Element771" Name="IO_Element77" Position="(2760,3300)" Client="Automatic_Step_Settings1.c_M5_IrradiationCorrection_Step_2"/>
+		<IOObject KeyName="__IO_Element791" Name="IO_Element79" Position="(2760,3360)" Client="Automatic_Step_Settings1.c_M5_IrradiationCorrection_step_3"/>
+		<IOObject KeyName="__IO_Element801" Name="IO_Element80" Position="(2760,3480)" Client="Automatic_Step_Settings1.c_M5_DischargingCorrection_step"/>
+		<IOObject KeyName="__IO_Element91" Name="IO_Element9" Position="(1560,240)" Client="Motore_M11.M1_LS_1"/>
+		<IOObject KeyName="__IO_Element951" Name="IO_Element95" Position="(2820,3840)" Client="IrradiationTimers.TabletInIrrPos"/>
+		<IOObject KeyName="__IO_Element981" Name="IO_Element98" Position="(4290,1080)" Client="MPS1.To_Manager_Motori"/>
+	</IOObjects>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

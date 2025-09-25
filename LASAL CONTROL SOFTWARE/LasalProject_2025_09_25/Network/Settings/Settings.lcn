@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="Settings" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "Automatic_Step_Settings1"
+			GUID       = "{2F04B9F4-1A65-4369-A2AC-5D180A0C6843}"
+			Class      = "Automatic_Step_Settings"
+			Position   = "(810,300)"
+			Visualized = "false"
+			CyclicTime = "500 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="M1_Correction_Step"/>
+				<Server Name="M3_Correction_Step"/>
+				<Server Name="M4_Correction_Step"/>
+				<Server Name="M5_ChargingCorrection_step_1"/>
+				<Server Name="M5_ChargingCorrection_step_2"/>
+				<Server Name="M5_ChargingCorrection_step_3"/>
+				<Server Name="M5_DischargingCorrection_step"/>
+				<Server Name="M5_IrradiationCorrection_step_1"/>
+				<Server Name="M5_IrradiationCorrection_step_2"/>
+				<Server Name="M5_IrradiationCorrection_step_3"/>
+				<Client Name="c_M1_Correction_Step"/>
+				<Client Name="c_M3_Correction_Step"/>
+				<Client Name="c_M4_Correction_Step"/>
+				<Client Name="c_M5_ChargingCorrection_Step_1"/>
+				<Client Name="c_M5_ChargingCorrection_Step_2"/>
+				<Client Name="c_M5_ChargingCorrection_Step_3"/>
+				<Client Name="c_M5_DischargingCorrection_step"/>
+				<Client Name="c_M5_IrradiationCorrection_Step_1"/>
+				<Client Name="c_M5_IrradiationCorrection_Step_2"/>
+				<Client Name="c_M5_IrradiationCorrection_step_3"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "ExactStep1"
+			GUID       = "{DCC22A00-A73B-490D-9AAB-6150611E2FFC}"
+			Class      = "ExactStep"
+			Position   = "(2100,270)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="M1_EXACT_STEP"/>
+				<Server Name="M3_EXACT_STEP"/>
+				<Server Name="M4_EXACT_STEP"/>
+				<Server Name="M5_EXACT_CS_1"/>
+				<Server Name="M5_EXACT_CS_2"/>
+				<Server Name="M5_EXACT_CS_3"/>
+				<Server Name="M5_EXACT_DS"/>
+				<Server Name="M5_EXACT_IS_1"/>
+				<Server Name="M5_EXACT_IS_2"/>
+				<Server Name="M5_EXACT_IS_3"/>
+				<Server Name="M5_OFFSET_DS"/>
+			</Channels>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="Automatic_Step_Settings1.c_M1_Correction_Step" Destination="__IO_Element141" IOObject="IO_Element14"/>
+		<Connection Source="Automatic_Step_Settings1.c_M3_Correction_Step" Destination="__IO_Element721" IOObject="IO_Element72"/>
+		<Connection Source="Automatic_Step_Settings1.c_M5_ChargingCorrection_Step_1" Destination="__IO_Element731" IOObject="IO_Element73"/>
+		<Connection Source="Automatic_Step_Settings1.c_M5_ChargingCorrection_Step_2" Destination="__IO_Element741" IOObject="IO_Element74"/>
+		<Connection Source="Automatic_Step_Settings1.c_M5_ChargingCorrection_Step_3" Destination="__IO_Element751" IOObject="IO_Element75"/>
+		<Connection Source="Automatic_Step_Settings1.c_M5_IrradiationCorrection_Step_1" Destination="__IO_Element761" IOObject="IO_Element76"/>
+		<Connection Source="Automatic_Step_Settings1.c_M5_IrradiationCorrection_Step_2" Destination="__IO_Element771" IOObject="IO_Element77"/>
+		<Connection Source="Automatic_Step_Settings1.c_M5_IrradiationCorrection_step_3" Destination="__IO_Element791" IOObject="IO_Element79"/>
+		<Connection Source="Automatic_Step_Settings1.c_M5_DischargingCorrection_step" Destination="__IO_Element801" IOObject="IO_Element80"/>
+		<Connection Source="Automatic_Step_Settings1.c_M4_Correction_Step" Destination="__IO_Element181" IOObject="IO_Element18"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

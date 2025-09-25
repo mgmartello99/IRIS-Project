@@ -1,0 +1,1121 @@
+//#define DEGREE_FUS
+#include "..\include\Fpu_If.h"
+
+TYPE
+	flags_result : bint[
+			InvalidOperation,
+			Denormalized,
+			DivisionByZero,
+			Overflow,
+			Underflow,
+			PrecisionError,
+			StackFlag,
+		 	Summary,
+		 	C0,
+			C1,
+			C2,
+			ST0,
+			ST1,
+			ST2,
+			C3,
+			Busy];
+END_TYPE
+
+// Tests if the stack is cleared
+FUNCTION GLOBAL CheckStack
+
+	FSTSW	AX
+	AND.AX	16#3800
+	SHR.AX	11				// now AX should be 0
+
+END_FUNCTION
+// Tests if valid operations have been performed
+FUNCTION GLOBAL CheckResult
+VAR
+	test		: Flags_Result;
+END_VAR
+
+	FSTSW	AX
+	S.AX	test
+
+END_FUNCTION
+
+// Calculate the absolute value of a real number
+//[>EAX]	signed real number
+//[<EAX]	unsigned real number
+FUNCTION DIAS_R_ABS
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+
+		FABS
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Convertes an unsigned integer into a real 
+//[>EAX] Wert vom Typ UDINT
+//[<EAX] Wert vom Typ REAL
+
+FUNCTION DIAS_R_UTOR
+VAR_INPUT
+	EAX			: UDINT;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+
+         OR.EAX    EAX
+         JZ        F06_ENDE            // Wert = 0
+
+         CLR       BL                  // Vorzeichen in BL
+
+         L.CX      16#009F             // Exponent in CL
+F06_SHFT DEC       CX
+         SHL.EAX   001
+         JNB       F06_SHFT
+
+         SHR.EAX   008
+
+         SHL.ECX   024                 // Exponent nach EAX
+         OR.EAX    ECX
+
+         SHR.BL    001                 // Vorzeichen nach EAX
+         RCR.EAX   001
+
+F06_ENDE POP       ECX
+         POP       EBX
+END_FUNCTION
+// Convertes a signed integer into a real 
+//[>EAX] DINT value
+//[<EAX] REAL value
+FUNCTION DIAS_R_DTOR
+VAR_INPUT
+	EAX			: DINT;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FILD		x
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+//Convertes a real number into a signed integer value
+//[>EAX] REAL value
+//[<EAX] DINT value
+FUNCTION DIAS_R_RTOD
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: DINT;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		FISTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Subtracts the contents of EBX from EAX and sets EAX with the difference.
+//[>EAX] 1st REAL value
+//[>EBX] REAL value to subtract
+//[<EAX] difference
+FUNCTION DIAS_R_SUB
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		S.EBX		x
+
+		FSUB		x	// ST0 := ST0-x
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Adds two REAL numbers and sets EAX with the sum.
+//[>EAX] value1
+//[>EBX] value2
+//[<EAX] sum
+FUNCTION DIAS_R_ADD
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		S.EBX		x
+
+		FADD		x	// ST0 := ST0 + x
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+//Multiplies two REAL numbers and sets EAX with the product
+//[>EAX] value1
+//[>EBX] value2
+//[<EAX] product
+FUNCTION DIAS_R_MUL
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		S.EBX		x
+
+		FMUL		x	// ST0 := ST0 * x
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Divides tw0 REAL numbers and stores the quotient to EAX
+//[>EAX] dividend
+//[>EBX] divisor
+//[<EAX] quotient
+FUNCTION DIAS_R_DIV
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		S.EBX		x
+
+		FDIV		x	// ST0 := ST0 / x
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Performs a logical OR, if one of the numbers differs from 0, the result
+// is set to 1, else to 0.
+//[>EAX] value1
+//[>EBX] value2
+//[<EAX] (value1 != 0) | (value2 != 0)
+FUNCTION DIAS_R_OR
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+
+		OR.EAX    EAX
+		JNZ       OR_EINS
+		OR.EBX    EBX
+		JNZ       OR_EINS
+
+		CLR       EAX
+		JMP       OR_ENDE
+
+OR_EINS	
+		L.EAX     16#3F800000
+OR_ENDE
+
+END_FUNCTION
+// Performs a logical XOR. The function returns 1.0 if either value one or
+// value2 differs from 0. It returns 0, if both values are equal.
+//[>EAX] value1
+//[>EBX] value2
+//[<EAX] (value1 != 0) XOR (value2 != 0)
+FUNCTION DIAS_R_XOR
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+		PUSH      CX
+
+		OR.EAX    EAX
+		SETNZ     CL
+		OR.EBX    EBX
+		SETNZ     CH
+
+		CLR       EAX
+
+		XOR.CL    CH
+		JZ        XOR_ENDE
+		L.EAX     16#3F800000
+
+XOR_ENDE
+		POP       CX
+END_FUNCTION
+// Performs a logical AND. The result is set to 1.0 if both of the
+// operands differ from 0. Otherwise the result is set to 0.
+//[>EAX] value1
+//[>EBX] value2
+//[<EAX] (value1 != 0) & (value2 != 0)
+FUNCTION DIAS_R_AND
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+		OR.EAX    EAX
+		JZ        AND_AUS
+		OR.EBX    EBX
+		JZ        AND_AUS
+
+		L.EAX     16#3F800000
+		JMP       AND_ENDE
+
+AND_AUS  
+		CLR       EAX
+AND_ENDE
+END_FUNCTION
+#ifdef someone_needs_1dx
+
+// Divides 1.0 by the given value and returns the quotient in EAX.
+//[>EAX] REAL value
+//[<EAX] 1 / REAL value
+FUNCTION DIAS_R_1DX
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		FLD1
+		S.EAX		x
+		FDIV		x		// ST0 := 1 / x
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+#endif // someone_needs_1dx
+
+//Changes the sign of a REAL number
+//[>EAX] REAL number
+//[<EAX] -1 * REAL number
+FUNCTION DIAS_R_NEG
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+
+		XOR.EAX   16#80000000
+
+END_FUNCTION
+// Performs a logical NOT. Returns 1.0 if the number is 0, 
+// otherwise it returns 0.0
+//[>EAX] value1
+//[<EAX] (value1 = 0)
+FUNCTION DIAS_R_NOT
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+
+		OR.EAX    EAX
+		JNZ       NOT_NULL
+		L.EAX     16#3F800000
+		JMP       NOT_ENDE
+NOT_NULL 
+		CLR       EAX
+NOT_ENDE
+END_FUNCTION
+// Compares two REAL numbers.
+// (replaced by functions DIAS_R_CMP_E/L/G with lasal compiler version >= 4)
+//[>EAX] value1
+//[>EBX] value2
+FUNCTION DIAS_R_CMP
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		S.EBX		x
+
+		FCOMP		x
+		FSTSW		AX
+		SAHF			// set flags
+
+		JA			ABOVE
+		JB			BELOW
+
+		X.EAX		EAX
+		CMP.EAX		EAX
+		JMP			END
+
+BELOW	L.EAX		-1
+		CMP.EAX		0
+		JMP			END
+
+ABOVE	L.EAX		1
+		CMP.EAX		0
+
+END
+
+		L.EAX		x	// restore EAX
+
+END_FUNCTION
+// Compares two REAL numbers (value1 is equal value2)
+//[>EAX] value1
+//[>EBX] value2
+FUNCTION DIAS_R_CMP_E
+VAR_INPUT
+	EAX			    : REAL;
+	EBX			    : REAL;
+END_VAR
+VAR
+	Real_Value  : REAL;
+END_VAR
+
+		PUSH    EAX
+    
+    S.EAX		Real_Value
+		FLD			Real_Value    // store value1 on stack of FPU
+		S.EBX		Real_Value
+
+		FCOMP		Real_Value    // compare value1 with value2
+		FSTSW		AX            // store FPU status in AX
+		SAHF			            // set flags
+
+		// check the result of the FPU
+    JP      NOTEQUAL_CMP_E  // unordered
+    JE      EQUAL_CMP_E     // equal
+    
+NOTEQUAL_CMP_E
+    L.EAX		  1
+    JMP     END
+
+EQUAL_CMP_E
+		X.EAX		EAX
+    JMP     END   
+END
+
+    CMP.EAX   0
+    
+		POP     EAX
+
+END_FUNCTION
+// Compares two REAL numbers (value1 is less than value2)
+//[>EAX] value1
+//[>EBX] value2
+FUNCTION DIAS_R_CMP_L
+VAR_INPUT
+	EAX			    : REAL;
+	EBX			    : REAL;
+END_VAR
+VAR
+	Real_Value  : REAL;
+END_VAR
+
+    S.EAX		Real_Value
+		FLD			Real_Value    // store value1 on stack of FPU
+		S.EBX		Real_Value
+
+		FCOMP		Real_Value    // compare value1 with value2
+		FSTSW		AX            // store FPU status in AX
+		SAHF			            // set flags
+
+		// check the result of the FPU
+    JP      GREATER_CMP_L // unordered
+    JB      LESS_CMP_L    // less
+    JE      EQUAL_CMP_L   // equal
+    
+GREATER_CMP_L
+    L.EAX		  1
+    JMP     END
+
+LESS_CMP_L
+		L.EAX		 -1
+    JMP     END   
+
+EQUAL_CMP_L
+    X.EAX   EAX
+    JMP     END
+END
+
+    CMP.EAX   0
+
+		POP     EAX
+
+END_FUNCTION
+// Compares two REAL numbers (value1 is greater than value2)
+//[>EAX] value1
+//[>EBX] value2
+FUNCTION DIAS_R_CMP_G
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR
+	Real_Value  : REAL;
+END_VAR
+
+    S.EAX		Real_Value
+		FLD			Real_Value    // store value1 on stack of FPU
+		S.EBX		Real_Value
+
+		FCOMP		Real_Value    // compare value1 with value2
+		FSTSW		AX            // store FPU status in AX
+		SAHF			            // set flags
+
+		// check the result of the FPU
+    JP      LESS_CMP_G       // unordered
+    JA      GREATER_CMP_G    // greater
+    JE      EQUAL_CMP_G      // equal
+    
+LESS_CMP_G
+    L.EAX		  -1
+    JMP     END
+
+GREATER_CMP_G
+		L.EAX		1
+    JMP     END   
+    
+EQUAL_CMP_G
+    X.EAX   EAX
+    JMP     END
+END
+
+    CMP.EAX   0
+
+		POP     EAX
+
+END_FUNCTION
+// Calculates the sinus of a value given in radiant.
+//[>EAX] REAL value in radiant
+//[<EAX] sin(value)
+FUNCTION DIAS_R_SIN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+
+		FSIN
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the cosinus of a value given in radiant
+//[>EAX] REAL value
+//[<EAX] cos(value)
+FUNCTION DIAS_R_COS
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+
+		FCOS
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the tangens of a value given in radiant
+//[>EAX] REAL value
+//[<EAX] tan(value)
+FUNCTION DIAS_R_TAN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD1
+		FLD			x
+		FPTAN
+		FDIVR		ST1
+
+		FSTP		x
+		L.EAX		x
+		FCOMPP				// clear stack
+
+END_FUNCTION
+
+// Calculates the arcus sinus of a value. The returned value is in radiant.
+//[>EAX] REAL value inbetwwen -1.0 and 1.0
+//[<EAX] REAL value inbetween -pi/2 and +pi/2
+FUNCTION DIAS_R_ASIN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+  x,y : REAL;
+END_VAR
+
+  O.EAX     EAX         // asin(0) = 0
+  jz        asin_zero
+
+  S.EAX     x
+  FLD       x           // x
+  FLD       x           // x, x
+  // asin(x) = atan(x/sqrt(1-x*x))  
+  FMUL      x           // x*x, x
+  FLD1                  // 1, x*x, x
+  FSUBP                 // 1-x*x, x
+  FSQRT                 // SQRT(1-x*x), x
+  FPATAN                // ATAN( x/SQRT(1-x*x) )
+  
+  FSTP      y
+  L.EAX     y
+  
+asin_zero
+  
+END_FUNCTION
+
+// Calculates the arcus cosinus of a REAL value, returns a value in radiants.
+//[>EAX] REAL value inbetween -1 and +1
+//[<EAX] REAL value in radiants, ranges from 0 to pi
+FUNCTION DIAS_R_ACOS
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		CALL		DIAS_R_ASIN
+
+		L.D			x, _pi/2
+		FLD			x
+
+		S.EAX		x
+		FSUB		x
+		FSTP		x
+
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the arcus tangens of a REAL value, returns a value in radiant
+//[>EAX] REAL value
+//[<EAX] REAL value inbetween -pi/2 and +pi/2
+FUNCTION DIAS_R_ATAN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		FLD1
+		FPATAN
+
+		FST			x
+		L.EAX		x
+		FCOMPP			 // clear stack
+
+END_FUNCTION
+// Calculates the square root of a real value
+//[>EAX] REAL value
+//[<EAX] REAL value, y = x^0.5
+FUNCTION DIAS_R_SQRT
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+
+		FSQRT
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the natural logarithm of a REAL number
+//[>EAX] REAL value > 0
+//[<EAX] REAL number ln(x) := log(x) / log(e)
+FUNCTION DIAS_R_LN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		L.D			x, 0.69314718056		// 1/log2(e)
+		FLD			x
+		S.EAX		x
+		FLD			x
+
+		FYL2X				// ST1 * log2(ST0)
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the logarithm to the base of 10 of a REAL number
+//[>EAX] REAL value, value > 0
+//[<EAX] REAL value, x := log10(y)
+FUNCTION DIAS_R_LOG
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		FLDLG2				// log(2)
+		S.EAX		x
+		FLD			x
+
+		FYL2X				// ST1 * log2(ST0)
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the exponent of a REAL number
+//[>EAX] REAL value
+//[<EAX] REAL value > 0, y := e^x := 2^( log2(e) * x)
+FUNCTION DIAS_R_EXP
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+
+		PUSH		EBX
+
+		L.EBX		EAX
+		L.EAX		2.718281828459045
+
+		CALL		DIAS_R_XHY
+
+		POP			EBX
+
+END_FUNCTION
+FUNCTION TAB TAB_2H32
+
+	1.0,		2.0,		4.0,		 8.0			// 3
+	16.0,		32.0,		64.0		 128.0,			// 7
+	256.0,		512.0,		1024.0,		 2048.0,		// 11
+	4096.0,		8192.0,		16384.0,	 32768.0,		// 15
+	65536.0,	131072.0,	262144.0,	 524288.0,		// 19
+	1048576.0,	2097152.0,	4194304.0,	 8388608.0,		// 23
+	16777216.0,	33554432.0,	67108864.0,	 134217728.0,	// 27
+	268435456.0,536870912.0,1073741824.0,2147483648.0,	// 31
+
+END_FUNCTION
+// Calculates the exponent of x to the power of y
+//[>EAX] x, base
+//[>EBX] y, exponent
+//[<EAX] x^y := 2^ (log2(x) * y)
+FUNCTION DIAS_R_XHY
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x, y		: REAL;
+	b			: REAL;
+	nn			: DINT;
+	usFlags		: USINT;
+  temp    : DINT;
+  complRes  : UDINT;
+  rTemp : REAL;
+END_VAR
+
+		O.EAX		EAX
+		JZ			XHY_0
+
+    L.D     complRes, 0
+
+		S.EBX		b
+		FLD			b
+		S.EAX		x
+		FLD			x
+
+    // Bei neg.Basis gibts eine Sonderbehandlung, weil von der Basis in der 
+    // nachfolgenden Formel der 2er Logarithmus gebildet wird und ein Logarithmus 
+    // einer negativen Zahl ist nicht möglich.
+    // 
+    FLDZ                      // Push +0.0
+    FCOMP		x                 // Compare ST(0) with x and pop register stack.
+                              //  ST(0) > SRC : C0=0  (nach FSTSW im EFlags: CF=0)
+                              //  ST(0) < SRC : C0=1  (nach FSTSW im EFlags: CF=1)
+      
+    FSTSW		AX                // Store FPU status word in AX register
+    SAHF			                // Store AH into EFlags register
+    JB			PosExp            // Wenn x(Basis) > 0.0, dann Sprung auf PosExp
+    
+    // Die Basis ist negativ, x^y kann jetzt nur für ganzzahlige Exponenten 
+    // ausgerechnet werden. Für reelle Exponenten kommt einen imaginäre Zahl heraus. 
+
+    // Prüfung, ob Exponent ganzzahlig ist
+    FLD     b                 // Push b (Exponent)
+    FABS                      // ST(0) auf Absolutwert ändern
+		L.D			rTemp, 4294967295.0// Wenn der Integerwert > 16#FFFFffff ist, dann ist er auch 
+    FCOM		rTemp             //  ganzzahlig, weil nicht so viele Nachkommastellen vorhanden sind
+    FSTSW		AX                // Store FPU status word in AX register
+    SAHF			                // Store AH into EFlags register
+    JB			CheckInteger      // Wenn Basis < 16#FFFFffff, dann weiter prüfen
+    FABS                      // Mit dem Absolutwert weiterrechnen
+    FCOMP                     // pop
+    // Absolutwert der Basis für die weitere Berechnung verwenden
+    FABS                      // Replace ST with its absolute value
+    JMP     PosExp            // Bei einem so grossen Wert, gibt es auch keine ungeradzahligen 
+                              //  Werte, daher entfällt auch die Prüfung auf Ungeradzahligkeit
+CheckInteger    
+    FIST    temp              // Integerwert von ST(0) auf temp schreiben
+    FILD    temp              // temp als Realzahl auf den Stack
+    FCOMP                     // Compare ST(0) with ST(1) and pop register stack.
+    FSTSW		AX                // Store FPU status word in AX register
+    FCOMP                     // pop
+    SAHF			                // Store AH into EFlags register
+    JZ			IntegerExp        // 
+    //Exponent ist nicht ganzzahlig
+    FCOMPP                    // 2*pop
+    L.D     x, 16#FFC00000    // NaN (-1#IND)
+    JMP     NoComplRes
+    
+IntegerExp    
+    // Absolutwert der Basis für die weitere Berechnung verwenden
+    FABS                      // Replace ST with its absolute value
+    
+    // Falls der Exponent ungeradzahlig ist, dann muss das Endergebnis mit -1 
+    // multipliziert werden.
+    FLD     b                 // Push b (Exponent)
+    FISTP   temp              // Integerwert von ST(0) auf temp schreiben + pop stack
+    L.EAX   temp
+    A.EAX   1
+    JZ      EvenExp
+    L.D     complRes, 1
+EvenExp    
+    
+PosExp    		
+
+		FYL2X				// ST1 * log2(ST0)
+
+		FST			x		// 2^x == 2^(N+y) == 2^N * 2^y
+		FIST		nn		// integer number
+		FISUB		nn		// -1 < x < +1
+
+		F2XM1				// 2^ ( y * log2 (x) ) - 1
+		FLD1
+		FADD				// +1
+
+		L.EBX		nn				// get 2^N
+		TST.EBX		16#8000_0000	// multiply or divide?
+		LAHF
+		S.AH		usFlags
+		JNS			MUL_POS
+		NEG			EBX
+MUL_POS
+		L.D			y, 4294967296.0	// 2^32
+		FLD1
+
+MUL_INT
+		SUB.EBX		32
+		JNGE		MUL_REM			// N >= 32 ?
+
+		FMUL		y				// x *= 2^32
+		JMP			MUL_INT
+
+MUL_REM
+		ADD.EBX		32
+		L.EAX		#TAB_2H32
+		L.EAX		(EAX+sizeof(UDINT)+EBX*sizeof(REAL))
+		S.EAX		y
+		FMUL		y				// 2^(N is int)
+
+		L.AH		usFlags
+		SAHF
+		JS			MUL_DIV
+
+		FMUL						// 2^(x > 0)
+		FSTP		x
+		JMP			MUL_STORE
+
+MUL_DIV								// 2^(x < 0)
+		FDIVR
+		FSTP		x
+
+MUL_STORE
+		FCOMPP
+    
+    // muss das Ergebnis mit -1 multipliziert werden ?
+    L.EAX   complRes
+    O.EAX   EAX
+    JZ      NoComplRes
+    FLD     x
+    FCHS            // Complements sign of ST(0)
+    FSTP		x
+NoComplRes
+
+		L.EAX		x
+		L.EBX		b				// restore EBX
+
+XHY_0
+END_FUNCTION
+// Calculates the sinus of a REAL value, given in degrees.
+//[>EAX] REAL value
+//[<EAX] sin(value * pi/180)
+#ifdef DEGREE_FUS
+
+FUNCTION DIAS_R_SIN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		L.D			x, 180.0/_pi
+		FDIV		x
+		
+		FSIN
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the cosinus of a value given in degrees.
+//[>EAX] REAL value in degrees
+//[<EAX] cos(value*pi/180)
+FUNCTION DIAS_R_COS_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		L.D			x, 180.0/_pi
+		FDIV		x
+
+		FCOS
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+
+// Calculates the tangens of a value given in degrees
+//[>EAX] REAL value
+//[<EAX] tan(value * pi/180)
+FUNCTION DIAS_R_TAN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		L.D			x, 180.0/_pi
+		FDIV		x
+
+		FPTAN
+		FDIV
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Caclulates the arcus sinus of a REAL value, returns a value in degrees
+//[>EAX]	REAL value, from -1 to +1
+//[<EAX]	REAL value in degrees, -90 to +90
+FUNCTION DIAS_R_ASIN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		CALL		DIAS_R_ASIN
+
+		S.EAX		x
+		FLD			x
+		L.D			x, 180.0/_pi
+		FMUL		x
+
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the arcus cosinus of a value, returns a value in degrees
+//[>EAX] REAL value -1 to +1
+//[<EAX] REAL value in degrees, 0 to 180
+FUNCTION DIAS_R_ACOS_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		CALL DIAS_R_ASIN_GR		// acos = 90.0 - asin
+
+		L.D			x, 90.0
+		FST			x
+		S.EAX		x
+
+		FSUB		x
+		FSTP		x
+		L.EAX		x
+
+END_FUNCTION
+// Calculates the arcus tangens of a REAL value, returns a value in degrees
+//[>EAX] REAL value
+//[<EAX] REAL value inbetween -90 and +90
+FUNCTION DIAS_R_ATAN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	x			: REAL;
+END_VAR
+
+		S.EAX		x
+		FLD			x
+		FLD1
+		FPATAN
+
+		L.D			x, 180.0/_pi
+		FMUL		x
+
+		FST			x
+		L.EAX		x
+
+END_FUNCTION
+#endif // DEGREE_FUS

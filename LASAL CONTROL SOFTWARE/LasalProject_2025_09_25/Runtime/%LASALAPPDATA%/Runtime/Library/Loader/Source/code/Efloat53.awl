@@ -1,0 +1,2131 @@
+#ifndef _LSL_TARGETARCH_ARM
+
+#include "..\include\Float53.h"
+#include "..\include\EFloat53.h"
+
+FUNCTION TAB TAB_EXP         
+	16#0000$UINT, 16#3F80$UINT,  // 1/1
+	16#0000$UINT, 16#3F00$UINT,  // 1/2
+	16#AAAB$UINT, 16#3EAA$UINT,  // 1/3
+	16#0000$UINT, 16#3E80$UINT,  // 1/4
+	16#CCCD$UINT, 16#3E4C$UINT,  // 1/5
+	16#AAAB$UINT, 16#3E2A$UINT,  // 1/6
+	16#4925$UINT, 16#3E12$UINT,  // 1/7
+	16#0000$UINT, 16#3E00$UINT,  // 1/8
+	16#8E39$UINT, 16#3DE3$UINT,  // 1/9
+	16#CCCD$UINT, 16#3DCC$UINT,  // 1/10
+	16#2E8C$UINT, 16#3DBA$UINT,  // 1/11
+	16#AAAB$UINT, 16#3DAA$UINT,  // 1/12
+	16#89D9$UINT, 16#3D9D$UINT,  // 1/13
+	16#4925$UINT, 16#3D92$UINT,  // 1/14
+	16#8889$UINT, 16#3D88$UINT,  // 1/15
+	16#0000$UINT, 16#3D80$UINT,  // 1/16
+	16#F0F1$UINT, 16#3D70$UINT,  // 1/17
+	16#8E39$UINT, 16#3D63$UINT,  // 1/18
+	16#9436$UINT, 16#3D57$UINT,  // 1/19
+	16#CCCD$UINT, 16#3D4C$UINT,  // 1/20
+	16#0C31$UINT, 16#3D43$UINT,  // 1/21
+	16#2E8C$UINT, 16#3D3A$UINT,  // 1/22
+	16#1643$UINT, 16#3D32$UINT,  // 1/23
+	16#AAAB$UINT, 16#3D2A$UINT,  // 1/24
+	16#D70A$UINT, 16#3D23$UINT,  // 1/25
+	16#89D9$UINT, 16#3D1D$UINT,  // 1/26
+	16#B426$UINT, 16#3D17$UINT,  // 1/27
+END_FUNCTION
+
+FUNCTION TAB TAB_ASIN        
+	16#F0F2$UINT,16#3F42$UINT,  // asin(0.69)
+	16#8073$UINT,16#3F46$UINT,  // asin(0.70)
+
+	16#1C8E$UINT,16#3F4A$UINT,  // asin(0.71)
+	16#C5FD$UINT,16#3F4D$UINT,
+	16#7D8C$UINT,16#3F51$UINT,
+	16#4419$UINT,16#3F55$UINT,
+	16#1A99$UINT,16#3F59$UINT,
+	16#0217$UINT,16#3F5D$UINT,
+	16#FBBC$UINT,16#3F60$UINT,
+	16#08D2$UINT,16#3F65$UINT,
+	16#2AC7$UINT,16#3F69$UINT,
+	16#6338$UINT,16#3F6D$UINT,
+
+	16#B3F4$UINT,16#3F71$UINT,  // asin(0.81)
+	16#1F08$UINT,16#3F76$UINT,
+	16#A6CD$UINT,16#3F7A$UINT,
+	16#4DF4$UINT,16#3F7F$UINT,
+	16#0BCE$UINT,16#3F82$UINT,
+	16#83B7$UINT,16#3F84$UINT,
+	16#10DF$UINT,16#3F87$UINT,
+	16#B5DA$UINT,16#3F89$UINT,
+	16#75CE$UINT,16#3F8C$UINT,
+	16#549C$UINT,16#3F8F$UINT,
+
+	16#5722$UINT,16#3F92$UINT,  // asin(0.91)
+	16#83A9$UINT,16#3F95$UINT,
+	16#E285$UINT,16#3F98$UINT,
+	16#7F26$UINT,16#3F9C$UINT,
+	16#6A09$UINT,16#3FA0$UINT,
+	16#BC7D$UINT,16#3FA4$UINT,
+	16#A12A$UINT,16#3FA9$UINT,
+
+	16#6B48$UINT,16#3FAF$UINT,  // asin(0.9800)
+	16#120A$UINT,16#3FB0$UINT,  // asin(0.9810)
+	16#BD33$UINT,16#3FB0$UINT,  // asin(0.9820)
+	16#6D24$UINT,16#3FB1$UINT,  // asin(0.9830)
+	16#224B$UINT,16#3FB2$UINT,  // asin(0.9840)
+	16#DD27$UINT,16#3FB2$UINT,  // asin(0.9850)
+	16#9E4D$UINT,16#3FB3$UINT,  // asin(0.9860)
+	16#666F$UINT,16#3FB4$UINT,  // asin(0.9870)
+	16#365E$UINT,16#3FB5$UINT,  // asin(0.9880)
+	16#0F1C$UINT,16#3FB6$UINT,  // asin(0.9890)
+
+	16#F1E3$UINT,16#3FB6$UINT,  // asin(0.9900)
+	16#E043$UINT,16#3FB7$UINT,  // asin(0.9910)
+	16#DC3A$UINT,16#3FB8$UINT,  // asin(0.9920)
+	16#E86D$UINT,16#3FB9$UINT,  // asin(0.9930)
+	16#0881$UINT,16#3FBB$UINT,  // asin(0.9940)
+	16#41B0$UINT,16#3FBC$UINT,  // asin(0.9950)
+	16#9C04$UINT,16#3FBD$UINT,  // asin(0.9960)
+	16#2505$UINT,16#3FBF$UINT,  // asin(0.9970)
+	16#F714$UINT,16#3FC0$UINT,  // asin(0.9980)
+
+	16#564D$UINT,16#3FC3$UINT,  // asin(0.9990)
+	16#A185$UINT,16#3FC3$UINT,  // asin(0.9991)
+	16#F10C$UINT,16#3FC3$UINT,  // asin(0.9992)
+	16#45B7$UINT,16#3FC4$UINT,  // asin(0.9993)
+	16#A0AE$UINT,16#3FC4$UINT,  // asin(0.9994)
+	16#0398$UINT,16#3FC5$UINT,  // asin(0.9995)
+	16#7101$UINT,16#3FC5$UINT,  // asin(0.9996)
+	16#ED2F$UINT,16#3FC5$UINT,  // asin(0.9997)
+	16#807C$UINT,16#3FC6$UINT,  // asin(0.9998)
+
+	16#4071$UINT,16#3FC7$UINT,  // asin(0.99990)
+	16#715D$UINT,16#3FC7$UINT,  // asin(0.99992)
+	16#A8E6$UINT,16#3FC7$UINT,  // asin(0.99994)
+	16#EAC4$UINT,16#3FC7$UINT,  // asin(0.99996)
+	16#409C$UINT,16#3FC8$UINT,  // asin(0.99998)
+
+	16#0FDB$UINT,16#3FC9$UINT,  // asin(1.0000)
+END_FUNCTION
+
+FUNCTION TAB TAB_EXP_LINEAR  
+	16#728F$UINT,16#3B22$UINT,  // exp(-6.0)
+	16#865C$UINT,16#3B1A$UINT,  // exp(-6.05)
+	16#FD10$UINT,16#3B12$UINT,  // exp(-6.1)
+	16#D1DF$UINT,16#3B0B$UINT,
+	16#002F$UINT,16#3B05$UINT,  // exp(-6.2)
+	16#074A$UINT,16#3AFD$UINT,
+	16#B023$UINT,16#3AF0$UINT,  // exp(-6.3)
+	16#F31A$UINT,16#3AE4$UINT,
+	16#C89A$UINT,16#3AD9$UINT,  // exp(-6.4)
+	16#2985$UINT,16#3ACF$UINT,
+	16#0F0B$UINT,16#3AC5$UINT,  // exp(-6.5)
+	16#72B2$UINT,16#3ABB$UINT,
+	16#4E60$UINT,16#3AB2$UINT,  // exp(-6.6)
+	16#9C2C$UINT,16#3AA9$UINT
+	16#5685$UINT,16#3AA1$UINT,  // exp(-6.7)
+	16#782E$UINT,16#3A99$UINT,
+	16#FC16$UINT,16#3A91$UINT,  // exp(-6.8)
+	16#DD69$UINT,16#3A8A$UINT,
+	16#17A7$UINT,16#3A84$UINT,  // exp(-6.9)
+	16#4CE8$UINT,16#3A7B$UINT,
+
+	16#0B4C$UINT,16#3A6F$UINT,  // exp(-7.0)
+	16#62C4$UINT,16#3A63$UINT,
+	16#4BCB$UINT,16#3A58$UINT,
+	16#BF55$UINT,16#3A4D$UINT
+	16#B679$UINT,16#3A43$UINT,
+	16#2AF8$UINT,16#3A3A$UINT,
+	16#1696$UINT,16#3A31$UINT,
+	16#739E$UINT,16#3A28$UINT,
+	16#3C6D$UINT,16#3A20$UINT,
+	16#6BD8$UINT,16#3A18$UINT,
+	16#FCD7$UINT,16#3A10$UINT,
+	16#EAA5$UINT,16#3A09$UINT
+	16#30B3$UINT,16#3A03$UINT,
+	16#958B$UINT,16#39F9$UINT,
+	16#6969$UINT,16#39ED$UINT,
+	16#D536$UINT,16#39E1$UINT,
+	16#D191$UINT,16#39D6$UINT,
+	16#577E$UINT,16#39CC$UINT,
+	16#6048$UINT,16#39C2$UINT,
+	16#E57E$UINT,16#39B8$UINT,
+
+	16#E0F3$UINT,16#39AF$UINT,  // exp(-8.0)
+	16#2451$UINT,16#399F$UINT
+	16#FF4D$UINT,16#398F$UINT,
+	16#4B41$UINT,16#3982$UINT,
+	16#CA47$UINT,16#396B$UINT,
+	16#5A06$UINT,16#3955$UINT,
+	16#0C4F$UINT,16#3941$UINT,
+	16#AD52$UINT,16#392E$UINT,
+	16#0E15$UINT,16#391E$UINT,
+	16#0360$UINT,16#390F$UINT,
+
+	16#675A$UINT,16#3901$UINT,  // exp(-9.0)
+	16#2DB1$UINT,16#38EA$UINT,
+	16#E4E6$UINT,16#38D3$UINT,
+	16#BAE3$UINT,16#38BF$UINT,
+	16#7C1C$UINT,16#38AD$UINT,
+	16#F953$UINT,16#389C$UINT,
+	16#0931$UINT,16#388E$UINT,
+	16#850F$UINT,16#3880$UINT,
+	16#940F$UINT,16#3868$UINT,
+	16#71EC$UINT,16#3852$UINT,
+
+	16#6ACE$UINT,16#383E$UINT,  // exp(-10.0)
+	16#4C3E$UINT,16#382C$UINT,
+	16#E6FC$UINT,16#381B$UINT,
+	16#1129$UINT,16#380D$UINT,
+	16#4839$UINT,16#37FF$UINT,
+	16#FD1C$UINT,16#37E6$UINT,
+	16#02B4$UINT,16#37D1$UINT,
+	16#1CDF$UINT,16#37BD$UINT,
+	16#1E85$UINT,16#37AB$UINT,
+	16#D641$UINT,16#379A$UINT,
+
+	16#1920$UINT,16#378C$UINT,  // exp(-11.0)
+	16#898C$UINT,16#377D$UINT,
+	16#6962$UINT,16#3765$UINT,
+	16#9156$UINT,16#374F$UINT,
+	16#D229$UINT,16#373B$UINT,
+	16#F405$UINT,16#3729$UINT,
+	16#C7AC$UINT,16#3719$UINT,
+	16#222A$UINT,16#370B$UINT,
+	16#CADF$UINT,16#36FB$UINT,
+	16#D5A8$UINT,16#36E3$UINT,
+
+	16#288F$UINT,16#36CE$UINT,  // exp(-12.0)
+	16#8772$UINT,16#36BA$UINT,
+	16#C75F$UINT,16#36A8$UINT,
+	16#B4CB$UINT,16#3698$UINT,
+	16#2D5A$UINT,16#368A$UINT,
+	16#0C31$UINT,16#367A$UINT,
+	16#4A85$UINT,16#3662$UINT,
+	16#BFC8$UINT,16#364C$UINT,
+	16#3870$UINT,16#3639$UINT,
+	16#A350$UINT,16#3627$UINT,
+
+	16#AA81$UINT,16#3617$UINT,  // exp(-13.0)
+END_FUNCTION
+
+FUNCTION TAB TAB_ATAN        
+
+	0.674741,			// atan(0.8)
+	0.686818,
+	0.698660,
+	0.710271,
+	0.721655,
+
+	0.732815,			// atan(0.9)
+	0.743756,
+	0.754480,
+	0.764993,
+	0.775297,
+
+	0.785398,			// atan(1.0)
+	0.795299,
+	0.805003,
+	0.814516,
+	0.823841,
+
+	0.832981, // 1.100000,
+	0.844154, // 1.125000,
+	0.855053, // 1.150000,
+	0.865685, // 1.175000,
+	0.876058, // 1.200000,
+	0.886179, // 1.225000,
+	0.896055, // 1.250000,
+	0.905694, // 1.275000,
+	0.915101, // 1.300000,
+	0.924283, // 1.325000,
+	0.933248, // 1.350000,
+	0.942000, // 1.375000,
+	0.950547, // 1.400000,
+	0.958894, // 1.425000,
+	0.967047, // 1.450000,
+	0.975012, // 1.475000,
+	0.982794, // 1.500000,
+	0.990398, // 1.525000,
+	0.997830, // 1.550000,
+	1.005095, // 1.575000,
+	1.012197, // 1.600000,
+	1.019141, // 1.625000,
+	1.025932, // 1.650000,
+	1.032575, // 1.675000,
+	1.039072, // 1.700000,
+	1.045429, // 1.725000,
+	1.051650, // 1.750000,
+	1.057738, // 1.775000,
+	1.063698, // 1.800000,
+	1.069532, // 1.825000,
+	1.075245, // 1.850000,
+	1.080839, // 1.875000,
+	1.086318, // 1.900000,
+	1.091686, // 1.925000,
+	1.096945, // 1.950000,
+	1.102098, // 1.975000,
+	1.107149, // 2.000000,
+	1.112099, // 2.025000,
+	1.116952, // 2.050000,
+	1.121711, // 2.075000,
+	1.126377, // 2.100000,
+	1.130954, // 2.125000,
+	1.135443, // 2.150000,
+	1.139847, // 2.175000,
+	1.144169, // 2.200000,
+	1.148410, // 2.225000,
+	1.152572, // 2.250000,
+	1.156658, // 2.275000,
+	1.160669, // 2.300000,
+	1.164608, // 2.325000,
+	1.168475, // 2.350000,
+	1.172274, // 2.375000,
+	1.176005, // 2.400000,
+	1.179671, // 2.425000,
+	1.183273, // 2.450000,
+	1.186812, // 2.475000,
+	1.190290, // 2.500000,
+	1.193709, // 2.525000,
+	1.197070, // 2.550000,
+	1.200374, // 2.575000,
+	1.203622, // 2.600000,
+	1.206817, // 2.625000,
+	1.209960, // 2.650000,
+	1.213050, // 2.675000,
+	1.216091, // 2.700000,
+	1.219082, // 2.725000,
+	1.222025, // 2.750000,
+	1.224922, // 2.775000,
+	1.227772, // 2.800000,
+	1.230578, // 2.825000,
+	1.233340, // 2.850000,
+	1.236059, // 2.875000,
+	1.238737, // 2.900000,
+	1.241373, // 2.925000,
+	1.243970, // 2.950000,
+	1.246527, // 2.975000,
+	1.249046, // 3.000000,
+	1.251527, // 3.025000,
+	1.253972, // 3.050000,
+	1.256381, // 3.075000,
+	1.258754, // 3.100000,
+	1.261093, // 3.125000,
+	1.263399, // 3.150000,
+	1.265671, // 3.175000,
+	1.267911, // 3.200000,
+	1.270120, // 3.225000,
+	1.272297, // 3.250000,
+	1.274444, // 3.275000,
+	1.276562, // 3.300000,
+	1.278650, // 3.325000,
+	1.280709, // 3.350000,
+	1.282741, // 3.375000,
+	1.284745, // 3.400000,
+	1.286722, // 3.425000,
+	1.288673, // 3.450000,
+	1.290597, // 3.475000,
+	1.292497, // 3.500000,
+	1.294371, // 3.525000,
+	1.296221, // 3.550000,
+	1.298047, // 3.575000,
+	1.299849, // 3.600000,
+	1.301629, // 3.625000,
+	1.303386, // 3.650000,
+	1.305120, // 3.675000,
+	1.306833, // 3.700000,
+	1.308524, // 3.725000,
+	1.310194, // 3.750000,
+	1.311843, // 3.775000,
+	1.313473, // 3.800000,
+	1.315082, // 3.825000,
+	1.316672, // 3.850000,
+	1.318242, // 3.875000,
+	1.319794, // 3.900000,
+	1.321327, // 3.925000,
+	1.322841, // 3.950000,
+	1.324338, // 3.975000,
+	1.325818, // 4.000000,
+	1.327280, // 4.025000,
+	1.328725, // 4.050000,
+	1.330153, // 4.075000,
+	1.331565, // 4.100000,
+	1.332960, // 4.125000,
+	1.334340, // 4.150000,
+	1.335704, // 4.175000,
+	1.337053, // 4.200000,
+	1.338387, // 4.225000,
+	1.339706, // 4.250000,
+	1.341010, // 4.275000,
+	1.342300, // 4.300000,
+	1.343575, // 4.325000,
+	1.344837, // 4.350000,
+	1.346085, // 4.375000,
+	1.347320, // 4.400000,
+	1.348541, // 4.425000,
+	1.349749, // 4.450000,
+	1.350945, // 4.475000,
+	1.352127, // 4.500000,
+	1.353298, // 4.525000,
+	1.354456, // 4.550000,
+	1.355602, // 4.575000,
+	1.356736, // 4.600000,
+	1.357858, // 4.625000,
+	1.358969, // 4.650000,
+	1.360068, // 4.675000,
+	1.361156, // 4.700000,
+	1.362234, // 4.725000,
+	1.363300, // 4.750000,
+	1.364356, // 4.775000,
+	1.365401, // 4.800000,
+	1.366436, // 4.825000,
+	1.367460, // 4.850000,
+	1.368475, // 4.875000,
+	1.369479, // 4.900000,
+	1.370474, // 4.925000,
+	1.371459, // 4.950000,
+	1.372435, // 4.975000,
+	1.373401, // 5.000000,
+	1.374358, // 5.025000,
+	1.375306, // 5.050000,
+	1.376244, // 5.075000,
+	1.377174, // 5.100000,
+	1.378096, // 5.125000,
+	1.379008, // 5.150000,
+	1.379912, // 5.175000,
+	1.380808, // 5.200000,
+	1.381696, // 5.225000,
+	1.382575, // 5.250000,
+	1.383446, // 5.275000,
+	1.384309, // 5.300000,
+	1.385165, // 5.325000,
+	1.386013, // 5.350000,
+	1.386853, // 5.375000,
+	1.387686, // 5.400000,
+	1.388511, // 5.425000,
+	1.389329, // 5.450000,
+	1.390139, // 5.475000,
+	1.390943, // 5.500000,
+	1.391739, // 5.525000,
+	1.392529, // 5.550000,
+	1.393312, // 5.575000,
+	1.394087, // 5.600000,
+	1.394857, // 5.625000,
+	1.395619, // 5.650000,
+	1.396375, // 5.675000,
+	1.397125, // 5.700000,
+	1.397868, // 5.725000,
+	1.398606, // 5.750000,
+	1.399336, // 5.775000,
+	1.400061, // 5.800000,
+	1.400780, // 5.825000,
+	1.401493, // 5.850000,
+	1.402199, // 5.875000,
+	1.402900, // 5.900000,
+	1.403596, // 5.925000,
+	1.404285, // 5.950000,
+	1.404969, // 5.975000,
+	1.405648, // 6.000000,
+	1.406321, // 6.025000,
+	1.406988, // 6.050000,
+	1.407650, // 6.075000,
+	1.408307, // 6.100000,
+	1.408959, // 6.125000,
+	1.409605, // 6.150000,
+	1.410247, // 6.175000,
+	1.410883, // 6.200000,
+	1.411515, // 6.225000,
+	1.412141, // 6.250000,
+	1.412763, // 6.275000,
+	1.413379, // 6.300000,
+	1.413991, // 6.325000,
+	1.414599, // 6.350000,
+	1.415201, // 6.375000,
+	1.415800, // 6.400000,
+	1.416393, // 6.425000,
+	1.416982, // 6.450000,
+	1.417567, // 6.475000,
+	1.418147, // 6.500000,
+	1.418723, // 6.525000,
+	1.419294, // 6.550000,
+	1.419862, // 6.575000,
+	1.420425, // 6.600000,
+	1.420984, // 6.625000,
+	1.421539, // 6.650000,
+	1.422090, // 6.675000,
+	1.422636, // 6.700000,
+	1.423179, // 6.725000,
+	1.423718, // 6.750000,
+	1.424253, // 6.775000,
+	1.424784, // 6.800000,
+	1.425311, // 6.825000,
+	1.425835, // 6.850000,
+	1.426355, // 6.875000,
+	1.426871, // 6.900000,
+	1.427383, // 6.925000,
+	1.427892, // 6.950000,
+	1.428398, // 6.975000,
+	1.428899, // 7.000000,
+	1.429398, // 7.025000,
+	1.429892, // 7.050000,
+	1.430384, // 7.075000,
+	1.430872, // 7.100000,
+	1.431356, // 7.125000,
+	1.431838, // 7.150000,
+	1.432316, // 7.175000,
+	1.432790, // 7.200000,
+	1.433262, // 7.225000,
+	1.433730, // 7.250000,
+	1.434195, // 7.275000,
+	1.434657, // 7.300000,
+	1.435116, // 7.325000,
+	1.435572, // 7.350000,
+	1.436025, // 7.375000,
+	1.436475, // 7.400000,
+	1.436922, // 7.425000,
+	1.437366, // 7.450000,
+	1.437807, // 7.475000,
+	1.438245, // 7.500000,
+	1.438680, // 7.525000,
+	1.439112, // 7.550000,
+	1.439542, // 7.575000,
+	1.439969, // 7.600000,
+	1.440393, // 7.625000,
+	1.440814, // 7.650000,
+	1.441233, // 7.675000,
+	1.441649, // 7.700000,
+	1.442062, // 7.725000,
+	1.442473, // 7.750000,
+	1.442881, // 7.775000,
+	1.443287, // 7.800000,
+	1.443690, // 7.825000,
+	1.444090, // 7.850000,
+	1.444488, // 7.875000,
+	1.444884, // 7.900000,
+	1.445277, // 7.925000,
+	1.445667, // 7.950000,
+	1.446056, // 7.975000,
+	1.446441, // 8.000000,
+	1.446825, // 8.025000,
+	1.447206, // 8.050000,
+	1.447585, // 8.075000,
+	1.447961, // 8.100000,
+	1.448335, // 8.125000,
+	1.448707, // 8.150000,
+	1.449077, // 8.175000,
+	1.449444, // 8.200000,
+	1.449810, // 8.225000,
+	1.450173, // 8.250000,
+	1.450534, // 8.275000,
+	1.450892, // 8.300000,
+	1.451249, // 8.325000,
+	1.451604, // 8.350000,
+	1.451956, // 8.375000,
+	1.452306, // 8.400000,
+	1.452655, // 8.425000,
+	1.453001, // 8.450000,
+	1.453345, // 8.475000,
+	1.453688, // 8.500000,
+	1.454028, // 8.525000,
+	1.454366, // 8.550000,
+	1.454703, // 8.575000,
+	1.455037, // 8.600000,
+	1.455370, // 8.625000,
+	1.455700, // 8.650000,
+	1.456029, // 8.675000,
+	1.456356, // 8.700000,
+	1.456681, // 8.725000,
+	1.457004, // 8.750000,
+	1.457326, // 8.775000,
+	1.457645, // 8.800000,
+	1.457963, // 8.825000,
+	1.458279, // 8.850000,
+	1.458594, // 8.875000,
+	1.458906, // 8.900000,
+	1.459217, // 8.925000,
+	1.459526, // 8.950000,
+	1.459833, // 8.975000,
+	1.460139, // 9.000000,
+	1.460443, // 9.025000,
+	1.460746, // 9.050000,
+	1.461046, // 9.075000,
+	1.461345, // 9.100000,
+	1.461643, // 9.125000,
+	1.461939, // 9.150000,
+	1.462233, // 9.175000,
+	1.462526, // 9.200000,
+	1.462817, // 9.225000,
+	1.463106, // 9.250000,
+	1.463394, // 9.275000,
+	1.463681, // 9.300000,
+	1.463966, // 9.325000,
+	1.464249, // 9.350000,
+	1.464531, // 9.375000,
+	1.464812, // 9.400000,
+	1.465091, // 9.425000,
+	1.465369, // 9.450000,
+	1.465645, // 9.475000,
+	1.465919, // 9.500000,
+	1.466193, // 9.525000,
+	1.466464, // 9.550000,
+	1.466735, // 9.575000,
+	1.467004, // 9.600000,
+	1.467272, // 9.625000,
+	1.467538, // 9.650000,
+	1.467803, // 9.675000,
+	1.468066, // 9.700000,
+	1.468329, // 9.725000,
+	1.468590, // 9.750000,
+	1.468849, // 9.775000,
+	1.469107, // 9.800000,
+	1.469364, // 9.825000,
+	1.469620, // 9.850000,
+	1.469875, // 9.875000,
+	1.470128, // 9.900000,
+	1.470380, // 9.925000,
+	1.470630, // 9.950000,
+	1.470880, // 9.975000,
+
+	1.471128, // 10.000000,
+	1.475845, // 10.500000,
+	1.480136, // 11.000000,
+	1.484058, // 11.500000,
+	1.487655, // 12.000000,
+	1.490966, // 12.500000,
+	1.494024, // 13.000000,
+	1.496857, // 13.500000,
+	1.499489, // 14.000000,
+	1.501940, // 14.500000,
+	1.504228, // 15.000000,
+	1.506369, // 15.500000,
+	1.508378, // 16.000000,
+	1.510264, // 16.500000,
+	1.512041, // 17.000000,
+	1.513716, // 17.500000,
+	1.515298, // 18.000000,
+	1.516795, // 18.500000,
+	1.518213, // 19.000000,
+	1.519559, // 19.500000,
+	1.520838, // 20.000000,
+	1.522054, // 20.500000,
+	1.523213, // 21.000000,
+	1.524318, // 21.500000,
+	1.525373, // 22.000000,
+	1.526381, // 22.500000,
+	1.527345, // 23.000000,
+	1.528269, // 23.500000,
+	1.529154, // 24.000000,
+	1.530003, // 24.500000,
+	1.530818, // 25.000000,
+	1.531601, // 25.500000,
+	1.532354, // 26.000000,
+	1.533078, // 26.500000,
+	1.533776, // 27.000000,
+	1.534449, // 27.500000,
+	1.535097, // 28.000000,
+	1.535723, // 28.500000,
+	1.536327, // 29.000000,
+	1.536911, // 29.500000,
+	1.537475, // 30.000000,
+
+	1.540037, // 32.500000,
+	1.542233, // 35.000000,
+	1.544136, // 37.500000,
+	1.545802, // 40.000000,
+	1.547271, // 42.500000,
+	1.548578, // 45.000000,
+	1.549747, // 47.500000,
+	1.550799, // 50.000000,
+	1.551751, // 52.500000,
+	1.552617, // 55.000000,
+	1.553407, // 57.500000,
+	1.554131, // 60.000000,
+	1.554798, // 62.500000,
+	1.555413, // 65.000000,
+	1.555983, // 67.500000,
+	1.556512, // 70.000000,
+	1.557004, // 72.500000,
+	1.557464, // 75.000000,
+	1.557894, // 77.500000,
+	1.558297, // 80.000000,
+	1.558676, // 82.500000,
+	1.559032, // 85.000000,
+	1.559368, // 87.500000,
+	1.559686, // 90.000000,
+	1.559986, // 92.500000,
+	1.560270, // 95.000000,
+	1.560540, // 97.500000,
+	1.560797, // 100.000000,
+	1.561041, // 102.500000,
+	1.561273, // 105.000000,
+	1.561494, // 107.500000,
+	1.561706, // 110.000000,
+	1.561908, // 112.500000,
+	1.562101, // 115.000000,
+	1.562286, // 117.500000,
+	1.562463, // 120.000000,
+	1.562633, // 122.500000,
+	1.562796, // 125.000000,
+	1.562953, // 127.500000,
+	1.563104, // 130.000000,
+
+				1300	$UDINT,
+	1.563654,	1400	$UDINT,
+	1.564914,	1700	$UDINT,
+	1.565796,	2000	$UDINT,
+	1.566630,	2400	$UDINT,
+	1.567463,	3000	$UDINT,
+	1.568296,	4000	$UDINT,
+	1.569130,	6000	$UDINT,
+	1.569685,	9000	$UDINT,
+	1.569963,	12000	$UDINT,
+	1.570208,	17000	$UDINT,
+	1.570412,	26000	$UDINT,
+	1.570463,	30000	$UDINT,
+	1.570569,	44000	$UDINT,
+	1.57069,	94000	$UDINT,
+
+END_FUNCTION
+//    Sinus eines Wertes in Grad
+//    ==========================
+//    
+//                 x^3   x^5   x^7   x^9   x^11   x^13
+//    sin(x) = x - --- + --- - --- + --- - ---- + ---- - ...
+//                  3!    5!    7!    9!    11!    13!
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_SIN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+
+         L.EBX     16#3C8EFA35         // PI/180
+         CALL      DIAS_R_MUL
+         CALL      DIAS_R_SIN
+
+         POP       EBX
+END_FUNCTION
+
+
+//    Sinus eines Wertes in Radianten
+//    ===============================
+//    
+//                 x^3   x^5   x^7   x^9   x^11   x^13
+//    sin(x) = x - --- + --- - --- + --- - ---- + ---- - ...
+//                  3!    5!    7!    9!    11!    13!
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_SIN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         ENTER     024
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      ESI
+
+         L.ECX     EAX                 // Vorzeichen speichern
+         AND.EAX   16#7FFFFFFF
+		 S.EAX		(EBP-004)
+
+         L.EBX     16#3FC90FDB         // PI/2
+
+		 CALL		DIAS_R_DIV			// ESI := r/(pi/2)+1
+		 CALL		DIAS_R_RTOD
+		 INC		EAX
+		 S.EAX		ESI
+		 CALL		DIAS_R_UTOR
+
+		 CALL		DIAS_R_MUL			// r := r-ESI*(pi/2)
+		 S.EAX		EBX
+		 L.EAX		(EBP-004)
+		 CALL		DIAS_R_SUB
+(*
+         CLR       ESI                 // Offset (Schrittweite = PI/2)
+         L.EBX     16#3FC90FDB         // PI/2
+
+F02_OFF  CALL      DIAS_R_SUB
+         INC       ESI
+         TEST.EAX  16#80000000
+         JZ        F02_OFF
+*)
+         TEST.ESI  00001
+         JZ        F02_VZ
+         L.EBX     16#3FC90FDB         // PI/2
+         CALL      DIAS_R_ADD          // Offset muss gerade sein
+         DEC       ESI
+
+F02_VZ   TEST.ECX  16#80000000         // Vorzeichen beruecksichtigen
+         JZ        F02_TAYL
+         ADD.ESI   2
+
+F02_TAYL S.EAX     (EBP-004)           // x
+         L.EBX     EAX
+         CALL      DIAS_R_MUL
+         S.EAX     ECX                 // x^2
+
+         CALL      DIAS_R_MUL
+         L.EBX     16#3E2AAAAB         // 1/(1*2*3)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-008)           // x^3/3!
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3D4CCCCD         // 1/(4*5)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-012)           // x^5/5!
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3CC30C31         // 1/(6*7)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-016)           // x^7/7!
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3C638E39         // 1/(8*9)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-020)           // x^9/9!
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3C14F209         // 1/(10*11)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-024)           // x^11/11!
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3BD20D21         // 1/(12*13)
+         CALL      DIAS_R_MUL
+
+         L.EBX     (EBP-004)           // x
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-008)           // x^3/3!
+         CALL      DIAS_R_SUB
+         L.EBX     (EBP-012)           // x^5/5!
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-016)           // x^7/7!
+         CALL      DIAS_R_SUB
+         L.EBX     (EBP-020)           // x^9/9!
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-024)           // x^11/11!
+         CALL      DIAS_R_SUB
+
+         TEST.ESI  00002
+         JZ        F02_ENDE
+
+         XOR.EAX   16#80000000         // Offset kein Vielfaches von 2*PI
+
+F02_ENDE POP       ESI
+         POP       ECX
+         POP       EBX
+         LEAVE
+END_FUNCTION
+
+
+//    Cosinus eines Wertes in Grad
+//    ============================
+//    
+//    cos(x) = sin(x+90)
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_COS_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+
+         L.EBX     16#3C8EFA35         // PI/180
+         CALL      DIAS_R_MUL
+
+         L.EBX     16#3FC90FDB         // PI/2
+         CALL      DIAS_R_ADD
+         CALL      DIAS_R_SIN
+
+         POP       EBX
+END_FUNCTION
+
+
+//    Cosinus eines Wertes in Radianten
+//    ==========================================
+//    
+//    cos(x) = sin(x+90)
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_COS
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+
+         L.EBX     16#3FC90FDB         // PI/2
+         CALL      DIAS_R_ADD
+         CALL      DIAS_R_SIN
+
+         POP       EBX
+END_FUNCTION
+
+
+//    Tangens eines Wertes in Grad
+//    ============================
+//    
+//             sin(x)
+//    tan(x) = ------
+//             cos(x)
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_TAN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+
+         L.EBX     16#3C8EFA35         // PI/180
+         CALL      DIAS_R_MUL
+
+         L.EBX     EAX
+         CALL      DIAS_R_COS
+         XCH.EAX   EBX
+         CALL      DIAS_R_SIN
+         CALL      DIAS_R_DIV
+       
+	     POP       EBX
+END_FUNCTION
+
+
+//    Tangens eines Wertes in Radianten
+//    ==========================================
+//    
+//             sin(x)
+//    tan(x) = ------
+//             cos(x)
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_TAN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+
+         L.EBX     EAX
+         CALL      DIAS_R_COS
+         XCH.EAX   EBX
+         CALL      DIAS_R_SIN
+         CALL      DIAS_R_DIV
+         POP       EBX
+END_FUNCTION
+
+
+//    Arkussinus eines Wertes mit Ergebnis in Grad
+//    ============================================
+//    
+//                  x^3   3*x^5   5*x^7   35*x^9   63*x^11   231*x^13
+//    asin(x) = x + --- + ----- + ----- + ------ + ------- + -------- ...
+//                   6      40     112     1152      2816      13312
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_ASIN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         CALL      DIAS_R_ASIN
+
+         L.EBX     16#42652EE0         // 180/PI
+         CALL      DIAS_R_MUL
+
+         POP       EBX
+END_FUNCTION
+
+
+//    Arkussinus eines Wertes mit Ergebnis in Radianten
+//    =================================================
+//    
+//    arcsin(-x) = -arcsin(x)
+//    
+//                  x^3   3*x^5   5*x^7   35*x^9   63*x^11   231*x^13
+//    asin(x) = x + --- + ----- + ----- + ------ + ------- + -------- ...
+//                   6      40     112     1152      2816      13312
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_ASIN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         ENTER     030
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      ESI
+
+         L.ECX     EAX
+         AND.ECX   16#80000000         // Vorzeichen merken
+
+         AND.EAX   16#7FFFFFFF         // Vorzeichen loeschen
+         S.EAX     (EBP-004)
+
+         L.EBX     16#3F800000         // 1
+         CALL      DIAS_R_SUB
+         TEST.EAX  16#80000000         // Vorzeichenbit testen
+         JNZ       F08_OK
+
+         CMP.EAX   0000000000
+         JNZ       F08_NAN
+
+         L.EAX     16#3FC90FDB         // Zahl = 1
+         JMP       F08_ENDE
+
+F08_NAN  L.EAX     16#FFFFFFFF         // not a number
+         JMP       F08_ENDE
+
+
+F08_OK   L.EAX     (EBP-004)
+         L.EBX     16#47C35000         // 100000
+         CALL      DIAS_R_MUL
+         CALL      DIAS_R_RTOD
+
+         CMP.EAX   69000
+         JB        F08_TAYL            // x < 0.69 -> Taylorreihe
+
+         L.ESI     #TAB_ASIN()
+
+         CMP.EAX   98000
+         JB        F08_TAB1            // 0.69 <= x < 0.98
+
+         CMP.EAX   99900
+         JB        F08_TAB2            // 0.98 <= x < 0.999
+
+         CMP.EAX   99990
+         JB        F08_TAB3            // 0.999 <= x < 0.9999
+
+         JMP       F08_TAB4            // 0.9999 <= x < 1
+
+F08_TAB1 L.EAX     (EBP-004)           // x
+         L.EBX     16#42C80000         // 100
+         CALL      DIAS_R_MUL
+
+         S.EAX     (EBP-008)
+         L.EBX     16#428A0000         // 69 wegrechnen (0.69*100)
+
+F08_TAB  CALL      DIAS_R_SUB
+         CALL      DIAS_R_RTOD
+         SHL.EAX   2
+         ADD.ESI   EAX
+
+         L.EAX     (EBP-008)
+         CALL      DIAS_R_RTOD
+         CALL      DIAS_R_DTOR
+
+         L.EBX     EAX
+         L.EAX     (EBP-008)
+         CALL      DIAS_R_SUB
+         S.EAX     (EBP-008)
+
+         L.EAX     (ESI+8)
+         L.EBX     (ESI+4)
+         CALL      DIAS_R_SUB
+
+         L.EBX     (EBP-008)
+         CALL      DIAS_R_MUL
+
+         L.EBX     (ESI+4)
+         CALL      DIAS_R_ADD
+         JMP       F08_ENDE
+
+F08_TAB2 ADD.ESI   116                 // erster Teil des Offsets
+
+         L.EAX     (EBP-004)           // x
+         L.EBX     16#447A0000         // 1000
+         CALL      DIAS_R_MUL
+
+         S.EAX     (EBP-008)
+         L.EBX     16#44750000         // 980 wegrechnen (0.98*1000)
+
+         JMP       F08_TAB
+
+F08_TAB3 ADD.ESI   192
+
+         L.EAX     (EBP-004)           // x
+         L.EBX     16#461C4000         // 10000
+         CALL      DIAS_R_MUL
+
+         S.EAX     (EBP-008)
+         L.EBX     16#461C1800         // 9990 wegrechnen
+
+         JMP       F08_TAB
+
+F08_TAB4 ADD.ESI   228
+
+         L.EAX     (EBP-004)           // x
+         L.EBX     16#47435000         // 50000
+         CALL      DIAS_R_MUL
+
+         S.EAX     (EBP-008)
+         L.EBX     16#47434B00         // 49995 wegrechnen
+
+         JMP       F08_TAB
+
+// Berechnung mit Taylorreihe
+F08_TAYL PUSH      EDX
+         L.EAX     (EBP-004)
+         L.EBX     EAX
+         CALL      DIAS_R_MUL
+         S.EAX     EDX                 // x^2
+
+         CALL      DIAS_R_MUL
+         L.EBX     16#3E2AAAAB         // 1/6
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-008)           // x^3/6
+
+         L.EBX     EDX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3EE66666         // 9/20 = (6/1)*(3/40)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-012)           // x^5*(3/40)
+
+         L.EBX     EDX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F186186         // 25/42 = (40/3)*(5/112)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-016)           // x^7*(5/112)
+
+         L.EBX     EDX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F2E38E4         // 49/72 = (112/5)*(35/1152)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-020)           // x^9*(35/1152)
+
+         L.EBX     EDX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F3C8254         // 81/110 = (1152/35)*(63/2816)
+         CALL      DIAS_R_MUL
+         S.EAX     (EBP-024)           // x^11*(63/2816)
+
+         L.EBX     EDX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F469069         // 121/156 = (2816/63)*(231/13312)
+         CALL      DIAS_R_MUL          // x^13*(231/13312)
+
+         L.EBX     (EBP-004)
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-008)
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-012)
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-016)
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-020)
+         CALL      DIAS_R_ADD
+         L.EBX     (EBP-024)
+         CALL      DIAS_R_ADD
+
+         POP       EDX
+
+F08_ENDE XOR.EAX   ECX                 // Vorzeichen beruecksichtigen
+         POP       ESI
+         POP       ECX
+         POP       EBX
+         LEAVE
+END_FUNCTION
+
+
+//    Arkuscosinus eines Wertes mit Ergebnis in Grad
+//    ==============================================
+//    
+//    acos(x) = 90 - asin(x)
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_ACOS_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         CALL      DIAS_R_ACOS
+
+         L.EBX     16#42652EE0         // 180/PI
+         CALL      DIAS_R_MUL
+
+         POP       EBX
+END_FUNCTION
+
+
+//    Arkuscosinus eines Wertes mit Ergebnis in Radianten
+//    ===================================================
+//    
+//    acos(x) = PI/2 - asin(x)
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_ACOS
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         CALL      DIAS_R_ASIN
+
+         L.EBX     EAX
+         L.EAX     16#3FC90FDB         // PI/2
+         CALL      DIAS_R_SUB
+
+         POP       EBX
+END_FUNCTION
+
+
+//    Arkustangens eines Wertes mit Ergebnis in Grad
+//    ==============================================
+//    
+//                  x^3   x^5   x^7   x^9   x^11   x^13
+//    atan(x) = x - --- + --- - --- + --- - ---- + ---- - ... fuer |x| < 
+//                   3     5     7     9     11     13
+//    
+//    -> EAX: Wert vom Typ REAL mit Betrag kleiner als 1
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_ATAN_GR
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         CALL      DIAS_R_ATAN
+
+         L.EBX     16#42652EE0         // 180/PI
+         CALL      DIAS_R_MUL
+
+         POP       EBX
+END_FUNCTION
+
+
+//    Arkustangens eines Wertes mit Ergebnis in Radianten
+//    ===================================================
+//    
+//                  x^3   x^5   x^7   x^9   x^11   x^13
+//    atan(x) = x - --- + --- - --- + --- - ---- + ---- - ... fuer |x| < 
+//                   3     5     7     9     11     13
+//    
+//    -> EAX: Wert vom Typ REAL mit Betrag kleiner als 1
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_ATAN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	tx,
+	rx,
+	rx3				,
+	rx5				,
+	rx7				,
+	rx9				,
+	rx11			,
+	rx13			,
+	rx15			,
+	rx17			,
+	rx19			,
+	rx21			: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      EDX
+         PUSH      EDI
+         PUSH      ESI
+
+#define RESOLUTION			5		// 1/10/10	zwischen 0.8 und 1.1
+#define RESOLUTION_1_10		40		// 1/40 	zwischen 1.1 und 10
+#define RESOLUTION_10_30	2		// 2 Punkte pro 1x
+#define RESOLUTION_30_130	10/25	// 1 Punkte pro 10x
+#define RESOLUTION_9400		
+
+		S.EAX		rx
+		CLR			EDI
+		OR.EAX		EAX
+		JNS			FUNCT
+		INC			EDI
+		AND.EAX		16#7FFFFFFF
+		S.EAX		rx
+
+FUNCT	L.EBX		1.0*RESOLUTION_1_10
+		CALL		DIAS_R_MUL
+		CALL		DIAS_R_RTOD
+		CMP.EAX		(8*RESOLUTION_1_10)/10-1	// 0.8 = Start der Interpolationstabelle
+		JNA			F12_TAYL
+
+		L.EBX		EAX
+		SUB.EBX		(8*RESOLUTION_1_10)/10
+		PUSH		EDI
+
+#define CNT_08_11	3*RESOLUTION_1_10/10	// (1.1-0.8)*10
+#define CNT_1_10	(89*RESOLUTION_1_10/10)
+#define CNT_10_30	(20*RESOLUTION_1_10)
+#define CNT_30_130	(100*RESOLUTION_1_10)
+#define CNT_9400	((9400-130)*RESOLUTION_1_10)
+		CLR			EDX
+
+		CMP.EBX		CNT_08_11
+		JB			RANGE_08_11
+
+		CMP.EBX		CNT_1_10 + CNT_08_11
+		JB			RANGE_11_10
+
+		CMP.EBX		CNT_10_30 + CNT_1_10 + CNT_08_11
+		JB			RANGE_10_30
+
+		CMP.EBX		CNT_30_130 + CNT_10_30 + CNT_1_10 + CNT_08_11
+		JB			RANGE_30_130
+
+		CMP.EBX		CNT_9400+CNT_30_130 + CNT_10_30 + CNT_1_10 + CNT_08_11
+		JB			RANGE_9400
+
+		L.EAX		1.5707964		// pi/2
+		JMP			VORZEICH
+
+#undef	CNT_08_11
+#define CNT_08_11	3*RESOLUTION			// (1.1-0.8)*10
+#undef	CNT_10_30
+#define CNT_10_30	20 * RESOLUTION_10_30
+#undef	CNT_30_130
+#define CNT_30_130	100 * RESOLUTION_30_130
+
+//=======================================================
+// Bereich über 130 bis 9400
+RANGE_9400
+		L.EAX		rx
+		CALL		DIAS_R_RTOD
+		L.EBX		10
+		MUL			EBX
+
+		L.ECX		(CNT_30_130 + CNT_10_30 + CNT_1_10 + CNT_08_11 + 4)*4
+		L.ESI		#TAB_ATAN()
+LOOP_9400
+
+		CMP.EAX		(ESI+ECX+0)			// x0
+		JB			FOUND_9400
+
+		ADD.ECX		8
+		JMP			LOOP_9400
+
+FOUND_9400
+		SUB.ECX		8
+		L.EDX		(ESI+ECX+0)
+		SUB.EAX		EDX			// x-x0
+		CALL		DIAS_R_DTOR
+		S.EAX		EBX
+		L.EAX		(ESI+ECX+8)	// x1
+		SUB.EAX		EDX			// x1-x0
+		CALL		DIAS_R_DTOR
+		XCH.EAX		EBX
+		CALL		DIAS_R_DIV		// (x-x0)/(x1-x0)
+		S.EAX		rx3
+
+		L.EAX		(ESI+ECX+4)	// y1
+		L.EBX		(ESI+ECX-4)	// y1-y0
+		CALL		DIAS_R_SUB
+		L.EBX		rx3
+		CALL		DIAS_R_MUL
+		L.EBX		(ESI+ECX-4)
+		CALL		DIAS_R_ADD	// y = y0 + (x-x0)*(y1-y0)/(x1-x0)
+
+		JMP			VORZEICH
+
+//=======================================================
+// Bereich 30..130
+RANGE_30_130
+
+		L.EBX		rx
+		L.EAX		1.0*RESOLUTION_30_130
+		CALL		DIAS_R_MUL
+		CALL		DIAS_R_RTOD
+		L.BX		AX
+		SUB.BX		30*RESOLUTION_30_130
+		PUSH		BX				// Index
+
+		CALL      	DIAS_R_DTOR		
+		L.EBX     	1.0*RESOLUTION_30_130
+		CALL      	DIAS_R_DIV		// x-Stützpunkt
+
+		L.EBX     	rx
+		XCH.EAX   	EBX
+		CALL      	DIAS_R_SUB
+		POP			BX
+
+		ADD.BX		CNT_10_30 + CNT_1_10 + CNT_08_11
+		PUSH		BX					// Index des unteren Stützpunkts
+		PUSH		EAX					// Differenz zum Stützpunkt
+		L.D			tx, 1.0*RESOLUTION_30_130
+		JMP			INTERPOL
+
+//==============================================
+// Bereich 0.8..1.1
+RANGE_08_11
+		L.EBX		rx
+		L.EAX		10.0*RESOLUTION			// pro x/10 20 Stützpunkte
+		CALL		DIAS_R_MUL
+		CALL		DIAS_R_RTOD
+		L.BX		AX
+		SUB.BX		8*RESOLUTION
+		PUSH		BX				// Index
+
+		CALL      	DIAS_R_DTOR
+		L.EBX     	10.0*RESOLUTION
+		CALL      	DIAS_R_DIV
+
+		L.EBX     	rx
+		XCH.EAX   	EBX
+		CALL      	DIAS_R_SUB
+		POP			BX
+
+		PUSH		BX					// Index des unteren Stützpunkts
+		PUSH		EAX					// Differenz zum Stützpunkt
+		L.D			tx, 10.0*RESOLUTION
+		JMP			INTERPOL
+
+//==============================================
+// Bereich 10..30
+RANGE_10_30
+		L.EBX		rx
+		L.EAX		1.0*RESOLUTION_10_30
+		CALL		DIAS_R_MUL
+		CALL		DIAS_R_RTOD
+		L.BX		AX
+		SUB.BX		10*RESOLUTION_10_30
+		PUSH		BX				// Index
+
+		CALL      	DIAS_R_DTOR		
+		L.EBX     	1.0*RESOLUTION_10_30
+		CALL      	DIAS_R_DIV		// x-Stützpunkt
+
+		L.EBX     	rx
+		XCH.EAX   	EBX
+		CALL      	DIAS_R_SUB
+		POP			BX
+
+		ADD.BX		CNT_1_10 + CNT_08_11
+		PUSH		BX					// Index des unteren Stützpunkts
+		PUSH		EAX					// Differenz zum Stützpunkt
+		L.D			tx, 1.0*RESOLUTION_10_30
+		JMP			INTERPOL
+
+//==============================================
+// Bereich 1.1..10
+RANGE_11_10
+		L.EBX		rx
+		L.EAX		1.0*RESOLUTION_1_10
+		CALL		DIAS_R_MUL
+		CALL		DIAS_R_RTOD
+		L.BX		AX
+		SUB.BX		11*RESOLUTION_1_10/10
+		PUSH		BX				// Index
+
+		CALL		DIAS_R_DTOR		
+		L.EBX		1.0*RESOLUTION_1_10
+		CALL		DIAS_R_DIV		// x-Stützpunkt
+
+		L.EBX		rx
+		XCH.EAX		EBX
+		CALL		DIAS_R_SUB
+		POP			BX
+
+		ADD.BX		CNT_08_11
+		PUSH		BX					// Index des unteren Stützpunkts
+		PUSH		EAX					// Differenz zum Stützpunkt
+		L.D			tx, 1.0*RESOLUTION_1_10
+
+INTERPOL
+		L.AX		4
+		MUL		BX			// Index des unteren Stützpunkts
+		LZXW.EBX	AX
+		L.ESI		#TAB_ATAN()         // Wert ist groesser als 1
+		L.EAX		(EBX+ESI+8)         // hoeherer Wert
+		L.EBX		(EBX+ESI+4)         // niederer Wert
+		CALL		DIAS_R_SUB
+
+		L.EBX		tx
+		CALL		DIAS_R_MUL
+
+		POP		EBX					// Differenz zum unteren Stützpunkt
+		CALL		DIAS_R_MUL
+
+		POP		BX
+		PUSH		EAX
+		L.AX		4
+		MUL		BX
+		CLR		EBX
+		L.BX		AX
+		POP		EAX
+
+		L.ESI		#TAB_ATAN()
+		L.EBX		(EBX+ESI+4)
+		CALL		DIAS_R_ADD
+
+VORZEICH	POP		EDI
+         	TEST.EDI	1
+		JZ		F12_ENDE
+		OR.EAX	16#80000000         // negative Zahl
+		JMP		F12_ENDE
+
+F12_TAYL L.EAX     rx		           // Berechnung mit Taylorreihe
+         L.EBX     EAX
+         CALL      DIAS_R_MUL
+         S.EAX     ECX                 // x^2
+
+         CALL      DIAS_R_MUL
+         L.EBX     16#3EAAAAAB         // 1/3
+         CALL      DIAS_R_MUL
+         S.EAX     rx3		           // x^3/3
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F19999A         // 3/5 = 3*(1/5)
+         CALL      DIAS_R_MUL
+         S.EAX     rx5		           // x^5*(1/5)
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F36DB6E         // 5/7 = 5*(1/7)
+         CALL      DIAS_R_MUL
+         S.EAX     rx7		           // x^7*(1/7)
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F471C72         // 7/9 = 7*(1/9)
+         CALL      DIAS_R_MUL
+         S.EAX     rx9		           // x^9*(1/9)
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F51745D         // 9/11 = 9*(1/11)
+         CALL      DIAS_R_MUL
+         S.EAX     rx11		           // x^11*(1/11)
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+		 L.EBX	   16#3f589d8a			// 11/13
+         CALL      DIAS_R_MUL          // x^13*(1/24)
+		 S.EAX	   rx13
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     16#3F5DDDDE         // 13/15
+         CALL      DIAS_R_MUL
+         S.EAX     rx15		           // x^15*(1/15)
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     0.8823529412        // 15/17
+         CALL      DIAS_R_MUL
+         S.EAX     rx17		           // x^17*(1/17)
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     0.8947368421         // 17/19
+         CALL      DIAS_R_MUL
+         S.EAX     rx19		           // x^15*(1/17)
+
+         L.EBX     ECX                 // x^2
+         CALL      DIAS_R_MUL
+         L.EBX     0.475         // 19/21
+         CALL      DIAS_R_MUL
+         S.EAX     rx21		           // x^17*(1/19)
+		 clr 	   eax
+
+         L.EBX     rx
+         CALL      DIAS_R_ADD
+         L.EBX     rx3
+         CALL      DIAS_R_SUB
+         L.EBX     rx5
+         CALL      DIAS_R_ADD
+         L.EBX     rx7
+         CALL      DIAS_R_SUB
+         L.EBX     rx9
+         CALL      DIAS_R_ADD
+         L.EBX     rx11
+         CALL      DIAS_R_SUB
+         L.EBX     rx13
+         CALL      DIAS_R_ADD
+		 
+         L.EBX     rx15
+         CALL      DIAS_R_SUB
+		 L.EBX		rx17
+		 CALL		DIAS_R_ADD
+		 
+		 L.EBX		rx19
+		 CALL		DIAS_R_SUB
+		 L.EBX		rx21
+		 CALL		DIAS_R_ADD
+
+// vorzeichen 16.12.2003		 
+       	 TEST.EDI	1
+		 JZ			F12_ENDE
+		 OR.EAX		16#80000000         // negative Zahl
+
+F12_ENDE POP       ESI
+         POP       EDI
+         POP       EDX
+         POP       ECX
+         POP       EBX
+
+#undef RESOLUTION
+#undef RESOLUTION_1_10
+END_FUNCTION
+
+
+//    Quadratwurzel eines Wertes berechnen
+//    ====================================
+//    
+//    x = Original    x1 = exp/2    mantisse = 1
+//    
+//    x1 = (x/x1+x1)/2    4 mal durchlaufen
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_SQRT
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         ENTER     008
+         PUSH      ESI
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      EDX
+
+         S.EAX     (EBP-004)           // Original
+
+         TEST.EAX  16#80000000
+         JE        F13_POS
+
+         CLR       EAX
+         JMP       F13_ENDE
+
+F13_POS  CLR       ESI
+         CMP.EAX   16#3F800000
+         JE        F13_ENDE
+
+         JNBE      NOT_WEIT
+         L.ESI     1
+
+         OR.EAX    EAX
+         JZ        F13_ENDE
+
+NOT_WEIT CMP.ESI   1
+         JNE       NOT_INV
+         CALL      DIAS_R_1DX
+         S.EAX     (EBP-004)
+
+NOT_INV  L.EDX     EAX
+         SHR.EDX   016
+
+         SHL.DX    001                 // auf dh  sign weg
+
+         S.DH      CL
+         AND.DH    2#01111111
+         AND.CL    16#80
+         SHR.DH    001                 // /2
+         OR.DH     CL
+
+         SHR.DX    1                   // wieder richtig
+         L.AX      1                   // mat = 1
+         CMP.DX    16#4000
+         JAE       NO_KORR
+         L.DX      16#4000
+
+NO_KORR  SHL.EDX   016
+         AND.EAX   16#0000FFFF
+         OR.EAX    EDX
+
+         S.EAX     (EBP-008)           // x1
+
+         L.ECX     4
+
+SQRT_LP  L.EAX     (EBP-004)           // Orginal
+         L.EBX     (EBP-008)           // x1
+
+         CALL      DIAS_R_DIV
+         CALL      DIAS_R_ADD
+
+         L.EBX     16#40000000         // 2.0
+         CALL      DIAS_R_DIV
+
+         S.EAX     (EBP-008)           // = x1
+         LOOP      SQRT_LP
+
+         CMP.ESI   1
+         JNE       F13_ENDE
+         CALL      DIAS_R_1DX
+
+F13_ENDE POP       EDX
+         POP       ECX
+         POP       EBX
+         POP       ESI
+         LEAVE
+END_FUNCTION
+
+
+//    Natuerlichen Logarithmus eines Wertes berechnen
+//    ===============================================
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_LN
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	merker		: REAL;
+	maxLoops	: UDINT;
+	actTerm		: REAL;
+	exp_ln2		: REAL;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      EDX
+         PUSH      ESI
+
+         TEST.EAX  16#80000000
+         JNZ       F14_NAN             // ln(neg) ist nicht definiert
+
+         TEST.EAX  16#7F800000
+         JZ        F14_NAN             // Zahl ist denormalisiert
+
+         L.ECX     EAX
+
+         SHR.EAX   23
+         SUB.EAX   127
+         CALL      DIAS_R_DTOR
+
+         L.EBX     16#3F317218         // ln(2)
+         CALL      DIAS_R_MUL
+         S.EAX     exp_ln2             // Exponent*ln(2)
+		 								// y = ln(x) = ln(man)+ln(2)*exp
+
+		 // Fehler bei Zahlen nahe (1.999-1) = 1 ist sehr groß 
+		 // -> transformieren: ln((x/2) * 2) = ln(x/2) + ln(2)
+         L.EAX		ECX
+         AND.EAX	16#007FFFFF         // Vorzeichen+Exponent loeschen
+         JNZ		NOT_NAT
+
+		 L.EAX		exp_ln2	// eine 2^^X - Zahl, z.B. 2.0, 512.0, etc.
+		 JMP		F14_ENDE
+
+NOT_NAT
+		 OR.EAX		16#7F SHL 23
+		 L.EBX		1.5					// 1.5 <= x < 2.0 wandeln
+		 CALL		DIAS_R_CMP
+		 JB			F14_INIT
+		 L.ECX		EAX	
+
+		 L.EBX		0.69314718056		// ln(2)
+		 L.EAX		exp_ln2
+		 CALL		DIAS_R_ADD
+		 S.EAX		exp_ln2
+
+		 L.EBX		2.0
+		 L.EAX		ECX
+		 CALL		DIAS_R_DIV
+F14_INIT
+
+		 L.EBX		1.0
+		 CALL		DIAS_R_SUB			// ln(1-x) = -(x + x^2/2 + x^3/3 +...)
+
+         S.EAX     merker			// (Mantisse der ursprünglichen Zahl) - 1
+
+         XOR.EAX	16#80000000
+
+         L.EDX		EAX				// in EDX bleibt die Mantisse erhalten
+         L.EDI		EAX				// in EDI steht die letzte Potenz von x
+         L.ESI		2.0				// in ESI steht der Zählerwert in REAL
+		 L.D		maxLoops, 50	// Anzahl der Iterationsblöcke
+         L.ECX		26				// Iterationen pro Block
+
+F14_LOOP L.EAX     EDI				// x^n * x = EDI * EDX
+         L.EBX     EDX
+         CALL      DIAS_R_MUL
+         S.EAX     EDI
+
+         L.EBX     ESI				// x^(n+1) / cnt = EDI / ESI
+         CALL      DIAS_R_DIV
+		 S.EAX		actTerm
+
+         L.EBX     EAX
+         L.EAX     merker			// Summe(x^n/n) - x^(n+1)/(n+1)
+         CALL      DIAS_R_SUB
+         S.EAX     merker
+
+		 L.EAX		ESI				// Schleifenzähler inkrementieren
+		 L.EBX		1.0
+		 CALL		DIAS_R_ADD
+		 S.EAX		ESI
+
+		 L.EAX		merker
+
+         LOOP      F14_LOOP
+
+		 DEC.D		maxLoops		// Notbremse
+		 JZ			F14_NAN
+
+		 L.EAX		actTerm
+		 CALL		DIAS_R_ABS
+		 S.EAX		actTerm
+
+		 L.EAX		merker
+		 L.EBX		0.00000001		// Annahme: actTerm sinkt stetig
+		 CALL		DIAS_R_MUL		// maxErr = 10^-8 * merker
+
+		 L.EBX		actTerm
+		 CALL		DIAS_R_CMP
+		 L.ECX		20				// 20 weitere Iterationen
+		 JB			F14_LOOP
+
+		 L.EAX		merker
+         L.EBX		exp_ln2
+
+         CALL      DIAS_R_ADD
+
+         JMP       F14_ENDE
+
+F14_NAN  L.EAX     16#FFFFFFFF         // -NAN
+
+F14_ENDE 
+         POP       ESI
+         POP       EDX
+         POP       ECX
+         POP       EBX
+END_FUNCTION
+
+
+//    Logarithmus zur Basis 10 berechnen
+//    ==================================
+//    
+//                     log(y)
+//    log(x) = ln(x) * ------           y = 10
+//                     ln(y)
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_LOG
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+         PUSH      EBX
+         CALL      DIAS_R_LN
+         L.EBX     16#3EDE5BD9
+         CALL      DIAS_R_MUL
+         POP       EBX
+END_FUNCTION
+
+
+//    Exponentialwert
+//    ===============
+//    
+//              x   x^2   x^3   x^4   x^5   x^6   x^7
+//    e^x = 1 + - + --- + --- + --- + --- + --- + --- + ...
+//              1    2!    3!    4!    5!    6!    7!
+//    
+//    -> EAX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_EXP
+VAR_INPUT
+	EAX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+	merker		: UDINT;
+	maxLoops	: UDINT;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+         PUSH      EDX
+         PUSH      ESI
+         PUSH      EDI
+
+         TEST.EAX  16#80000000
+         JNS       F16_TAYL            // x positive Zahl -> Taylorreihe
+
+         L.EDX     EAX                 // x merken
+
+         AND.EAX   16#7FFFFFFF         // EAX enthaelt |x|
+         L.EBX     16#42C80000         // 100
+         CALL      DIAS_R_MUL
+         CALL      DIAS_R_RTOD
+
+         L.EBX     EAX                 // EBX enthaelt |x|*100
+         L.EAX     EDX                 // EAX enthaelt wieder x
+
+         CMP.EBX   600
+         JB        F16_TAYL            // -x < 6 -> Taylorreihe
+
+         CMP.EBX   1300
+         JB        F16_NOT0            // -x <= 13 -> Ergebnis = 0
+
+         CLR       EAX
+         JMP       F16_ENDE
+
+F16_NOT0 L.ESI     #TAB_EXP_LINEAR()
+
+         AND.EAX   16#7FFFFFFF         // EAX enthaelt |x|
+         L.EDX     EAX                 // EDX enthaelt |x|
+
+         CMP.EBX   800
+         JB        F16_TAB1            // 6 <= -x < 8
+
+         ADD.ESI   160
+         JMP       F16_TAB2            // 8 <= -x < 13
+
+F16_TAB1 L.EBX     16#41A00000         // 20
+         CALL      DIAS_R_MUL
+         L.ECX     EAX                 // ECX enthaelt |x|*20
+
+         L.EBX     16#42F00000         // 6*20
+         JMP       F16_TAB
+
+F16_TAB2 L.EBX     16#41200000         // 10
+         CALL      DIAS_R_MUL
+         L.ECX     EAX                 // ECX enthaelt |x|*10
+
+         L.EBX     16#42A00000         // 8*10
+
+F16_TAB  CALL      DIAS_R_SUB
+         CALL      DIAS_R_RTOD
+         SHL.EAX   2
+         ADD.ESI   EAX
+
+         L.EAX     ECX                 // |x|*Faktor
+         CALL      DIAS_R_RTOD
+         CALL      DIAS_R_DTOR
+         L.EBX     EAX
+
+         L.EAX     ECX                 // |x|*Faktor
+         CALL      DIAS_R_SUB
+         S.EAX     ECX
+
+         L.EAX     (ESI+8)
+         L.EBX     (ESI+4)
+         CALL      DIAS_R_SUB
+
+         L.EBX     ECX
+         CALL      DIAS_R_MUL
+
+         L.EBX     (ESI+4)
+         CALL      DIAS_R_ADD
+         JMP       F16_ENDE
+
+
+F16_TAYL L.EDX     EAX                 // EDX enthaelt x
+         L.EDI     EAX                 // EDI enthaelt aktuellen Bruch
+
+         L.EBX     16#3F800000         // 1
+         CALL      DIAS_R_ADD
+         S.EAX     merker              // 1+x = aktuelle Summe
+
+		 L.D		maxLoops, 100		// z.B. bei INFinite
+		 L.ESI		2.0
+         L.ECX     26                  // Anzahl der Brueche
+F16_LOOP
+         L.EAX     EDI
+         L.EBX     EDX
+         CALL      DIAS_R_MUL
+         L.EBX     ESI
+         CALL      DIAS_R_DIV
+         S.EAX     EDI                 // aktueller Bruch
+
+         L.EBX     merker
+         CALL      DIAS_R_ADD
+         S.EAX     merker              // aktuelle Summe
+
+		 L.EAX		1.0					// neuen Index berechnen
+		 L.EBX		ESI
+		 CALL		DIAS_R_ADD
+		 S.EAX		ESI
+
+         LOOP      F16_LOOP
+
+		 DEC.D		maxLoops
+		 JZ			F16_ENDE
+
+		 L.ECX		10					// notfalls 10 weitere Iterationen
+		 								// Bruch auch bei neg. Zahlen positiv!
+		 L.EAX		merker
+		 L.EBX		0.000001			// Genauigkeit > 1/1000
+		 CALL		DIAS_R_MUL			// Summe / 1000000
+
+		 L.EBX		EDI					// aktueller Bruch
+		 CALL		DIAS_R_CMP			// maxErr > actErr ?
+		 L.EAX		EDX
+
+         JB			F16_LOOP            // Fehler > 1/1000
+			
+		 L.EAX		merker
+
+F16_ENDE
+         POP       EDI
+         POP       ESI
+         POP       EDX
+         POP       ECX
+         POP       EBX
+
+END_FUNCTION
+
+
+//    X hoch Y
+//    ========
+//    
+//    Wenn X negativ ist, wird das Ergebnis nur ungenau berechnet, da
+//    in diesem Fall der Exponent als ganze Zahl betrachtet wird.
+//    x^y = e^(y*ln(x))
+//    
+//    -> EAX: Wert vom Typ REAL (positiv)
+//    -> EBX: Wert vom Typ REAL
+//    
+//    <- EAX: Ergebnis vom Typ REAL
+
+FUNCTION AWL GLOBAL      DIAS_R_XHY
+VAR_INPUT
+	EAX			: REAL;
+	EBX			: REAL;
+END_VAR
+VAR_OUTPUT
+	EAX			: REAL;
+END_VAR
+VAR
+  RECIPROC_MERKER : UDINT;
+END_VAR
+         PUSH      EBX
+         PUSH      ECX
+
+         L.D       RECIPROC_MERKER, 0
+
+         OR.EBX    EBX
+         JNZ       F17_NOT0
+         L.EAX     16#3F800000         // x^0 = 1
+         JMP       F17_ENDE
+
+F17_NOT0 CMP.EBX   16#3F800000
+         JE        F17_ENDE            // x^1 = x
+
+         OR.EAX    EAX                 // 0^y = 0
+         JZ        F17_ENDE
+
+         TEST.EAX  16#80000000         // Kontrolle, ob x negativ
+         JZ        F17_POS             // --> wenn nicht negativ
+
+         PUSH      EAX
+         L.EAX     EBX
+         CALL      DIAS_R_RTOD         // Hochzahl als Integerwert
+         L.ECX     EAX                 // darf keine Nachkomma haben
+         POP       EAX
+         L.EBX     EAX
+
+         TEST.ECX  16#80000000         // Kontrolle, ob Exponent negativ
+         JZ        F17_EXP_POS         // --> wenn nicht negativ
+         L.D       RECIPROC_MERKER, 1  // Merker, dass der Kehrwert des Ergebnisses gebildet werden muss
+         NEG       ECX                 // Absolutwert des Exponenten
+F17_EXP_POS
+
+         DEC       ECX                 // x^1 = x
+
+         JZ        F17_ENDE
+
+F17_LOOP CALL      DIAS_R_MUL
+         LOOP      F17_LOOP
+         JMP       F17_ENDE
+
+F17_POS  CALL      DIAS_R_LN
+         CALL      DIAS_R_MUL
+         CALL      DIAS_R_EXP
+
+F17_ENDE 
+         L.ECX     RECIPROC_MERKER
+         O.ECX     ECX
+         JZ        NO_RECIPROC
+         L.EBX     EAX
+         L.EAX     16#3F800000        // 1.0
+    		 CALL		   DIAS_R_DIV         // EAX := 1 / EBX
+NO_RECIPROC         
+         POP       ECX
+         POP       EBX
+END_FUNCTION
+
+#endif // _LSL_TARGETARCH_ARM

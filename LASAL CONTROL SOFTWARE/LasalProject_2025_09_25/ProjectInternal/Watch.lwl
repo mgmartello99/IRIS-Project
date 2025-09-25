@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<WatchVariable>
+	<Variable Name="Manager_globale1.CaseManagerGlobale"/>
+	<Variable Name="Manager_globale1.CaseIrradiationPhase"/>
+	<Variable Name="MainSequence1.v_IrradiationStartOver"/>
+	<Variable Name="ManagerMotori1.v_IrradiationStartOver"/>
+	<Variable Name="Motore_M51.v_Irradiation_StartOver"/>
+	<Variable Name="Motore_M51.MovementIrradiationStep"/>
+	<Variable Name="ManagerMotori1.Irradiation_Step"/>
+</WatchVariable>

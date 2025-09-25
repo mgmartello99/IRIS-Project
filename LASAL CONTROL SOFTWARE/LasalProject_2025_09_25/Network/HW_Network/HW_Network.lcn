@@ -1,0 +1,3441 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="HW_Network" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "AI0841"
+			GUID       = "{A22C6821-553B-4F58-948B-120883686620}"
+			Class      = "AI084"
+			Position   = "(4200,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="AI1"/>
+				<Server Name="AI2"/>
+				<Server Name="AI3"/>
+				<Server Name="AI4"/>
+				<Server Name="AI5"/>
+				<Server Name="AI6"/>
+				<Server Name="AI7"/>
+				<Server Name="AI8"/>
+				<Server Name="CableBreak"/>
+				<Server Name="ClassState"/>
+				<Server Name="DeviceID"/>
+				<Server Name="FirmwareVersion"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="FWErrorBits"/>
+				<Server Name="HwVersion"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Client Name="AI1_Freq"/>
+				<Client Name="AI1_Max" Value="20000"/>
+				<Client Name="AI1_Min" Value="0"/>
+				<Client Name="AI1Config"/>
+				<Client Name="AI2_Freq"/>
+				<Client Name="AI2_Max" Value="20000"/>
+				<Client Name="AI2_Min" Value="0"/>
+				<Client Name="AI2Config"/>
+				<Client Name="AI3_Freq"/>
+				<Client Name="AI3_Max" Value="20000"/>
+				<Client Name="AI3_Min" Value="0"/>
+				<Client Name="AI3Config"/>
+				<Client Name="AI4_Freq"/>
+				<Client Name="AI4_Max" Value="20000"/>
+				<Client Name="AI4_Min" Value="0"/>
+				<Client Name="AI4Config"/>
+				<Client Name="AI5_Freq"/>
+				<Client Name="AI5_Max" Value="20000"/>
+				<Client Name="AI5_Min" Value="0"/>
+				<Client Name="AI5Config"/>
+				<Client Name="AI6_Freq"/>
+				<Client Name="AI6_Max" Value="20000"/>
+				<Client Name="AI6_Min" Value="0"/>
+				<Client Name="AI6Config"/>
+				<Client Name="AI7_Freq" Value="0"/>
+				<Client Name="AI7_Max" Value="20000"/>
+				<Client Name="AI7_Min" Value="0"/>
+				<Client Name="AI7Config" Value="0"/>
+				<Client Name="AI8_Freq" Value="0"/>
+				<Client Name="AI8_Max" Value="20000"/>
+				<Client Name="AI8_Min" Value="0"/>
+				<Client Name="AI8Config" Value="0"/>
+				<Client Name="LowRangeLimit" Value="3000"/>
+				<Client Name="Place" Value="0"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{134F0961-BD18-4F7F-A8A4-07C87D06A8CA}" Class="SdiasBase">
+							<Channels>
+								<Server Name="ClassState"/>
+								<Server Name="DeviceID"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="HwVersion"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Client Name="Place" Value="0"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="ToStdLib"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+											<Channels>
+												<Server Name="Data"/>
+												<Client Name="SingleRealloc" Value="1"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="DataBuffer"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																			<Channels>
+																				<Server Name="Data"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+															<Channels>
+																<Server Name="m_udLength"/>
+																<Client Name="ThreadSafe" Value="0"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="AI084"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "CP112_IOs1"
+			GUID       = "{5D90DE9F-E39B-4165-8A6F-CFEFE18D7099}"
+			Class      = "CP112_IOs"
+			Position   = "(660,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="CAN_1_Connect"/>
+				<Server Name="ClassState"/>
+				<Server Name="Ethernet_1_Connect"/>
+				<Server Name="Ethernet_2_Connect"/>
+				<Server Name="USB_1_Connect"/>
+				<Client Name="To_HwControl"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{337D461A-11B5-452C-9DE1-04064CF7AECF}" Class="XXXBase_IOs">
+							<Channels>
+								<Server Name="CAN_1_Connect"/>
+								<Server Name="CAN_2_Connect"/>
+								<Server Name="ClassState"/>
+								<Server Name="COM_1_Connect"/>
+								<Server Name="COM_2_Connect"/>
+								<Server Name="COM_3_Connect"/>
+								<Server Name="Ethernet_1_Connect"/>
+								<Server Name="Ethernet_2_Connect"/>
+								<Server Name="Ethernet_3_Connect"/>
+								<Server Name="Ethernet_4_Connect"/>
+								<Server Name="USB_1_Connect"/>
+								<Client Name="To_HwControl"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_CanLib1" GUID="{99F54FB9-50C4-4B09-9754-D88D3CAD66E4}" Class="_CanLib">
+											<Channels>
+												<Server Name="CanBus" Value="1"/>
+												<Server Name="Command"/>
+												<Client Name="To_Can"/>
+											</Channels>
+										</Object>
+										<Object Name="_CanLib2" GUID="{AE619A04-D25E-4D1A-A696-5DECE6B25694}" Class="_CanLib">
+											<Channels>
+												<Server Name="CanBus" Value="2"/>
+												<Server Name="Command"/>
+												<Client Name="To_Can"/>
+											</Channels>
+										</Object>
+										<Object Name="_SerLib1" GUID="{20E65384-3D3B-4ACE-BEEE-0C43CE37B814}" Class="_SerLib">
+											<Channels>
+												<Server Name="Com" Value="1"/>
+												<Server Name="Command"/>
+											</Channels>
+										</Object>
+										<Object Name="_SerLib2" GUID="{4164A4B8-81D1-4134-8792-127DF657E364}" Class="_SerLib">
+											<Channels>
+												<Server Name="Com" Value="2"/>
+												<Server Name="Command"/>
+											</Channels>
+										</Object>
+										<Object Name="_SerLib3" GUID="{6D7A9FC0-9DDD-45A0-8169-90CDF9145BFC}" Class="_SerLib">
+											<Channels>
+												<Server Name="Com" Value="3"/>
+												<Server Name="Command"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="CP112 IOs"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "DI1601"
+			GUID       = "{0FFB2957-5D77-4908-A7BB-A55935F2394F}"
+			Class      = "DI160"
+			Position   = "(4890,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ClassState"/>
+				<Server Name="DeviceID"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input10"/>
+				<Server Name="Input11"/>
+				<Server Name="Input12"/>
+				<Server Name="Input13"/>
+				<Server Name="Input14"/>
+				<Server Name="Input15"/>
+				<Server Name="Input16"/>
+				<Server Name="Input2"/>
+				<Server Name="Input3"/>
+				<Server Name="Input4"/>
+				<Server Name="Input5"/>
+				<Server Name="Input6"/>
+				<Server Name="Input7"/>
+				<Server Name="Input8"/>
+				<Server Name="Input9"/>
+				<Server Name="InputWord"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Client Name="Place" Value="1"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{3EF630A0-62D3-4172-B4F6-9F63651BA5ED}" Class="SdiasBase">
+							<Channels>
+								<Server Name="ClassState"/>
+								<Server Name="DeviceID"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="HwVersion"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Client Name="Place" Value="1"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="ToStdLib"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+											<Channels>
+												<Server Name="Data"/>
+												<Client Name="SingleRealloc" Value="1"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="DataBuffer"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																			<Channels>
+																				<Server Name="Data"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+															<Channels>
+																<Server Name="m_udLength"/>
+																<Client Name="ThreadSafe" Value="0"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="DI160"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name        = "HwControl1"
+			GUID        = "{FB627847-05B4-4235-AE41-4D26F06EC82B}"
+			Class       = "HwControl"
+			Position    = "(1620,90)"
+			Visualized  = "true"
+			Remotely    = "true"
+			RealTime    = "1 ms"
+			CyclicTime  = "1 ms"
+			RealIndex   = "0"
+			CyclicIndex = "2147483392">
+			<Channels>
+				<Server Name="Control">
+					<AdditionalData>
+						<Section Name="HardwareEditor">
+							<Entry Name="BusType:PlaceCount:MULTIVARAN" Value="1"/>
+						</Section>
+					</AdditionalData>
+				</Server>
+				<Server Name="DiasMaster"/>
+				<Server Name="SafetyState"/>
+				<Server Name="State"/>
+				<Client Name="InterfaceNo" Value="1"/>
+				<Client Name="RtDebug"/>
+				<Client Name="RtTaskSync" Value="0"/>
+				<Client Name="SafetyDomainTimeout"/>
+				<Client Name="UdpSafetyPort" Value="10823"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{4EF772E0-592A-4829-B661-2E7E0E1B8913}" Class="HwControlBase">
+							<Channels>
+								<Server Name="Control"/>
+								<Server Name="DiasMaster"/>
+								<Server Name="State"/>
+								<Client Name="RtDebug"/>
+								<Client Name="To_StdLib"/>
+								<Client Name="To_TaskObjectControl"/>
+							</Channels>
+						</Object>
+						<Object Name="HwcLogging" GUID="{3532143A-BD06-42EA-B855-9758BF64895A}" Class="HwcLogging">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Server Name="OverrideSpamProtection"/>
+								<Client Name="To_SigCLib"/>
+							</Channels>
+						</Object>
+						<Object
+							Name      = "HWRtPostScan"
+							GUID      = "{2898FBA7-3B52-4F51-87F4-0F7670C09C64}"
+							Class     = "HWRtPostScan"
+							RealTime  = "1 ms"
+							RealIndex = "1073741824">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Client Name="toHwControlBase"/>
+							</Channels>
+						</Object>
+						<Object
+							Name       = "SafetyManager"
+							GUID       = "{4545C840-4FB2-4C80-B150-345DF08208A7}"
+							Class      = "SafetyManager"
+							CyclicTime = "10 ms">
+							<Channels>
+								<Server Name="ClassState"/>
+								<Server Name="InitFault"/>
+								<Server Name="InitSSM"/>
+								<Server Name="LoginCnt"/>
+								<Server Name="MaxSyncDuration"/>
+								<Server Name="MinSyncDuration"/>
+								<Server Name="sControl"/>
+								<Server Name="sErrorCount"/>
+								<Server Name="sLastErrorMessage"/>
+								<Server Name="sLastErrorNoOS"/>
+								<Server Name="sTReceive"/>
+								<Server Name="SyncDuration"/>
+								<Client Name="InterfaceNo" Value="1"/>
+								<Client Name="SafetyDomainTimeout"/>
+								<Client Name="To_HwControl"/>
+								<Client Name="To_MultiTask"/>
+								<Client Name="To_OSKernel"/>
+								<Client Name="UdpSafetyPort" Value="10823"/>
+								<Client Name="UdpSafetyRequestCycle" Value="UDP_MIN_REQUEST_TIME"/>
+								<Client Name="UdpSafetyResponseTimeout" Value="UDP_MIN_RESPONSE_TIMEOUT"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{3632CBBA-7E99-4714-B216-B99B262A49F9}" Class="SafetyUDP">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="InitFault"/>
+												<Server Name="InitSSM"/>
+												<Server Name="sControl"/>
+												<Server Name="sErrorCount"/>
+												<Server Name="sLastErrorMessage"/>
+												<Server Name="sLastErrorNoOS"/>
+												<Server Name="sTReceive"/>
+												<Client Name="InterfaceNo" Value="1"/>
+												<Client Name="To_StdLib"/>
+												<Client Name="UdpSafetyPort" Value="10823"/>
+											</Channels>
+										</Object>
+										<Object Name="UdpReceiveData" GUID="{AEB21C96-66F3-41BB-AF8B-4D8748F3E760}" Class="CriticalSection">
+											<Channels>
+												<Server Name="ClassSvr"/>
+											</Channels>
+										</Object>
+										<Object Name="UdpSendData" GUID="{4D3B3492-CD23-4D10-950E-7B1E0CD8A442}" Class="CriticalSection">
+											<Channels>
+												<Server Name="ClassSvr"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "SdiasPLC1"
+			GUID       = "{177411BD-AD0D-465F-8375-758CC53C82A5}"
+			Class      = "SdiasPLC"
+			Position   = "(2460,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ClassState"/>
+				<Server Name="FirmwareVersion"/>
+				<Server Name="InterfaceState"/>
+				<Server Name="IsoRdTaskDuration"/>
+				<Server Name="IsoRdTaskMaxDuration"/>
+				<Server Name="IsoWrTaskDuration"/>
+				<Server Name="IsoWrTaskMaxDuration"/>
+				<Server Name="ManagerOptionBits"/>
+				<Server Name="ManagerProtocolVersion"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SdiasOut_1"/>
+				<Client Name="AutoFarMem" Value="0"/>
+				<Client Name="CoreSelect"/>
+				<Client Name="CycleTime" Value="1000"/>
+				<Client Name="IsoStartPoint" Value="50"/>
+				<Client Name="ToHwControl"/>
+				<Parameter KeyName="CableLength" Value="1"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{0876B3F6-7B0D-4DDD-A261-E4AFE2F441AA}" Class="BusInterfaceSDIASInternal">
+							<Channels>
+								<Server Name="CallCommand"/>
+								<Server Name="InterfaceState"/>
+								<Client Name="CoreSelect"/>
+								<Client Name="CycleTime" Value="1000"/>
+								<Client Name="IsoStartPoint" Value="50"/>
+								<Client Name="ToHwControl"/>
+								<Client Name="ToOSKernel"/>
+								<Client Name="ToStdLib"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="SdiasHubBase1" GUID="{0E4AC654-3AAF-47F8-801F-8E6412D5D92B}" Class="SdiasHubBase">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Client Name="SplitterPlace" Value="0"/>
+								<Client Name="ToNextSDIAS"/>
+							</Channels>
+						</Object>
+						<Object Name="SdiasManager1" GUID="{A6CE8FF7-1B3C-49A6-976D-ED8995566590}" Class="SdiasManager">
+							<Channels>
+								<Server Name="ClassState"/>
+								<Server Name="FirmwareVersion"/>
+								<Server Name="IsoRdTaskDuration"/>
+								<Server Name="IsoRdTaskMaxDuration"/>
+								<Server Name="IsoTaskErrorCount"/>
+								<Server Name="IsoWrTaskDuration"/>
+								<Server Name="IsoWrTaskMaxDuration"/>
+								<Server Name="ManagerOptionBits"/>
+								<Server Name="ManagerProtocolVersion"/>
+								<Server Name="RetryCounter"/>
+								<Client Name="AutoFarMem" Value="0"/>
+								<Client Name="DeviceID" Value="0"/>
+								<Client Name="ToBusInterface"/>
+								<Client Name="ToMultiTask"/>
+								<Client Name="ToStdLib"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "ST1511"
+			GUID       = "{1CB17A17-28EE-48D2-ACEB-57F60B107BA3}"
+			Class      = "ST151"
+			Position   = "(6180,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="500"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="3"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="500"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="3"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="3"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1512"
+			GUID       = "{F23A517B-65FC-43E8-8053-2CAC7BA69179}"
+			Class      = "ST151"
+			Position   = "(7320,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="500"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="4"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="500"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="4"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="4"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1513"
+			GUID       = "{1AD4C5A9-4E7A-4E8F-BF90-00142C1A6E74}"
+			Class      = "ST151"
+			Position   = "(8460,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="700"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="5"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="700"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="5"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="5"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1514"
+			GUID       = "{76CF5407-0500-4B49-BEBC-9373EB998EC0}"
+			Class      = "ST151"
+			Position   = "(9600,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="600"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="6"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="600"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="6"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="6"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1515"
+			GUID       = "{DE9C8D09-585D-4693-A864-3AAAC174E0FB}"
+			Class      = "ST151"
+			Position   = "(10740,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="1000"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="7"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="1000"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="7"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="7"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1516"
+			GUID       = "{557FCE32-D91C-437A-8A06-CCF679FF565D}"
+			Class      = "ST151"
+			Position   = "(11880,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="600"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="8"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="600"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="8"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="8"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1517"
+			GUID       = "{0D9582D0-E7BB-4A0D-AEB6-6059DB2D8E4F}"
+			Class      = "ST151"
+			Position   = "(13020,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="700"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="9"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="700"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="9"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="9"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1518"
+			GUID       = "{CC62A1E4-948F-4D30-BD03-732A8861F569}"
+			Class      = "ST151"
+			Position   = "(14160,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="600"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="10"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="600"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="10"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="10"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "ST1519"
+			GUID       = "{E26F885D-FDA0-4A83-B5D2-C9ABE558B240}"
+			Class      = "ST151"
+			Position   = "(15300,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ActPosition"/>
+				<Server Name="ActRegenResistorLoad"/>
+				<Server Name="AxError"/>
+				<Server Name="ClassState"/>
+				<Server Name="ControlWord"/>
+				<Server Name="CurrentIncrease" Value="1"/>
+				<Server Name="DeviceID"/>
+				<Server Name="Enable"/>
+				<Server Name="EnableSteps" Value="2#1000111"/>
+				<Server Name="EncoderPosition"/>
+				<Server Name="ErrorInfo"/>
+				<Server Name="ErrorQuit"/>
+				<Server Name="ExtendedStateWord"/>
+				<Server Name="ExternalEnable1"/>
+				<Server Name="ExternalEnable2"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HBridgeTemperature"/>
+				<Server Name="HBridgeVoltage"/>
+				<Server Name="HWEnableSoftwareRampdown"/>
+				<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+				<Server Name="HWRampdownDeltaTime" Value="1"/>
+				<Server Name="HwVersion"/>
+				<Server Name="Input1"/>
+				<Server Name="Input1LatchedFalling"/>
+				<Server Name="Input1LatchedRising"/>
+				<Server Name="Input2"/>
+				<Server Name="Input2LatchedFalling"/>
+				<Server Name="Input2LatchedRising"/>
+				<Server Name="LatchPositionEncoderZeroPulse"/>
+				<Server Name="LatchPositionInput1Falling"/>
+				<Server Name="LatchPositionInput1Rising"/>
+				<Server Name="LatchPositionInput2Falling"/>
+				<Server Name="LatchPositionInput2Rising"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="MaxCurrent" Value="600"/>
+				<Server Name="Online"/>
+				<Server Name="RefreshValues"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="SetFreqOut"/>
+				<Server Name="StateWord"/>
+				<Server Name="TargetFreqOut"/>
+				<Server Name="VoltageOKEncoder"/>
+				<Server Name="ZPuls"/>
+				<Server Name="ZPulsLatched"/>
+				<Client Name="ABCountMode" Value="1"/>
+				<Client Name="CompModeVST" Value="0"/>
+				<Client Name="EnableRegenResistor" Value="0"/>
+				<Client Name="EncMode" Value="0"/>
+				<Client Name="EncoderSampling" Value="3"/>
+				<Client Name="InvertEncoder" Value="0"/>
+				<Client Name="InvertZeroPosition" Value="0"/>
+				<Client Name="LatchType" Value="0"/>
+				<Client Name="LoadThresholdBridge" Value="90"/>
+				<Client Name="LoadThresholdResistor" Value="100"/>
+				<Client Name="LoadThresholdWarning" Value="80"/>
+				<Client Name="Place" Value="11"/>
+				<Client Name="RatedMaxPower" Value="1000"/>
+				<Client Name="RegenResistance" Value="150"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+				<Client Name="StallCurrentReduction" Value="0"/>
+				<Client Name="StallCurrentWindow" Value="0"/>
+				<Client Name="SteppingHysteresis" Value="64"/>
+				<Client Name="UseOszi" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{582E7EC6-46F9-4A9D-8649-E00204C2B8B9}" Class="ST151Base">
+							<Channels>
+								<Server Name="ActPosition"/>
+								<Server Name="ActRegenResistorLoad"/>
+								<Server Name="AxError"/>
+								<Server Name="ChopperOffTime" Value="1562"/>
+								<Server Name="ChopperOnTimeMin" Value="180"/>
+								<Server Name="ClassState"/>
+								<Server Name="ControlWord"/>
+								<Server Name="CurrentIncrease" Value="1"/>
+								<Server Name="CurrentOffsetAdjBridge1" Value="100"/>
+								<Server Name="CurrentOffsetAdjBridge2" Value="100"/>
+								<Server Name="DeviceID"/>
+								<Server Name="Enable"/>
+								<Server Name="EnableSteps" Value="2#1000111"/>
+								<Server Name="EncoderPosition"/>
+								<Server Name="ErrorInfo"/>
+								<Server Name="ErrorQuit"/>
+								<Server Name="ExtendedStateWord"/>
+								<Server Name="ExternalEnable1"/>
+								<Server Name="ExternalEnable2"/>
+								<Server Name="FastDecayCurrentThreshold" Value="250"/>
+								<Server Name="FastDecayTime" Value="200"/>
+								<Server Name="FastDecayTimeFallingStep" Value="600"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="FrequLimitDecrease16to32" Value="0"/>
+								<Server Name="FrequLimitDecrease1to2" Value="0"/>
+								<Server Name="FrequLimitDecrease2to4" Value="0"/>
+								<Server Name="FrequLimitDecrease32to64" Value="0"/>
+								<Server Name="FrequLimitDecrease4to8" Value="0"/>
+								<Server Name="FrequLimitDecrease8to16" Value="0"/>
+								<Server Name="FrequLimitIncrease16to8" Value="20000"/>
+								<Server Name="FrequLimitIncrease2to1" Value="50000"/>
+								<Server Name="FrequLimitIncrease32to16" Value="10000"/>
+								<Server Name="FrequLimitIncrease4to2" Value="40000"/>
+								<Server Name="FrequLimitIncrease64to32" Value="5000"/>
+								<Server Name="FrequLimitIncrease8to4" Value="30000"/>
+								<Server Name="HBridgeTemperature"/>
+								<Server Name="HBridgeVoltage"/>
+								<Server Name="HWEnableSoftwareRampdown"/>
+								<Server Name="HWRampdownDeltaFrequency" Value="40"/>
+								<Server Name="HWRampdownDeltaTime" Value="1"/>
+								<Server Name="HwVersion"/>
+								<Server Name="Input1"/>
+								<Server Name="Input1LatchedFalling"/>
+								<Server Name="Input1LatchedRising"/>
+								<Server Name="Input2"/>
+								<Server Name="Input2LatchedFalling"/>
+								<Server Name="Input2LatchedRising"/>
+								<Server Name="LatchPositionEncoderZeroPulse"/>
+								<Server Name="LatchPositionInput1Falling"/>
+								<Server Name="LatchPositionInput1Rising"/>
+								<Server Name="LatchPositionInput2Falling"/>
+								<Server Name="LatchPositionInput2Rising"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="MaxCurrent" Value="600"/>
+								<Server Name="Online"/>
+								<Server Name="RefreshValues"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Server Name="SetFreqOut"/>
+								<Server Name="StateWord"/>
+								<Server Name="TargetFreqOut"/>
+								<Server Name="VoltageOKEncoder"/>
+								<Server Name="ZPuls"/>
+								<Server Name="ZPulsLatched"/>
+								<Client Name="ABCountMode" Value="1"/>
+								<Client Name="CompModeVST" Value="0"/>
+								<Client Name="EnableRegenResistor" Value="0"/>
+								<Client Name="EncMode" Value="0"/>
+								<Client Name="EncoderSampling" Value="3"/>
+								<Client Name="InvertEncoder" Value="0"/>
+								<Client Name="InvertZeroPosition" Value="0"/>
+								<Client Name="LatchType" Value="0"/>
+								<Client Name="LoadThresholdBridge" Value="90"/>
+								<Client Name="LoadThresholdResistor" Value="100"/>
+								<Client Name="LoadThresholdWarning" Value="80"/>
+								<Client Name="Place" Value="11"/>
+								<Client Name="RatedMaxPower" Value="1000"/>
+								<Client Name="RegenResistance" Value="150"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="StallCurrentReduction" Value="0"/>
+								<Client Name="StallCurrentWindow" Value="0"/>
+								<Client Name="SteppingHysteresis" Value="64"/>
+								<Client Name="toFreqLimitTable"/>
+								<Client Name="UseOszi" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{67C26B6D-7D2C-437E-9BFA-E85CD5AF43BC}" Class="SdiasBase">
+											<Channels>
+												<Server Name="ClassState"/>
+												<Server Name="DeviceID"/>
+												<Server Name="FPGAVersion"/>
+												<Server Name="HwVersion"/>
+												<Server Name="LEDControl" Value="0"/>
+												<Server Name="RetryCounter"/>
+												<Server Name="SDOState"/>
+												<Server Name="SerialNo"/>
+												<Client Name="Place" Value="11"/>
+												<Client Name="Required" Value="1"/>
+												<Client Name="SdiasIn"/>
+												<Client Name="ToStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ST151_IntVisu1" GUID="{2794B874-E689-4F4C-B621-09286FF3E449}" Class="ST151_IntVisu">
+							<Channels>
+								<Server Name="ActFreqLimitDec16to32"/>
+								<Server Name="ActFreqLimitDec1to2"/>
+								<Server Name="ActFreqLimitDec2to4"/>
+								<Server Name="ActFreqLimitDec32to64"/>
+								<Server Name="ActFreqLimitDec4to8"/>
+								<Server Name="ActFreqLimitDec8to16"/>
+								<Server Name="ActFreqLimitInc16to8"/>
+								<Server Name="ActFreqLimitInc2to1"/>
+								<Server Name="ActFreqLimitInc32to16"/>
+								<Server Name="ActFreqLimitInc4to2"/>
+								<Server Name="ActFreqLimitInc64to32"/>
+								<Server Name="ActFreqLimitInc8to4"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="CompModeSwitch"/>
+								<Server Name="EnableSteps"/>
+								<Server Name="RealDec16to32"/>
+								<Server Name="RealDec1to2"/>
+								<Server Name="RealDec2to4"/>
+								<Server Name="RealDec32to64"/>
+								<Server Name="RealDec4to8"/>
+								<Server Name="RealDec8to16"/>
+								<Server Name="UpperFrequ"/>
+								<Server Name="VisuSchemeSwitch"/>
+								<Client Name="toST151Base"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="ST151"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "TO1271"
+			GUID       = "{1CD62350-4890-4F7D-949B-693F3A8FFF90}"
+			Class      = "TO127"
+			Position   = "(5490,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="ClassState"/>
+				<Server Name="DeviceID"/>
+				<Server Name="FPGAVersion"/>
+				<Server Name="HwVersion"/>
+				<Server Name="LEDControl" Value="0"/>
+				<Server Name="Output1"/>
+				<Server Name="Output10"/>
+				<Server Name="Output11"/>
+				<Server Name="Output12"/>
+				<Server Name="Output2"/>
+				<Server Name="Output3"/>
+				<Server Name="Output4"/>
+				<Server Name="Output5"/>
+				<Server Name="Output6"/>
+				<Server Name="Output7"/>
+				<Server Name="Output8"/>
+				<Server Name="Output9"/>
+				<Server Name="OutputWord"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="SerialNo"/>
+				<Server Name="VoltageOkBank1"/>
+				<Server Name="VoltageOkBank2"/>
+				<Server Name="VoltageOkBank3"/>
+				<Client Name="Place" Value="2"/>
+				<Client Name="Required" Value="1"/>
+				<Client Name="SdiasIn"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{FB712B6A-61BF-42C5-9E04-D6E48AE1C08A}" Class="SdiasBase">
+							<Channels>
+								<Server Name="ClassState"/>
+								<Server Name="DeviceID"/>
+								<Server Name="FPGAVersion"/>
+								<Server Name="HwVersion"/>
+								<Server Name="LEDControl" Value="0"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="SDOState"/>
+								<Server Name="SerialNo"/>
+								<Client Name="Place" Value="2"/>
+								<Client Name="Required" Value="1"/>
+								<Client Name="SdiasIn"/>
+								<Client Name="ToStdLib"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="SerialNoStr" GUID="{016F794C-857F-482F-8C65-B5EE24158A3F}" Class="String">
+											<Channels>
+												<Server Name="Data"/>
+												<Client Name="SingleRealloc" Value="1"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="DataBuffer"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																			<Channels>
+																				<Server Name="Data"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+															<Channels>
+																<Server Name="m_udLength"/>
+																<Client Name="ThreadSafe" Value="0"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="TO127"/>
+			</AdditionalData>
+		</Object>
+		<Object
+			Name       = "VaranManager_11"
+			GUID       = "{B618A964-1A75-48B0-B2BB-4043BA56C432}"
+			Class      = "VaranManager_1"
+			Position   = "(3390,90)"
+			Visualized = "true"
+			Remotely   = "true">
+			<Channels>
+				<Server Name="Act_RtCallTime"/>
+				<Server Name="Act_RtTime"/>
+				<Server Name="AsyVaranTime"/>
+				<Server Name="Control"/>
+				<Server Name="IsoVaranTime"/>
+				<Server Name="IsoVaranTimeMax"/>
+				<Server Name="ManagerOn"/>
+				<Server Name="ManagerProtocolVersion"/>
+				<Server Name="Max_RtCallTime"/>
+				<Server Name="Max_RtTime"/>
+				<Server Name="Min_RtCallTime"/>
+				<Server Name="Min_RtTime"/>
+				<Server Name="Release"/>
+				<Server Name="RetryCounter"/>
+				<Server Name="State"/>
+				<Server Name="SuperiorSystemOK"/>
+				<Server Name="VaranOut_1"/>
+				<Client Name="CoreSelect" Value="0"/>
+				<Client Name="InterframeGap" Value="0"/>
+				<Client Name="IsAlsoClient"/>
+				<Client Name="IsoStartPoint"/>
+				<Client Name="PayloadFrame" Value="0"/>
+				<Client Name="PreventManagerError"/>
+				<Client Name="SuperiorSystemTime"/>
+				<Client Name="To_HwControl"/>
+				<Client Name="VaranManagerNr" Value="0"/>
+				<Client Name="VaranManagerTime" Value="1000000"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{B14264EC-37B0-4383-8218-E55E69FA2442}" Class="VaranManager">
+							<Channels>
+								<Server Name="Act_RtCallTime"/>
+								<Server Name="Act_RtTime"/>
+								<Server Name="AsyVaranTime"/>
+								<Server Name="Control"/>
+								<Server Name="IsoVaranTime"/>
+								<Server Name="IsoVaranTimeMax"/>
+								<Server Name="ManagerOn"/>
+								<Server Name="ManagerProtocolVersion"/>
+								<Server Name="Max_RtCallTime"/>
+								<Server Name="Max_RtTime"/>
+								<Server Name="Min_RtCallTime"/>
+								<Server Name="Min_RtTime"/>
+								<Server Name="Release"/>
+								<Server Name="RetryCounter"/>
+								<Server Name="State"/>
+								<Server Name="SuperiorSystemOK"/>
+								<Client Name="CoreSelect" Value="0"/>
+								<Client Name="InterframeGap" Value="0"/>
+								<Client Name="IsAlsoClient"/>
+								<Client Name="IsoStartPoint"/>
+								<Client Name="PayloadFrame" Value="0"/>
+								<Client Name="PreventManagerError"/>
+								<Client Name="SafetyAsyMemRead"/>
+								<Client Name="SafetyAsyMemWrite"/>
+								<Client Name="SafetyIsoMemRead"/>
+								<Client Name="SafetyIsoMemWrite"/>
+								<Client Name="SuperiorSystemTime"/>
+								<Client Name="To_HwControl"/>
+								<Client Name="To_Multitask"/>
+								<Client Name="VaranManagerNr" Value="0"/>
+								<Client Name="VaranManagerTime" Value="1000000"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{D32EA40A-247A-4A46-B103-304F62B74DD1}" Class="VaranManager_Base">
+											<Channels>
+												<Server Name="Control"/>
+												<Client Name="To_FileSys"/>
+												<Client Name="To_OSKernel"/>
+												<Client Name="To_StdLib"/>
+											</Channels>
+										</Object>
+										<Object Name="ASCII_BIN1" GUID="{8C265742-AE37-41F3-9FFC-79C0C2DE41AA}" Class="ASCII_BIN">
+											<Channels>
+												<Server Name="Obj_channel"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="Hub_Base_Root0" GUID="{F934CCA3-05BF-4D92-9C62-69704186A95F}" Class="Hub_Base_Root">
+							<Channels>
+								<Server Name="Control"/>
+								<Client Name="Splitter_Place" Value="0"/>
+								<Client Name="VaranConnect"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{9AB540D8-20C2-4DAA-AEC9-3A69220696B3}" Class="Hub_Base">
+											<Channels>
+												<Server Name="Control"/>
+												<Client Name="Splitter_Place" Value="0"/>
+												<Client Name="VaranIn"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{5D6D62E4-B5A0-489A-88A5-E5683DD5B86D}" Class="VaranManager_Base">
+															<Channels>
+																<Server Name="Control"/>
+																<Client Name="To_FileSys"/>
+																<Client Name="To_OSKernel"/>
+																<Client Name="To_StdLib"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+			<AdditionalData>
+				<Entry Name="DeviceType" Value="VaranManager_1"/>
+			</AdditionalData>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="SdiasPLC1.ToHwControl" Destination="HwControl1.Control" Vertices="(2460,180),(2282,180),"/>
+		<Connection Source="CP112_IOs1.To_HwControl" Destination="HwControl1.Control" Vertices="(660,180),(2282,180),"/>
+		<Connection Source="VaranManager_11.To_HwControl" Destination="HwControl1.Control" Vertices="(3390,180),(2282,180),"/>
+		<Connection Source="AI0841.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(4200,180),(3206,780),"/>
+		<Connection Source="DI1601.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(4890,180),(3206,780),"/>
+		<Connection Source="TO1271.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(5490,180),(3206,780),"/>
+		<Connection Source="ST1511.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(6180,180),(3206,780),"/>
+		<Connection Source="ST1512.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(7320,180),(3206,780),"/>
+		<Connection Source="ST1513.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(8460,180),(3206,780),"/>
+		<Connection Source="ST1514.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(9600,180),(3206,780),"/>
+		<Connection Source="ST1515.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(10740,180),(3206,780),"/>
+		<Connection Source="ST1516.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(11880,180),(3206,780),"/>
+		<Connection Source="ST1517.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(13020,180),(3206,780),"/>
+		<Connection Source="ST1518.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(14160,180),(3206,780),"/>
+		<Connection Source="ST1519.SdiasIn" Destination="SdiasPLC1.SdiasOut_1" Vertices="(15300,180),(3206,780),"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

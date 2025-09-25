@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<WatchVariable>
+	<Variable Name="Manager_globale1.CaseManagerGlobale"/>
+	<Variable Name="Manager_globale1.CaseIrradiationPhase"/>
+	<Variable Name="MOTORE_M11.HomingStep"/>
+	<Variable Name="ManagerMotori1.Charge_step"/>
+	<Variable Name="M5_Charge_end"/>
+	<Variable Name="v_M5_InPos"/>
+	<Variable Name="M5_charge_position"/>
+	<Variable Name="ManagerMotori1.FLAG"/>
+</WatchVariable>

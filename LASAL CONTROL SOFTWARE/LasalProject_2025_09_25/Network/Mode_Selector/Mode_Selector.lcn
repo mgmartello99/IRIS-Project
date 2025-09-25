@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="Mode_Selector" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "Mode_selector_class1"
+			GUID       = "{A91F0386-2FE8-42E3-93FE-5D609C708082}"
+			Class      = "Mode_selector_class"
+			Position   = "(2340,540)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Selector"/>
+				<Client Name="To_Manager_manual_Motor"/>
+				<Client Name="To_Manager_motori"/>
+			</Channels>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="Mode_selector_class1.To_Manager_motori" Destination="Manager_globale1.Mode_Selector"/>
+		<Connection Source="Mode_selector_class1.To_Manager_manual_Motor" Destination="__IO_Element181" IOObject="IO_Element18"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

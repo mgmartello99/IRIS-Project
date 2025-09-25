@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="Manual" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "AutoManSelector1"
+			GUID       = "{04AB46C2-CEFB-474B-A0B3-F20D950B58F4}"
+			Class      = "AutoManSelector"
+			Position   = "(4470,2280)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="s_EasyGUIEn"/>
+				<Server Name="s_EmergencyStopMan"/>
+				<Server Name="Selector"/>
+				<Client Name="c_EasyGUIEn_IrrT"/>
+				<Client Name="c_EasyGUIEn_MainS"/>
+				<Client Name="ResetM1"/>
+				<Client Name="ResetM2"/>
+				<Client Name="ResetM3"/>
+				<Client Name="ResetM4"/>
+				<Client Name="ResetM5"/>
+				<Client Name="ResetM6"/>
+				<Client Name="ResetM7"/>
+				<Client Name="StopM1"/>
+				<Client Name="StopM2"/>
+				<Client Name="StopM3"/>
+				<Client Name="StopM4"/>
+				<Client Name="StopM5"/>
+				<Client Name="StopM6"/>
+				<Client Name="StopM7"/>
+				<Client Name="toAutomatic"/>
+				<Client Name="toManualM1"/>
+				<Client Name="toManualM2"/>
+				<Client Name="toManualM3"/>
+				<Client Name="toManualM4"/>
+				<Client Name="toManualM5"/>
+				<Client Name="toManualM6"/>
+				<Client Name="toManualM7"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "M1_Charge_Slider"
+			GUID       = "{2C95016F-2752-46A6-AAA8-704C9E804478}"
+			Class      = "Manual_Motor"
+			Position   = "(1140,300)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="Enable"/>
+				<Server Name="Max_speed"/>
+				<Server Name="Min_speed"/>
+				<Server Name="Pos"/>
+				<Server Name="PowerOff"/>
+				<Server Name="PowerOn"/>
+				<Server Name="S_Error"/>
+				<Server Name="s_FiniteStateMachine"/>
+				<Server Name="s_Home_forward"/>
+				<Server Name="s_Home_reverse"/>
+				<Server Name="s_Homed_forward"/>
+				<Server Name="s_Homed_reverse"/>
+				<Server Name="s_one_step_forward"/>
+				<Server Name="s_one_step_reverse"/>
+				<Server Name="S_Reset"/>
+				<Server Name="Start"/>
+				<Server Name="Stop"/>
+				<Server Name="Stop_Movement"/>
+				<Server Name="Vel"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_Motore" Value="PASSIVE_LMCAXIS"/>
+				<Client Name="M_LS_1"/>
+				<Client Name="M_LS_2"/>
+				<Client Name="setPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "M2_Charge_Buffer"
+			GUID       = "{838992DF-7827-4057-90F2-4DFC7F155315}"
+			Class      = "ManualMotor_CBCM"
+			Position   = "(2190,300)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="Enable"/>
+				<Server Name="Max_speed"/>
+				<Server Name="Min_speed"/>
+				<Server Name="Pos"/>
+				<Server Name="PowerOff"/>
+				<Server Name="PowerOn"/>
+				<Server Name="S_Error"/>
+				<Server Name="s_FiniteStateMachine"/>
+				<Server Name="s_Home_forward"/>
+				<Server Name="s_Home_reverse"/>
+				<Server Name="s_Homed_forward"/>
+				<Server Name="s_Homed_reverse"/>
+				<Server Name="s_one_step_forward"/>
+				<Server Name="s_one_step_reverse"/>
+				<Server Name="S_Reset"/>
+				<Server Name="Start"/>
+				<Server Name="Stop"/>
+				<Server Name="Stop_Movement"/>
+				<Server Name="Vel"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_Motore"/>
+				<Client Name="M_LS"/>
+				<Client Name="setPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "M3_Discharge_Slider"
+			GUID       = "{1D9D1B66-C756-4D1E-9B8B-C3B7E5E68FDE}"
+			Class      = "Manual_Motor"
+			Position   = "(3210,300)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="Enable"/>
+				<Server Name="Max_speed"/>
+				<Server Name="Min_speed"/>
+				<Server Name="Pos"/>
+				<Server Name="PowerOff"/>
+				<Server Name="PowerOn"/>
+				<Server Name="S_Error"/>
+				<Server Name="s_FiniteStateMachine"/>
+				<Server Name="s_Home_forward"/>
+				<Server Name="s_Home_reverse"/>
+				<Server Name="s_Homed_forward"/>
+				<Server Name="s_Homed_reverse"/>
+				<Server Name="s_one_step_forward"/>
+				<Server Name="s_one_step_reverse"/>
+				<Server Name="S_Reset"/>
+				<Server Name="Start"/>
+				<Server Name="Stop"/>
+				<Server Name="Stop_Movement"/>
+				<Server Name="Vel"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_Motore"/>
+				<Client Name="M_LS_1"/>
+				<Client Name="M_LS_2"/>
+				<Client Name="setPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "M4_Discharge_Buffer"
+			GUID       = "{568FD0A1-687B-4E80-9C52-7D1853A75A12}"
+			Class      = "ManualMotor_DB"
+			Position   = "(4470,300)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="Enable"/>
+				<Server Name="Max_speed"/>
+				<Server Name="Min_speed"/>
+				<Server Name="Pos"/>
+				<Server Name="PowerOff"/>
+				<Server Name="PowerOn"/>
+				<Server Name="S_Error"/>
+				<Server Name="s_FiniteStateMachine"/>
+				<Server Name="s_Home_forward"/>
+				<Server Name="s_Home_reverse"/>
+				<Server Name="s_Homed_forward"/>
+				<Server Name="s_Homed_reverse"/>
+				<Server Name="s_one_step_forward"/>
+				<Server Name="s_one_step_reverse"/>
+				<Server Name="S_Reset"/>
+				<Server Name="Start"/>
+				<Server Name="Stop"/>
+				<Server Name="Stop_Movement"/>
+				<Server Name="Vel"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_Motore"/>
+				<Client Name="M_LS"/>
+				<Client Name="setPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "M5_Central_Movement"
+			GUID       = "{3E02EDDF-5E74-4DD5-BFF9-DC0CAC826842}"
+			Class      = "ManualMotor_CBCM"
+			Position   = "(1140,2220)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="Enable"/>
+				<Server Name="Max_speed"/>
+				<Server Name="Min_speed"/>
+				<Server Name="Pos"/>
+				<Server Name="PowerOff"/>
+				<Server Name="PowerOn"/>
+				<Server Name="S_Error"/>
+				<Server Name="s_FiniteStateMachine"/>
+				<Server Name="s_Home_forward"/>
+				<Server Name="s_Home_reverse"/>
+				<Server Name="s_Homed_forward"/>
+				<Server Name="s_Homed_reverse"/>
+				<Server Name="s_one_step_forward"/>
+				<Server Name="s_one_step_reverse"/>
+				<Server Name="S_Reset"/>
+				<Server Name="Start"/>
+				<Server Name="Stop"/>
+				<Server Name="Stop_Movement"/>
+				<Server Name="Vel"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_Motore"/>
+				<Client Name="M_LS"/>
+				<Client Name="setPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "M6_Longitudinal_axis"
+			GUID       = "{03A5C386-580E-4B07-B02F-3DFE2F838F06}"
+			Class      = "Manual_Motor"
+			Position   = "(2190,2220)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="Enable"/>
+				<Server Name="Max_speed"/>
+				<Server Name="Min_speed"/>
+				<Server Name="Pos"/>
+				<Server Name="PowerOff"/>
+				<Server Name="PowerOn"/>
+				<Server Name="S_Error"/>
+				<Server Name="s_FiniteStateMachine"/>
+				<Server Name="s_Home_forward"/>
+				<Server Name="s_Home_reverse"/>
+				<Server Name="s_Homed_forward"/>
+				<Server Name="s_Homed_reverse"/>
+				<Server Name="s_one_step_forward"/>
+				<Server Name="s_one_step_reverse"/>
+				<Server Name="S_Reset"/>
+				<Server Name="Start"/>
+				<Server Name="Stop"/>
+				<Server Name="Stop_Movement"/>
+				<Server Name="Vel"/>
+				<Client Name="c_MaxCurrent"/>
+				<Client Name="Comando_Motore"/>
+				<Client Name="M_LS_1"/>
+				<Client Name="M_LS_2"/>
+				<Client Name="setPositionController"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "M7_Target_Block"
+			GUID       = "{5AD5C574-13A6-4E18-AA35-65280C85E5CC}"
+			Class      = "Manual_MotorBT"
+			Position   = "(3270,2220)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="Enable"/>
+				<Server Name="Max_speed"/>
+				<Server Name="Min_speed"/>
+				<Server Name="Pos"/>
+				<Server Name="PowerOff"/>
+				<Server Name="PowerOn"/>
+				<Server Name="S_Error"/>
+				<Server Name="s_FiniteStateMachine"/>
+				<Server Name="s_Home_forward"/>
+				<Server Name="s_Home_reverse"/>
+				<Server Name="s_Homed_forward"/>
+				<Server Name="s_Homed_reverse"/>
+				<Server Name="s_one_step_forward"/>
+				<Server Name="s_one_step_reverse"/>
+				<Server Name="S_Reset"/>
+				<Server Name="Start"/>
+				<Server Name="Stop"/>
+				<Server Name="Stop_Movement"/>
+				<Server Name="Vel"/>
+				<Client Name="Comando_Motore"/>
+				<Client Name="M_LS_1"/>
+				<Client Name="M_LS_2"/>
+				<Client Name="setPositionController"/>
+			</Channels>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="M1_Charge_Slider.Comando_Motore" Destination="__IO_Element121" IOObject="IO_Element12"/>
+		<Connection Source="M1_Charge_Slider.M_LS_1" Destination="__IO_Element161" Vertices="(1140,450),(990,450)," IOObject="IO_Element16"/>
+		<Connection Source="M1_Charge_Slider.M_LS_2" Destination="__IO_Element171" Vertices="(1140,510),(990,510)," IOObject="IO_Element17"/>
+		<Connection Source="M2_Charge_Buffer.Comando_Motore" Destination="__IO_Element781" IOObject="IO_Element78"/>
+		<Connection Source="M2_Charge_Buffer.M_LS" Destination="__IO_Element811" Vertices="(2190,450),(2130,450)," IOObject="IO_Element81"/>
+		<Connection Source="M3_Discharge_Slider.Comando_Motore" Destination="__IO_Element821" IOObject="IO_Element82"/>
+		<Connection Source="M4_Discharge_Buffer.Comando_Motore" Destination="__IO_Element831" IOObject="IO_Element83"/>
+		<Connection Source="M5_Central_Movement.Comando_Motore" Destination="__IO_Element861" IOObject="IO_Element86"/>
+		<Connection Source="M6_Longitudinal_axis.Comando_Motore" Destination="__IO_Element871" IOObject="IO_Element87"/>
+		<Connection Source="M7_Target_Block.Comando_Motore" Destination="__IO_Element881" IOObject="IO_Element88"/>
+		<Connection Source="M3_Discharge_Slider.M_LS_1" Destination="__IO_Element901" Vertices="(3210,450),(3180,510)," IOObject="IO_Element90"/>
+		<Connection Source="M3_Discharge_Slider.M_LS_2" Destination="__IO_Element891" Vertices="(3210,510),(3180,450)," IOObject="IO_Element89"/>
+		<Connection Source="M4_Discharge_Buffer.M_LS" Destination="__IO_Element911" Vertices="(4470,450),(4290,450)," IOObject="IO_Element91"/>
+		<Connection Source="M5_Central_Movement.M_LS" Destination="__IO_Element921" Vertices="(1140,2370),(990,2370)," IOObject="IO_Element92"/>
+		<Connection Source="M6_Longitudinal_axis.M_LS_1" Destination="__IO_Element931" Vertices="(2190,2370),(2130,2370)," IOObject="IO_Element93"/>
+		<Connection Source="M6_Longitudinal_axis.M_LS_2" Destination="__IO_Element941" Vertices="(2190,2430),(2130,2430)," IOObject="IO_Element94"/>
+		<Connection Source="M7_Target_Block.setPositionController" Destination="__IO_Element1081" IOObject="IO_Element108"/>
+		<Connection Source="AutoManSelector1.toManualM7" Destination="M7_Target_Block.Enable" Vertices="(4470,2790),(4200,2790),(4200,3810),(3828,3810),"/>
+		<Connection Source="AutoManSelector1.toManualM4" Destination="M4_Discharge_Buffer.Enable" Vertices="(4470,2610),(4320,2610),(4320,2100),(5160,2100),(5160,1890),(5028,1890),"/>
+		<Connection Source="AutoManSelector1.toManualM2" Destination="M2_Charge_Buffer.Enable" Vertices="(4470,2490),(4140,2490),(4140,1950),(2850,1950),(2850,1890),(2748,1890),"/>
+		<Connection Source="AutoManSelector1.toManualM3" Destination="M3_Discharge_Slider.Enable" Vertices="(4470,2550),(4230,2550),(4230,1890),(3768,1890),"/>
+		<Connection Source="AutoManSelector1.toManualM6" Destination="M6_Longitudinal_axis.Enable" Vertices="(4470,2730),(4140,2730),(4140,3930),(2790,3930),(2790,3810),(2748,3810),"/>
+		<Connection Source="AutoManSelector1.toManualM5" Destination="M5_Central_Movement.Enable" Vertices="(4470,2670),(4080,2670),(4080,3900),(1770,3900),(1770,3810),(1698,3810),"/>
+		<Connection Source="M1_Charge_Slider.setPositionController" Destination="__IO_Element1021" IOObject="IO_Element102"/>
+		<Connection Source="AutoManSelector1.toManualM1" Destination="M1_Charge_Slider.Enable" Vertices="(4470,2430),(4080,2430),(4080,2040),(1770,2040),(1770,1890),(1698,1890),"/>
+		<Connection Source="M2_Charge_Buffer.setPositionController" Destination="__IO_Element1031" IOObject="IO_Element103"/>
+		<Connection Source="M7_Target_Block.M_LS_1" Destination="ST1517.Input1"/>
+		<Connection Source="AutoManSelector1.toAutomatic" Destination="__IO_Element1011" IOObject="IO_Element101"/>
+		<Connection Source="M3_Discharge_Slider.setPositionController" Destination="__IO_Element1041" IOObject="IO_Element104"/>
+		<Connection Source="M4_Discharge_Buffer.setPositionController" Destination="__IO_Element1051" IOObject="IO_Element105"/>
+		<Connection Source="M5_Central_Movement.setPositionController" Destination="__IO_Element1061" IOObject="IO_Element106"/>
+		<Connection Source="M6_Longitudinal_axis.setPositionController" Destination="__IO_Element1071" IOObject="IO_Element107"/>
+		<Connection Source="M7_Target_Block.M_LS_2" Destination="ST1517.Input2"/>
+		<Connection Source="AutoManSelector1.StopM1" Destination="M1_Charge_Slider.Stop" Vertices="(4470,2910),(1698,1950),"/>
+		<Connection Source="AutoManSelector1.StopM2" Destination="M2_Charge_Buffer.Stop" Vertices="(4470,2970),(2748,1950),"/>
+		<Connection Source="AutoManSelector1.StopM3" Destination="M3_Discharge_Slider.Stop" Vertices="(4470,3030),(3768,1950),"/>
+		<Connection Source="AutoManSelector1.StopM4" Destination="M4_Discharge_Buffer.Stop" Vertices="(4470,3090),(5028,1950),"/>
+		<Connection Source="AutoManSelector1.StopM5" Destination="M5_Central_Movement.Stop" Vertices="(4470,3150),(1698,3870),"/>
+		<Connection Source="AutoManSelector1.StopM6" Destination="M6_Longitudinal_axis.Stop" Vertices="(4470,3210),(2748,3870),"/>
+		<Connection Source="AutoManSelector1.StopM7" Destination="M7_Target_Block.Stop" Vertices="(4470,3270),(3828,3870),"/>
+		<Connection Source="AutoManSelector1.ResetM7" Destination="M7_Target_Block.S_Reset" Vertices="(4470,3750),(3828,2970),"/>
+		<Connection Source="AutoManSelector1.ResetM6" Destination="M6_Longitudinal_axis.S_Reset" Vertices="(4470,3690),(2748,2970),"/>
+		<Connection Source="AutoManSelector1.ResetM5" Destination="M5_Central_Movement.S_Reset" Vertices="(4470,3630),(1698,2970),"/>
+		<Connection Source="AutoManSelector1.ResetM4" Destination="M4_Discharge_Buffer.S_Reset" Vertices="(4470,3570),(5028,1050),"/>
+		<Connection Source="AutoManSelector1.ResetM3" Destination="M3_Discharge_Slider.S_Reset" Vertices="(4470,3510),(3768,1050),"/>
+		<Connection Source="AutoManSelector1.ResetM2" Destination="M2_Charge_Buffer.S_Reset" Vertices="(4470,3450),(2748,1050),"/>
+		<Connection Source="AutoManSelector1.ResetM1" Destination="M1_Charge_Slider.S_Reset" Vertices="(4470,3390),(1698,1050),"/>
+		<Connection Source="AutoManSelector1.c_EasyGUIEn_IrrT" Destination="__IO_Element1201" IOObject="IO_Element120"/>
+		<Connection Source="AutoManSelector1.c_EasyGUIEn_MainS" Destination="__IO_Element1191" IOObject="IO_Element119"/>
+		<Connection Source="M4_Discharge_Buffer.c_MaxCurrent" Destination="__IO_Element1231" Vertices="(4470,570),(4290,570)," IOObject="IO_Element123"/>
+		<Connection Source="M1_Charge_Slider.c_MaxCurrent" Destination="__IO_Element1241" Vertices="(1140,630),(990,630)," IOObject="IO_Element124"/>
+		<Connection Source="M3_Discharge_Slider.c_MaxCurrent" Destination="__IO_Element1251" Vertices="(3210,630),(3180,630)," IOObject="IO_Element125"/>
+		<Connection Source="M6_Longitudinal_axis.c_MaxCurrent" Destination="__IO_Element1261" Vertices="(2190,2550),(2130,2550)," IOObject="IO_Element126"/>
+		<Connection Source="M5_Central_Movement.c_MaxCurrent" Destination="__IO_Element1271" Vertices="(1140,2490),(990,2490)," IOObject="IO_Element127"/>
+		<Connection Source="M2_Charge_Buffer.c_MaxCurrent" Destination="__IO_Element1281" Vertices="(2190,570),(2130,570)," IOObject="IO_Element128"/>
+	</Connections>
+	<!-- List of temp data objects in this network -->
+	<IOObjects>
+		<IOObject KeyName="__IO_Element1231" Name="IO_Element123" Position="(3990,540)" Client="M4_Discharge_Buffer.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element1241" Name="IO_Element124" Position="(690,600)" Client="M1_Charge_Slider.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element1251" Name="IO_Element125" Position="(2880,600)" Client="M3_Discharge_Slider.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element1261" Name="IO_Element126" Position="(1830,2520)" Client="M6_Longitudinal_axis.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element1271" Name="IO_Element127" Position="(690,2460)" Client="M5_Central_Movement.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element1281" Name="IO_Element128" Position="(1830,540)" Client="M2_Charge_Buffer.c_MaxCurrent"/>
+		<IOObject KeyName="__IO_Element161" Name="IO_Element16" Position="(690,420)" Client="M1_Charge_Slider.M_LS_1"/>
+		<IOObject KeyName="__IO_Element171" Name="IO_Element17" Position="(690,480)" Client="M1_Charge_Slider.M_LS_2"/>
+		<IOObject KeyName="__IO_Element811" Name="IO_Element81" Position="(1830,420)" Client="M2_Charge_Buffer.M_LS"/>
+		<IOObject KeyName="__IO_Element891" Name="IO_Element89" Position="(2880,420)" Client="M3_Discharge_Slider.M_LS_2"/>
+		<IOObject KeyName="__IO_Element901" Name="IO_Element90" Position="(2880,480)" Client="M3_Discharge_Slider.M_LS_1"/>
+		<IOObject KeyName="__IO_Element911" Name="IO_Element91" Position="(3990,420)" Client="M4_Discharge_Buffer.M_LS"/>
+		<IOObject KeyName="__IO_Element921" Name="IO_Element92" Position="(690,2340)" Client="M5_Central_Movement.M_LS"/>
+		<IOObject KeyName="__IO_Element931" Name="IO_Element93" Position="(1830,2340)" Client="M6_Longitudinal_axis.M_LS_1"/>
+		<IOObject KeyName="__IO_Element941" Name="IO_Element94" Position="(1830,2400)" Client="M6_Longitudinal_axis.M_LS_2"/>
+	</IOObjects>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

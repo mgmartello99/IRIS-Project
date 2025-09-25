@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<WatchVariable>
+	<Variable Name="Manager_globale1.ComandoGeneraleIRIS"/>
+	<Variable Name="MPS1.ACK"/>
+	<Variable Name="MPS1.ReqToMPS"/>
+	<Variable Name="Manager_globale1.ComandoIrradiation"/>
+	<Variable Name="Motore_M51.v_pelletChargedbyUser"/>
+	<Variable Name="Motore_M51.v_pelletRemaining"/>
+	<Variable Name="Motore_M51.V_Tablet_Irraggiati"/>
+	<Variable Name="Motore_M51.s_PelletInIrisirradiation"/>
+	<Variable Name="Motore_M41.v_pelletMeasured"/>
+	<Variable Name="Motore_M41.v_pelletInTrolley"/>
+</WatchVariable>

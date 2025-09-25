@@ -1,0 +1,1084 @@
+//#include <LSL_String.h>
+#include <LSL_ST_IfLinker.h>
+//#include <RTOS_Variables.h>
+//#include <RTOS_Header.h>
+
+//    
+//    Calculate  a CRC16 Code for a buffer (used for programm)
+//    
+//    --> ptr points to begin of the buffer
+//        count size of the buffer
+
+
+//    
+//    Calculate  a CRC16 Code for a buffer (used for programm)
+//    
+//    --> ptr points to begin of the buffer
+//        count size of the buffer
+
+//
+// Tabelle, aus der die jeweilige Checksumme geholt wird
+//
+FUNCTION TAB _CRC_Tab
+
+16#0000$UINT,  16#C0C1$UINT,  16#C181$UINT,  16#0140$UINT,  
+16#C301$UINT,  16#03C0$UINT,  16#0280$UINT,  16#C241$UINT,  
+16#C601$UINT,  16#06C0$UINT,  16#0780$UINT,  16#C741$UINT,  
+16#0500$UINT,  16#C5C1$UINT,  16#C481$UINT,  16#0440$UINT,  
+16#CC01$UINT,  16#0CC0$UINT,  16#0D80$UINT,  16#CD41$UINT,  
+16#0F00$UINT,  16#CFC1$UINT,  16#CE81$UINT,  16#0E40$UINT,  
+16#0A00$UINT,  16#CAC1$UINT,  16#CB81$UINT,  16#0B40$UINT,  
+16#C901$UINT,  16#09C0$UINT,  16#0880$UINT,  16#C841$UINT,  
+16#D801$UINT,  16#18C0$UINT,  16#1980$UINT,  16#D941$UINT,  
+16#1B00$UINT,  16#DBC1$UINT,  16#DA81$UINT,  16#1A40$UINT,  
+16#1E00$UINT,  16#DEC1$UINT,  16#DF81$UINT,  16#1F40$UINT,  
+16#DD01$UINT,  16#1DC0$UINT,  16#1C80$UINT,  16#DC41$UINT,  
+16#1400$UINT,  16#D4C1$UINT,  16#D581$UINT,  16#1540$UINT,  
+16#D701$UINT,  16#17C0$UINT,  16#1680$UINT,  16#D641$UINT,  
+16#D201$UINT,  16#12C0$UINT,  16#1380$UINT,  16#D341$UINT,  
+16#1100$UINT,  16#D1C1$UINT,  16#D081$UINT,  16#1040$UINT,  
+16#F001$UINT,  16#30C0$UINT,  16#3180$UINT,  16#F141$UINT,  
+16#3300$UINT,  16#F3C1$UINT,  16#F281$UINT,  16#3240$UINT,  
+16#3600$UINT,  16#F6C1$UINT,  16#F781$UINT,  16#3740$UINT,  
+16#F501$UINT,  16#35C0$UINT,  16#3480$UINT,  16#F441$UINT,  
+16#3C00$UINT,  16#FCC1$UINT,  16#FD81$UINT,  16#3D40$UINT,  
+16#FF01$UINT,  16#3FC0$UINT,  16#3E80$UINT,  16#FE41$UINT,  
+16#FA01$UINT,  16#3AC0$UINT,  16#3B80$UINT,  16#FB41$UINT,  
+16#3900$UINT,  16#F9C1$UINT,  16#F881$UINT,  16#3840$UINT,  
+16#2800$UINT,  16#E8C1$UINT,  16#E981$UINT,  16#2940$UINT,  
+16#EB01$UINT,  16#2BC0$UINT,  16#2A80$UINT,  16#EA41$UINT,  
+16#EE01$UINT,  16#2EC0$UINT,  16#2F80$UINT,  16#EF41$UINT,  
+16#2D00$UINT,  16#EDC1$UINT,  16#EC81$UINT,  16#2C40$UINT,  
+16#E401$UINT,  16#24C0$UINT,  16#2580$UINT,  16#E541$UINT,  
+16#2700$UINT,  16#E7C1$UINT,  16#E681$UINT,  16#2640$UINT,  
+16#2200$UINT,  16#E2C1$UINT,  16#E381$UINT,  16#2340$UINT,  
+16#E101$UINT,  16#21C0$UINT,  16#2080$UINT,  16#E041$UINT,  
+16#A001$UINT,  16#60C0$UINT,  16#6180$UINT,  16#A141$UINT,  
+16#6300$UINT,  16#A3C1$UINT,  16#A281$UINT,  16#6240$UINT,  
+16#6600$UINT,  16#A6C1$UINT,  16#A781$UINT,  16#6740$UINT,  
+16#A501$UINT,  16#65C0$UINT,  16#6480$UINT,  16#A441$UINT,  
+16#6C00$UINT,  16#ACC1$UINT,  16#AD81$UINT,  16#6D40$UINT,  
+16#AF01$UINT,  16#6FC0$UINT,  16#6E80$UINT,  16#AE41$UINT,  
+16#AA01$UINT,  16#6AC0$UINT,  16#6B80$UINT,  16#AB41$UINT,  
+16#6900$UINT,  16#A9C1$UINT,  16#A881$UINT,  16#6840$UINT,  
+16#7800$UINT,  16#B8C1$UINT,  16#B981$UINT,  16#7940$UINT,  
+16#BB01$UINT,  16#7BC0$UINT,  16#7A80$UINT,  16#BA41$UINT,  
+16#BE01$UINT,  16#7EC0$UINT,  16#7F80$UINT,  16#BF41$UINT,  
+16#7D00$UINT,  16#BDC1$UINT,  16#BC81$UINT,  16#7C40$UINT,  
+16#B401$UINT,  16#74C0$UINT,  16#7580$UINT,  16#B541$UINT,  
+16#7700$UINT,  16#B7C1$UINT,  16#B681$UINT,  16#7640$UINT,  
+16#7200$UINT,  16#B2C1$UINT,  16#B381$UINT,  16#7340$UINT,  
+16#B101$UINT,  16#71C0$UINT,  16#7080$UINT,  16#B041$UINT,  
+16#5000$UINT,  16#90C1$UINT,  16#9181$UINT,  16#5140$UINT,  
+16#9301$UINT,  16#53C0$UINT,  16#5280$UINT,  16#9241$UINT,  
+16#9601$UINT,  16#56C0$UINT,  16#5780$UINT,  16#9741$UINT,  
+16#5500$UINT,  16#95C1$UINT,  16#9481$UINT,  16#5440$UINT,  
+16#9C01$UINT,  16#5CC0$UINT,  16#5D80$UINT,  16#9D41$UINT,  
+16#5F00$UINT,  16#9FC1$UINT,  16#9E81$UINT,  16#5E40$UINT,  
+16#5A00$UINT,  16#9AC1$UINT,  16#9B81$UINT,  16#5B40$UINT,  
+16#9901$UINT,  16#59C0$UINT,  16#5880$UINT,  16#9841$UINT,  
+16#8801$UINT,  16#48C0$UINT,  16#4980$UINT,  16#8941$UINT,  
+16#4B00$UINT,  16#8BC1$UINT,  16#8A81$UINT,  16#4A40$UINT,  
+16#4E00$UINT,  16#8EC1$UINT,  16#8F81$UINT,  16#4F40$UINT,  
+16#8D01$UINT,  16#4DC0$UINT,  16#4C80$UINT,  16#8C41$UINT,  
+16#4400$UINT,  16#84C1$UINT,  16#8581$UINT,  16#4540$UINT,  
+16#8701$UINT,  16#47C0$UINT,  16#4680$UINT,  16#8641$UINT,  
+16#8201$UINT,  16#42C0$UINT,  16#4380$UINT,  16#8341$UINT,  
+16#4100$UINT,  16#81C1$UINT,  16#8081$UINT,  16#4040$UINT,
+//
+END_FUNCTION
+// CRC32 Tabelle
+FUNCTION TAB crctable 
+ 16#00000000$UDINT, 16#77073096$UDINT, 16#ee0e612c$UDINT, 16#990951ba$UDINT, 16#076dc419$UDINT,
+ 16#706af48f$UDINT, 16#e963a535$UDINT, 16#9e6495a3$UDINT, 16#0edb8832$UDINT, 16#79dcb8a4$UDINT,
+ 16#e0d5e91e$UDINT, 16#97d2d988$UDINT, 16#09b64c2b$UDINT, 16#7eb17cbd$UDINT, 16#e7b82d07$UDINT,
+ 16#90bf1d91$UDINT, 16#1db71064$UDINT, 16#6ab020f2$UDINT, 16#f3b97148$UDINT, 16#84be41de$UDINT,
+ 16#1adad47d$UDINT, 16#6ddde4eb$UDINT, 16#f4d4b551$UDINT, 16#83d385c7$UDINT, 16#136c9856$UDINT,
+ 16#646ba8c0$UDINT, 16#fd62f97a$UDINT, 16#8a65c9ec$UDINT, 16#14015c4f$UDINT, 16#63066cd9$UDINT,
+ 16#fa0f3d63$UDINT, 16#8d080df5$UDINT, 16#3b6e20c8$UDINT, 16#4c69105e$UDINT, 16#d56041e4$UDINT,
+ 16#a2677172$UDINT, 16#3c03e4d1$UDINT, 16#4b04d447$UDINT, 16#d20d85fd$UDINT, 16#a50ab56b$UDINT,
+ 16#35b5a8fa$UDINT, 16#42b2986c$UDINT, 16#dbbbc9d6$UDINT, 16#acbcf940$UDINT, 16#32d86ce3$UDINT,
+ 16#45df5c75$UDINT, 16#dcd60dcf$UDINT, 16#abd13d59$UDINT, 16#26d930ac$UDINT, 16#51de003a$UDINT,
+ 16#c8d75180$UDINT, 16#bfd06116$UDINT, 16#21b4f4b5$UDINT, 16#56b3c423$UDINT, 16#cfba9599$UDINT,
+ 16#b8bda50f$UDINT, 16#2802b89e$UDINT, 16#5f058808$UDINT, 16#c60cd9b2$UDINT, 16#b10be924$UDINT,
+ 16#2f6f7c87$UDINT, 16#58684c11$UDINT, 16#c1611dab$UDINT, 16#b6662d3d$UDINT, 16#76dc4190$UDINT,
+ 16#01db7106$UDINT, 16#98d220bc$UDINT, 16#efd5102a$UDINT, 16#71b18589$UDINT, 16#06b6b51f$UDINT,
+ 16#9fbfe4a5$UDINT, 16#e8b8d433$UDINT, 16#7807c9a2$UDINT, 16#0f00f934$UDINT, 16#9609a88e$UDINT,
+ 16#e10e9818$UDINT, 16#7f6a0dbb$UDINT, 16#086d3d2d$UDINT, 16#91646c97$UDINT, 16#e6635c01$UDINT,
+ 16#6b6b51f4$UDINT, 16#1c6c6162$UDINT, 16#856530d8$UDINT, 16#f262004e$UDINT, 16#6c0695ed$UDINT,
+ 16#1b01a57b$UDINT, 16#8208f4c1$UDINT, 16#f50fc457$UDINT, 16#65b0d9c6$UDINT, 16#12b7e950$UDINT,
+ 16#8bbeb8ea$UDINT, 16#fcb9887c$UDINT, 16#62dd1ddf$UDINT, 16#15da2d49$UDINT, 16#8cd37cf3$UDINT,
+ 16#fbd44c65$UDINT, 16#4db26158$UDINT, 16#3ab551ce$UDINT, 16#a3bc0074$UDINT, 16#d4bb30e2$UDINT,
+ 16#4adfa541$UDINT, 16#3dd895d7$UDINT, 16#a4d1c46d$UDINT, 16#d3d6f4fb$UDINT, 16#4369e96a$UDINT,
+ 16#346ed9fc$UDINT, 16#ad678846$UDINT, 16#da60b8d0$UDINT, 16#44042d73$UDINT, 16#33031de5$UDINT,
+ 16#aa0a4c5f$UDINT, 16#dd0d7cc9$UDINT, 16#5005713c$UDINT, 16#270241aa$UDINT, 16#be0b1010$UDINT,
+ 16#c90c2086$UDINT, 16#5768b525$UDINT, 16#206f85b3$UDINT, 16#b966d409$UDINT, 16#ce61e49f$UDINT,
+ 16#5edef90e$UDINT, 16#29d9c998$UDINT, 16#b0d09822$UDINT, 16#c7d7a8b4$UDINT, 16#59b33d17$UDINT,
+ 16#2eb40d81$UDINT, 16#b7bd5c3b$UDINT, 16#c0ba6cad$UDINT, 16#edb88320$UDINT, 16#9abfb3b6$UDINT,
+ 16#03b6e20c$UDINT, 16#74b1d29a$UDINT, 16#ead54739$UDINT, 16#9dd277af$UDINT, 16#04db2615$UDINT,
+ 16#73dc1683$UDINT, 16#e3630b12$UDINT, 16#94643b84$UDINT, 16#0d6d6a3e$UDINT, 16#7a6a5aa8$UDINT,
+ 16#e40ecf0b$UDINT, 16#9309ff9d$UDINT, 16#0a00ae27$UDINT, 16#7d079eb1$UDINT, 16#f00f9344$UDINT,
+ 16#8708a3d2$UDINT, 16#1e01f268$UDINT, 16#6906c2fe$UDINT, 16#f762575d$UDINT, 16#806567cb$UDINT,
+ 16#196c3671$UDINT, 16#6e6b06e7$UDINT, 16#fed41b76$UDINT, 16#89d32be0$UDINT, 16#10da7a5a$UDINT,
+ 16#67dd4acc$UDINT, 16#f9b9df6f$UDINT, 16#8ebeeff9$UDINT, 16#17b7be43$UDINT, 16#60b08ed5$UDINT,
+ 16#d6d6a3e8$UDINT, 16#a1d1937e$UDINT, 16#38d8c2c4$UDINT, 16#4fdff252$UDINT, 16#d1bb67f1$UDINT,
+ 16#a6bc5767$UDINT, 16#3fb506dd$UDINT, 16#48b2364b$UDINT, 16#d80d2bda$UDINT, 16#af0a1b4c$UDINT,
+ 16#36034af6$UDINT, 16#41047a60$UDINT, 16#df60efc3$UDINT, 16#a867df55$UDINT, 16#316e8eef$UDINT,
+ 16#4669be79$UDINT, 16#cb61b38c$UDINT, 16#bc66831a$UDINT, 16#256fd2a0$UDINT, 16#5268e236$UDINT,
+ 16#cc0c7795$UDINT, 16#bb0b4703$UDINT, 16#220216b9$UDINT, 16#5505262f$UDINT, 16#c5ba3bbe$UDINT,
+ 16#b2bd0b28$UDINT, 16#2bb45a92$UDINT, 16#5cb36a04$UDINT, 16#c2d7ffa7$UDINT, 16#b5d0cf31$UDINT,
+ 16#2cd99e8b$UDINT, 16#5bdeae1d$UDINT, 16#9b64c2b0$UDINT, 16#ec63f226$UDINT, 16#756aa39c$UDINT,
+ 16#026d930a$UDINT, 16#9c0906a9$UDINT, 16#eb0e363f$UDINT, 16#72076785$UDINT, 16#05005713$UDINT,
+ 16#95bf4a82$UDINT, 16#e2b87a14$UDINT, 16#7bb12bae$UDINT, 16#0cb61b38$UDINT, 16#92d28e9b$UDINT,
+ 16#e5d5be0d$UDINT, 16#7cdcefb7$UDINT, 16#0bdbdf21$UDINT, 16#86d3d2d4$UDINT, 16#f1d4e242$UDINT,
+ 16#68ddb3f8$UDINT, 16#1fda836e$UDINT, 16#81be16cd$UDINT, 16#f6b9265b$UDINT, 16#6fb077e1$UDINT,
+ 16#18b74777$UDINT, 16#88085ae6$UDINT, 16#ff0f6a70$UDINT, 16#66063bca$UDINT, 16#11010b5c$UDINT,
+ 16#8f659eff$UDINT, 16#f862ae69$UDINT, 16#616bffd3$UDINT, 16#166ccf45$UDINT, 16#a00ae278$UDINT,
+ 16#d70dd2ee$UDINT, 16#4e048354$UDINT, 16#3903b3c2$UDINT, 16#a7672661$UDINT, 16#d06016f7$UDINT,
+ 16#4969474d$UDINT, 16#3e6e77db$UDINT, 16#aed16a4a$UDINT, 16#d9d65adc$UDINT, 16#40df0b66$UDINT,
+ 16#37d83bf0$UDINT, 16#a9bcae53$UDINT, 16#debb9ec5$UDINT, 16#47b2cf7f$UDINT, 16#30b5ffe9$UDINT,
+ 16#bdbdf21c$UDINT, 16#cabac28a$UDINT, 16#53b39330$UDINT, 16#24b4a3a6$UDINT, 16#bad03605$UDINT,
+ 16#cdd70693$UDINT, 16#54de5729$UDINT, 16#23d967bf$UDINT, 16#b3667a2e$UDINT, 16#c4614ab8$UDINT,
+ 16#5d681b02$UDINT, 16#2a6f2b94$UDINT, 16#b40bbe37$UDINT, 16#c30c8ea1$UDINT, 16#5a05df1b$UDINT,
+ 16#2d02ef8d$UDINT,
+
+END_FUNCTION
+// 
+// -> ptr	:
+// -> count	:
+// <- crc_16:
+//
+FUNCTION AWL GLOBAL      CRC16_BUFFER
+VAR_INPUT
+ ptr             : ^CHAR;
+ count           : UINT;
+END_VAR
+VAR_OUTPUT
+ crc_16          : UINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+
+    STMDB     sp!, {r6, r7, r8, r10}
+    
+    LDR       r6, [pc, &_CRC_Tab()]  // adresse von tabelle ermitteln
+    ADD       r6, r6, #4             // r5 zeigt auf tabelle
+    MOV       r8, #16#FF00
+    ADD       r8, r8, #16#00FF       // r7 = 16#FFFF
+    CMP       count, #0
+    BEQ       Crc16_End
+    
+Crc16_Loop
+    LDRB      r7, [ptr], #1          // r6 = byte
+    EOR       r10, r7, r8
+    AND       r10, r10, #255
+    MOV       r10, r10, LSL #1
+    LDRH      r10, [r6, r10]
+    MOV       r8, r8, LSR #8
+    AND       r8, r8, #255
+    EOR       r8, r8, r10
+    SUBS      count, count, #1
+    BNE       Crc16_Loop
+   
+Crc16_End
+    MOV       crc_16, r8
+    LDMIA     sp!, {r6, r7, r8, r10}
+   
+#else
+
+         L.EDI     #_CRC_Tab()
+         ADD.EDI   4
+
+         LZXW.ECX  count
+         L.DX      16#FFFF             // initvalue for crc
+         JECXZ     ENDE_B              // count = 0
+
+         L.ESI     ptr
+
+CRC_LOOP_B
+         LODSB                         // read character
+         CLR       AH
+         CLR       EBX
+         L.BX      DX
+         XOR.BX    AX
+         CLR       BH
+         SHL.BX    00001
+         L.BX      (EBX+EDI)           // value out of the CRC-table
+         XCH.DH    DL
+         CLR       DH
+         XOR.DX    BX
+         LOOP      CRC_LOOP_B
+ENDE_B
+         S.DX      CRC_16
+#endif
+END_FUNCTION
+
+
+
+FUNCTION AWL GLOBAL CRC32
+VAR_INPUT
+	ptr			: ^char;
+END_VAR
+VAR_OUTPUT
+	udCrc		: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6, r7, r8, r10}
+    LDR       r6, [pc, &crctable()]  // adresse von tabelle ermitteln
+    ADD       r6, r6, #4             // r6 zeigt auf tabelle
+    
+    LDR       r8, [r6, #0]           // r8 startwert
+    MVN       r10, #0
+    EOR       r8, r8, r10             // r8 xor 0xFFFFFFFF
+
+Crc32_Loop
+    LDRB      r7, [ptr], #1          // r7 beinhaltet zeichen
+    CMP       r7, #0
+    BEQ       Crc32_End
+    
+    CMP       r7, #97                // 'a'
+    BLO       Crc32_Ready
+    CMP       r7, #122               // 'z'
+    SUBLS     r7, r7, #32            // wenn kleinbuchstabe dann mache grosbuchstabe
+   
+Crc32_Ready    
+    EOR       r7, r7, r8
+    AND       r7, r7, #255
+    MOV       r8, r8, LSR #8
+    MOV       r7, r7, LSL #2
+    LDR       r10, [r6, r7]
+    EOR       r8, r8, r10
+    B         Crc32_Loop
+
+Crc32_End
+    MVN       r10, #0
+    EOR       r8, r8, r10              // r8 xor 0xFFFFFFFF
+    MOV       udCrc, r8     
+    LDMIA     sp!, {r6, r7, r8, r10}
+    
+#else 
+
+	push		esi
+	push		edi
+	push		edx
+	CLR			EDX			// start CRC32 
+	l.esi		ptr         // pointer
+	l.edi		#crctable()
+	l.edx		(edi+4)		// start CRC32 
+	xor.edx		16#ffffffff	// 	
+	add.edi		4			// size 
+
+crc32_lp
+	lodsb					// char
+	o.al		al
+	jz			crc32_end
+	cmp.al		'a'
+	jb			crc32_1		// --> kein kleinbuchstabe
+	cmp			'z'
+	ja			crc32_1	    // --> kein kleinbuchstabe
+	sub.al		'a'-'A'	
+
+crc32_1
+	xor.al		dl		// char xor old crc(lo)
+	lzxb.eax	al
+	shr.edx		8
+	xor.edx		(edi+eax*4)	// laenge + 4 byte 0		
+	jmp			crc32_lp
+crc32_end
+	xor.edx		16#ffffffff	// 	
+	s.edx		udCrc		
+	pop			edx
+	pop			edi
+	pop			esi
+#endif  
+END_FUNCTION
+
+// The function returns the CRC32 of a memory buffer. The 
+// parameters are a pointer to the buffer and the data length.
+//
+FUNCTION STR GLOBAL CRC32_Buffer
+VAR_INPUT
+	ptr             : ^void;
+	udCnt           : UDINT;
+END_VAR
+VAR_OUTPUT
+	udCrc			: UDINT;
+END_VAR
+
+	udCrc := OS_Crc32(0, ptr, udCnt);
+
+END_FUNCTION
+
+(*
+  Diese Funktion unterscheidet sich von der CRC32_Buffer Funktion dadurch, dass 
+  man zusไtzlich einen CRC Startwert mitgeben kann.
+ *)
+FUNCTION STR GLOBAL LDR_CRC32_BufferEx
+VAR_INPUT
+  startValue      : UDINT;
+	ptr             : ^void;
+	udCnt           : UDINT;
+END_VAR
+VAR_OUTPUT
+	udCrc			: UDINT;
+END_VAR
+
+	udCrc := OS_Crc32(startValue, ptr, udCnt);
+
+END_FUNCTION
+
+//        ---------------------------------------------------------
+//        -----   Wurzel aus 64 Bit Wert ziehen -------------------
+//        ---------------------------------------------------------
+//    
+//        Zieht Wurzel aus EDX:EAX   -> EAX
+//    
+//        minimal   8 usek  ( 16bit-bus 386 ,64mhz , 1wait)
+//        maximal  17 usek
+//    
+//        ebx,ecx werden nicht zerstoert
+
+#ifdef _LSL_TARGETARCH_ARM
+
+function global __cdecl MathHelperSqrt32 var_input value:udint; end_var var_output retcode:udint; end_var;
+function global __cdecl MathHelperSqrt64 var_input loval:udint; hival:udint; end_var var_output retcode:udint; end_var;
+
+FUNCTION STR GLOBAL SQRT64
+VAR_INPUT
+	lo32		: UDINT;
+	hi32		: UDINT;
+END_VAR
+VAR_OUTPUT
+	retcode : UDINT;
+END_VAR
+
+  if(hi32 <> 0) then
+    retcode := MathHelperSqrt64(lo32, hi32);
+  else
+    retcode := MathHelperSqrt32(lo32);
+  end_if;
+
+END_FUNCTION
+#else
+FUNCTION AWL GLOBAL      SQRT64
+VAR_INPUT
+	EAX		: UDINT;
+	EDX		: UDINT;
+END_VAR
+VAR_OUTPUT
+	EAX		: UDINT;
+END_VAR
+VAR
+ ORIGLO                          : DINT;
+ ORIGHI                          : DINT;
+END_VAR
+         PSH       EBX
+         PSH       ECX
+         S.EAX     origlo
+         S.EDX     orighi
+
+
+//--------------------------------------------------------------------
+// bitmenge bestimmen
+//--------------------------------------------------------------------
+
+
+         O.EDX     EDX
+         JNZ       WU6464
+
+// wurzel aus 0
+
+         O.EAX     EAX
+         JZ        SQR64R
+
+// 32 bit wurzel
+
+
+// wenn =32bit dann doch 64 bit
+
+         CMP.EAX   16#00008000
+         JB        WU32G
+         BSR.ECX   EAX
+         JMP       WU6464SCAL
+
+
+//  sqr (1..3) = 1
+
+WU32G
+         CMP.EAX   0000000003
+         JA        WU32G1
+         L.EAX     0000000001
+         JMP       SQR64R
+
+WU32G1
+         BSR.ECX   EAX
+         SHR.CX    00001
+         L.BX      00001
+         //SHL.BX    CX
+         RCL.BX    CX                   //** Rauand **
+         CLR       CX
+         L.DX      origlo+002          // nr1
+         DIV       BX
+         ADD.BX    AX
+         RCR.CX    1                    //** ganber **
+         SHR.BX    00001
+         ADC.BX    CX
+         CLR       CX                   //** ganber **
+         L.AX      origlo+000          // nr2
+         L.DX      origlo+002
+         DIV       BX
+         ADD.BX    AX
+         RCR.CX    1                    //** ganber **
+         SHR.BX    00001
+         ADC.BX    CX
+         CLR       CX                   //** ganber **
+         L.AX      origlo+000          // nr3
+         L.DX      origlo+002
+         DIV       BX
+         ADD.BX    AX
+         RCR.CX    1                    //** ganber **
+         SHR.BX    00001
+         ADC.BX    CX
+         CLR       CX                   //** ganber **
+         L.AX      origlo+000          // nr4
+         L.DX      origlo+002
+         DIV       BX
+         ADD.BX    AX
+         RCR.CX    1                    //** ganber **
+         SHR.BX    00001
+         ADC.BX    CX
+         CLR       EAX
+         L.AX      BX
+         JMP       SQR64R
+
+
+//--------------------------------------------------------------------
+// >= 32 bit
+//--------------------------------------------------------------------
+
+WU6464
+         BSR.ECX   EDX
+         ADD.CX    00032
+WU6464SCAL
+         SHR.CX    00001
+         L.EBX     0000000001
+         //SHL.EBX   ECX 
+         RCL.EBX   ECX                //** Rauand **
+         CLR       ECX
+
+         L.EAX     origlo              // 1
+         L.EDX     orighi
+         DIV       EBX                 // 1
+         ADD.EBX   EAX
+         RCR.ECX   1                    //** ganber **
+         SHR.EBX   0000000001
+         ADC.EBX   ECX
+         CLR       ECX                  //** ganber **
+
+         L.EAX     origlo              // 2
+         L.EDX     orighi
+         DIV       EBX
+         ADD.EBX   EAX
+         RCR.ECX   1                    //** ganber **
+         SHR.EBX   0000000001
+         ADC.EBX   ECX
+         CLR       ECX                  //** ganber **
+         
+
+         L.EAX     origlo              // 3
+         L.EDX     orighi
+         DIV       EBX
+         ADD.EBX   EAX
+         RCR.ECX   1                    //** ganber **
+         SHR.EBX   0000000001
+         ADC.EBX   ECX
+         CLR       ECX                  //** ganber **
+
+         L.EAX     origlo              // 4
+         L.EDX     orighi
+         DIV       EBX
+         ADD.EBX   EAX
+         RCR.ECX   1                    //** ganber **
+         SHR.EBX   0000000001
+         ADC.EBX   ECX
+         L.EAX     EBX
+SQR64R
+         POP       ECX
+         POP       EBX
+         
+END_FUNCTION
+#endif
+
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION STR GLOBAL DIV_AB_BY_C
+VAR_INPUT
+ A               : DINT;
+ B               : DINT;
+ _C              : DINT;
+END_VAR
+VAR_OUTPUT
+ RESU            : DINT;
+END_VAR
+
+  resu := (a*b)/_c;
+
+END_FUNCTION
+#else
+FUNCTION AWL GLOBAL      DIV_AB_BY_C
+VAR_INPUT
+ A               : DINT;
+ B               : DINT;
+ _C              : DINT;
+END_VAR
+VAR_OUTPUT
+ RESU            : DINT;
+END_VAR
+         L.EAX     a
+         IMUL.D    b
+         IDIV.D    _c
+         S.EAX     resu
+
+END_FUNCTION
+#endif
+
+//    
+//    
+//        Convert v (xxx.xxx mm/sek)  =1/100 mm/sek
+//                A (xxx mm^2)
+//    
+//        into    Q (xx.xxx L/min)    = cm^3/min
+//    
+//        Q= V*A*60/(1000*1000)
+//    
+//        -> Q=V*A/16667
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION STR GLOBAL V_TO_Q
+VAR_INPUT
+ V               : DINT;
+ A               : DINT;
+END_VAR
+VAR_OUTPUT
+ Q               : DINT;
+END_VAR
+
+  q := (v * a) / 16667;
+
+END_FUNCTION
+#else
+FUNCTION AWL GLOBAL      V_TO_Q
+VAR_INPUT
+ V               : DINT;
+ A               : DINT;
+END_VAR
+VAR_OUTPUT
+ Q               : DINT;
+END_VAR
+
+         L.EAX     v
+         IMUL.D    a
+         L.ECX     0000016667
+         IDIV      ECX
+         S.EAX     q
+
+END_FUNCTION
+#endif
+
+//    
+//        // --- History --
+//        // ES:SI wird jetzt gerettet ! 28.08.99 Me
+//    
+//    
+//    
+//        wert_out := INTPOL_STR(tabelle, wert_in);
+//    
+//        INTERPOLIERT >WERT_IN< mit Hilfe einer >Tabelle< durch
+//        Stuetzpunkte!
+//    
+//        HINWEIS:
+//        IN:
+//                  tabelle : PTTAB  (Pointer auf Tabelle)
+//                  wert_in : UINT   (umzuwandelnder Wert)
+//        OUT:
+//                  wert_out: UINT   (umgeandelter Wert)
+
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION STR GLOBAL _INTPOL50
+VAR_INPUT
+	pTable		: ^VOID;
+	input0		: UINT;
+END_VAR
+VAR_OUTPUT
+	output0		: UINT;
+END_VAR
+var
+  uiMax  : uint;
+  uiMod  : uint;
+  uiQuot : uint;
+  hptr   : ^uint;
+end_var
+
+  uiMax := (pTable + 4)$^uint^;
+  if(input0 < uiMax) then
+    uiQuot  := (uiMax / (pTable + 6)$^uint^);
+    hptr    := pTable + ((input0 / uiQuot) shl 1);
+    uiMod   := input0 mod uiQuot;
+    output0 := (hptr+8)^ + ((((hptr+10)^ - (hptr+8)^) * uiMod) / uiQuot); 
+  else
+    output0 := uiMax;
+  end_if;
+  
+END_FUNCTION
+#else
+FUNCTION GLOBAL  AWL _INTPOL50
+VAR_INPUT
+	pTable		: ^VOID;
+	AX			: UINT;
+END_VAR
+VAR_OUTPUT
+	AX			: UINT;
+END_VAR
+
+// ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+// บ   SIGMATEK FUNKTIONSBLOCK                                   (c)97 บ
+// ฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
+// บ   Interpolationsmakro zum Werteerstellen aus Sttzpunkten         บ
+// บ   einer Tabelle.                                                  บ
+// ฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
+// บ Erstellt: Seifert Hans Roman                 Datum: 02.12.96      บ
+// ฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
+// บ Geprft:  Bayrhammer Rainer                  Datum: 03.12.96      บ
+// ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+
+		PUSH		EBX
+		PUSH		EDX
+//....................................................................
+		PUSH		ESI
+//....................................................................
+
+		L.ESI		pTable
+		LZXW.EBX	(ESI+4)
+
+		CMP.AX    	BX
+		JB			IPOL1
+		L.EAX		EBX
+		JMP			IPOLEND
+
+IPOL1	XCH.EAX		EBX
+		CLR			EDX
+		DIV.W		(ESI+006)		//  / Anzahl der Stuetzpunkte
+
+		XCH.EAX		EBX				// BX = Teilungsfaktor
+
+		CLR			EDX				// int (x/Teilung) = Wert nr
+		AND.EAX		16#FFFF
+		DIV			BX
+
+		SHL.EAX		1				// 2 Byte / wert
+		ADD.ESI		EAX
+
+		LZXW.EAX	(ESI+10)		// n1 -n
+		SUB.AX		(ESI+08)
+		MUL			DX				// rest
+		DIV			BX
+		ADD.AX		(ESI+08)
+
+IPOLEND
+//....................................................................
+		POP			ESI                 // 28.8.99 ME
+//....................................................................
+		POP			EDX
+		POP			EBX
+
+END_FUNCTION
+#endif
+
+#ifdef _LSL_TARGETARCH_ARM
+FUNCTION AWL GLOBAL __lsl_udivsi3 
+VAR_INPUT
+  in1 : UDINT;
+  in2 : UDINT;
+END_VAR
+VAR_OUTPUT
+  out : UDINT;
+END_VAR
+
+       VMOV S0, S1, R0, R1
+       VCVT.F64.U32 d1, S0
+       VCVT.F64.U32 d2, S1
+       VDIV.F64 d1, d1, d2
+       VCVT.U32.F64 S1, d1
+       VMOV R0, S1
+
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __lsl_umodsi3 
+VAR_INPUT
+  in1 : UDINT;
+  in2 : UDINT;
+END_VAR
+VAR_OUTPUT
+  out : UDINT;
+END_VAR
+
+       VMOV S0, S1, R0, R1
+       VCVT.F64.U32 d1, S0
+       VCVT.F64.U32 d2, S1
+       VDIV.F64 d1, d1, d2
+       VCVT.U32.F64 S1, d1
+       VMOV R2, S1
+       MUL R1, R1, R2
+       SUB R0, R0, R1
+       
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __lsl_divsi3 
+VAR_INPUT
+  in1 : DINT;
+  in2 : DINT;
+END_VAR
+VAR_OUTPUT
+  out : DINT;
+END_VAR
+
+       VMOV S0, S1, R0, R1
+       VCVT.F64.S32 d1, S0
+       VCVT.F64.S32 d2, S1
+       VDIV.F64 d1, d1, d2
+       VCVT.S32.F64 S1, d1
+       VMOV R0, S1
+
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __lsl_modsi3 
+VAR_INPUT
+  in1 : DINT;
+  in2 : DINT;
+END_VAR
+VAR_OUTPUT
+  out : DINT;
+END_VAR
+
+       VMOV S0, S1, R0, R1
+       VCVT.F64.S32 d1, S0
+       VCVT.F64.S32 d2, S1
+       VDIV.F64 d1, d1, d2
+       VCVT.S32.F64 S1, d1
+       VMOV R2, S1
+       MUL R1, R1, R2
+       SUB R0, R0, R1
+       
+END_FUNCTION
+
+FUNCTION global __cdecl __udiv6432_soft_asm VAR_INPUT lo : UDINT; hi : UDINT; denominator : UDINT; END_VAR VAR_OUTPUT retcode : UDINT; END_VAR;
+FUNCTION GLOBAL __cdecl __udivdi6432 VAR_INPUT lo : udint; hi : udint; denominator : udint; END_VAR VAR_OUTPUT retcode : udint; END_VAR;
+FUNCTION GLOBAL __CDECL __divdi6432 VAR_INPUT lo : udint; hi : udint; denominator : udint; END_VAR VAR_OUTPUT retcode : dint; END_VAR;
+
+FUNCTION AWL uDivMod64ASMARM
+var_input 
+  lo : udint; 
+  hi : udint; 
+  denominator : udint; 
+end_var 
+var_output 
+  retcode : udint;
+end_var
+
+  vmov s31, hi
+  vcvt.f64.U32 D0, s31
+  MOV           R4, #0    
+  MOVW          R3, #0    
+  MOVT          R3, #16624
+
+  vmov D1, r4, r3
+  vmul.f64 D0, D0, D1
+  vmul.f64 D0, D0, D1
+  vmov s31, lo
+  vcvt.f64.U32 D1, s31
+  vadd.f64 D0, D0, D1
+  vmov S31, denominator
+  vcvt.f64.U32 D1, s31
+  vdiv.f64 D0, D0, D1
+  vcvt.U32.F64 S31, D0
+  vmov r0, S31
+  VMOV R4, S31   
+  MUL  R4, denominator, R4  
+  SUB  R1, lo, R4  
+
+end_function
+
+FUNCTION AWL DivMod64ASMARM
+var_input 
+  lo : udint; 
+  hi : udint; 
+  denominator : udint; 
+end_var 
+var_output 
+  retcode : dint;
+end_var
+
+  vmov s31, hi
+  vcvt.f64.U32 D0, s31
+  MOV           R4, #0    
+  MOVW          R3, #0    
+  MOVT          R3, #16624
+
+  vmov D1, r4, r3
+  vmul.f64 D0, D0, D1
+  vmul.f64 D0, D0, D1
+  vmov s31, lo
+  vcvt.f64.U32 D1, s31
+  vadd.f64 D0, D0, D1
+  vmov S31, denominator
+  vcvt.f64.U32 D1, s31
+  vdiv.f64 D0, D0, D1
+  vcvt.S32.F64 S31, D0
+  vmov r0, S31
+  VMOV R4, S31   
+  MUL  R4, denominator, R4  
+  SUB  R1, lo, R4
+  
+end_function
+#endif
+FUNCTION global __cdecl FloatHelperEmu_mod_udivdi6432 VAR_INPUT resMod : ^UDINT; lo : UDINT; hi : UDINT; denominator : UDINT; END_VAR VAR_OUTPUT retcode : UDINT; END_VAR;
+ #ifdef _LSL_TARGETARCH_X86
+FUNCTION AWL uDivMod64ASMIntel
+  DIV EBX
+END_FUNCTION
+#endif
+FUNCTION STR GLOBAL __cdecl uDivMod64
+  VAR_INPUT 
+    lo : udint; 
+    hi : udint; 
+    denominator : udint; 
+  END_VAR 
+  VAR_OUTPUT 
+    retcode : udint; 
+  END_VAR
+ 
+ #ifdef _LSL_TARGETARCH_ARM
+  VAR
+    resMod : UDINT;
+  END_VAR
+  if(hi >= 16#200000) then
+    retcode := FloatHelperEmu_mod_udivdi6432(#resMod, lo, hi, denominator);
+    R1 := resMod;
+  else
+    retcode := uDivMod64ASMARM(lo, hi, denominator);
+  end_if; 
+ #else
+   EAX := lo;
+   EDX := hi;
+   EBX := denominator;
+   uDivMod64ASMIntel();
+   retcode := EAX;
+ #endif
+END_FUNCTION
+FUNCTION global __cdecl FloatHelperEmu_mod_divdi6432 VAR_INPUT resMod : ^DINT; lo : UDINT; hi : UDINT; denominator : UDINT; END_VAR VAR_OUTPUT retcode : DINT; END_VAR;
+#ifdef _LSL_TARGETARCH_X86
+FUNCTION AWL DivMod64ASMIntel
+  IDIV EBX
+END_FUNCTION
+#endif
+FUNCTION STR GLOBAL __cdecl DivMod64
+  VAR_INPUT 
+    lo : udint; 
+    hi : udint; 
+    denominator : udint; 
+  END_VAR 
+  VAR_OUTPUT 
+    retcode : dint; 
+  END_VAR
+ 
+ #ifdef _LSL_TARGETARCH_ARM
+  VAR
+    resMod : DINT;
+  END_VAR
+  // [8D-5014] MOD with negative values not agreeing with X86 results
+  if(hi >= 16#200000 | denominator >= 16#80000000) then
+    retcode := FloatHelperEmu_mod_divdi6432(#resMod, lo, hi, denominator);
+    R1 := resMod;
+  else
+    retcode := DivMod64ASMARM(lo, hi, denominator);
+  end_if; 
+ #else
+   EAX := lo;
+   EDX := hi;
+   EBX := denominator;
+   DivMod64ASMIntel();
+   retcode := EAX$dint;
+ #endif
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __cdecl OF_Multi_S
+  VAR_INPUT 
+    product : ^dint; 
+    mul_a : dint; 
+    mul_b : dint;
+  END_VAR 
+  VAR_OUTPUT 
+    OF_Flag : bool; 
+  END_VAR
+ #ifdef _LSL_TARGETARCH_ARM
+  VAR
+    high : dint;
+  END_VAR
+  
+  SMULL r3, high, mul_a, mul_b
+  cmp     high, r3, ASR #31
+  MOVNE OF_Flag, #1
+  MOVEQ OF_Flag, #0
+  STR r3, [product]
+  
+  
+ #else
+  clr ebx
+  l.eax mul_a
+  imul.d mul_b
+  jno label_end
+  inc ebx
+label_end
+  l.edi product
+  s.eax edi
+  s.bl OF_Flag
+  
+ #endif
+END_FUNCTION
+
+
+FUNCTION AWL GLOBAL __cdecl OF_Multi_U
+  VAR_INPUT 
+    product : ^udint; 
+    mul_a : udint; 
+    mul_b : udint;
+  END_VAR 
+  VAR_OUTPUT 
+    OF_Flag : bool; 
+  END_VAR
+ #ifdef _LSL_TARGETARCH_ARM
+  VAR
+    high : udint;
+  END_VAR
+  UMULL r3, high, mul_a, mul_b
+  cmp     high, #0
+  MOVNE OF_Flag, #1
+  MOVEQ OF_Flag, #0
+  STR r3, [product]
+ #else
+  clr ebx
+  l.eax mul_a
+  mul.d mul_b
+  jno label_end
+  inc ebx
+label_end
+  l.edi product
+  s.eax edi
+  s.bl OF_Flag
+ #endif
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __cdecl OF_Add
+  VAR_INPUT 
+    sum : ^dint; 
+    add_a : dint; 
+    add_b : dint;
+  END_VAR 
+  VAR_OUTPUT 
+    OF_Flag : bool; 
+  END_VAR
+ #ifdef _LSL_TARGETARCH_ARM  
+  ADDS R3, add_a, add_b 
+  MOVVS OF_Flag, #1
+  MOVVC OF_Flag, #0
+  STR r3, [sum]
+ #else 
+  clr ebx
+  l.eax add_a
+  add.eax add_b
+  jno label_end
+  inc ebx
+label_end
+  l.edi sum
+  s.eax edi
+  s.bl OF_Flag
+ #endif
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __cdecl CF_Add
+  VAR_INPUT 
+    sum : ^udint; 
+    add_a : udint; 
+    add_b : udint;
+  END_VAR 
+  VAR_OUTPUT 
+    Flag : bool; 
+  END_VAR
+ #ifdef _LSL_TARGETARCH_ARM 
+  ADDS R3, add_a, add_b 
+  MOVCS Flag, #1
+  MOVCC Flag, #0
+  STR r3, [sum]
+ #else 
+   clr ebx
+  l.eax add_a
+  add.eax add_b
+  ja label_end
+  inc ebx
+label_end
+  l.edi sum
+  s.eax edi
+  s.bl Flag
+ #endif
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __cdecl OF_Sub
+  VAR_INPUT 
+    diff : ^dint; 
+    sub_a : dint; 
+    sub_b : dint;
+  END_VAR 
+  VAR_OUTPUT 
+    OF_Flag : bool; 
+  END_VAR
+  #ifdef _LSL_TARGETARCH_ARM 
+  SUBS R3, sub_a, sub_b 
+  MOVVS OF_Flag, #1
+  MOVVC OF_Flag, #0
+  STR r3, [diff]
+  #else
+  clr ebx
+  l.eax sub_a
+  sub.eax sub_b
+  jno label_end
+  inc ebx
+label_end
+  l.edi diff
+  s.eax edi
+  s.bl OF_Flag
+  #endif
+END_FUNCTION
+
+FUNCTION AWL GLOBAL __cdecl CF_Sub
+  VAR_INPUT 
+    diff : ^udint; 
+    sub_a : udint; 
+    sub_b : udint;
+  END_VAR 
+  VAR_OUTPUT 
+    Flag : bool; 
+  END_VAR
+  #ifdef _LSL_TARGETARCH_ARM 
+  SUBS R3, sub_a, sub_b 
+  MOVCS Flag, #1
+  MOVCC Flag, #0
+  STR r3, [diff]
+  #else
+  clr ebx
+  l.eax sub_a
+  sub.eax sub_b
+  ja label_end
+  inc ebx
+label_end
+  l.edi diff
+  s.eax edi
+  s.bl Flag
+  #endif
+END_FUNCTION

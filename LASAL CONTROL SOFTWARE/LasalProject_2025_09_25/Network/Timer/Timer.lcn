@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="Timer" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "DischargeTimer1"
+			GUID       = "{19A6430C-1626-4C3C-9B46-2E84EB8FF501}"
+			Class      = "DischargeTimer"
+			Position   = "(2490,420)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="s_DisTimer1"/>
+				<Server Name="s_DisTimer2"/>
+				<Server Name="s_DisTimer3"/>
+				<Server Name="s_Reset"/>
+				<Server Name="s_StartStopTimer"/>
+				<Client Name="c_SysDate"/>
+				<Client Name="c_SysTime"/>
+				<Client Name="c_timer" Value="0"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "IrradiationTimers"
+			GUID       = "{C81F2B92-B4AF-44E6-A6EC-9EA58D94381C}"
+			Class      = "IrradiationManager"
+			Position   = "(690,330)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="s_1_3_pelletMode"/>
+				<Server Name="s_EasyGUI"/>
+				<Server Name="s_Reset"/>
+				<Server Name="s_setTimer1"/>
+				<Server Name="s_setTimer2"/>
+				<Server Name="s_setTimer3"/>
+				<Server Name="s_TimerStartStop"/>
+				<Server Name="s_VisTimerIrr1"/>
+				<Server Name="s_VisTimerIrr2"/>
+				<Server Name="s_VisTimerIrr3"/>
+				<Server Name="s_VisTimerIrrAdv1"/>
+				<Server Name="s_VisTimerIrrAdv2"/>
+				<Server Name="s_VisTimerIrrAdv3"/>
+				<Server Name="Startprocess"/>
+				<Client Name="c_SysTime"/>
+				<Client Name="c_timerLib"/>
+				<Client Name="NrIrrTablets"/>
+				<Client Name="SetStartStopIrr"/>
+				<Client Name="TabletInIrrPos"/>
+				<Client Name="Timer1"/>
+				<Client Name="Timer2"/>
+				<Client Name="Timer3"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "MoveTimer1"
+			GUID       = "{40D09647-E720-4B74-89D4-12D90F0D3228}"
+			Class      = "MoveTimer"
+			Position   = "(4380,450)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="s_1_3_pelletMode"/>
+				<Server Name="s_MovTimer1"/>
+				<Server Name="s_MovTimer2"/>
+				<Server Name="s_MovTimer3"/>
+				<Server Name="s_Reset"/>
+				<Server Name="s_StartStopTimer"/>
+				<Client Name="c_SysDate"/>
+				<Client Name="c_SysTime"/>
+				<Client Name="c_timer"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "Reset1"
+			GUID       = "{E7898E78-13CA-4D09-9FB8-7012C59E565F}"
+			Class      = "Reset"
+			Position   = "(5010,1050)"
+			Visualized = "false"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="s_ResetT"/>
+				<Client Name="c_ResetTimerDis"/>
+				<Client Name="c_ResetTimerIrr"/>
+				<Client Name="c_ResetTimerMov"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "SysDateTime1"
+			GUID       = "{87119F14-8F83-4A65-8F29-26E6C1432264}"
+			Class      = "SysDateTime"
+			Position   = "(1620,480)"
+			Visualized = "true"
+			Remotely   = "true"
+			CyclicTime = "500 µs">
+			<Channels>
+				<Server Name="SysDate"/>
+				<Server Name="SysTime"/>
+				<Client Name="System"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "SysDateTime2"
+			GUID       = "{8882C656-154C-4152-AAC2-CB136FFDA9AE}"
+			Class      = "SysDateTime"
+			Position   = "(3450,510)"
+			Visualized = "true"
+			Remotely   = "true"
+			CyclicTime = "500 µs">
+			<Channels>
+				<Server Name="SysDate"/>
+				<Server Name="SysTime"/>
+				<Client Name="System"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "SysDateTime3"
+			GUID       = "{50EB35A3-A90E-4D32-8407-0D426D3AD355}"
+			Class      = "SysDateTime"
+			Position   = "(60,960)"
+			Visualized = "true"
+			Remotely   = "true"
+			CyclicTime = "500 µs">
+			<Channels>
+				<Server Name="SysDate"/>
+				<Server Name="SysTime"/>
+				<Client Name="System"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "TimeDateLib1"
+			GUID       = "{2140C1C9-5900-4FB7-8EE6-6711DDB42EEE}"
+			Class      = "TimeDateLib"
+			Position   = "(2160,420)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "TimeDateLib1_Copy"
+			GUID       = "{7A46B4CC-315F-491C-ADFC-15CE6D40C943}"
+			Class      = "TimeDateLib"
+			Position   = "(60,810)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "TimeDateLib2"
+			GUID       = "{5A382CFE-BBB4-4F36-92DA-9441EDE1D402}"
+			Class      = "TimeDateLib"
+			Position   = "(3990,450)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "TimerLib1"
+			GUID       = "{07D80AE5-9C7F-4751-BA4D-CA64D131AE4B}"
+			Class      = "TimerLib"
+			Position   = "(210,270)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "TimerLib1_Copy"
+			GUID       = "{EB85D5F6-A3B8-4FB7-B112-198DB6D0A1C2}"
+			Class      = "TimerLib"
+			Position   = "(210,390)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "TimerLib1_Copy_Copy"
+			GUID       = "{4590CDF7-FCA9-4560-AC7E-3A373D8EA33B}"
+			Class      = "TimerLib"
+			Position   = "(210,510)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+			</Channels>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="IrradiationTimers.TabletInIrrPos" Destination="__IO_Element951" IOObject="IO_Element95"/>
+		<Connection Source="IrradiationTimers.NrIrrTablets" Destination="__IO_Element1151" IOObject="IO_Element115"/>
+		<Connection Source="IrradiationTimers.SetStartStopIrr" Destination="__IO_Element1161" IOObject="IO_Element116"/>
+		<Connection Source="IrradiationTimers.Timer1" Destination="TimerLib1.ClassSvr" Vertices="(690,420),(510,360),"/>
+		<Connection Source="IrradiationTimers.Timer2" Destination="TimerLib1_Copy.ClassSvr" Vertices="(690,480),(510,480),"/>
+		<Connection Source="IrradiationTimers.Timer3" Destination="TimerLib1_Copy_Copy.ClassSvr" Vertices="(690,540),(510,600),"/>
+		<Connection Source="DischargeTimer1.c_timer" Destination="TimeDateLib1.ClassSvr" Vertices="(2490,510),(2460,510),"/>
+		<Connection Source="DischargeTimer1.c_SysDate" Destination="SysDateTime1.SysDate" Vertices="(2490,570),(2146,570),"/>
+		<Connection Source="DischargeTimer1.c_SysTime" Destination="SysDateTime1.SysTime" Vertices="(2490,630),(2146,630),"/>
+		<Connection Source="__IO_Element961.Pin_ClientA" Destination="DischargeTimer1.s_StartStopTimer" Vertices="(3090,570),(3036,570)," IOObject="IO_Element96"/>
+		<Connection Source="MoveTimer1.c_SysDate" Destination="SysDateTime2.SysDate" Vertices="(4380,600),(3976,600),"/>
+		<Connection Source="MoveTimer1.c_SysTime" Destination="SysDateTime2.SysTime" Vertices="(4380,660),(3976,660),"/>
+		<Connection Source="MoveTimer1.c_timer" Destination="TimeDateLib2.ClassSvr" Vertices="(4380,540),(4290,540),"/>
+		<Connection Source="__IO_Element1171.Pin_ClientA" Destination="MoveTimer1.s_StartStopTimer" Vertices="(4980,600),(4926,600)," IOObject="IO_Element117"/>
+		<Connection Source="__IO_Element1181.Pin_ClientA" Destination="MoveTimer1.s_StartStopTimer" Vertices="(4980,600),(4926,600)," IOObject="IO_Element118"/>
+		<Connection Source="__IO_Element1201.Pin_ClientA" Destination="IrradiationTimers.s_EasyGUI" Vertices="(1320,1260),(1266,1260)," IOObject="IO_Element120"/>
+		<Connection Source="Reset1.c_ResetTimerDis" Destination="DischargeTimer1.s_Reset" Vertices="(5010,1260),(3090,1260),(3090,810),(3036,810),"/>
+		<Connection Source="Reset1.c_ResetTimerMov" Destination="MoveTimer1.s_Reset" Vertices="(5010,1200),(4950,1200),(4950,840),(4926,840),"/>
+		<Connection Source="Reset1.c_ResetTimerIrr" Destination="IrradiationTimers.s_Reset" Vertices="(5010,1140),(2190,1140),(2190,1320),(1266,1320),"/>
+		<Connection Source="__IO_Element1211.Pin_ClientA" Destination="Reset1.s_ResetT" Vertices="(5640,1200),(5576,1200)," IOObject="IO_Element121"/>
+		<Connection Source="IrradiationTimers.c_timerLib" Destination="TimeDateLib1_Copy.ClassSvr" Vertices="(690,900),(360,900),"/>
+		<Connection Source="IrradiationTimers.c_SysTime" Destination="SysDateTime3.SysTime" Vertices="(690,960),(630,960),(630,1110),(586,1110),"/>
+		<Connection Source="__IO_Element1221.Pin_ClientA" Destination="IrradiationTimers.s_TimerStartStop" Vertices="(1320,1380),(1266,1380)," IOObject="IO_Element122"/>
+		<Connection Source="__IO_Element1291.Pin_ClientA" Destination="MoveTimer1.s_1_3_pelletMode" Vertices="(4980,900),(4926,900)," IOObject="IO_Element129"/>
+		<Connection Source="__IO_Element1301.Pin_ClientA" Destination="IrradiationTimers.s_1_3_pelletMode" Vertices="(1320,1440),(1266,1440)," IOObject="IO_Element130"/>
+	</Connections>
+	<!-- List of temp data objects in this network -->
+	<IOObjects>
+		<IOObject KeyName="__IO_Element1171" Name="IO_Element117" Position="(4980,570)" Client="Motore_M51.c_TimerMov"/>
+		<IOObject KeyName="__IO_Element1181" Name="IO_Element118" Position="(4980,570)" Client="Motore_M41.c_TimerMov"/>
+		<IOObject KeyName="__IO_Element1201" Name="IO_Element120" Position="(1320,1230)" Client="AutoManSelector1.c_EasyGUIEn_IrrT"/>
+		<IOObject KeyName="__IO_Element1211" Name="IO_Element121" Position="(5640,1170)" Client="Manager_globale1.c_ResetTimer"/>
+		<IOObject KeyName="__IO_Element1221" Name="IO_Element122" Position="(1320,1350)" Client="Motore_M51.c_TimerIrr"/>
+		<IOObject KeyName="__IO_Element1291" Name="IO_Element129" Position="(4980,870)" Client="ManagerMotori1.c_1_3_pelletMode_TimerMov"/>
+		<IOObject KeyName="__IO_Element1301" Name="IO_Element130" Position="(1320,1410)" Client="ManagerMotori1.c_1_3_pelletMode_TimerIrr"/>
+		<IOObject KeyName="__IO_Element961" Name="IO_Element96" Position="(3090,540)" Client="Motore_M41.c_TimerDis"/>
+	</IOObjects>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

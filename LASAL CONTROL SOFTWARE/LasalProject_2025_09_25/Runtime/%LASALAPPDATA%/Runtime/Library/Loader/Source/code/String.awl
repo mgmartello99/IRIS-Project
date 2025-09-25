@@ -1,0 +1,1307 @@
+//#include <LSL_string.h>
+
+#ifdef OTTOSPEED
+FUNCTION GLOBAL TAB _chrUpTab
+
+  16#00, 16#01, 16#02, 16#03, 16#04, 16#05, 16#06, 16#07, 16#08, 16#09, 16#0A, 16#0B, 16#0C, 16#0D, 16#0E, 16#0F,
+  16#10, 16#11, 16#12, 16#13, 16#14, 16#15, 16#16, 16#17, 16#18, 16#19, 16#1A, 16#1B, 16#1C, 16#1D, 16#1E, 16#1F,
+  16#20, 16#21, 16#22, 16#23, 16#24, 16#25, 16#26, 16#27, 16#28, 16#29, 16#2A, 16#2B, 16#2C, 16#2D, 16#2E, 16#2F,
+  16#30, 16#31, 16#32, 16#33, 16#34, 16#35, 16#36, 16#37, 16#38, 16#39, 16#3A, 16#3B, 16#3C, 16#3D, 16#3E, 16#3F,
+  16#40,   'A',   'B',   'C',   'D',   'E',   'F',   'G',   'H',   'I',   'J',   'K',   'L',   'M',   'N',   'O',
+    'P',   'Q',   'R',   'S',   'T',   'U',   'V',   'W',   'X',   'Y',   'Z', 16#5B, 16#5C, 16#5D, 16#5E, 16#5F,
+  16#60,   'A',   'B',   'C',   'D',   'E',   'F',   'G',   'H',   'I',   'J',   'K',   'L',   'M',   'N',   'O',
+    'P',   'Q',   'R',   'S',   'T',   'U',   'V',   'W',   'X',   'Y',   'Z', 16#7B, 16#7C, 16#7D, 16#7E, 16#7F,
+  16#80, 16#81, 16#82, 16#83, 16#84, 16#85, 16#86, 16#87, 16#88, 16#89, 16#8A, 16#8B, 16#8C, 16#8D, 16#8E, 16#8F,
+  16#90, 16#91, 16#92, 16#93, 16#94, 16#95, 16#96, 16#97, 16#98, 16#99, 16#9A, 16#9B, 16#9C, 16#9D, 16#9E, 16#9F,
+  16#A0, 16#A1, 16#A2, 16#A3, 16#A4, 16#A5, 16#A6, 16#A7, 16#A8, 16#A9, 16#AA, 16#AB, 16#AC, 16#AD, 16#AE, 16#AF,
+  16#B0, 16#B1, 16#B2, 16#B3, 16#B4, 16#B5, 16#B6, 16#B7, 16#B8, 16#B9, 16#BA, 16#BB, 16#BC, 16#BD, 16#BE, 16#BF,
+  16#C0, 16#C1, 16#C2, 16#C3, 16#C4, 16#C5, 16#C6, 16#C7, 16#C8, 16#C9, 16#CA, 16#CB, 16#CC, 16#CD, 16#CE, 16#CF,
+  16#D0, 16#D1, 16#D2, 16#D3, 16#D4, 16#D5, 16#D6, 16#D7, 16#D8, 16#D9, 16#DA, 16#DB, 16#DC, 16#DD, 16#DE, 16#DF,
+  16#E0, 16#E1, 16#E2, 16#E3, 16#E4, 16#E5, 16#E6, 16#E7, 16#E8, 16#E9, 16#EA, 16#EB, 16#EC, 16#ED, 16#EE, 16#EF,
+  16#F0, 16#F1, 16#F2, 16#F3, 16#F4, 16#F5, 16#F6, 16#F7, 16#F8, 16#F9, 16#FA, 16#FB, 16#FC, 16#FD, 16#FE, 16#FF,
+
+END_FUNCTION
+#endif
+
+#ifndef STRING_STR
+
+//[#ENGLISH]
+//	This function compares two blocks of memory. It returns 0, if the blocks
+//	are completly the same. Otherwise it will return a value different to 0.
+//	[>ptr1]		pointer to 1st block of memory
+//	[>ptr2]		pointer to 2nd block of memory
+//	[>cntr]		number of bytes to compare
+//	[<retcode]	0 if equal, !=0 if not equal
+FUNCTION _memcmp
+VAR_INPUT
+	ptr1			: ^void;
+	ptr2			: ^void;
+	cntr			: UDINT;
+END_VAR
+VAR_OUTPUT
+	notequal		: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6, r7, r8}
+    MOV       notequal, #0       // retcode = 0
+    CMP       cntr, #0
+    BEQ       MemCmpEnd          // nothing to do
+    CMP       cntr, #8
+    BLO       MemCmpBbB          // less bytes
+    EOR       r8, ptr2, ptr1
+    TST       r8, #3
+    BNE       MemCmpMisaligned   // misaligned pointer
+
+    // do bytes until
+    TST       ptr2, #1
+    BEQ       MemCmp2
+    LDRB      r6, [ptr1], #1
+    LDRB      r7, [ptr2], #1
+    TEQ       r6, r7
+    BNE       MemCmpNE
+    SUB       cntr, cntr, #1
+MemCmp2
+    TST       ptr2, #2
+    BEQ       MemCmp4             
+    LDRH      r6, [ptr1], #2
+    LDRH      r7, [ptr2], #2      
+    TEQ       r6, r7
+    BNE       MemCmpNE
+    SUB       cntr, cntr, #2
+
+    // 4 byte aligned
+MemCmp4
+    MOV       r8, cntr, LSR #2
+MemCmp4Loop
+    LDR       r6, [ptr1], #4
+    LDR       r7, [ptr2], #4
+    TEQ       r6, r7
+    BNE       MemCmpNE
+    SUBS      r8, r8, #1
+    BNE       MemCmp4Loop
+
+    // do bytes after
+    TST       cntr, #2
+    BEQ       MemCmpAfter1
+    LDRH      r6, [ptr1], #2
+    LDRH      r7, [ptr2], #2
+    TEQ       r6, r7
+    BNE       MemCmpNE
+MemCmpAfter1
+    TST       cntr, #1
+    BEQ       MemCmpEnd      
+    LDRB      r6, [ptr1], #1
+    LDRB      r7, [ptr2], #1
+    TEQ       r6, r7
+    BNE       MemCmpNE
+    B         MemCmpEnd 
+
+MemCmpMisaligned
+    ORR       r8, ptr1, ptr2
+    TST       r8, #1
+    BNE       MemCmpBbB
+    MOV       r8, cntr, LSR #1
+MemCmpMisaligned2Loop
+    LDRH      r6, [ptr2], #2
+    LDRH      r7, [ptr1], #2
+    TEQ       r6, r7
+    BNE       MemCmpNE
+    SUBS      r8, r8, #1
+    BNE       MemCmpMisaligned2Loop
+    TST       cntr, #1
+    BEQ       MemCmpEnd
+    LDRB      r6, [ptr2], #1
+    LDRB      r7, [ptr1], #1
+    TEQ       r6, r7
+    BNE       MemCmpNE
+    B         MemCmpEnd
+    
+MemCmpBbB
+    LDRB      r6, [ptr1], #1
+    LDRB      r7, [ptr2], #1
+    TEQ       r6, r7
+    BNE       MemCmpNE
+    SUBS      cntr, cntr, #1
+    BNE       MemCmpBbB
+    B         MemCmpEnd
+
+MemCmpNE
+    MOV       notequal, #1
+
+MemCmpEnd
+    LDMIA     sp!, {r6, r7, r8}
+
+#else
+			PUSH		EDI
+			PUSH		ESI
+			PUSH		ECX
+			PUSHF
+
+			CLD
+			L.EDI		ptr1				// pointer 1
+			L.ESI		ptr2				// pointer 2
+			L.ECX		cntr				// number of bytes
+			JECXZ		EQUAL				// blocks of size 0 are always equal
+
+			INC			ECX
+
+			REPZ
+			CMPSB
+
+EQUAL		S.ECX		notequal			// return value
+
+			POPF
+			POP			ECX
+			POP			ESI
+			POP			EDI
+#endif
+END_FUNCTION
+
+//[#ENGLISH]
+//	The function copies a given number of bytes from one block of memory into
+//	another block. It starts with the first byte in the block.
+//	[>ptr1]		pointer to 1st block of memory
+//	[>ptr2]		pointer to 2nd block of memory
+//	[>cntr]		number of bytes to copy
+FUNCTION _memcpy
+VAR_INPUT
+	ptr1			: ^void;
+	ptr2			: ^void;
+	cntr			: UDINT;
+END_VAR
+
+#ifdef _LSL_TARGETARCH_ARM
+    // forward copy
+    STMDB     sp!, {r5, r6}
+    CMP       cntr, #0
+    BEQ       MemCpyEnd          // nothing to do
+    CMP       cntr, #8
+    BLO       MemCpyBbB          // less bytes
+    EOR       r6, ptr2, ptr1
+    TST       r6, #3
+    BNE       MemCpyMisaligned   // misaligned pointer
+
+    // do bytes until
+    TST       ptr2, #1             
+    LDRBNE    r5, [ptr2], #1
+    STRBNE    r5, [ptr1], #1
+    SUBNE     cntr, cntr, #1
+    TST       ptr2, #2             
+    LDRHNE    r5, [ptr2], #2
+    STRHNE    r5, [ptr1], #2      
+    SUBNE     cntr, cntr, #2
+
+    // 4 byte aligned
+    MOV       r6, cntr, LSR #2
+MemCpy4Loop
+    LDR       r5, [ptr2], #4
+    STR       r5, [ptr1], #4
+    SUBS      r6, r6, #1
+    BNE       MemCpy4Loop
+
+    // do bytes after
+    TST       cntr, #2       
+    LDRHNE    r5, [ptr2], #2
+    STRHNE    r5, [ptr1], #2
+    TST       cntr, #1       
+    LDRBNE    r5, [ptr2], #1
+    STRBNE    r5, [ptr1], #1
+    B         MemCpyEnd 
+
+MemCpyMisaligned
+    ORR       r6, ptr1, ptr2
+    TST       r6, #1
+    BNE       MemCpyBbB
+    MOV       r6, cntr, LSR #1
+MemCpyMisaligned2Loop
+    LDRH      r5, [ptr2], #2
+    STRH      r5, [ptr1], #2
+    SUBS      r6, r6, #1
+    BNE       MemCpyMisaligned2Loop
+    TST       cntr, #1
+    LDRBNE    r5, [ptr2], #1
+    STRBNE    r5, [ptr1], #1
+    B         MemCpyEnd	 
+
+MemCpyBbB
+    LDRB      r5, [ptr2], #1
+    STRB      r5, [ptr1], #1
+    SUBS      cntr, cntr, #1
+    BNE       MemCpyBbB
+
+MemCpyEnd
+    LDMIA     sp!, {r5, r6}       
+#else
+			PUSH		EDI
+			PUSH		ESI
+			PUSH		ECX
+			PUSHF
+
+			CLD
+			L.EDI		ptr1
+			L.ESI		ptr2
+			L.ECX		cntr
+			
+			push		ecx
+			SHR.ECX		2		// /4
+			REP
+			MOVSD				// doesn't change carry flag
+			pop			ecx
+			and.ecx		3
+			REP
+			MOVSB				
+
+			POPF
+			POP			ECX
+			POP			ESI
+			POP			EDI
+#endif
+END_FUNCTION
+//[#ENGLISH]
+//	This function copies a given number of bytes from one block of memory
+//	into another. It starts with the last byte in the blocks.
+//	[>ptr1]		pointer to the end of 1st block of memory
+//	[>ptr2]		pointer to the end of 2nd block of memory
+//	[>cntr]		number of bytes to copy
+FUNCTION GLOBAL _memcpyrev
+VAR_INPUT
+	ptr1			: ^USINT;
+	ptr2			: ^USINT;
+	cntr			: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    // reverse copy
+    STMDB     sp!, {r5, r6}
+    CMP       cntr, #0
+    BEQ       MemCpyRevEnd          // nothing to do
+    ADD       ptr1, ptr1, #1        // correct dst
+    ADD       ptr2, ptr2, #1        // correct src
+    CMP       cntr, #8
+    BLO       MemCpyRevBbB          // less bytes
+    EOR       r6, ptr2, ptr1
+    TST       r6, #3
+    BNE       MemCpyRevMisaligned   // misaligned pointer
+
+    // do bytes until
+    TST       ptr2, #1             
+    LDRBNE    r5, [ptr2, #-1]!
+    STRBNE    r5, [ptr1, #-1]!
+    SUBNE     cntr, cntr, #1
+    TST       ptr2, #2             
+    LDRHNE    r5, [ptr2, #-2]!
+    STRHNE    r5, [ptr1, #-2]!      
+    SUBNE     cntr, cntr, #2
+
+    // 4 byte aligned
+    MOV       r6, cntr, LSR #2
+MemCpyRev4Loop
+    LDR       r5, [ptr2, #-4]!
+    STR       r5, [ptr1, #-4]!
+    SUBS      r6, r6, #1
+    BNE       MemCpyRev4Loop
+
+    // do bytes after
+    TST       cntr, #2       
+    LDRHNE    r5, [ptr2, #-2]!
+    STRHNE    r5, [ptr1, #-2]!
+    TST       cntr, #1       
+    LDRBNE    r5, [ptr2, #-1]!
+    STRBNE    r5, [ptr1, #-1]!
+    B         MemCpyRevEnd 
+
+MemCpyRevMisaligned
+    ORR       r6, ptr1, ptr2
+    TST       r6, #1
+    BNE       MemCpyRevBbB
+    MOV       r6, cntr, LSR #1
+MemCpyRevMisaligned2Loop
+    LDRH      r5, [ptr2, #-2]!
+    STRH      r5, [ptr1, #-2]!
+    SUBS      r6, r6, #1
+    BNE       MemCpyRevMisaligned2Loop
+    TST       cntr, #1
+    LDRBNE    r5, [ptr2, #-1]!
+    STRBNE    r5, [ptr1, #-1]!
+    B         MemCpyRevEnd	 
+
+MemCpyRevBbB
+    LDRB      r5, [ptr2, #-1]!
+    STRB      r5, [ptr1, #-1]!
+    SUBS      cntr, cntr, #1
+    BNE       MemCpyRevBbB
+    
+MemCpyRevEnd
+    LDMIA     sp!, {r5, r6}
+    
+#else
+			PUSH		EDI
+			PUSH		ESI
+			PUSH		ECX
+			PUSHF
+
+			STD
+			L.EDI		ptr1
+			L.ESI		ptr2
+			L.ECX		cntr
+			REP
+			MOVSB
+
+			POPF
+			POP			ECX
+			POP			ESI
+			POP			EDI
+#endif
+END_FUNCTION
+//[#ENGLISH]
+//	The function fills all bytes of a block of memory with a given byte.
+//	[>dest]		pointer to the block of memory
+//	[>usByte]	specifies the new contents
+//	[>cntr]		number of bytes to change
+FUNCTION _memset
+VAR_INPUT
+	dest			: ^void;
+	usByte			: USINT;
+	cntr			: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r5}
+    CMP       cntr, #0
+    BEQ       MemSetEnd     // nothing to do
+    CMP       cntr, #8
+    BLO       MemSetBbB     // less bytes
+
+    ORR       usByte, usByte, usByte, LSL #8
+    ORR       usByte, usByte, usByte, LSL #16
+    
+    // do bytes until
+    TST       dest, #1
+    STRBNE    usByte, [dest], #1
+    SUBNE     cntr, cntr, #1
+    TST       dest, #2
+    STRHNE    usByte, [dest], #2
+    SUBNE     cntr, cntr, #2
+
+    // 4 byte aligned
+    MOV       r5, cntr, LSR #2
+MemSet4Loop
+    STR       usByte, [dest], #4
+    SUBS      r5, r5, #1
+    BNE       MemSet4Loop
+
+    // do bytes after
+    TST       cntr, #2
+    STRHNE    usByte, [dest], #2
+    TST       cntr, #1
+    STRBNE    usByte, [dest], #1
+    B         MemSetEnd      
+
+MemSetBbB
+    SUBS      cntr, cntr, #1
+    STRB      usByte, [dest, cntr]
+    BNE       MemSetBbB
+   
+MemSetEnd
+    LDMIA     sp!, {r5}
+#else
+			PUSH		EDI
+			PUSH		ECX
+			PUSH		EAX
+			PUSHF
+
+#ifdef OTTOSPEED
+			cld
+			l.bl    usByte
+			l.bh    bl
+      l.ax    bx
+      shl.eax 16
+      l.ax    bx
+      
+			l.ecx   cntr
+			l.edi		dest
+			shr.ecx 2
+			rep
+			stosd
+			jnc			_memsetr
+      
+			l.ecx   cntr
+      and.ecx 3
+      rep
+      stosb
+#else
+			CLD
+			L.ECX		cntr
+			L			usByte
+			l.ah		al
+			L.EDI		DEST
+			shr.ecx		1
+			REP
+			STOSW
+			jnc			_memsetr
+			stosb
+#endif      
+_memsetr
+			POPF
+			POP			EAX
+			POP			ECX
+			POP			EDI
+#endif
+END_FUNCTION
+
+FUNCTION GLOBAL _ismemset
+VAR_INPUT
+  src       : ^void;
+  val       : usint;
+	cntr			: udint;
+END_VAR
+VAR_OUTPUT
+  retcode : UDINT;
+END_VAR
+
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6, r7}  
+    
+    MOV       r7, cntr
+    CMP       r7, #0
+    BEQ       IsMemSetEnd     // nothing to do
+
+IsMemSetStart
+    LDRB      r6, [src], #1
+    CMP       r6, val
+    BNE       IsMemSetEnd
+    SUBS      r7, r7, #1
+    BNE       IsMemSetStart
+ 
+IsMemSetEnd
+    CMP       r7, #0
+    MOVNE     retcode, #1
+    MOVEQ     retcode, #0
+    
+    LDMIA    sp!, {r6, r7}  
+#else
+  push    edi
+
+  clr     eax
+  s.eax   retcode
+
+  l.edi   src
+  l.bl    val
+  l.bh    bl
+  l.ax    bx
+  shl.eax 16
+  l.ax    bx
+
+  l.ecx   cntr
+  shr.ecx 2
+
+memrep4byte  
+  or.ecx  0
+  jz      memstart1byte
+  dec     ecx
+  l.ebx   (edi)
+  add.edi 4
+  cmp.eax ebx
+  jz      memrep4byte
+  jmp     memnotequal
+  
+memstart1byte  
+  l.ecx   cntr
+  and.ecx 3
+  
+memrep1byte  
+  or.ecx  0
+  jz      memrepfinito
+  dec     ecx
+  l.bl    (edi)
+  inc     edi
+  cmp.al  bl
+  jz      memrep1byte
+
+memnotequal
+  l.eax   1
+  s.eax   retcode
+  
+memrepfinito
+
+  pop     edi
+#endif
+
+END_FUNCTION
+
+
+FUNCTION GLOBAL _memswap
+VAR_INPUT
+  ptr1      : ^void;
+	ptr2			: ^void;
+	cntr			: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r5, r6}
+    CMP       cntr, #0
+    BEQ       MemSwpEnd       // nothing to do    
+    
+MemSwpBbB  
+    LDRB      r5, [ptr1, #0]
+    LDRB      r6, [ptr2, #0]
+    STRB      r6, [ptr1], #1
+    STRB      r5, [ptr2], #1
+    SUBS      cntr, cntr, #1
+    BNE       MemSwpBbB
+    
+MemSwpEnd
+    LDMIA     sp!, {r5, r6}       
+#else
+  push    esi
+  push    edi
+
+  l.edi   ptr2
+  l.esi   ptr1
+
+  l.ecx   cntr
+  shr.ecx 2
+
+rep4byte 
+  or.ecx  0
+  jz      start1byte
+  l.eax   (edi)
+  xch.eax (esi)
+  s.eax   (edi)
+  add.edi 4
+  add.esi 4
+  dec     ecx
+  jmp     rep4byte
+
+start1byte
+  l.ecx   cntr
+  and.ecx 3
+
+rep1byte
+  or.ecx  0
+  jz      repfinito
+  l.al    (edi)
+  xch.al  (esi)
+  s.al    (edi)
+  inc     edi
+  inc     esi
+  dec     ecx
+  jmp     rep1byte
+
+repfinito
+
+  pop     edi
+  pop     esi
+#endif
+
+END_FUNCTION
+
+
+//[#ENGLISH]
+//	This function tries to find a given character within an ASCII-string. It 
+//	returns a pointer to the character found, or NIL, if no character was found
+//	at all. The source string has to be 0-terminated.
+//	[>src]		pointer to the ASCII string which is to scan
+//	[>chr]		character to search for
+//	[<dest]		pointer to the 1st matching character within src or NIL
+FUNCTION   _strchr
+VAR_INPUT
+	src				: ^char;
+	chr				: CHAR;
+END_VAR
+VAR_OUTPUT
+	dest			: ^CHAR;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6}
+    MOV       dest, #0
+StrChrBbB
+    LDRB      r6, [src], #1
+    CMP       r6, #0
+    BEQ       StrChrEnd
+    CMP       r6, chr
+    BEQ       StrChrFound
+    B         StrChrBbB
+
+StrChrFound
+    SUB       dest, src, #1
+
+StrChrEnd
+    LDMIA     sp!, {r6}
+#else
+			PUSHF
+
+			CLD
+			L.EDI		SRC
+			L.ECX		-1
+			CLR			AL
+			REP
+			SCASB
+			NEG			ECX
+			SUB.ECX		2               // strlen
+			S.ECX		EDX
+
+			INC			ECX				//MR
+
+			L.EDI		SRC
+
+			L.AL		chr
+			REP
+			SCASB
+
+			JECXZ       NOT_FOUND
+			L.EDI		SRC
+			ADD.EDI		EDX
+			SUB.EDI		ECX
+
+			JMP			END
+
+NOT_FOUND
+			X.EDI		EDI
+END
+
+			S.EDI		dest
+			POPF
+#endif
+END_FUNCTION
+//    Zeichenketten (Nullstrings) vergleichen. Zwischen Gross-
+//    und Kleinschreibung wird unterschieden.
+//    
+//    -> str1: Zeiger auf 1. Nullstring
+//    -> str2: Zeiger auf 2. Nullstring
+//    
+//    <- 0...Zeichenketten stimmen ueberein
+//       1...Zeichenketten stimmen nicht ueberein
+//    
+//    Erstellt: Engl Roland, 27.11.97
+//    
+//    Updates :
+//[#ENGLISH]
+//	The function compares two ASCII-Strings (0-terminated). The comparison is
+//	performed case sensitive.
+//	[>str1]		pointer to the 1st ASCII-string
+//	[>str2]		pointer to the 2nd ASCII-string
+//	[<retcode]	0 if equal, !=0 if not equal
+FUNCTION _strcmp
+VAR_INPUT
+	str1			: ^char;
+	str2			: ^char;
+END_VAR
+VAR_OUTPUT
+	retcode			: UINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6, r7}
+    MOV       retcode, #0
+StrCmpLoop
+    LDRB      r6, [str1], #1
+    LDRB      r7, [str2], #1
+    CMP       r6, r7
+    BNE       StrCmpFailed
+    CMP       r6, #0
+    BNE       StrCmpLoop
+    B         StrCmpEnd
+		
+StrCmpFailed
+    MOV       retcode, #1
+
+StrCmpEnd
+    LDMIA     sp!, {r6, r7}
+
+#else
+			PUSHF
+
+			CLD
+			CLR			ECX
+			L.EDI		str1
+			L.ESI		str2
+
+NEXT		L.CL		(EDI)
+			OR.CL		(ESI)
+			JECXZ		ENDE		// 0-termination
+			CMPSB
+			JZ			NEXT		// still equal?
+
+			L.CL		1
+ENDE		S.CX		retcode
+
+			POPF
+#endif
+END_FUNCTION
+//[#ENGLISH]
+//	This function copies one ASCII-string (0-terminated) to another ASCII-string.
+FUNCTION AWL GLOBAL _strcpy
+VAR_INPUT
+	dest			: ^CHAR;
+	src				: ^CHAR;
+END_VAR
+
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r5}
+StrCpyLoop
+    LDRB      r5, [src], #1
+    STRB      r5, [dest], #1
+    CMP       r5, #0
+    BNE       StrCpyLoop
+    LDMIA     sp!, {r5}
+#else
+  pushf
+  push esi
+  
+  cld
+  l.edi src
+  l.ecx -1
+  clr al
+  rep
+  scasb
+  neg ecx
+  dec ecx
+  
+	l.edi dest
+  l.esi src
+  push ecx
+  shr.ecx 2
+  rep
+  movsd
+  pop ecx
+  and.ecx 3
+  rep
+  movsb		  
+
+  pop esi
+  popf
+#endif
+END_FUNCTION
+//[#ENGLISH]
+//	This function calculates the length of a 0-terminated ASCII-string.
+//	[>src]		pointer to the string
+//	[<retcode]	length of the string not including the 0 at the end
+FUNCTION _strlen
+VAR_INPUT
+	src				: ^CHAR;
+END_VAR
+VAR_OUTPUT
+	retcode			: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6, r7}
+    MOV       retcode, #0
+    ADD       r7, src, #1
+StrLenBbB
+    LDRB      r6, [src], #1
+    CMP       r6, #0
+    BNE       StrLenBbB
+    SUB       retcode, src, r7
+    LDMIA     sp!, {r6, r7}
+#else
+			PUSHF
+
+			CLD
+			L.EDI		SRC
+			L.ECX		-1
+			CLR			AL
+			REP
+			SCASB
+			NEG			ECX
+			SUB.ECX		2
+			S.ECX		RETCODE
+
+			POPF
+#endif
+END_FUNCTION
+//[#ENGLISH]
+//	This function copies the 'src'-string to the 'dest'-
+//	string. If the length of 'src' exceeds 'max', then only
+//	the first 'max' characters are copied. The destination
+//	string will always be 0-terminated.
+//	[>dest]		pointer to the destination string
+//	[>src]		pointer to the source string
+//	[>max]		maximum amount of bytes to be copied
+//	[<len]		actual amount of bytes that were copied, without 0
+
+FUNCTION AWL GLOBAL _strncpy
+VAR_INPUT
+	dest			: ^CHAR;
+	src				: ^CHAR;
+	max				: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r5}
+    CMP       max, #0
+    BEQ       StrnCpyFinish
+StrnCpyLoop
+    LDRB      r5, [src], #1
+    STRB      r5, [dest], #1
+    CMP       r5, #0
+    BEQ       StrnCpyEnd
+    SUBS      max, max, #1
+    BNE       StrnCpyLoop
+StrnCpyFinish
+    MOV       r5, #0
+    STRB      r5, [dest, #0]
+StrnCpyEnd
+    LDMIA     sp!, {r5}
+#else
+  pushf
+  push esi
+  
+  cld
+  l.edi src
+  l.ecx -1
+  clr al
+  rep
+  scasb
+  neg ecx
+  dec ecx
+  dec ecx
+
+  l.eax max
+  cmp.ecx eax
+  jbe _strncpy_loop
+  l.ecx eax
+  
+_strncpy_loop
+  
+  
+	l.edi dest
+  l.esi src
+  
+  xor.al al
+  s.al (edi + ecx)
+  
+  push ecx
+  shr.ecx 2
+  rep
+  movsd
+  pop ecx
+  and.ecx 3
+  rep
+  movsb	  
+  
+  pop esi
+  popf
+#endif
+END_FUNCTION
+#endif	//!STRING_STR
+
+FUNCTION AWL _strupr
+VAR_INPUT
+ str				: ^CHAR;
+END_VAR
+
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r5, r6}
+    MVN       r6, #0
+StrUpBbB
+    ADD       r6, r6, #1
+    LDRB      r5, [str, r6]
+    CMP       r5, #0
+    BEQ       StrUpEnd       
+    CMP       r5, #'a'
+    BLO       StrUpBbB
+    CMP       r5, #'z'
+    BHI       StrUpBbB
+    SUB       r5, r5, #'a'-'A'
+    STRB      r5, [str, r6]
+    B         StrUpBbB
+
+StrUpEnd
+    LDMIA     sp!, {r5, r6}
+#else
+
+	l.EDI		str
+_stupr_loop
+	L.AL		(edi)
+	o.al		al
+	jz			_stupr_ret
+	cmp.al		'a'
+	jb			_stupr_next
+	cmp.al		'z'
+	ja			_stupr_next
+	add.b		(edi),('A'-'a')
+_stupr_next
+	inc			edi
+	jmp			_stupr_loop
+_stupr_ret
+#endif
+END_FUNCTION
+// converts a UDINT to a ascii-string in hexadecimal format without prefix
+// i.e. 16#1234	-> "1234$00" (with terminating 0)
+// #FA23122003 Fehler Bei wandel auf (A-F kommt B-G raus)
+
+FUNCTION AWL GLOBAL _itoa
+VAR_INPUT
+	udNumber		: UDINT;
+	pString			: ^CHAR;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r5, r6}
+    CMP       udNumber, #0
+    BNE       itoaNz
+  
+    MOV       r5, #'0'
+    STRB      r5, [pString, #0]
+    MOV       r5, #0
+    STRB      r5, [pString, #1]
+    B         itoaEnd
+  
+itoaNz
+    MOV       r6, #8
+itoaLoop  
+    AND       r5, udNumber, #15
+    ADD       r5, r5, #'0'
+    CMP       r5, #'9'
+    ADDHI     r5, r5, #7
+    SUB       r6, r6, #1
+    STRB      r5, [pString, r6]
+    MOV       udNumber, udNumber, LSR #4
+    CMP       r6, #0
+    BNE       itoaLoop
+    MOV       r5, #0
+    STRB      r5, [pString, #8]
+
+itoaEnd
+    LDMIA     sp!, {r5, r6}
+
+#else
+	l.edi		pString	
+	l.ebx		udNumber
+	o.ebx		ebx
+	jnz			_itoa_nz
+	l.b			(edi) ,'0'
+	l.b			(edi+1),0
+	jmp			_itoa_ret
+	
+_itoa_nz
+	l.ecx		8
+_itoa_loop
+	rol.ebx		4
+	l.al		bl
+	and.al		16#0f
+	add.al		'0'
+	cmp.al		'9'
+	jbe			_itoa_09
+	add.al		'A'-'0'-16#0A
+			
+_itoa_09
+	stosb
+	loop		_itoa_loop
+	clr			al
+	stosb
+
+_itoa_ret	 
+#endif	
+END_FUNCTION  
+
+// This function appends one string to another.
+FUNCTION GLOBAL STR _strcat
+VAR_INPUT
+ dest            : ^CHAR;
+ src             : ^CHAR;
+END_VAR
+VAR
+ len             : UDINT;
+END_VAR
+
+  len := _strlen(dest);
+  _strcpy(dest+len, src);
+
+END_FUNCTION
+
+//    ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+//    บ Kopieren von Speicherbloeken (auch ueberlappend)       บ
+//    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ
+//    บ --> : dest .... --> auf Ziel                           บ
+//    บ       src ..... --> auf Quelle                         บ
+//    บ       anz ..... Anzahl der zu kopierenden Bytes        บ
+//    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤยฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤยฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ
+//    บ Name: OK     ณ Entwickelt:          ณ Update:          บ
+//    ศออออออออออออออฯออออออออออออออออออออออฯออออออออออออออออออผ
+
+FUNCTION GLOBAL STR _memmove
+VAR_INPUT
+ dest            : ^void;
+ src             : ^void;
+ anz             : UDINT;
+END_VAR
+
+	IF (src < dest) THEN
+	  _memcpyrev((dest$UDINT+anz-1)$^USINT, (src$UDINT+anz-1)$^USINT, anz);
+	ELSE
+	  _memcpy(dest, src, anz);
+	END_IF;
+
+END_FUNCTION
+
+// ....................................................................................
+// vergleich 2 strings miteinander aber gro฿ kleinschreibung wir korrigiert A= a und B=b
+// der erste String ist gültig für die Lไnge
+// ....................................................................................
+// aschl
+FUNCTION GLOBAL _stricmp
+VAR_INPUT
+ str1            : ^char;
+ str2            : ^char;
+END_VAR
+VAR_OUTPUT
+ retcode         : UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6, r7}
+    MOV       retcode, #0
+StriCmpLoop
+    LDRB      r7, [str1], #1
+    LDRB      r6, [str2], #1
+    CMP       r7, r6
+    BNE       StriCmpInSens
+    CMP       r7, #0
+    BNE       StriCmpLoop
+    B         StriCmpEnd
+		
+StriCmpInSens
+    CMP       r7, #'z'
+    BHI       StriCmpFailed
+    CMP       r6, #'z'
+    BHI       StriCmpFailed
+    CMP       r7, #'a'
+    SUBHS     r7, r7, #32
+    CMP       r6, #'a'
+    SUBHS     r6, r6, #32
+    CMP       r7, r6
+    BEQ       StriCmpLoop
+StriCmpFailed    
+    MOV       retcode, #1     // ungleich
+
+StriCmpEnd
+    LDMIA     sp!, {r6, r7}
+#else
+	l.edi		str1
+	l.ebx		str2
+	l.d			retcode,0		// gültig
+_stricmp_loop	
+	l			(edi)
+	o.al		al
+	jz			_stricmp_ret
+
+// first try it could be the same
+	cmp.al		(ebx)
+	je			_stricmp_3
+
+	cmp.al		'a'
+	jb			_stricmp_1
+	cmp.al		'z'
+	ja			_stricmp_1
+	add.al		'A'-'a'		
+	
+_stricmp_1
+	l.ah		(ebx)
+	cmp.ah		'a'
+	jb			_stricmp_2
+	cmp.ah		'z'
+	ja			_stricmp_2
+	add.ah		'A'-'a'		
+	
+_stricmp_2
+	cmp.al		ah
+	jnz			_stricmp_fault
+_stricmp_3
+	inc			edi
+	inc			ebx
+	jmp			_stricmp_loop
+			
+_stricmp_ret
+	cmp.al		(ebx)			// ascii-0
+	jz			_stricmp_end
+_stricmp_fault	
+	l.d			retcode,1
+_stricmp_end
+#endif
+
+//  retcode := _memicmp(str1, str2, _strlen(str1)+1);
+
+END_FUNCTION
+// 
+// -> ptr	:
+// -> count	:
+// <- crc_16:
+//
+
+FUNCTION GLOBAL AWL _memicmp
+VAR_INPUT
+	str1		: ^void;
+	str2		: ^void;
+	len			: UDINT;
+END_VAR
+VAR_OUTPUT
+	result		: UDINT;
+END_VAR
+#ifdef _LSL_TARGETARCH_ARM
+    STMDB     sp!, {r6, r7}
+    MOV       result, #0
+    ADD       len, len, #1
+MemiCmpLoop
+    SUBS      len, len, #1
+    BEQ       MemiCmpEnd
+    
+    LDRB      r7, [str1], #1
+    LDRB      r6, [str2], #1
+    CMP       r7, r6
+    BEQ       MemiCmpLoop
+		
+    CMP       r7, #'z'
+    BHS       MemiCmpFailed
+    CMP       r6, #'z'
+    BHS       MemiCmpFailed
+    CMP       r7, #'a'
+    SUBHS     r7, r7, #32
+    CMP       r6, #'a'
+    SUBHS     r6, r6, #32
+    CMP       r7, r6
+    BEQ       MemiCmpLoop
+MemiCmpFailed    
+    MOV       result, #1     // ungleich
+
+MemiCmpEnd
+    LDMIA     sp!, {r6, r7}
+#else
+  push esi
+
+  xor.eax eax
+  s.eax result
+
+  l.edi str1
+  l.esi str2
+  l.ecx len  
+
+_memicmp_loop
+  or.ecx ecx
+  jz _memicmp_end
+  
+  dec ecx
+  
+  l.al (edi)
+  l.bl (esi)
+  inc esi
+  inc edi
+  
+  cmp.al bl
+  je _memicmp_loop
+  
+//  l.al (edi)
+  cmp.al 'a'
+  jb _memicmp_next1
+  cmp.al 'z'
+  ja _memicmp_next1
+  add.al ('A'-'a')  
+  
+_memicmp_next1
+//  l.bl (esi)
+  cmp.bl 'a'
+  jb _memicmp_next2
+  cmp.bl 'z'
+  ja _memicmp_next2
+  add.bl ('A'-'a')  
+
+_memicmp_next2
+//  inc esi
+//  inc edi
+
+  xor.al bl
+  jz _memicmp_loop
+  
+  l.eax 1
+  s.eax result
+
+_memicmp_end
+  pop esi
+#endif
+END_FUNCTION
+
+VAR_GLOBAL
+  FormattedText : ARRAY[0..255] OF char; // NLNG
+END_VAR
+
+FUNCTION STR AddSubText
+  VAR_INPUT
+    src : ^char;
+    nng : udint;
+  END_VAR
+  var
+    lng : udint;
+  end_var
+
+  if(nng > 0) then
+    lng := _strlen(#FormattedText[0]);
+    
+    if(lng < (sizeof(FormattedText) - 1)) then
+      if((lng + nng) >= sizeof(FormattedText)) then
+        nng := sizeof(FormattedText) - lng - 1;
+      end_if;
+      
+      if(nng > 0) then
+        _memcpy(#FormattedText[lng], src, nng);
+        FormattedText[lng + nng] := 0;
+      end_if;  
+    end_if;
+  end_if;
+
+END_FUNCTION
+
+FUNCTION STR AddText
+  VAR_INPUT
+    src : ^char;
+  END_VAR
+
+  if(src <> NIL) then
+    AddSubText(src, _strlen(src));
+  end_if;  
+  
+END_FUNCTION
+
+FUNCTION STR _Format
+VAR_INPUT
+  pFormat   : ^char;
+  pTxt0     : ^char;
+  pTxt1     : ^char;
+  pTxt2     : ^char;
+END_VAR
+VAR_OUTPUT
+  pText     : ^char;
+END_VAR
+VAR
+  ph : ^char;
+  no : uint;
+END_VAR
+
+  no := 0;
+  ph := pFormat;
+  FormattedText[0] := 0;
+
+  if(ph <> NIL) then
+
+    while(ph^) do
+      if(ph^ = '{') then
+        if((ph+2)^ = '}') then
+          AddSubText(pFormat, no);
+          pFormat += no;
+              
+          no := (ph+1)^ - '0';
+          case(no) of
+            0  : AddText(pTxt0);
+            1  : AddText(pTxt1);
+            2  : AddText(pTxt2);
+            else AddText("{?}");
+          end_case;
+          ph += 2;
+          pFormat += 3;
+          no := 0xFFFF;
+        end_if;
+      end_if;
+      
+      no += 1;
+      ph += 1;
+    end_while;
+
+    AddSubText(pFormat, no);
+  end_if;  
+  
+  pText := #FormattedText[0];
+  
+END_FUNCTION

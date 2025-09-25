@@ -1,0 +1,1333 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<IOConnectionManager Version="2" Detail="0" PLC="">
+	<!-- List of Entries -->
+	<Entry Name="**IOCONN_EMPTY**" GUID="{2604304F-BBE9-4B2B-8AFD-673DE451939C}" Objectsize="284">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection SortIndex="11" KeyName="000011" Advanced="0"/>
+			<IOConnection ObjSrv="ST1517" Server="Input1" ObjClt="M7_Target_Block" Client="M_LS_1" IOI="Input" Type="Digital" SortIndex="164" KeyName="000122" Advanced="0"/>
+			<IOConnection ObjSrv="ST1517" Server="Input2" ObjClt="M7_Target_Block" Client="M_LS_2" IOI="Input" Type="Digital" SortIndex="165" KeyName="000123" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element"
+		GUID       = "{E14C63B2-3243-4984-A0F9-FC4348A6BE26}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M1" Server="Control" ObjClt="Motore_M11" Client="Comando_M1" SortIndex="0" KeyName="000000" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element0"
+		GUID       = "{214F0225-28D9-42E5-A300-7413F1973E72}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="AxError" ObjClt="StepperControl_M1" Client="HWErrors" IOI="IOState" Type="Digital" SortIndex="1" KeyName="000001" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element1"
+		GUID       = "{EFBAF3A9-F121-4938-9BFA-1795DA028E96}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="Enable" ObjClt="StepperControl_M1" Client="Active" IOI="Output" Type="Digital" SortIndex="2" KeyName="000002" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element10"
+		GUID       = "{63CC2A08-DB9F-423B-93BB-CA883267CA26}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M7" Server="Control" ObjClt="Motore_M71" Client="Comando_M7" SortIndex="17" KeyName="000017" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element100"
+		GUID       = "{88522DFB-60CC-41BB-B11F-52329CAE0A12}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M6" Server="ActPos" ObjClt="Motore_M61" Client="SetPosition_Controller" SortIndex="135" KeyName="000108" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element101"
+		GUID       = "{0A7BE73A-E6FB-4E5C-BA30-27CB33F7520C}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Manager_globale1" Server="enable" ObjClt="AutoManSelector1" Client="toAutomatic" SortIndex="143" KeyName="000093" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element102"
+		GUID       = "{2FB46266-4998-471D-AAD3-19834A7812AA}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M1" Server="ActPos" ObjClt="M1_Charge_Slider" Client="setPositionController" SortIndex="145" KeyName="000022" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element103"
+		GUID       = "{83CEE05A-2B21-4F6A-8703-22A1173A30CD}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M2" Server="ActPos" ObjClt="M2_Charge_Buffer" Client="setPositionController" SortIndex="146" KeyName="000092" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element104"
+		GUID       = "{469C95F5-C3EA-4BE3-87C2-67DDAA007FF0}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M3" Server="ActPos" ObjClt="M3_Discharge_Slider" Client="setPositionController" SortIndex="147" KeyName="000097" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element105"
+		GUID       = "{CC7918FE-656E-41DE-88F8-247CB53C2083}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M4" Server="ActPos" ObjClt="M4_Discharge_Buffer" Client="setPositionController" SortIndex="148" KeyName="000099" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element106"
+		GUID       = "{B37F2A5C-2B7E-404D-BC21-5F877E90619E}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M5" Server="ActPos" ObjClt="M5_Central_Movement" Client="setPositionController" SortIndex="149" KeyName="000106" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element107"
+		GUID       = "{CF4F6E25-D895-4982-9746-6469DED709AC}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M6" Server="ActPos" ObjClt="M6_Longitudinal_axis" Client="setPositionController" SortIndex="150" KeyName="000107" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element108"
+		GUID       = "{1758BC9D-52A6-458C-B6DA-DF00A3124EFD}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M7" Server="ActPos" ObjClt="M7_Target_Block" Client="setPositionController" SortIndex="151" KeyName="000110" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element109"
+		GUID       = "{88B42B8A-3313-4639-B127-3F8CC652A444}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output4" ObjClt="Rack12V1" Client="ToPLC" IOI="Output" Type="Digital" SortIndex="152" KeyName="000111" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element11"
+		GUID       = "{0AA95AC9-6398-4EFA-90B1-61998D706548}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="ActPosition" ObjClt="_LMCAxis_M1" Client="ActPosition" IOI="Input" Type="Analog" SortIndex="18" KeyName="000018" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element110"
+		GUID       = "{2B07D4F7-BEB8-4012-87A8-298247126E9A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output8" ObjClt="ManagerMotori1" Client="LED_Rosso" IOI="Output" Type="Digital" SortIndex="153" KeyName="000112" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element111"
+		GUID       = "{7C383BE2-75F0-4BED-BB5F-8FD99B67D4FA}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output11" ObjClt="ManagerMotori1" Client="LED_Arancione" IOI="Output" Type="Digital" SortIndex="154" KeyName="000113" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element112"
+		GUID       = "{A617B43B-A1E4-4D0C-9D1E-19ADD4446A62}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output10" ObjClt="ManagerMotori1" Client="LED_Verde" IOI="Output" Type="Digital" SortIndex="155" KeyName="000114" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element113"
+		GUID       = "{9EDFCCAA-38EB-41B5-8601-B33E2FFBA5D8}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="MaxCurrent" ObjClt="MPS1" Client="To_CameraAlignment_Power" IOI="Output" Type="Analog" SortIndex="158" KeyName="000102" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element114"
+		GUID       = "{5DA21CE2-33CB-49FE-9F6A-BEA692B241B1}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="MPS1" Server="ReqToMPS" ObjClt="ManagerMotori1" Client="c_MPS_Req" SortIndex="159" KeyName="000115" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element115"
+		GUID       = "{67AF111F-52BE-4A55-85F0-6298D7EB6D63}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="s_TabletTimer" ObjClt="IrradiationTimers" Client="NrIrrTablets" SortIndex="162" KeyName="000120" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element116"
+		GUID       = "{9A6B3711-8005-4A1A-8DA2-A001717B9526}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Manager_globale1" Server="ComandoIrradiation" ObjClt="IrradiationTimers" Client="SetStartStopIrr" SortIndex="163" KeyName="000121" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element117"
+		GUID       = "{4049297A-6D49-48DD-BD4C-00D6E414D377}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="MoveTimer1" Server="s_StartStopTimer" ObjClt="Motore_M51" Client="c_TimerMov" SortIndex="167" KeyName="000125" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element118"
+		GUID       = "{CF525F27-49E3-40E3-ADB1-6E748A20C283}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="MoveTimer1" Server="s_StartStopTimer" ObjClt="Motore_M41" Client="c_TimerMov" SortIndex="168" KeyName="000126" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element119"
+		GUID       = "{13B3F06E-9ACA-4261-AB34-374D51514BE8}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="MainSequence1" Server="s_EasyGUI" ObjClt="AutoManSelector1" Client="c_EasyGUIEn_MainS" SortIndex="171" KeyName="000130" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element12"
+		GUID       = "{75BDB056-0B63-4E22-B734-649B44C633E5}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M1" Server="Control" ObjClt="M1_Charge_Slider" Client="Comando_Motore" SortIndex="136" KeyName="000009" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element120"
+		GUID       = "{BDF2E4E8-8290-4A0C-8CF5-32F5635D9E3F}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="IrradiationTimers" Server="s_EasyGUI" ObjClt="AutoManSelector1" Client="c_EasyGUIEn_IrrT" SortIndex="170" KeyName="000129" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element121"
+		GUID       = "{26404BB5-DFFD-4FA9-BA5B-72314C5EB023}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Reset1" Server="s_ResetT" ObjClt="Manager_globale1" Client="c_ResetTimer" SortIndex="172" KeyName="000131" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element122"
+		GUID       = "{AE801FA6-D09E-41E9-9F2F-BCAA9DA30FE7}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="IrradiationTimers" Server="s_TimerStartStop" ObjClt="Motore_M51" Client="c_TimerIrr" SortIndex="173" KeyName="000132" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element123"
+		GUID       = "{A54A34E0-ED26-48F1-A97A-1B1AE059BAB2}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="MaxCurrent" ObjClt="M4_Discharge_Buffer" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="174" KeyName="000103" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element124"
+		GUID       = "{B3E54126-4E71-4816-B830-1A1436A9AA7A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="MaxCurrent" ObjClt="M1_Charge_Slider" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="175" KeyName="000117" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element125"
+		GUID       = "{0AA0DF8E-D993-40F3-895F-225A7EF40074}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="MaxCurrent" ObjClt="M3_Discharge_Slider" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="176" KeyName="000118" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element126"
+		GUID       = "{C98DE1D7-CB21-4100-85C6-BDDA16938AC9}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="MaxCurrent" ObjClt="M6_Longitudinal_axis" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="177" KeyName="000119" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element127"
+		GUID       = "{7DBBD94B-DD90-43FA-99EB-3D1A73C76EF7}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="MaxCurrent" ObjClt="M5_Central_Movement" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="178" KeyName="000127" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element128"
+		GUID       = "{ECF9C456-5500-49AA-8C14-7D4701683834}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="MaxCurrent" ObjClt="M2_Charge_Buffer" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="179" KeyName="000128" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element129"
+		GUID       = "{BCF4EC0E-5B46-494C-A6DE-0948B3A7AA21}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="MoveTimer1" Server="s_1_3_pelletMode" ObjClt="ManagerMotori1" Client="c_1_3_pelletMode_TimerMov" SortIndex="180" KeyName="000133" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element13"
+		GUID       = "{4B4E360D-C953-4C5B-99FD-DCA6855D9C5C}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="Input2" ObjClt="Motore_M11" Client="M1_LS_2" IOI="Input" Type="Digital" SortIndex="20" KeyName="000006" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element130"
+		GUID       = "{C773291C-1186-4823-A32B-8D5FC5CA33F7}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="IrradiationTimers" Server="s_1_3_pelletMode" ObjClt="ManagerMotori1" Client="c_1_3_pelletMode_TimerIrr" SortIndex="181" KeyName="000134" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element14"
+		GUID       = "{572788A5-DF80-4540-8D60-905FDD5B6E69}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M11" Server="M1_Correction_Step" ObjClt="Automatic_Step_Settings1" Client="c_M1_Correction_Step" SortIndex="102" KeyName="000075" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element15"
+		GUID       = "{943EA31D-2F1E-40E2-8B7F-375D59F8562A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="ActPosition" ObjClt="_LMCAxis_M2" Client="ActPosition" IOI="Input" Type="Analog" SortIndex="30" KeyName="000005" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element16"
+		GUID       = "{4BD8415C-21AE-4138-A5A1-3D9AD673538D}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="Input1" ObjClt="M1_Charge_Slider" Client="M_LS_1" IOI="Input" Type="Digital" SortIndex="26" KeyName="000019" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element17"
+		GUID       = "{39199173-5B33-4810-A81D-44E96DCF5526}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="Input2" ObjClt="M1_Charge_Slider" Client="M_LS_2" IOI="Input" Type="Digital" SortIndex="27" KeyName="000020" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element18"
+		GUID       = "{3A01BB1C-6DFA-4348-80B0-58BC0DE7B05E}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M41" Server="M4_Correction_Step" ObjClt="Automatic_Step_Settings1" Client="c_M4_Correction_Step" SortIndex="128" KeyName="000104" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element19"
+		GUID       = "{4FC6A969-F7D7-4329-B1C5-2E6EB3577BF7}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="DI1601" Server="Input3" ObjClt="Manager_globale1" Client="Reset_IN" IOI="Input" Type="Digital" SortIndex="144" KeyName="000109" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element2"
+		GUID       = "{7617EDBE-3F94-4862-9C2F-925CC71081D6}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="SetFreqOut" ObjClt="StepperControl_M1" Client="OutputSignal" IOI="Output" Type="Analog" SortIndex="3" KeyName="000003" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element20"
+		GUID       = "{3F89D18A-DCD6-4F69-860A-E5393E964452}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="AxError" ObjClt="StepperControl_M2" Client="HWErrors" IOI="IOState" Type="Digital" SortIndex="31" KeyName="000008" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element21"
+		GUID       = "{0A6A9C07-EC29-4269-B0BD-C3A87CE06560}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="Enable" ObjClt="StepperControl_M2" Client="Active" IOI="Output" Type="Digital" SortIndex="32" KeyName="000021" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element22"
+		GUID       = "{E4D1DD29-0D6A-45B1-A7F6-A825668464D3}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="SetFreqOut" ObjClt="StepperControl_M2" Client="OutputSignal" IOI="Output" Type="Analog" SortIndex="33" KeyName="000023" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element23"
+		GUID       = "{FB2FED3D-16E5-42DE-AE3C-E912F9322458}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="ErrorQuit" ObjClt="StepperControl_M2" Client="HWErrorQuit" IOI="Output" Type="Digital" SortIndex="34" KeyName="000024" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element24"
+		GUID       = "{F3D76DE2-1F3B-4F00-88E6-9AF01959E26A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="ActPosition" ObjClt="_LMCAxis_M3" Client="ActPosition" IOI="Input" Type="Analog" SortIndex="35" KeyName="000025" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element25"
+		GUID       = "{DA2E7759-FE03-49C1-A83B-51CA087FCF1C}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="AxError" ObjClt="StepperControl_M3" Client="HWErrors" IOI="IOState" Type="Digital" SortIndex="36" KeyName="000027" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element26"
+		GUID       = "{3BE3727C-3F8A-4AED-96DD-BF5B3F4698B6}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="Enable" ObjClt="StepperControl_M3" Client="Active" IOI="Output" Type="Digital" SortIndex="37" KeyName="000028" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element27"
+		GUID       = "{F23E953B-157D-43BB-AA67-FFA0A8AF18F9}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="SetFreqOut" ObjClt="StepperControl_M3" Client="OutputSignal" IOI="Output" Type="Analog" SortIndex="38" KeyName="000029" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element28"
+		GUID       = "{DADC01C4-A3AA-4085-BB2A-5D9CD5352A5A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="ErrorQuit" ObjClt="StepperControl_M3" Client="HWErrorQuit" IOI="Output" Type="Digital" SortIndex="39" KeyName="000030" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element29"
+		GUID       = "{0D50B44D-E87C-4384-A05D-C49FE57EE790}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="ActPosition" ObjClt="_LMCAxis_M4" Client="ActPosition" IOI="Input" Type="Analog" SortIndex="40" KeyName="000031" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element3"
+		GUID       = "{109F5736-26A4-40E0-8FEB-49274F2A757F}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="ErrorQuit" ObjClt="StepperControl_M1" Client="HWErrorQuit" IOI="Output" Type="Digital" SortIndex="4" KeyName="000004" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element30"
+		GUID       = "{3DCCB896-BFE1-45D0-81C6-E3A6627D9A30}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="AxError" ObjClt="StepperControl_M4" Client="HWErrors" IOI="IOState" Type="Digital" SortIndex="41" KeyName="000032" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element31"
+		GUID       = "{180AC719-6E28-41D8-88D6-BCC714A21D39}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="Enable" ObjClt="StepperControl_M4" Client="Active" IOI="Output" Type="Digital" SortIndex="42" KeyName="000033" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element32"
+		GUID       = "{366807E7-7E0F-43F4-B992-3F19BD6A72B0}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="SetFreqOut" ObjClt="StepperControl_M4" Client="OutputSignal" IOI="Output" Type="Analog" SortIndex="43" KeyName="000034" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element33"
+		GUID       = "{C86495EE-1A31-4355-90BD-61B7E7C74123}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="ErrorQuit" ObjClt="StepperControl_M4" Client="HWErrorQuit" IOI="Output" Type="Digital" SortIndex="44" KeyName="000035" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element34"
+		GUID       = "{3C34BE6E-7B77-43DE-8C51-C95E2021FD40}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="Input2" ObjClt="Motore_M21" Client="M2_LS" IOI="Input" Type="Digital" SortIndex="45" KeyName="000036" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element35"
+		GUID       = "{A0244466-ADDC-4508-84CD-3B283220B5EC}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output2" ObjClt="Attuatore1" Client="R_aus_1" IOI="Output" Type="Digital" SortIndex="51" KeyName="000042" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element36"
+		GUID       = "{CDE388D1-A14B-4C92-90FD-1737B588934E}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="Input1" ObjClt="Motore_M31" Client="M3_LS_1" IOI="Input" Type="Digital" SortIndex="47" KeyName="000038" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element37"
+		GUID       = "{9D6F6EC0-DB0C-4160-A6F4-731830134DBA}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="Input2" ObjClt="Motore_M31" Client="M3_LS_2" IOI="Input" Type="Digital" SortIndex="48" KeyName="000039" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element38"
+		GUID       = "{7850394D-CD90-4A7B-9B82-AB06F0EA8AC5}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="Input1" ObjClt="Motore_M41" Client="M4_LS" IOI="Input" Type="Digital" SortIndex="50" KeyName="000041" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element39"
+		GUID       = "{B73E8551-29C3-49B1-8BE7-640AD705DF55}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output3" ObjClt="Attuatore1" Client="R_aus_2" IOI="Output" Type="Digital" SortIndex="52" KeyName="000043" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element4"
+		GUID       = "{6873F094-F792-4D2E-ADA1-E7214D37ABA9}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M2" Server="Control" ObjClt="Motore_M21" Client="Comando_M2" SortIndex="12" KeyName="000012" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element40"
+		GUID       = "{91E12527-6B3E-40E9-913D-234C5525CFEB}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output1" ObjClt="Attuatore1" Client="R_p" IOI="Output" Type="Digital" SortIndex="53" KeyName="000044" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element41"
+		GUID       = "{38A49CBC-6159-4000-8403-760B1FBD2D21}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output5" ObjClt="Attuatore2" Client="R_p" IOI="Output" Type="Digital" SortIndex="54" KeyName="000045" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element42"
+		GUID       = "{FCDF16F6-3D0E-404D-A803-6254E6D2F8EC}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output6" ObjClt="Attuatore2" Client="R_aus_1" IOI="Output" Type="Digital" SortIndex="55" KeyName="000046" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element43"
+		GUID       = "{6C9A2FD1-FC61-4C16-9DEF-28FACDB15EC4}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output7" ObjClt="Attuatore2" Client="R_aus_2" IOI="Output" Type="Digital" SortIndex="56" KeyName="000047" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element44"
+		GUID       = "{7F22BCBD-5DE4-4060-B272-340A71A59104}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="ActPosition" ObjClt="_LMCAxis_M5" Client="ActPosition" IOI="Input" Type="Analog" SortIndex="57" KeyName="000048" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element45"
+		GUID       = "{C3F131F0-6194-4EC9-AA68-240E30F48390}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="AxError" ObjClt="StepperControl_M5" Client="HWErrors" IOI="IOState" Type="Digital" SortIndex="58" KeyName="000049" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element46"
+		GUID       = "{BF21EB16-6FCF-4DA5-A43D-49C8B541CB4F}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="Enable" ObjClt="StepperControl_M5" Client="Active" IOI="Output" Type="Digital" SortIndex="59" KeyName="000050" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element47"
+		GUID       = "{1DD9D25F-601B-4876-8CC8-76FFE231D67D}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="SetFreqOut" ObjClt="StepperControl_M5" Client="OutputSignal" IOI="Output" Type="Analog" SortIndex="60" KeyName="000051" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element48"
+		GUID       = "{B29A5A94-022A-4EFA-BED0-E1815FC522F1}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="ErrorQuit" ObjClt="StepperControl_M5" Client="HWErrorQuit" IOI="Output" Type="Digital" SortIndex="61" KeyName="000052" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element49"
+		GUID       = "{6F100965-79F7-434F-A8CA-887835FB0666}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="Input1" ObjClt="Motore_M51" Client="M5_LS" IOI="Input" Type="Digital" SortIndex="62" KeyName="000053" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element5"
+		GUID       = "{A2609A96-7B98-4656-BB86-C9B420EE8832}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M3" Server="Control" ObjClt="Motore_M31" Client="Comando_M3" SortIndex="13" KeyName="000013" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element50"
+		GUID       = "{25B8A6BA-39AD-41CB-B9C8-0D0E75A7F038}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="Input1" ObjClt="Motore_M61" Client="M6_LS_1" IOI="Input" Type="Digital" SortIndex="63" KeyName="000054" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element51"
+		GUID       = "{58D84BB5-03EA-4390-8D91-393C65B50A6C}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="Input2" ObjClt="Motore_M61" Client="M6_LS_2" IOI="Input" Type="Digital" SortIndex="64" KeyName="000055" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element52"
+		GUID       = "{8809ABF3-0A92-4328-BB42-973BA04B9EC5}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="MaxCurrent" ObjClt="Motore_M31" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="73" KeyName="000064" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element53"
+		GUID       = "{8DEC4BE2-4CA4-46ED-9018-5240B8631000}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="ActPosition" ObjClt="_LMCAxis_M6" Client="ActPosition" IOI="Input" Type="Analog" SortIndex="66" KeyName="000057" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element54"
+		GUID       = "{8E9BC999-00C6-4A9F-8D33-687B997D1C00}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="AxError" ObjClt="StepperControl_M6" Client="HWErrors" IOI="IOState" Type="Digital" SortIndex="67" KeyName="000058" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element55"
+		GUID       = "{D9D48921-1AF1-44A2-AC1D-A47BC7B50C9A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="Enable" ObjClt="StepperControl_M6" Client="Active" IOI="Output" Type="Digital" SortIndex="68" KeyName="000059" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element56"
+		GUID       = "{67DC60BB-D222-4459-86EE-8A57A83AD646}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="SetFreqOut" ObjClt="StepperControl_M6" Client="OutputSignal" IOI="Output" Type="Analog" SortIndex="69" KeyName="000060" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element57"
+		GUID       = "{A79BDCEF-8302-4672-9269-643446ABCB46}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="ErrorQuit" ObjClt="StepperControl_M6" Client="HWErrorQuit" IOI="Output" Type="Digital" SortIndex="70" KeyName="000061" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element58"
+		GUID       = "{8E90BFD2-90CB-48A7-848F-ED2BD5AE4CE7}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="MaxCurrent" ObjClt="Motore_M11" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="72" KeyName="000063" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element59"
+		GUID       = "{E2024E23-15C8-4B04-901B-9F373C3D9C2F}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="MaxCurrent" ObjClt="Motore_M51" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="74" KeyName="000065" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element6"
+		GUID       = "{435FFF9C-77B2-4FDD-8254-F515606EBCA7}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M4" Server="Control" ObjClt="Motore_M41" Client="Comando_M4" SortIndex="14" KeyName="000014" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element60"
+		GUID       = "{D53AF8FD-A6DA-40B6-90CC-43BDAECA3275}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M5" Server="ActPos" ObjClt="Motore_M51" Client="SetPosition_Controller" SortIndex="75" KeyName="000066" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element61"
+		GUID       = "{06F58240-AFB6-4307-B176-FB378C830455}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M1" Server="ActPos" ObjClt="Motore_M11" Client="SetPosition_Controller" SortIndex="76" KeyName="000040" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element62"
+		GUID       = "{415E222F-A52D-48BE-8348-B9C65066A966}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M3" Server="ActPos" ObjClt="Motore_M31" Client="SetPositionController" SortIndex="77" KeyName="000056" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element63"
+		GUID       = "{1D679473-839C-4A21-A4C0-24B2981C6BDF}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1517" Server="ActPosition" ObjClt="_LMCAxis_M7" Client="ActPosition" IOI="Input" Type="Analog" SortIndex="78" KeyName="000062" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element64"
+		GUID       = "{58D51DCB-4D81-4037-8E9A-6267DB1A48BA}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1517" Server="AxError" ObjClt="StepperControl_M7" Client="HWErrors" IOI="IOState" Type="Digital" SortIndex="79" KeyName="000067" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element65"
+		GUID       = "{623F7807-218A-4FD4-A037-80F107D68820}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1517" Server="Enable" ObjClt="StepperControl_M7" Client="Active" IOI="Output" Type="Digital" SortIndex="80" KeyName="000068" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element66"
+		GUID       = "{EF6668A3-708B-4FE1-B901-27BD3538F341}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1517" Server="SetFreqOut" ObjClt="StepperControl_M7" Client="OutputSignal" IOI="Output" Type="Analog" SortIndex="81" KeyName="000069" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element67"
+		GUID       = "{01324949-E385-407A-A04A-19EEF874D211}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1517" Server="ErrorQuit" ObjClt="StepperControl_M7" Client="HWErrorQuit" IOI="Output" Type="Digital" SortIndex="82" KeyName="000070" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element68"
+		GUID       = "{FE7959F0-0F52-4B9A-B0FC-C83D9ECD258B}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1517" Server="Input1" ObjClt="Motore_M71" Client="M7_LS_1" IOI="Input" Type="Digital" SortIndex="83" KeyName="000071" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element69"
+		GUID       = "{5E922FDC-BA5C-4C39-959A-5DA306A26A35}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1517" Server="Input2" ObjClt="Motore_M71" Client="M7_LS_2" IOI="Input" Type="Digital" SortIndex="84" KeyName="000072" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element7"
+		GUID       = "{9D5728D7-ECDF-4EFF-936C-1618CA6848BD}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M5" Server="Control" ObjClt="Motore_M51" Client="Comando_M5" SortIndex="15" KeyName="000015" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element70"
+		GUID       = "{DD66DF49-19AA-4C31-BA6C-91D632D08303}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M7" Server="ActPos" ObjClt="Motore_M71" Client="SetPositionController" SortIndex="85" KeyName="000073" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element71"
+		GUID       = "{67AAF8A7-7DA9-47EF-B798-D096549EAFFE}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="MaxCurrent" ObjClt="Motore_M41" Client="c_MaxCurrent" IOI="Output" Type="Analog" SortIndex="86" KeyName="000074" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element72"
+		GUID       = "{3A20F67B-6A47-40B2-85EE-0FBC96053FAA}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M31" Server="M3_Correction_Step" ObjClt="Automatic_Step_Settings1" Client="c_M3_Correction_Step" SortIndex="103" KeyName="000076" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element73"
+		GUID       = "{7DA2F446-4051-4C79-A3BB-72254271FECC}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="M5_ChargingCorrection_step_1" ObjClt="Automatic_Step_Settings1" Client="c_M5_ChargingCorrection_Step_1" SortIndex="104" KeyName="000077" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element74"
+		GUID       = "{1058D19B-1F74-4F11-AB6C-3679F39804E5}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="M5_ChargingCorrection_step_2" ObjClt="Automatic_Step_Settings1" Client="c_M5_ChargingCorrection_Step_2" SortIndex="105" KeyName="000078" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element75"
+		GUID       = "{230A21A9-CFA9-4BF5-B05C-94E4EBF96988}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="M5_ChargingCorrection_step_3" ObjClt="Automatic_Step_Settings1" Client="c_M5_ChargingCorrection_Step_3" SortIndex="106" KeyName="000079" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element76"
+		GUID       = "{2F953D37-A89B-48E2-B341-6202B60D3AFD}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="M5_IrradiationCorrection_step_1" ObjClt="Automatic_Step_Settings1" Client="c_M5_IrradiationCorrection_Step_1" SortIndex="107" KeyName="000080" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element77"
+		GUID       = "{96221A18-1CB6-40BA-9925-8595D26A6F8F}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="M5_IrradiationCorrection_step_2" ObjClt="Automatic_Step_Settings1" Client="c_M5_IrradiationCorrection_Step_2" SortIndex="108" KeyName="000081" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element78"
+		GUID       = "{DC6840F9-E48D-48FF-A7A4-258C84AFEBBB}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M2" Server="Control" ObjClt="M2_Charge_Buffer" Client="Comando_Motore" SortIndex="137" KeyName="000026" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element79"
+		GUID       = "{490AAE94-E04A-4F10-AC34-5CBC2E9F9AB9}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="M5_IrradiationCorrection_step_3" ObjClt="Automatic_Step_Settings1" Client="c_M5_IrradiationCorrection_step_3" SortIndex="110" KeyName="000083" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element8"
+		GUID       = "{0D27190A-5893-4717-83D3-8D8E8DF5FCCF}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M6" Server="Control" ObjClt="Motore_M61" Client="Comando_M6" SortIndex="16" KeyName="000016" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element80"
+		GUID       = "{BE56904F-4BC0-4DF0-AFFA-F8D6CE2BCC3A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="M5_DischargeCorrection_step" ObjClt="Automatic_Step_Settings1" Client="c_M5_DischargingCorrection_step" SortIndex="111" KeyName="000084" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element81"
+		GUID       = "{C7AA89DF-8C71-4457-A39A-E56D525EE033}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1512" Server="Input2" ObjClt="M2_Charge_Buffer" Client="M_LS" IOI="Input" Type="Digital" SortIndex="113" KeyName="000086" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element82"
+		GUID       = "{B25A3B3C-E8F9-4116-847C-F5807F65202B}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M3" Server="Control" ObjClt="M3_Discharge_Slider" Client="Comando_Motore" SortIndex="138" KeyName="000082" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element83"
+		GUID       = "{81E25E9F-97FD-42BC-95F5-7AAB7D1A68A8}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M4" Server="Control" ObjClt="M4_Discharge_Buffer" Client="Comando_Motore" SortIndex="139" KeyName="000088" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element84"
+		GUID       = "{49723218-596E-44CD-8FC0-B6398375A6E4}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="DI1601" Server="Input1" ObjClt="MPS1" Client="ACKFromMPS" IOI="Input" Type="Digital" SortIndex="100" KeyName="000007" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element85"
+		GUID       = "{C8C86064-7C35-44AD-87C6-CD91A76498E6}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="TO1271" Server="Output9" ObjClt="MPS1" Client="c_ReqToMPS" IOI="Output" Type="Digital" SortIndex="101" KeyName="000037" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element86"
+		GUID       = "{18E61572-204A-44DA-AD20-5875FDEA7E21}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M5" Server="Control" ObjClt="M5_Central_Movement" Client="Comando_Motore" SortIndex="140" KeyName="000089" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element87"
+		GUID       = "{8529C4C8-8DCA-4073-94D9-3B69FF0EFFFD}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M6" Server="Control" ObjClt="M6_Longitudinal_axis" Client="Comando_Motore" SortIndex="141" KeyName="000090" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element88"
+		GUID       = "{E0920F2D-54CE-4E34-8D74-D746E0858F6E}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M7" Server="Control" ObjClt="M7_Target_Block" Client="Comando_Motore" SortIndex="142" KeyName="000091" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element89"
+		GUID       = "{19AC58D6-BCAA-4BA2-A55B-7558F2A38425}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="Input1" ObjClt="M3_Discharge_Slider" Client="M_LS_2" IOI="Input" Type="Digital" SortIndex="120" KeyName="000094" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element9"
+		GUID       = "{655E5558-F331-4963-96F2-15AC9CD20568}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1511" Server="Input1" ObjClt="Motore_M11" Client="M1_LS_1" IOI="Input" Type="Digital" SortIndex="10" KeyName="000010" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element90"
+		GUID       = "{2B8DB4A2-DDB4-4113-B3FE-D3B1A56162A0}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1513" Server="Input2" ObjClt="M3_Discharge_Slider" Client="M_LS_1" IOI="Input" Type="Digital" SortIndex="121" KeyName="000095" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element91"
+		GUID       = "{F878684E-728A-4F4F-B002-66E33C631AC4}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1514" Server="Input1" ObjClt="M4_Discharge_Buffer" Client="M_LS" IOI="Input" Type="Digital" SortIndex="122" KeyName="000096" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element92"
+		GUID       = "{9176F332-D870-428B-9063-EF0862C243B8}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1515" Server="Input1" ObjClt="M5_Central_Movement" Client="M_LS" IOI="Input" Type="Digital" SortIndex="123" KeyName="000098" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element93"
+		GUID       = "{7C787B19-B3F1-43D8-A57F-14303689F60A}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="Input1" ObjClt="M6_Longitudinal_axis" Client="M_LS_1" IOI="Input" Type="Digital" SortIndex="124" KeyName="000100" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element94"
+		GUID       = "{0413B2E3-9046-4C36-B2EF-561E748C755F}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ST1516" Server="Input2" ObjClt="M6_Longitudinal_axis" Client="M_LS_2" IOI="Input" Type="Digital" SortIndex="125" KeyName="000101" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element95"
+		GUID       = "{649768F0-FFE2-45E8-B119-C8D2FAFCE699}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="Motore_M51" Server="s_tablet_irradiation_position" ObjClt="IrradiationTimers" Client="TabletInIrrPos" SortIndex="160" KeyName="000116" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element96"
+		GUID       = "{FC0D5296-0354-425D-A74F-C37FA9CA4C95}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="DischargeTimer1" Server="s_StartStopTimer" ObjClt="Motore_M41" Client="c_TimerDis" SortIndex="166" KeyName="000124" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element97"
+		GUID       = "{5D04A189-DEBC-4DC0-9D38-0EAEB1A92BBE}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M2" Server="ActPos" ObjClt="Motore_M21" Client="SetPosition_Controller" SortIndex="133" KeyName="000087" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element98"
+		GUID       = "{E4A98995-874A-45F1-936A-F021051AD6A8}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="ManagerMotori1" Server="From_MPS" ObjClt="MPS1" Client="To_Manager_Motori" SortIndex="134" KeyName="000105" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<Entry
+		Name       = "IO_Element99"
+		GUID       = "{8CA58054-D43C-4474-BCBA-9502254B8DC3}"
+		Objectsize = "284"
+		TempObj    = "true">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection ObjSrv="_LMCAxis_M4" Server="ActPos" ObjClt="Motore_M41" Client="SetPositionController" SortIndex="132" KeyName="000085" Advanced="0"/>
+		</IOConnections>
+	</Entry>
+	<!-- List of Folders -->
+</IOConnectionManager>
