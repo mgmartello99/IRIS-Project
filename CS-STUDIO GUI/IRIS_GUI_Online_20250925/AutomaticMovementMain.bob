@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Display</name>
+  <macros>
+    <PreS>mc:a:stepSetting:motor</PreS>
+    <PreM>mc:a:maincontrol</PreM>
+  </macros>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <widget type="navtabs" version="2.0.0">
+    <name>Navigation Tabs</name>
+    <tabs>
+      <tab>
+        <name>Basic control</name>
+        <file>AutomaticMovementBasic.bob</file>
+        <macros>
+          <PreM>mc:a:maincontrol</PreM>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Advanced control</name>
+        <file>AutomaticMovementAdvanced.bob</file>
+        <macros>
+          <PreM>mc:a:maincontrol</PreM>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Advanced setting</name>
+        <file>AutomaticMovementSetting.bob</file>
+        <macros>
+          <PreS>mc:a:stepSetting:motor</PreS>
+        </macros>
+        <group_name></group_name>
+      </tab>
+    </tabs>
+    <width>2360</width>
+    <height>1330</height>
+    <direction>0</direction>
+    <tab_width>160</tab_width>
+    <tab_height>50</tab_height>
+    <selected_color>
+      <color name="OK" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+  </widget>
+</display>

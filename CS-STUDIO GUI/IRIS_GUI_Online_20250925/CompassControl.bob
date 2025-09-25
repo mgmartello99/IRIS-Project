@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Display</name>
+  <background_color>
+    <color name="Button_Background" red="210" green="210" blue="210">
+    </color>
+  </background_color>
+  <widget type="group" version="3.0.0">
+    <name>CoMPASS parameter</name>
+    <width>700</width>
+    <height>500</height>
+    <font>
+      <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <widget type="textentry" version="3.0.0">
+      <name>AcquisitionTime</name>
+      <pv_name>AcquisitionTimeCoMPASS</pv_name>
+      <x>139</x>
+      <y>139</y>
+      <height>80</height>
+      <font>
+        <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <background_color>
+        <color name="Header_ForeGround" red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>RadioIsotopeCoMPASS</name>
+      <pv_name>RadioIsotopeCoMPASS</pv_name>
+      <x>435</x>
+      <y>139</y>
+      <height>80</height>
+      <font>
+        <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <background_color>
+        <color name="Header_ForeGround" red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label</name>
+      <text>Acquisition Time</text>
+      <x>99</x>
+      <y>109</y>
+      <width>178</width>
+      <height>25</height>
+      <font>
+        <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_1</name>
+      <text>Isotope</text>
+      <x>449</x>
+      <y>109</y>
+      <width>79</width>
+      <height>25</height>
+      <font>
+        <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="command">
+          <description>Execute Command</description>
+          <command>../IRIS-GUI-latest/executable/CompassVar.sh</command>
+        </action>
+      </actions>
+      <text>Start Compass</text>
+      <x>245</x>
+      <y>329</y>
+      <width>190</width>
+      <height>80</height>
+      <font>
+        <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+</display>

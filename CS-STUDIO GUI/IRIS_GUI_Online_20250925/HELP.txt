@@ -1,0 +1,139 @@
+The design goal for the GUI was to achieve a comprehensive, user-friendly, and constrained interface integrating all control functions. A multi-tab interface was developed to cover functions of Motion control – Auto/Manual-mode, IP camera management, Inbox LED band control and DAQ system switch, as shown in Figure 5.25 and Figure 5.26. An introduction to different functional zones is presented in Table 5.6. 
+
+P1513#yIS1 
+
+Figure 5.25 IRIS GUI-Main control tab for Automatic mode 
+
+P1515#yIS1 
+
+Figure 5.26 IRIS GUI, manual mode and CCTV camera control tabs 
+
+Table 5.6 Tab overview of the IRIS GUI 
+
+ 
+	
+
+Tab 
+	
+
+Description 
+
+(a) 
+	
+
+Motion control 
+
+- Automatic 
+
+- Basic control 
+	
+
+    Meant for basic users, or daily operation 
+
+    Current interface is exclusively activated with “ENABLE” button 
+
+    Widgets in workflow are only activated when upstream processes finish 
+
+    1 pellet / 3 pellet modes can be assigned for calibration / routine tests 
+
+    Irradiation time can be configured preliminarily with a timer 
+
+    Basic information on procedure execution and separate running time for concerned steps 
+
+(b) 
+	
+
+Motion control 
+
+- Automatic 
+
+- Advanced control 
+	
+
+    Meant for experienced users, or commissioning tests, features in basic control mode are included 
+
+    Detailed information on motor / procedure / auxiliary system operating status 
+
+(c) 
+	
+
+Motion control 
+
+- Automatic 
+
+- Step setting 
+	
+
+    Used together with Automatic - Main control mode 
+
+    Provide user-defined parameters for automatic motor movements, such as moving / correction steps 
+
+(d) 
+	
+
+Motion control 
+
+- Manual 
+	
+
+    Meant for motor axis manual control, setting and status monitoring 
+
+    Current interface is exclusively activated with “ENABLE” button 
+
+(e) 
+	
+
+CCTV Camera 
+	
+
+Forward camera IP to current machine, start streaming with a fixed window layout 
+
+Others 
+	
+
+Detector DAQ 
+	
+
+Launch CAEN-CoMPASS control software 
+
+INBOX LED On/Off 
+	
+
+Turn on/off inbox LED light band 
+
+HELP 
+	
+
+Provide instant user manual 
+
+In standard operation, basic control mode is used. The typical procedure is as follows: 
+
+    Start the motor box, PLC program, and IOC-IRIS, which should be already running as a background system service, then launch the GUI. 
+
+    Verify PV connectivity through GUI indicators, notified with specific colors or text warnings. 
+
+    Turn on the inbox LED and enable CCTV camera streaming. 
+
+    Enable Basic Control Mode by clicking “ENABLE”.  
+
+    Select one-pellet or three-pellet mode depending on operation (calibration or irradiation). 
+
+    Set irradiation time for each substrate using the “TIME SETTING” panel according to the beam schedule, precision: seconds. 
+
+    Click “START”, Homing sequence begins automatically, corresponding LED indicators placed in “OPERATION PROCEDURE STATUS” area show status of “Ready”, “Execution” or “Done”. 
+
+    Click “CHARGE PELLET”, substrates are charged sequentially, the status is monitored via LED indicators. 
+
+    Click “IRRADIATION” only when the indicator “Pellet in position” is active. The chamber is first coupled and begins evacuation. Each substrate moves to beam position sequentially following the defined intervals, operation durations are displayed in monitoring area. After the irradiation completion, the chamber will be vented and decoupled, substrates are discharged, and the first substrate drops to the measurement point. Delayed time between end of beam and beginning of measurement is logged for later analysis on implanted activities. 
+
+    Click “MEASUREMENT START” only when indicators configured below are off, launch the CAEN-CoMPASS interface and begin data acquisition with HPGe and LBC detectors at the same time. Click “MEASUREMENT STOP” when a satisfactory data is achieved. The measurement duration logged via system clock can be cross-checked with that logged with CoMPASS. 
+
+    Click “RESET” to reset the motor status and configured parameters, the next operating cycle is then be relaunched. 
+
+    Throughout the process, the “RUNNING” indicator stays on, “Emergency STOP!!!” button cooperates with the physical emergency button mounted on the motor box, to provide immediate system shutdown in critical cases. 
+
+Advanced control mode and manual control mode are only for experienced users during commissioning or maintenance stages. They provide advanced functionality in detailed monitoring on sub-systems including vacuum, beam diagnostics and so on. They also provide greater flexibility in motor configuration. 
+
+The safety considerations were highlighted throughout the development of IRIS GUI. The basic control mode was designed with only mandatory executable widgets and necessary monitoring values, to enhance the level of automation and prevent dangerous operations by limiting available functions. The “ENABLE” function on each tab was introduced to prevent interference that can caused by overlapping actions. Moreover, the “STOP” button for each motor and an “EMERGENCY STOP!!!” button to shut down all running systems were emphasized in the GUI. 
+
+Regarding the commissioning tests performed with the new IRIS GUI, a hundred consecutive process cycles were completed smoothly thanks to the optimization addressed in section 5.2.5. Substrate compatibility tests using different materials were conducted with the fully-integrated system setup, closely simulating actual operational scenarios. 

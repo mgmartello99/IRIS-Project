@@ -1,0 +1,3 @@
+ssh -L 8202:10.5.0.202:555 -L 8203:10.5.0.203:554 -L 8204:10.5.0.204:554 -L 8205:10.5.0.205:554 isolpharm_iris@10.23.14.8
+
+# the connection of this tunnel does not close if the cctv streams are read by mpv

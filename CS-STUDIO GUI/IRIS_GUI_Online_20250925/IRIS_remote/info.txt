@@ -1,0 +1,1 @@
+parametri calibrazione energia in ordine decrescente di potenza, p0 = m, p1 = q ... p0 = a
