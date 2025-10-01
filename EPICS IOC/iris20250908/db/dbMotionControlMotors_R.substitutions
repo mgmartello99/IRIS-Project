@@ -1,0 +1,66 @@
+file "db/dbMotionControlMotors_R.db"{
+     pattern { MOTOR,           TYPE,                   PORT_R,   REG,   DESCRIZIONE }
+            { "1",          "actPosition_R",                 "MC_M_M_R", "0",    "descrizione"}
+			{ "1",          "error_R",                  "MC_M_M_R", "2",    "descrizione"}
+            { "1",          "forward:inPosition_R", 	"MC_M_M_R", "4",    "descrizione"}
+			{ "1",          "reverse:inPosition_R", 	"MC_M_M_R", "6",    "descrizione"}
+            { "1",          "maxSpeed_R", 		        "MC_M_M_R", "8",    "descrizione"}
+			{ "1",          "minSpeed_R", 	            "MC_M_M_R", "10",   "descrizione"}
+            { "1",          "motorStateWord_R", 	    "MC_M_M_R", "12",   "descrizione"}
+            { "1",          "motorControlWord_R", 	    "MC_M_M_R", "14",   "descrizione"}
+            
+            { "2",          "actPosition_R",                 "MC_M_M_R", "16",    "descrizione"}
+			{ "2",          "error_R",                  "MC_M_M_R", "18",    "descrizione"}
+            { "2",          "forward:inPosition_R", 	"MC_M_M_R", "20",    "descrizione"}
+			{ "2",          "reverse:inPosition_R", 	"MC_M_M_R", "22",    "descrizione"}
+            { "2",          "maxSpeed_R", 		        "MC_M_M_R", "24",    "descrizione"}
+			{ "2",          "minSpeed_R", 	            "MC_M_M_R", "26",   "descrizione"}
+            { "2",          "motorStateWord_R", 	    "MC_M_M_R", "28",   "descrizione"}
+            { "2",          "motorControlWord_R", 	    "MC_M_M_R", "30",   "descrizione"}
+            
+            { "3",          "actPosition_R",                 "MC_M_M_R", "32",    "descrizione"}
+			{ "3",          "error_R",                  "MC_M_M_R", "34",    "descrizione"}
+            { "3",          "forward:inPosition_R", 	"MC_M_M_R", "36",    "descrizione"}
+			{ "3",          "reverse:inPosition_R", 	"MC_M_M_R", "38",    "descrizione"}
+            { "3",          "maxSpeed_R", 		        "MC_M_M_R", "40",    "descrizione"}
+			{ "3",          "minSpeed_R", 	            "MC_M_M_R", "42",   "descrizione"}
+            { "3",          "motorStateWord_R", 	    "MC_M_M_R", "44",   "descrizione"}
+            { "3",          "motorControlWord_R", 	    "MC_M_M_R", "46",   "descrizione"}
+
+            { "4",          "actPosition_R",                 "MC_M_M_R", "48",    "descrizione"}
+			{ "4",          "error_R",                  "MC_M_M_R", "50",    "descrizione"}
+            { "4",          "forward:inPosition_R", 	"MC_M_M_R", "52",    "descrizione"}
+			{ "4",          "reverse:inPosition_R", 	"MC_M_M_R", "54",    "descrizione"}
+            { "4",          "maxSpeed_R", 		        "MC_M_M_R", "56",    "descrizione"}
+			{ "4",          "minSpeed_R", 	            "MC_M_M_R", "58",   "descrizione"}
+            { "4",          "motorStateWord_R", 	    "MC_M_M_R", "60",   "descrizione"}
+            { "4",          "motorControlWord_R", 	    "MC_M_M_R", "62",   "descrizione"}
+
+            { "5",          "actPosition_R",                 "MC_M_M_R", "64",    "descrizione"}
+			{ "5",          "error_R",                  "MC_M_M_R", "66",    "descrizione"}
+            { "5",          "forward:inPosition_R", 	"MC_M_M_R", "68",    "descrizione"}
+			{ "5",          "reverse:inPosition_R", 	"MC_M_M_R", "70",    "descrizione"}
+            { "5",          "maxSpeed_R", 		        "MC_M_M_R", "72",    "descrizione"}
+			{ "5",          "minSpeed_R", 	            "MC_M_M_R", "74",   "descrizione"}
+            { "5",          "motorStateWord_R", 	    "MC_M_M_R", "76",   "descrizione"}
+            { "5",          "motorControlWord_R", 	    "MC_M_M_R", "78",   "descrizione"}
+
+            { "6",          "actPosition_R",                 "MC_M_M_R", "80",    "descrizione"}
+			{ "6",          "error_R",                  "MC_M_M_R", "82",    "descrizione"}
+            { "6",          "forward:inPosition_R", 	"MC_M_M_R", "84",    "descrizione"}
+			{ "6",          "reverse:inPosition_R", 	"MC_M_M_R", "86",    "descrizione"}
+            { "6",          "maxSpeed_R", 		        "MC_M_M_R", "88",    "descrizione"}
+			{ "6",          "minSpeed_R", 	            "MC_M_M_R", "90",   "descrizione"}
+            { "6",          "motorStateWord_R", 	    "MC_M_M_R", "92",   "descrizione"}
+            { "6",          "motorControlWord_R", 	    "MC_M_M_R", "94",   "descrizione"}
+
+            { "7",          "actPosition_R",            "MC_M_M_R", "96",    "descrizione"}
+			{ "7",          "error_R",                  "MC_M_M_R", "98",    "descrizione"}
+            { "7",          "forward:inPosition_R", 	"MC_M_M_R", "100",    "descrizione"}
+			{ "7",          "reverse:inPosition_R", 	"MC_M_M_R", "102",    "descrizione"}
+            { "7",          "maxSpeed_R", 		        "MC_M_M_R", "104",    "descrizione"}
+			{ "7",          "minSpeed_R", 	            "MC_M_M_R", "106",   "descrizione"}
+            { "7",          "motorStateWord_R", 	    "MC_M_M_R", "108",   "descrizione"}
+            { "7",          "motorControlWord_R", 	    "MC_M_M_R", "110",   "descrizione"}
+						
+}

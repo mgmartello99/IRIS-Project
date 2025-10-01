@@ -1,0 +1,5 @@
+file "db/dbMotionControlSolenoids_R.db"{
+    pattern { LOCK,       TYPE,         PORT_R, REG,  DESCRIZIONE }
+            { "1",   "extracted_R", "MC_M_S_R", "0", "descrizione"}
+            { "2",   "extracted_R", "MC_M_S_R", "2", "descrizione"}
+}

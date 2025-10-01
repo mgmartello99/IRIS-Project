@@ -1,0 +1,16 @@
+file "db/dbMotionControlAutomatic_R.db"{
+    pattern { TYPE,         			PORT_R,      REG,  DESCRIZIONE }
+            { "AutoManSelector_R",		"MC_A_MC_R", "0", "descrizione"}
+			{ "tablet:irradiation_R", 	"MC_A_MC_R", "2", "descrizione"}
+			{ "tablet:discharge_R", 	"MC_A_MC_R", "4", "descrizione"}
+            { "home_R", 				"MC_A_MC_R", "6", "descrizione"}
+            { "charge_R", 				"MC_A_MC_R", "8", "descrizione"}
+            { "discharge_R", 			"MC_A_MC_R", "10","descrizione"}
+			{ "generalControl_R", 		"MC_A_MC_R", "12","descrizione"}
+			{ "tablet_In_Irr_Pos_R",	"MC_A_MC_R", "14","descrizione"}
+			
+			{ "VisualTimer1_R",	"MC_A_MC_R_2", "0","descrizione"}
+			{ "VisualTimer2_R",	"MC_A_MC_R_2", "2","descrizione"}
+			{ "VisualTimer3_R",	"MC_A_MC_R_2", "4","descrizione"}
+			
+}

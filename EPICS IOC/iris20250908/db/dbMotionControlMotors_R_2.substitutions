@@ -1,0 +1,12 @@
+file "db/dbMotionControlMotors_R.db"{
+     pattern { MOTOR,           TYPE,                   PORT_R,   REG,   DESCRIZIONE }
+
+			{ "1",          "FiniteStateMachine_R", 	    "MC_M_M_R", "0",   "descrizione"}
+			{ "2",          "FiniteStateMachine_R", 	    "MC_M_M_R", "2",   "descrizione"}
+			{ "3",          "FiniteStateMachine_R", 	    "MC_M_M_R", "4",   "descrizione"}
+			{ "4",          "FiniteStateMachine_R", 	    "MC_M_M_R", "6",   "descrizione"}
+			{ "5",          "FiniteStateMachine_R", 	    "MC_M_M_R", "8",   "descrizione"}
+			{ "6",          "FiniteStateMachine_R", 	    "MC_M_M_R", "10",   "descrizione"}
+			{ "7",          "FiniteStateMachine_R", 	    "MC_M_M_R", "12",   "descrizione"}
+
+}

@@ -1,0 +1,7 @@
+record(ai, "mc:a:maincontrol:$(TYPE)") {
+    field(DESC, $(DESCRIZIONE))
+    field(DTYP, "asynInt32")
+    field(INP, "@asyn($(PORT_R), $(REG), 2000)INT32_BE")
+    field(SCAN, ".1 second")
+    #field(PINI, "YES")
+}
