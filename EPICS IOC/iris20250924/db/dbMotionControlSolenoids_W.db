@@ -1,0 +1,8 @@
+record(ao, "mc:m:solenoid:lock:$(LOCK):$(TYPE)") {
+    field(DESC, $(DESCRIZIONE))
+    field(DTYP, "asynInt32")
+    field(OUT, "@asyn($(PORT_W), $(REG), 2000)INT32_BE")
+    field(SCAN, Passive)
+    field(PINI, "YES")
+    field(VAL, 0)
+}

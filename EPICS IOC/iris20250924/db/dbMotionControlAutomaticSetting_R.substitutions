@@ -1,0 +1,43 @@
+file "db/dbMotionControlAutomaticSetting_R.db"{
+    pattern { MOTOR,       TYPE,               PORT_R,   REG,  DESCRIZIONE }
+            { "1",   "movingStep_R", 		"MC_A_S_R",  "0", "descrizione"}
+            { "3",   "movingStep_R", 		"MC_A_S_R",  "2", "descrizione"}
+            { "4",   "movingStep_R", 		"MC_A_S_R",  "4", "descrizione"}
+
+            { "5",   "chargingStep:1_R", 	"MC_A_S_R",  "6", "descrizione"}
+            { "5",   "chargingStep:2_R", 	"MC_A_S_R",  "8", "descrizione"}
+            { "5",   "chargingStep:3_R", 	"MC_A_S_R",  "10", "descrizione"}
+            { "5",   "irradiationStep:1_R", "MC_A_S_R",  "12", "descrizione"}
+            { "5",   "irradiationStep:2_R", "MC_A_S_R",  "14", "descrizione"}
+            { "5",   "irradiationStep:3_R", "MC_A_S_R",  "16", "descrizione"}
+            { "5",   "dischargingStep_R", 	"MC_A_S_R",  "18", "descrizione"}
+            { "5",   "offsetDischarge_R", 	"MC_A_S_R",  "20", "descrizione"}
+			
+			
+			{ "1",   "state_R", 			"MC_A_S_R",  "22", "descrizione"}
+			{ "1",   "coupled_R", 			"MC_A_S_R",  "24", "descrizione"}
+			{ "1",   "home:state_R", 		"MC_A_S_R",  "26", "descrizione"}
+			
+			{ "2",   "state_R", 			"MC_A_S_R",  "28", "descrizione"}
+			{ "2",   "home:state_R", 		"MC_A_S_R",  "30", "descrizione"}
+			
+			{ "3",   "state_R", 			"MC_A_S_R",  "32", "descrizione"}
+			{ "3",   "coupled_R", 			"MC_A_S_R",  "34", "descrizione"}
+			{ "3",   "home:state_R", 		"MC_A_S_R",  "36", "descrizione"}
+			
+			{ "4",   "state_R", 			"MC_A_S_R",  "38", "descrizione"}
+			{ "4",   "home:state_R", 		"MC_A_S_R",  "40", "descrizione"}
+			
+			
+			{ "5",   "state_R", 			"MC_A_S_R",  "42", "descrizione"}
+			{ "5",   "home:state_R", 		"MC_A_S_R",  "44", "descrizione"}
+			
+			{ "6",   "state_R", 			"MC_A_S_R",  "46", "descrizione"}
+			{ "6",   "coupled_R", 			"MC_A_S_R",  "48", "descrizione"}
+			{ "6",   "home:state_R", 		"MC_A_S_R",  "50", "descrizione"}
+			
+			{ "7",   "state_R", 			"MC_A_S_R",  "52", "descrizione"}
+			{ "7",   "coupled_R", 			"MC_A_S_R",  "54", "descrizione"}
+			{ "7",   "home:state_R", 		"MC_A_S_R",  "56", "descrizione"}
+
+}

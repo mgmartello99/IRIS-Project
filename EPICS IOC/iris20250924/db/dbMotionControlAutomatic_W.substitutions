@@ -1,0 +1,18 @@
+file "db/dbMotionControlAutomatic_W.db"{
+    pattern { TYPE,                 	   PORT_W,   REG,  DESCRIZIONE }
+            { "CommandRack12V_W", 		"MC_A_MC_W", "0", "descrizione"}
+			{ "generalControl_W", 		"MC_A_MC_W", "2", "descrizione"}
+			{ "irradiationControl_W", 	"MC_A_MC_W", "4", "descrizione"}
+            { "measurementControl_W", 	"MC_A_MC_W", "6", "descrizione"}
+			{ "MPS:reqDecouple_W", 		"MC_A_MC_W", "8", "descrizione"}
+			{ "RecoupleM3_W", 			"MC_A_MC_W", "10", "descrizione"}
+			{ "AutoManSelector_W",		"MC_A_MC_W", "12","descrizione"}
+			{ "StopButton_W",			"MC_A_MC_W", "14","descrizione"}
+            { "Timer1_W",				"MC_A_MC_W_2", "0","descrizione"}
+			{ "Timer2_W",				"MC_A_MC_W_2", "2","descrizione"}
+			{ "Timer3_W",				"MC_A_MC_W_2", "4","descrizione"}
+			{ "StartProcess_W",			"MC_A_MC_W_2", "6","descrizione"}
+			{ "EnEasyGUI_W",			"MC_A_MC_W_2", "8","descrizione"}
+			{ "CalibrationMode_W",		"MC_A_MC_W_2", "10","descrizione"}
+			{ "PelletChargedByUser_W",		"MC_A_MC_W_2", "12","descrizione"}
+}

@@ -1,0 +1,14 @@
+file "db/dbMotionControlAutomaticSetting_W.db"{
+    pattern { MOTOR,       TYPE,            			  PORT_W,   REG,  DESCRIZIONE }
+            { "1",   "correctionStep_W",  				"MC_A_S_W", "0", "descrizione"}
+            { "3",   "correctionStep_W",  				"MC_A_S_W", "2", "descrizione"}
+			{ "4",   "offsetStep_W", 	  				"MC_A_S_W", "4", "descrizione"}
+            { "5",   "chargingCorrectionStep:1_W",  	"MC_A_S_W", "6", "descrizione"}
+            { "5",   "chargingCorrectionStep:2_W",  	"MC_A_S_W", "8", "descrizione"}
+            { "5",   "chargingCorrectionStep:3_W",  	"MC_A_S_W", "10", "descrizione"}
+            { "5",   "irradiationCorrectionStep:1_W",   "MC_A_S_W", "12", "descrizione"}
+            { "5",   "irradiationCorrectionStep:2_W",   "MC_A_S_W", "14", "descrizione"}
+            { "5",   "irradiationCorrectionStep:3_W",   "MC_A_S_W", "16", "descrizione"}
+            { "5",   "dischargingCorrectionStep_W",  	"MC_A_S_W", "18", "descrizione"}
+
+}

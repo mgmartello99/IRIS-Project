@@ -1,0 +1,85 @@
+/home/isolpharm_iris/EPICS/iris-latest/iocBoot/iociris/envPaths
+
+#- You may have to change iris to something else
+#- everywhere it appears in this file
+
+< envPaths
+
+cd "${TOP}"
+
+## Register all support components
+dbLoadDatabase "dbd/iris.dbd"
+iris_registerRecordDeviceDriver pdbbase
+
+## Modbus communication
+
+#drvAsynIPPortConfigure(portName,   hostInfo,       priority, noAutoConnect, noProcessEos)
+drvAsynIPPortConfigure("PLC_IRIS", 	 "10.5.0.100:502",      0,          0,              1)
+drvAsynIPPortConfigure("PLC_IRIS_2", "10.5.0.100:503",      0,          0,              1)
+drvAsynIPPortConfigure("PLC_IRIS_3", "10.5.0.100:504",      0,          0,              1)
+
+
+#modbusInterposeConfig(portName, linkType, timeoutMsec, writeDelayMsec)
+modbusInterposeConfig("PLC_IRIS",     0,          2000,        0)
+modbusInterposeConfig("PLC_IRIS_2",     0,          2000,        0)
+modbusInterposeConfig("PLC_IRIS_3",     0,          2000,        0)
+
+
+
+##MOTION CONTROL AUTOMATIC STEP SETTINGS
+drvModbusAsynConfigure("MC_A_S_R",   "PLC_IRIS_3",   1,              3,              520,                58,         6,      2000,        "a")
+drvModbusAsynConfigure("MC_A_S_W",   "PLC_IRIS_3",   1,              16,             500,                20,         6,      0,        "a")
+
+##MOTION CONTROL AUTOMATIC MAIN CONTROL
+drvModbusAsynConfigure("MC_A_MC_R",   "PLC_IRIS_3",   1,              3,              364,                18,         6,      2000,        "a")
+drvModbusAsynConfigure("MC_A_MC_R_2", "PLC_IRIS_3",   1,              3,              650,                38,          6,      2000,        "a")
+drvModbusAsynConfigure("MC_A_MC_W",   "PLC_IRIS_3",   1,              16,             348,                16,         6,      0,        "a")
+drvModbusAsynConfigure("MC_A_MC_W_2", "PLC_IRIS_3",   1,              16,             600,                14,          6,      0,        "a")
+
+##MOTION CONTROL MANUAL SOLENOIDS
+drvModbusAsynConfigure("MC_M_S_R",     "PLC_IRIS_3",   1,              3,              324,                4,         6,      2000,        "a")
+drvModbusAsynConfigure("MC_M_S_W",     "PLC_IRIS_3",   1,              16,             320,                4,         6,      0,        "a")
+
+
+##MOTION CONTROL MANUAL MOTORS
+drvModbusAsynConfigure("MC_M_M_R",   	"PLC_IRIS_2",   1,              3,            200,                112,         6,      2000,     "a")
+#drvModbusAsynConfigure("MC_M_M_R_2",   "PLC_IRIS_2",   1,              3,            600,                12,         6,      2000,     "a")
+
+drvModbusAsynConfigure("MC_M_M_W",   	"PLC_IRIS",   1,              16,             10,                 120,        6,      0,        "a")
+drvModbusAsynConfigure("MC_M_M_W_2",   	"PLC_IRIS",   1,              16,             130,                50,         6,      0,        "a")
+
+
+## debug
+#asynSetTraceIOMask("PLC_IRIS", 0, 2)
+#asynSetTraceMask("PLC_IRIS", 0, 9)
+
+## Load record instances
+##MOTION CONTROL AUTOMATIC STEP SETTINGS
+dbLoadTemplate "db/dbMotionControlAutomaticSetting_R.substitutions"
+dbLoadTemplate "db/dbMotionControlAutomaticSetting_W.substitutions"
+
+##MOTION CONTROL AUTOMATIC MAIN CONTROL
+dbLoadTemplate "db/dbMotionControlAutomatic_R.substitutions"
+dbLoadTemplate "db/dbMotionControlAutomatic_W.substitutions"
+
+##MOTION CONTROL MANUAL SOLENOIDS
+dbLoadTemplate "db/dbMotionControlSolenoids_R.substitutions"
+dbLoadTemplate "db/dbMotionControlSolenoids_W.substitutions"
+
+##MOTION CONTROL MANUAL MOTORS
+dbLoadTemplate "db/dbMotionControlMotors_R.substitutions"
+#dbLoadTemplate "db/dbMotionControlMotors_R_2.substitutions"  
+dbLoadTemplate "db/dbMotionControlMotors_W.substitutions"
+
+
+## Load the saved value.
+#set_pass1_restoreFile("rebootSmotConfig.sav")
+
+cd "${TOP}/iocBoot/${IOC}"
+
+
+iocInit
+
+
+## Start any sequence programs
+#seq sncxxx,"user=spes"

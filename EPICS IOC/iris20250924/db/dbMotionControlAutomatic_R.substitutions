@@ -1,0 +1,33 @@
+file "db/dbMotionControlAutomatic_R.db"{
+    pattern { TYPE,         			PORT_R,      REG,  DESCRIZIONE }
+            		{ "AutoManSelector_R",		"MC_A_MC_R", 	"0", "descrizione"}
+			{ "tablet:irradiation_R", 	"MC_A_MC_R", 	"2", "descrizione"}
+			{ "tablet:discharge_R", 	"MC_A_MC_R", 	"4", "descrizione"}
+            		{ "home_R", 				"MC_A_MC_R", 	"6", "descrizione"}
+            		{ "charge_R", 				"MC_A_MC_R", 	"8", "descrizione"}
+            		{ "discharge_R", 			"MC_A_MC_R", 	"10","descrizione"}
+			{ "generalControl_R", 		"MC_A_MC_R", 	"12","descrizione"}
+			{ "tablet_In_Irr_Pos_R",	"MC_A_MC_R", 	"14","descrizione"}
+			{ "MPS_ACK_R",				"MC_A_MC_R", 	"16","descrizione"}
+			{ "VisualTimerIrr1_R",		"MC_A_MC_R_2", 	"0","descrizione"}
+			{ "VisualTimerIrr2_R",		"MC_A_MC_R_2", 	"2","descrizione"}
+			{ "VisualTimerIrr3_R",		"MC_A_MC_R_2", 	"4","descrizione"}
+			{ "VisualTimerDis1_R",		"MC_A_MC_R_2", 	"6","descrizione"}
+			{ "VisualTimerDis2_R",		"MC_A_MC_R_2", 	"8","descrizione"}
+			{ "VisualTimerDis3_R",		"MC_A_MC_R_2", 	"10","descrizione"}
+			{ "VisualTimerMov1_R",		"MC_A_MC_R_2", 	"12","descrizione"}
+			{ "VisualTimerMov2_R",		"MC_A_MC_R_2", 	"14","descrizione"}
+			{ "VisualTimerMov3_R",		"MC_A_MC_R_2", 	"16","descrizione"}
+			{ "Tablets_InCharging_R",	"MC_A_MC_R_2", 	"18","descrizione"}
+			{ "Tablet_InIrisIrradiation_R",	"MC_A_MC_R_2", 	"20","descrizione"}
+			{ "VisualTimerIrrAdv1_R",		"MC_A_MC_R_2", 	"22","descrizione"}
+			{ "VisualTimerIrrAdv2_R",		"MC_A_MC_R_2", 	"24","descrizione"}
+			{ "VisualTimerIrrAdv3_R",		"MC_A_MC_R_2", 	"26","descrizione"}
+			{ "PelletRemaining_R",			"MC_A_MC_R_2", 	"28","descrizione"}
+			{ "PelletInIrisCharge_R",		"MC_A_MC_R_2", 	"30","descrizione"}
+			{ "PelletInIrisDischarge_R",		"MC_A_MC_R_2", 	"32","descrizione"}
+			{ "PelletMeasured_R",			"MC_A_MC_R_2", 	"34","descrizione"}
+			{ "PelletInTrolley_R",			"MC_A_MC_R_2", 	"36","descrizione"}
+			{ "IrradiationStatus_R",		"MC_A_MC_R_2", 	"38","descrizione"}
+			{ "DischargeStatus_R",			"MC_A_MC_R_2", 	"40","descrizione"}
+}

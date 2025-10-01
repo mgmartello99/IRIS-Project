@@ -1,0 +1,95 @@
+file "db/dbMotionControlMotors_W.db"{
+    pattern { MOTOR,           TYPE,                PORT_W,   REG,   DESCRIZIONE }
+            { "1",          "powerOn_W",            "MC_M_M_W", "0",    "descrizione"}
+			{ "1",          "powerOff_W",           "MC_M_M_W", "2",    "descrizione"}
+            { "1",          "speed_W", 	            "MC_M_M_W", "4",    "descrizione"}
+			{ "1",          "start_W", 		        "MC_M_M_W", "6",    "descrizione"}
+            { "1",          "stop_W", 		        "MC_M_M_W", "8",    "descrizione"}
+			{ "1",          "direction_W", 	        "MC_M_M_W", "10",   "descrizione"}
+            { "1",          "quitError_W", 	        "MC_M_M_W", "12",   "descrizione"}
+			{ "1",          "desiredPosition_W",    "MC_M_M_W", "14",   "descrizione"}
+            { "1",          "home:forward_W", 		"MC_M_M_W", "16",   "descrizione"}
+			{ "1",          "home:reverse_W", 	    "MC_M_M_W", "18",   "descrizione"}
+            { "1",          "reverse:perStep_W", 	"MC_M_M_W", "20",   "descrizione"}
+			{ "1",          "forward:perStep_W",    "MC_M_M_W", "22",   "descrizione"}
+
+            { "2",          "powerOn_W",            "MC_M_M_W", "24",    "descrizione"}
+			{ "2",          "powerOff_W",           "MC_M_M_W", "26",    "descrizione"}
+            { "2",          "speed_W", 	            "MC_M_M_W", "28",    "descrizione"}
+			{ "2",          "start_W", 		        "MC_M_M_W", "30",    "descrizione"}
+            { "2",          "stop_W", 		        "MC_M_M_W", "32",    "descrizione"}
+			{ "2",          "direction_W", 	        "MC_M_M_W", "34",   "descrizione"}
+            { "2",          "quitError_W", 	        "MC_M_M_W", "36",   "descrizione"}
+			{ "2",          "desiredPosition_W",    "MC_M_M_W", "38",   "descrizione"}
+            { "2",          "home:forward_W", 		"MC_M_M_W", "40",   "descrizione"}
+			{ "2",          "home:reverse_W", 	    "MC_M_M_W", "42",   "descrizione"}
+            { "2",          "reverse:perStep_W", 	"MC_M_M_W", "44",   "descrizione"}
+			{ "2",          "forward:perStep_W",    "MC_M_M_W", "46",   "descrizione"}
+
+            { "3",          "powerOn_W",            "MC_M_M_W", "48",    "descrizione"}
+			{ "3",          "powerOff_W",           "MC_M_M_W", "50",    "descrizione"}
+            { "3",          "speed_W", 	            "MC_M_M_W", "52",    "descrizione"}
+			{ "3",          "start_W", 		        "MC_M_M_W", "54",    "descrizione"}
+            { "3",          "stop_W", 		        "MC_M_M_W", "56",    "descrizione"}
+			{ "3",          "direction_W", 	        "MC_M_M_W", "58",   "descrizione"}
+            { "3",          "quitError_W", 	        "MC_M_M_W", "60",   "descrizione"}
+			{ "3",          "desiredPosition_W",    "MC_M_M_W", "62",   "descrizione"}
+            { "3",          "home:forward_W", 		"MC_M_M_W", "64",   "descrizione"}
+			{ "3",          "home:reverse_W", 	    "MC_M_M_W", "66",   "descrizione"}
+            { "3",          "reverse:perStep_W", 	"MC_M_M_W", "68",   "descrizione"}
+			{ "3",          "forward:perStep_W",    "MC_M_M_W", "70",   "descrizione"}
+
+            { "4",          "powerOn_W",            "MC_M_M_W", "72",    "descrizione"}
+			{ "4",          "powerOff_W",           "MC_M_M_W", "74",    "descrizione"}
+            { "4",          "speed_W", 	            "MC_M_M_W", "76",    "descrizione"}
+			{ "4",          "start_W", 		        "MC_M_M_W", "78",    "descrizione"}
+            { "4",          "stop_W", 		        "MC_M_M_W", "80",    "descrizione"}
+			{ "4",          "direction_W", 	        "MC_M_M_W", "82",   "descrizione"}
+            { "4",          "quitError_W", 	        "MC_M_M_W", "84",   "descrizione"}
+			{ "4",          "desiredPosition_W",    "MC_M_M_W", "86",   "descrizione"}
+            { "4",          "home:forward_W", 		"MC_M_M_W", "88",   "descrizione"}
+			{ "4",          "home:reverse_W", 	    "MC_M_M_W", "90",   "descrizione"}
+            { "4",          "reverse:perStep_W", 	"MC_M_M_W", "92",   "descrizione"}
+			{ "4",          "forward:perStep_W",    "MC_M_M_W", "94",   "descrizione"}
+
+			{ "5",          "powerOn_W",            "MC_M_M_W", "96",    "descrizione"}
+			{ "5",          "powerOff_W",           "MC_M_M_W", "98",    "descrizione"}
+            { "5",          "speed_W", 	            "MC_M_M_W", "100",    "descrizione"}
+			{ "5",          "start_W", 		        "MC_M_M_W", "102",    "descrizione"}
+            { "5",          "stop_W", 		        "MC_M_M_W", "104",    "descrizione"}
+			{ "5",          "direction_W", 	        "MC_M_M_W", "106",   "descrizione"}
+            { "5",          "quitError_W", 	        "MC_M_M_W", "108",   "descrizione"}
+			{ "5",          "desiredPosition_W",    "MC_M_M_W", "110",   "descrizione"}
+            { "5",          "home:forward_W", 		"MC_M_M_W", "112",   "descrizione"}
+			{ "5",          "home:reverse_W", 	    "MC_M_M_W", "114",   "descrizione"}
+            { "5",          "reverse:perStep_W", 	"MC_M_M_W", "116",   "descrizione"}
+			{ "5",          "forward:perStep_W",    "MC_M_M_W", "118",   "descrizione"}
+
+			{ "6",          "powerOn_W",            "MC_M_M_W_2", "0",    "descrizione"}
+			{ "6",          "powerOff_W",           "MC_M_M_W_2", "2",    "descrizione"}
+            { "6",          "speed_W", 	            "MC_M_M_W_2", "4",    "descrizione"}
+			{ "6",          "start_W", 		        "MC_M_M_W_2", "6",    "descrizione"}
+            { "6",          "stop_W", 		        "MC_M_M_W_2", "8",    "descrizione"}
+			{ "6",          "direction_W", 	        "MC_M_M_W_2", "10",   "descrizione"}
+            { "6",          "quitError_W", 	        "MC_M_M_W_2", "12",   "descrizione"}
+			{ "6",          "desiredPosition_W",    "MC_M_M_W_2", "14",   "descrizione"}
+            { "6",          "home:forward_W", 		"MC_M_M_W_2", "16",   "descrizione"}
+			{ "6",          "home:reverse_W", 	    "MC_M_M_W_2", "18",   "descrizione"}
+            { "6",          "reverse:perStep_W", 	"MC_M_M_W_2", "20",   "descrizione"}
+			{ "6",          "forward:perStep_W",    "MC_M_M_W_2", "22",   "descrizione"}
+
+			{ "7",          "powerOn_W",            "MC_M_M_W_2", "24",    "descrizione"}
+			{ "7",          "powerOff_W",           "MC_M_M_W_2", "26",    "descrizione"}
+            { "7",          "speed_W", 	            "MC_M_M_W_2", "28",    "descrizione"}
+			{ "7",          "start_W", 		        "MC_M_M_W_2", "30",    "descrizione"}
+            { "7",          "stop_W", 		        "MC_M_M_W_2", "32",    "descrizione"}
+			{ "7",          "direction_W", 	        "MC_M_M_W_2", "34",   "descrizione"}
+            { "7",          "quitError_W", 	        "MC_M_M_W_2", "36",   "descrizione"}
+			{ "7",          "desiredPosition_W",    "MC_M_M_W_2", "38",   "descrizione"}
+            { "7",          "home:forward_W", 		"MC_M_M_W_2", "40",   "descrizione"}
+			{ "7",          "home:reverse_W", 	    "MC_M_M_W_2", "42",   "descrizione"}
+            { "7",          "reverse:perStep_W", 	"MC_M_M_W_2", "44",   "descrizione"}
+			{ "7",          "forward:perStep_W",    "MC_M_M_W_2", "46",   "descrizione"}
+			{ "All", "EmergencyStopManManager_W",   "MC_M_M_W_2", "48",   "descrizione"}
+		
+}

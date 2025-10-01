@@ -1,0 +1,11 @@
+record(ao, "AcquisitionTimeCoMPASS"){
+	field(DESC, "Acquisition time to pass to script python CoMPASS")
+	field(SCAN, Passive)
+	field(PINI, "YES")
+}
+
+record(stringout, "RadioIsotopeCoMPASS"){
+	field(DESC, "Radio Isotope to pass to script python CoMPASS")
+	field(SCAN, Passive)
+	field(PINI, "YES")
+}
